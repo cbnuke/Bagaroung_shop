@@ -11,8 +11,9 @@ class SlideController extends CI_Controller {
 
     public function index() {
 
-        
-        $this->load->view('');
+        $this->load->view('admin/theme_header_admin');
+        $this->load->view('admin/slides');
+        $this->load->view('admin/theme_footer_admin');
     }
 
 }
