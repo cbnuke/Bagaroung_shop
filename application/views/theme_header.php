@@ -1,131 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title><?php echo $title;?></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Site for COOP SCI-KKU.">
-<meta name="author" content="CBNUKE">
-<?php echo css('bootstrap.css');?>
-<?php echo css('bootstrap-responsive.css');?>
-<?php echo css('jquery.ui.core.css');?>
-<?php echo css('jquery.ui.datepicker.css');?>
-<?php echo css('jquery.ui.theme.css');?>
-<style type="text/css">
-body {
-	padding-top: 60px;
-	padding-bottom: 40px;
-}
+    <head>
+        <meta charset="utf-8">
+        <title><?php echo $title; ?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Bagaroung shop">
+        <meta name="author" content="CBNUKE & VORD">
+        <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.ico'; ?>">
+        <?php echo css('bootstrap.css'); ?>
+        <?php echo css('bootstrap-theme.css'); ?>
+        <?php echo css('font-awesome.css'); ?>
+        <style type="text/css">
+            /* Sticky footer styles
+-------------------------------------------------- */
+            html {
+                position: relative;
+                min-height: 100%;
+            }
+            body {
+                /* Margin bottom by footer height */
+                padding-top: 50px;
+                margin-bottom: 60px;
+            }
+            #footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                /* Set the fixed height of the footer here */
+                height: 60px;
+                background-color: #f5f5f5;
+            }
 
-@media print {
-	body {
-		padding: 0px;
-		font-size: 13px;
-		line-height: 13px;
-	}
-	h1,h2,h3,h4,h5,h6 {
-		margin-top: 14px;
-		margin-bottom: 0px;
-		font-family: inherit;
-		font-weight: bold;
-		line-height: 14px;
-		color: inherit;
-		text-rendering: optimizelegibility;
-	}
-	h3 {
-		font-size: 26px;
-		margin-bottom: 10px;
-	}
-	legend {
-		margin-bottom: 0px;
-		font-size: 13px;
-		line-height: 13px;
-		color: #333333;
-		border: 0;
-		border-bottom: 1px solid #e5e5e5;
-	}
-	label {
-		font-size: 13px;
-		line-height: 13px;
-	}
-	.well-large {
-		padding: 8px;
-	}
-	.table {
-		width: 90%;
-		margin-top: 4px;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 14px;
-	}
-	.table th,.table td {
-		padding: 2px;
-		line-height: 17px;
-		text-align: left;
-		vertical-align: top;
-		border-top: 1px solid #dddddd;
-		text-align: left;
-	}
-}
-</style>
-	<?php echo js('jquery.js');?>
-	<?php echo js('bootstrap.js');?>
-	<?php echo js('jquery.ui.core.js');?>
-	<?php echo js('jquery.ui.datepicker.js');?>
-	<?php echo js('jquery.ui.datepicker-th.js');?>
-	<?php echo js('jquery.ui.widget.js');?>
-<script type="text/javascript"> 
-	jQuery(window).load(function(){
-		$("[data-toggle='tooltip']").tooltip();
-  	});  
-</script>
-</head>
-<body>
-	<div class="navbar navbar-fixed-top hidden-print">
-		<div class="navbar-inner">
-			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="brand" href="#">เม้งบริการชัยภูมิ</a>
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li <?php if($page=='main')echo 'class="active"';?>><?php echo anchor('main','หน้าหลัก');?>
-						</li>
-						<li <?php if($page=='customers')echo 'class="active"';?>><?php echo anchor('customers','ลูกค้า');?>
-						</li>
-						<li <?php if($page=='products')echo 'class="active"';?>><?php echo anchor('products','สินค้า');?>
-						</li>
-						<li <?php if($page=='trade')echo 'class="active"';?>><?php echo anchor('trade','ซื้อขาย');?>
-						</li>
-						<li <?php if($page=='occasion')echo 'class="active"';?>><?php echo anchor('occasion','ส่งงวด');?>
-						</li>
-						<li <?php if($page=='confiscate')echo 'class="active"';?>><?php echo anchor('confiscate','ยึดคืน');?>
-						</li>
-						<li <?php if($page=='stock')echo 'class="active"';?>><?php echo anchor('stock','สต็อก');?>
-						</li>
-					</ul>
-					<?php echo $form_login;?>
-					<div class="input-prepend input-append" style="height: 40px;">
-						<span class="add-on"><i class="icon-user"></i> </span> <span
-							class="add-on"><?php echo $u_name;?> </span>
-						<button class="btn" type="submit">ออกจากระบบ</button>
-					</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- container -->
-	<div class="container">
-		<?php
-		
-		if (isset ( $debug )) {
-			print '<pre>';
-			print_r ( $debug );
-			print '</pre>';
-		}
-		?>
-		<?php if(isset($alert))echo $alert;?>
+
+            /* Custom page CSS
+            -------------------------------------------------- */
+            /* Not required for template or sticky footer method. */
+            .container .text-muted {
+                margin: 20px 0;
+            }
+
+            #footer > .container {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            code {
+                font-size: 80%;
+            }
+
+            /* Custom carousel CSS */
+            .carousel-control, .carousel-control:hover, .carousel-control:focus{
+                color: #76492c;
+
+            }
+            .carousel-control.left {
+                background: -moz-linear-gradient(left,  rgba(117,78,53,0.8) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(117,78,53,0.8)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+                background: linear-gradient(to right,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc754e35', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+            }
+            .carousel-control.right {
+                background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(117,78,53,0.8) 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(117,78,53,0.8))); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* IE10+ */
+                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#cc754e35',GradientType=1 ); /* IE6-9 */
+            }
+            .carousel-inner > .item > img {
+                margin: 0 auto;
+            }
+        </style>
+        <?php echo js('jquery.js'); ?>
+        <?php echo js('bootstrap.js'); ?>
+        <?php echo js('jquery.ui.core.js'); ?>
+        <?php echo js('jquery.ui.datepicker.js'); ?>
+        <?php echo js('jquery.ui.datepicker-th.js'); ?>
+        <?php echo js('jquery.ui.widget.js'); ?>
+    </head>
+    <body>
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Bagaroung shop</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#promotions">Promotions</a></li>
+                        <li><a href="#contactus">Contact Us</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><?php echo img('logo.png', array('height' => '50px')); ?></li>
+                        <li><?php echo anchor('lang/set/thai', img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
+                        <li><?php echo anchor('lang/set/english', img('usa.png', array('height' => '20px')) . 'English'); ?></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+
+        <?php
+        if (isset($debug) || $alert != NULL) {
+            echo '<div class="container">';
+            if (isset($debug)) {
+                print '<pre>';
+                print_r($debug);
+                print '</pre>';
+            }
+            if (isset($alert))
+                echo $alert;
+            echo '</div>';
+        }
+        ?>
+            

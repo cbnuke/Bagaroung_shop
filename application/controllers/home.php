@@ -19,11 +19,12 @@ class Home extends CI_Controller {
     public function index() {
         $data = array();
         //$this->load->view('test');
-        $this->m_template->set_Content('test', $data);
-        
-        $temp = array('a'=>1,'b'=>2);
-        
-        $this->m_template->set_Debug($temp);
+
+
+
+        $this->m_template->set_Content('home.php', $data);
+        $temp = array('a' => lang('welcome'), 'b' => 2);
+//        $this->m_template->set_Debug($temp);
         $this->m_template->showTemplate();
     }
 
