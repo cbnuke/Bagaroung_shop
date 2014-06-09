@@ -7,13 +7,15 @@ class SlideController extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('m_template');
     }
 
     public function index() {
-
-        $this->load->view('admin/theme_header_admin');
-        $this->load->view('admin/slides');
-        $this->load->view('admin/theme_footer_admin');
+        $test = array('a'=>1,'b'=>2);
+        
+        //$this->m_template->set_Debug($test);
+        $this->m_template->set_Content('admin/slides.php',NULL);
+        $this->m_template->showTemplateAdmin();
     }
 
 }
