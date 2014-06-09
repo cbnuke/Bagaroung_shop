@@ -22,6 +22,14 @@ class Welcome extends CI_Controller {
      */
     public function __construct() {
         parent::__construct();
+
+        //Initial language
+        $site_lang = $this->session->userdata('site_lang');
+        if ($site_lang) {
+            $this->lang->load('home', $this->session->userdata('site_lang'));
+        } else {
+            $this->lang->load('home', 'thai');
+        }
     }
 
     public function index() {

@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 Class m_template extends CI_Model{
-	private $title = 'เม้งบริการชัยภูมิ';
+	private $title = 'Bagaroung shop';
 	private $view_name = NULL;
 	private $set_data = NULL;
 	private $permission = "ALL";
@@ -26,7 +26,7 @@ Class m_template extends CI_Model{
 
 	function check_permission(){
 		$sess = $this->session->userdata('user');
-		if($sess==NULL){
+		if($sess==NULL&&$this->permission!='ALL'){
 			redirect('login');
 		}
 		if($this->permission!='ALL'&&$sess['u_permit']!=$this->permission){
