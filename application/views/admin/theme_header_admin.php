@@ -13,15 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="VoRD">
-
-        <!-- Core CSS - Include with every page -->
-        <!--        <link href="css/bootstrap.min.css" rel="stylesheet">-->
-        <!--        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"> -->
+        <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.ico'; ?>">
         <?php echo css('bootstrap.css'); ?>
         <?php echo css('font-awesome.css'); ?>
 
-        <!-- SB Admin CSS - Include with every page -->
-        <!--        <link href="css/sb-admin.css" rel="stylesheet">-->
+        <!-- SB Admin CSS - Include with every page -->        
         <?php echo css('sb-admin.css'); ?>
 
     </head>
@@ -36,11 +32,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Bag Aroung Shop Admin</a>
+
+                    <a class="navbar-brand" href=""><?php echo img('logo.png', array('height' => '30px')); ?>&nbsp;Bag Aroung Shop Admin</a>
                 </div>
                 <!-- /.navbar-header -->
 
-                <ul class="nav navbar-top-links navbar-right">                     
+                <ul class="nav navbar-top-links navbar-right visible-md visible-lg">                     
                     <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -52,7 +49,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -73,26 +70,26 @@
                                 <a href="#"><i class="fa fa-file-o fa-fw"></i>&nbsp;Products<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <?= anchor('Products/add','<i class="fa fa-plus-circle fa-fw"></i>&nbsp;เพิ่มสินค้า');?>                                        
+                                        <?= anchor('Products/add', '<i class="fa fa-plus-circle fa-fw"></i>&nbsp;เพิ่มสินค้า'); ?>                                        
                                     </li>
                                     <li>
-                                        <?= anchor('Products','<i class="fa fa-list fa-fm "></i>&nbsp;รายการสินค้า'); ?>                                       
+                                        <?= anchor('Products', '<i class="fa fa-list fa-fm "></i>&nbsp;รายการสินค้า'); ?>                                       
                                     </li>
                                     <!-- Product type -->
                                     <li>
                                         <a href="#">&nbsp;Product Types <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <?= anchor('ProductTypes/add','<i class="fa fa-plus-circle fa-fw"></i>&nbsp;เพิ่มประเภทสินค้า')?> 
+                                                <?= anchor('ProductTypes/add', '<i class="fa fa-plus-circle fa-fw"></i>&nbsp;เพิ่มประเภทสินค้า') ?> 
                                             </li>
                                             <li>
-                                                <?= anchor('ProductTypes','<i class="fa fa-list fa-fm "></i>&nbsp;รายการประเภทสินค้า')?>                                               
+                                                <?= anchor('ProductTypes', '<i class="fa fa-list fa-fm "></i>&nbsp;รายการประเภทสินค้า') ?>                                               
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
                                     </li>
                                 </ul>
-                            </li>                          
+                            </li>                         
 
 
                             <!-- Promotions -->
@@ -100,13 +97,13 @@
                                 <a href="#"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;Promotions<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <?= anchor('Promotions/add','<i class="fa fa-plus-circle fa-fw"></i>&nbsp;สร้างโปรโมชั่น')?>                                       
+                                        <?= anchor('Promotions/add', '<i class="fa fa-plus-circle fa-fw"></i>&nbsp;สร้างโปรโมชั่น') ?>                                       
                                     </li>                                   
                                     <li>
                                         <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i>&nbsp;โปรโมชั่นปัจจุบัน</a>
                                     </li>
                                     <li>
-                                        <?= anchor('Promotions','<i class="fa fa-list fa-fm "></i>&nbsp;รายการโปรโมชั่นทั้งหมด')?>   
+                                        <?= anchor('Promotions', '<i class="fa fa-list fa-fm "></i>&nbsp;รายการโปรโมชั่นทั้งหมด') ?>   
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-trash-o fa-fw"></i>&nbsp;โปรโมชั่นหมดอายุ</a>
@@ -115,7 +112,7 @@
                             </li>
                             <!-- Slides -->
                             <li>
-                                <?= anchor('slides','<i class="fa fa-play fa-fw"></i>&nbsp;Slides')?>
+                                <?= anchor('slides', '<i class="fa fa-play fa-fw"></i>&nbsp;Slides') ?>
 <!--                                <a href="slides"><i class="fa fa-play fa-fw"></i>&nbsp;Slides</a>                             -->
                             </li>                           
                             <!-- User -->
@@ -123,14 +120,19 @@
                                 <a href="#"><i class="fa fa-user fa-fw"></i>&nbsp;Users<span class="fa arrow"></a>    
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <?=  anchor('Users/add','<i class="fa fa-plus-circle fa-fw"></i>&nbsp;เพิ่มผู้ใช้งาน');?>                                        
+                                        <?= anchor('Users/add', '<i class="fa fa-plus-circle fa-fw"></i>&nbsp;เพิ่มผู้ใช้งาน'); ?>                                        
                                     </li>
                                     <li>
-                                        <?= anchor('Users','<i class="fa fa-users fa-fm "></i>&nbsp;ผู้ใช้ทั้งหมด'); ?>                                        
+                                        <?= anchor('Users', '<i class="fa fa-users fa-fm "></i>&nbsp;ผู้ใช้ทั้งหมด'); ?>                                        
                                     </li>                                    
                                 </ul>
                             </li>
+                            <!--Logout-->
+                            <li class="visible-xs visible-sm">  
+                                <?= anchor('', '<i class="fa fa-sign-out fa-fw"></i>&nbsp;ออกจากระบบ'); ?>                             
+                            </li>
                         </ul>
+
                         <!-- /#side-menu -->
                     </div>
                     <!-- /.sidebar-collapse -->

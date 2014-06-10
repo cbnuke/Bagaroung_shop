@@ -114,7 +114,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">Type</label>
+            <label class="col-sm-2 control-label">ประเภทสินค้า</label>
             <div class="col-sm-3">
                 <select class="form-control">
                     <option>Type 1</option>

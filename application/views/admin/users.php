@@ -4,8 +4,9 @@
     </div>
 </div>
 <div class="row">    
-    <?= anchor('Users/add ', '<i class="fa fa-plus fa-lg"></i>&nbsp;เพิ่มผู้ใช้งาน', 'type="button" class="btn btn-success pull-right btn-lg"'); ?>
+    <?= anchor('Users/add', '<i class="fa fa-plus fa-lg"></i>&nbsp;เพิ่มผู้ใช้งาน', 'type="button" class="btn btn-success pull-right btn-lg"'); ?>
 </div>
+<br>
 <div class="row">
     <table class="table table-responsive">
         <thead>
