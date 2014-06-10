@@ -26,6 +26,10 @@ body {
     min-height: 568px;
     background-color: #fff;
 }
+.img-show{    
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
 
 @media(min-width:768px) {
     #page-wrapper {

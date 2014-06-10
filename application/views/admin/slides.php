@@ -3,21 +3,21 @@
         <h1 class="page-header">Slide</h1>
     </div>
 </div>
-<hr>
-<div class="row">    
-    <a type="button" class="btn btn-success pull-right" href="crate_slide.php" ><i class="fa fa-plus fa-lg"></i> Create Slide</a>   
+<div class="row"> 
+     <?= anchor('slides/add','<i class="fa fa-plus fa-lg"></i>&nbsp;สร้างสไลด์','type="button" class="btn btn-success pull-right"')?>
+<!--    <a type="button" class="btn btn-success pull-right" href="crate_slide.php" ><i class="fa fa-plus fa-lg"></i>&nbsp;Create Slide</a>   -->
 </div>
 <div class="row">
-    <table class="table">
+    <table class="table table-responsive">
         <thead>
-        <th>Order</th>
-        <th>Title(TH)</th>
-        <th>Title(EN)</th>
-        <th>Subtitle(TH)</th>
-         <th>Subtitle(EN)</th>
-        <th>Link</th>
-        <th>image</th>
-        <th>Status</th>
+        <th>ลำดับ</th>
+        <th>ชื่อหลัก(TH)</th>
+        <th>ชื่อหลัก(EN)</th>
+        <th>ชื่อรอง(TH)</th>
+         <th>ชื่อรอง(EN)</th>
+        <th>ลิ้งค์</th>
+        <th>รูปภาพ</th>
+        <th>สถานะ</th>
         <th></th>
         
         </thead>
@@ -28,12 +28,14 @@
                 <td>Title Test</td>
                 <td>ชื่อเรื่องรอง</td>
                 <td>Subtitle Test</td>
-                <td>Link 12345678910</td>
-                <td><img src="" alt="" class="img-thumbnail"></td>
+                <td><a>Link 12345678910</a></td>
+                <td><img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></td>
                 <td><i class="fa fa-check-square-o fa-lg"></i> <i class="fa fa-check-square-0 fa-lg"></i></td>
                 <td>
-                    <button type="button" class="btn btn-info btn-xs"><i class="fa fa-pencil fa-lg"></i> Edit</button>
-                    <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Delete</button>
+                    <?= anchor('Slides/edit','<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข','type="button" class="btn btn-info btn-xs"')?>
+                    <?= anchor('#','<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ','type="button" class="btn btn-danger btn-xs"')?>
+<!--                    <button type="button" class="btn btn-info btn-xs"><i class="fa fa-pencil fa-lg"></i> Edit</button>-->
+<!--                    <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Delete</button>-->
                 </td>
                 
             </tr>

@@ -26,5 +26,8 @@ class Home extends CI_Controller {
         $this->m_template->set_Debug($temp);
         $this->m_template->showTemplate();
     }
+      public function view() {
+        $this->load->view('login');
+    }
 
 }

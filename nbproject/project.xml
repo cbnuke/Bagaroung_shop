@@ -5,5 +5,25 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>Bagaroung_shop</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>ก</word>
+            <word>ง</word>
+            <word>งาน</word>
+            <word>ด</word>
+            <word>น</word>
+            <word>บาท</word>
+            <word>ปภาพ</word>
+            <word>ยด</word>
+            <word>ราคา</word>
+            <word>รายละเอ</word>
+            <word>ลบ</word>
+            <word>สถานะ</word>
+            <word>อ</word>
+            <word>ออก</word>
+            <word>า</word>
+            <word>าง</word>
+            <word>านขวา</word>
+            <word>ไข</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
