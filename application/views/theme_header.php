@@ -98,7 +98,7 @@
             #promotions_slide .thumbnail {
                 margin: 0;
             }
-            
+
             /* Custom tabs products*/
             .tab-pane {
                 margin-top: 10px;
@@ -108,6 +108,50 @@
         <?php echo js('bootstrap.js'); ?>
     </head>
     <body>
+        <script>
+            $(document).ready(function() {
+                $('#home').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 1000, 'swing');
+                    $('#home').addClass("active");
+                    $('#products').removeClass("active");
+                    $('#promotions').removeClass("active");
+                    $('#contactus').removeClass("active");
+                    $('.collapse').collapse('hide')
+                });
+                $('#products').click(function() {
+                    $('html, body').animate({
+                        scrollTop: $("#des_products").offset().top - 50
+                    }, 1000, 'swing');
+                    $('#products').addClass("active");
+                    $('#home').removeClass("active");
+                    $('#promotions').removeClass("active");
+                    $('#contactus').removeClass("active");
+                    $('.collapse').collapse('hide')
+                });
+                $('#promotions').click(function() {
+                    $('html, body').animate({
+                        scrollTop: $("#des_promotions").offset().top - 50
+                    }, 1000, 'swing');
+                    $('#promotions').addClass("active");
+                    $('#products').removeClass("active");
+                    $('#home').removeClass("active");
+                    $('#contactus').removeClass("active");
+                    $('.collapse').collapse('hide')
+                });
+                $('#contactus').click(function() {
+                    $('html, body').animate({
+                        scrollTop: $("#des_contactus").offset().top - 50
+                    }, 1000, 'swing');
+                    $('#contactus').addClass("active");
+                    $('#products').removeClass("active");
+                    $('#promotions').removeClass("active");
+                    $('#home').removeClass("active");
+                    $('.collapse').collapse('hide')
+                });
+            });
+        </script>
         <!-- Fixed navbar -->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -122,10 +166,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#home"><?= lang('menu_home') ?></a></li>
-                        <li><a href="#products"><?= lang('menu_products') ?></a></li>
-                        <li><a href="#promotions"><?= lang('menu_promotions') ?></a></li>
-                        <li><a href="#contactus"><?= lang('menu_contactus') ?></a></li>
+                        <li class="active" id="home"><a href="#"><?= lang('menu_home') ?></a></li>
+                        <li id="promotions"><a href="#"><?= lang('menu_promotions') ?></a></li>
+                        <li id="products"><a href="#"><?= lang('menu_products') ?></a></li>                        
+                        <li id="contactus"><a href="#"><?= lang('menu_contactus') ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><?php echo img('logo.png', array('height' => '50px')); ?></li>
@@ -135,7 +179,6 @@
                 </div><!--/.nav-collapse -->
             </div>
         </div>
-
 
         <?php
         if (isset($debug) || $alert != NULL) {

@@ -50,7 +50,7 @@
         })
     });
 </script>
-<div class="container">
+<div id="des_promotions" class="container">
     <h3><?= lang('head_promotions') ?></h3>
     <div class="col-md-12 well">
         <div id="promotions_slide" class="carousel slide">
@@ -125,7 +125,7 @@
 
 <hr>
 
-<div class="container">
+<div id="des_products" class="container">
     <h3><?= lang('head_products') ?></h3>
     <div class="col-md-12">
         <!-- Nav tabs -->
@@ -275,7 +275,7 @@
 
 <hr>
 
-<div class="container">
+<div id="des_contactus" class="container">
     <h3><?= lang('head_contactus') ?></h3>
     <div class="col-md-12 well well-lg">
         เบอร์
