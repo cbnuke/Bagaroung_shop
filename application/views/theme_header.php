@@ -48,12 +48,12 @@
                 font-size: 80%;
             }
 
-            /* Custom carousel CSS */
-            .carousel-control, .carousel-control:hover, .carousel-control:focus{
+            /* Custom carousel slide */
+            #banner_slide>.carousel-control, #banner_slide>.carousel-control:hover, #banner_slide>.carousel-control:focus{
                 color: #76492c;
 
             }
-            .carousel-control.left {
+            #banner_slide>.carousel-control.left {
                 background: -moz-linear-gradient(left,  rgba(117,78,53,0.8) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
                 background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(117,78,53,0.8)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
                 background: -webkit-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -62,7 +62,7 @@
                 background: linear-gradient(to right,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* W3C */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc754e35', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
             }
-            .carousel-control.right {
+            #banner_slide>.carousel-control.right {
                 background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(117,78,53,0.8) 100%); /* FF3.6+ */
                 background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(117,78,53,0.8))); /* Chrome,Safari4+ */
                 background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* Chrome10+,Safari5.1+ */
@@ -71,16 +71,41 @@
                 background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* W3C */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#cc754e35',GradientType=1 ); /* IE6-9 */
             }
-            .carousel-inner > .item > img {
+            #banner_slide>.carousel-inner > .item > img {
                 margin: 0 auto;
+            }
+
+            /* Custom carousel promotions*/
+            #promotions_slide>.carousel-control {
+                padding-top:10%;
+                width:5%;
+            }
+
+            #promotions_slide>.carousel-indicators {
+                right: 50%;
+                top: auto;
+                bottom: -28px;
+                margin-right: -19px;
+            }
+
+            #promotions_slide>.carousel-indicators li {
+                background: #c0c0c0;
+            }
+
+            #promotions_slide>.carousel-indicators .active {
+                background: #333333;
+            }
+            #promotions_slide .thumbnail {
+                margin: 0;
+            }
+            
+            /* Custom tabs products*/
+            .tab-pane {
+                margin-top: 10px;
             }
         </style>
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
-        <?php echo js('jquery.ui.core.js'); ?>
-        <?php echo js('jquery.ui.datepicker.js'); ?>
-        <?php echo js('jquery.ui.datepicker-th.js'); ?>
-        <?php echo js('jquery.ui.widget.js'); ?>
     </head>
     <body>
         <!-- Fixed navbar -->
@@ -97,10 +122,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#promotions">Promotions</a></li>
-                        <li><a href="#contactus">Contact Us</a></li>
+                        <li class="active"><a href="#home"><?= lang('menu_home') ?></a></li>
+                        <li><a href="#products"><?= lang('menu_products') ?></a></li>
+                        <li><a href="#promotions"><?= lang('menu_promotions') ?></a></li>
+                        <li><a href="#contactus"><?= lang('menu_contactus') ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><?php echo img('logo.png', array('height' => '50px')); ?></li>
