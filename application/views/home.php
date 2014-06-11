@@ -42,6 +42,7 @@
     <a class="left carousel-control" href="#banner_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#banner_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div><!-- /.carousel -->
+<hr>
 
 <script>
     $(document).ready(function() {
@@ -50,220 +51,224 @@
         })
     });
 </script>
-<div id="des_promotions" class="container">
-    <h3><?= lang('head_promotions') ?></h3>
-    <div class="col-md-12 well">
-        <div id="promotions_slide" class="carousel slide">
-            <ol class="carousel-indicators">
-                <li data-target="#promotions_slide" data-slide-to="0" class="active"></li>
-                <li data-target="#promotions_slide" data-slide-to="1"></li>
-                <li data-target="#promotions_slide" data-slide-to="2"></li>
-            </ol>
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="row">
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+<div id="des_promotions">
+    <div class="container">
+        <h3><?= lang('head_promotions') ?></h3>
+        <div class="col-md-12 well">
+            <div id="promotions_slide" class="carousel slide">
+                <ol class="carousel-indicators">
+                    <li data-target="#promotions_slide" data-slide-to="0" class="active"></li>
+                    <li data-target="#promotions_slide" data-slide-to="1"></li>
+                    <li data-target="#promotions_slide" data-slide-to="2"></li>
+                </ol>
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
+                            </div>
                         </div>
+                        <!--/row-->
                     </div>
-                    <!--/row-->
-                </div>
-                <!--/item-->
-                <div class="item">
-                    <div class="row">
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
+                            </div>
                         </div>
+                        <!--/row-->
                     </div>
-                    <!--/row-->
-                </div>
-                <!--/item-->
-                <div class="item">
-                    <div class="row">
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
-                        </div>
-                        <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 
+                            </div>
                         </div>
+                        <!--/row-->
                     </div>
-                    <!--/row-->
+                    <!--/item-->
                 </div>
-                <!--/item-->
+                <!--/carousel-inner--> 
+                <a class="left carousel-control" href="#promotions_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="right carousel-control" href="#promotions_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-            <!--/carousel-inner--> 
-            <a class="left carousel-control" href="#promotions_slide" data-slide="prev"><i class="fa fa-arrow-circle-left"></i></a>
-            <a class="right carousel-control" href="#promotions_slide" data-slide="next"><i class="fa fa-arrow-circle-right"></i></span></a>
         </div>
     </div>
 </div>
 
 <hr>
 
-<div id="des_products" class="container">
-    <h3><?= lang('head_products') ?></h3>
-    <div class="col-md-12">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs nav-justified">
-            <li class="active"><a href="#model1" data-toggle="tab">Model A</a></li>
-            <li><a href="#model2" data-toggle="tab">Model B</a></li>
-            <li><a href="#model3" data-toggle="tab">Model  C</a></li>
-        </ul>
+<div id="des_products">
+    <div class="container">
+        <h3><?= lang('head_products') ?></h3>
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#model1" data-toggle="tab">Model A</a></li>
+                <li><a href="#model2" data-toggle="tab">Model B</a></li>
+                <li><a href="#model3" data-toggle="tab">Model  C</a></li>
+            </ul>
 
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="model1">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="model1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="thumbnail">                                
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="model2">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="tab-pane" id="model3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <div class="tab-pane" id="model2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                <div class="tab-pane" id="model3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x200" alt="...">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/600x400" alt="...">
+                                <div class="caption">
+                                    <h3>Thumbnail label</h3>
+                                    <p>...</p>
+                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -277,7 +282,7 @@
 
 <div id="des_contactus" class="container">
     <h3><?= lang('head_contactus') ?></h3>
-    <div class="col-md-12 well well-lg">
+    <div class="col-md-12 well well-lg" style="height: 1000px;">
         เบอร์
     </div>
 </div>

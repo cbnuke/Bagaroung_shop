@@ -34,7 +34,23 @@
 
             /* Custom page CSS
             -------------------------------------------------- */
-            /* Not required for template or sticky footer method. */
+            /* Not required for template or sticky footer method. */  
+            #des_products {
+                background: #f2f7ff; /* Old browsers */
+                background: -moz-linear-gradient(left,  #f2f7ff 0%, #f9fdff 40%, #f9fdff 60%, #f2f7ff 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f2f7ff), color-stop(40%,#f9fdff), color-stop(60%,#f9fdff), color-stop(100%,#f2f7ff)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* IE10+ */
+                background: linear-gradient(to right,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f7ff', endColorstr='#f2f7ff',GradientType=1 ); /* IE6-9 */
+            }
+            hr {
+                margin: 0px auto;
+            }
+            dd {
+                margin-left: 20px;
+            }
             .container .text-muted {
                 margin: 20px 0;
             }
@@ -101,7 +117,7 @@
 
             /* Custom tabs products*/
             .tab-pane {
-                margin-top: 10px;
+                margin-top: 10px;     
             }
         </style>
         <?php echo js('jquery.js'); ?>
@@ -110,46 +126,55 @@
     <body>
         <script>
             $(document).ready(function() {
-                $('#home').click(function() {
-                    $('html, body').animate({
-                        scrollTop: 0
-                    }, 1000, 'swing');
-                    $('#home').addClass("active");
-                    $('#products').removeClass("active");
-                    $('#promotions').removeClass("active");
-                    $('#contactus').removeClass("active");
-                    $('.collapse').collapse('hide')
+                // Cache selectors
+                var lastId,
+                        topMenu = $("#top-menu"),
+                        topMenuHeight = topMenu.outerHeight() + 15,
+                        // All list items
+                        menuItems = topMenu.find("a"),
+                        // Anchors corresponding to menu items
+                        scrollItems = menuItems.map(function() {
+                            var item = $($(this).attr("href"));
+                            if (item.length) {
+                                return item;
+                            }
+                        });
+// Bind click handler to menu items
+// so we can get a fancy scroll animation
+                menuItems.click(function(e) {
+                    var href = $(this).attr("href"),
+                            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 14;
+                    $('html, body').stop().animate({
+                        scrollTop: offsetTop
+                    }, 300);
+                    e.preventDefault();
+
                 });
-                $('#products').click(function() {
-                    $('html, body').animate({
-                        scrollTop: $("#des_products").offset().top - 50
-                    }, 1000, 'swing');
-                    $('#products').addClass("active");
-                    $('#home').removeClass("active");
-                    $('#promotions').removeClass("active");
-                    $('#contactus').removeClass("active");
-                    $('.collapse').collapse('hide')
+// Bind to scroll
+                $(window).scroll(function() {
+                    // Get container scroll position
+                    var fromTop = $(this).scrollTop() + topMenuHeight;
+                    // Get id of current scroll item
+                    var cur = scrollItems.map(function() {
+                        if ($(this).offset().top < fromTop)
+                            return this;
+                    });
+                    // Get the id of the current element
+                    cur = cur[cur.length - 1];
+                    var id = cur && cur.length ? cur[0].id : "";
+                    if (lastId !== id) {
+                        lastId = id;
+                        // Set/remove active class
+                        menuItems
+                                .parent().removeClass("active")
+                                .end().filter("[href=#" + id + "]").parent().addClass("active");
+                    }
                 });
-                $('#promotions').click(function() {
-                    $('html, body').animate({
-                        scrollTop: $("#des_promotions").offset().top - 50
-                    }, 1000, 'swing');
-                    $('#promotions').addClass("active");
-                    $('#products').removeClass("active");
-                    $('#home').removeClass("active");
-                    $('#contactus').removeClass("active");
-                    $('.collapse').collapse('hide')
-                });
-                $('#contactus').click(function() {
-                    $('html, body').animate({
-                        scrollTop: $("#des_contactus").offset().top - 50
-                    }, 1000, 'swing');
-                    $('#contactus').addClass("active");
-                    $('#products').removeClass("active");
-                    $('#promotions').removeClass("active");
-                    $('#home').removeClass("active");
-                    $('.collapse').collapse('hide')
-                });
+            });
+            $(document).on('click', '.navbar-collapse.in', function(e) {
+                if ($(e.target).is('a')) {
+                    $(this).collapse('hide');
+                }
             });
         </script>
         <!-- Fixed navbar -->
@@ -162,17 +187,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Bagaroung shop</a>
+                    <a class="navbar-brand" href="#"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaroung</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active" id="home"><a href="#"><?= lang('menu_home') ?></a></li>
-                        <li id="promotions"><a href="#"><?= lang('menu_promotions') ?></a></li>
-                        <li id="products"><a href="#"><?= lang('menu_products') ?></a></li>                        
-                        <li id="contactus"><a href="#"><?= lang('menu_contactus') ?></a></li>
+                    <ul id="top-menu" class="nav navbar-nav">
+                        <li class="active"><a href="#"><?= lang('menu_home') ?></a></li>
+                        <li><a href="#des_promotions"><?= lang('menu_promotions') ?></a></li>
+                        <li><a href="#des_products"><?= lang('menu_products') ?></a></li>                        
+                        <li><a href="#des_contactus"><?= lang('menu_contactus') ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><?php echo img('logo.png', array('height' => '50px')); ?></li>
+                        <li class="hidden-xs"><?php echo img('logo.png', array('height' => '50px')); ?></li>
                         <li><?php echo anchor('lang/set/thai', img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
                         <li><?php echo anchor('lang/set/english', img('usa.png', array('height' => '20px')) . 'English'); ?></li>
                     </ul>
