@@ -10,173 +10,13 @@
         <?php echo css('bootstrap.css'); ?>
         <?php echo css('bootstrap-theme.css'); ?>
         <?php echo css('font-awesome.css'); ?>
-        <style type="text/css">
-            /* Sticky footer styles
--------------------------------------------------- */
-            html {
-                position: relative;
-                min-height: 100%;
-            }
-            body {
-                /* Margin bottom by footer height */
-                padding-top: 50px;
-                margin-bottom: 60px;
-            }
-            #footer {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                /* Set the fixed height of the footer here */
-                height: 60px;
-                background-color: #f5f5f5;
-            }
-
-
-            /* Custom page CSS
-            -------------------------------------------------- */
-            /* Not required for template or sticky footer method. */  
-            #des_products {
-                background: #f2f7ff; /* Old browsers */
-                background: -moz-linear-gradient(left,  #f2f7ff 0%, #f9fdff 40%, #f9fdff 60%, #f2f7ff 100%); /* FF3.6+ */
-                background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f2f7ff), color-stop(40%,#f9fdff), color-stop(60%,#f9fdff), color-stop(100%,#f2f7ff)); /* Chrome,Safari4+ */
-                background: -webkit-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* Chrome10+,Safari5.1+ */
-                background: -o-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* Opera 11.10+ */
-                background: -ms-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* IE10+ */
-                background: linear-gradient(to right,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* W3C */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f7ff', endColorstr='#f2f7ff',GradientType=1 ); /* IE6-9 */
-            }
-            hr {
-                margin: 0px auto;
-            }
-            dd {
-                margin-left: 20px;
-            }
-            .container .text-muted {
-                margin: 20px 0;
-            }
-
-            #footer > .container {
-                padding-right: 15px;
-                padding-left: 15px;
-            }
-
-            code {
-                font-size: 80%;
-            }
-
-            /* Custom carousel slide */
-            #banner_slide>.carousel-control, #banner_slide>.carousel-control:hover, #banner_slide>.carousel-control:focus{
-                color: #76492c;
-
-            }
-            #banner_slide>.carousel-control.left {
-                background: -moz-linear-gradient(left,  rgba(117,78,53,0.8) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(117,78,53,0.8)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-                background: -webkit-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-                background: -o-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-                background: -ms-linear-gradient(left,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
-                background: linear-gradient(to right,  rgba(117,78,53,0.8) 0%,rgba(255,255,255,0) 100%); /* W3C */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc754e35', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
-            }
-            #banner_slide>.carousel-control.right {
-                background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(117,78,53,0.8) 100%); /* FF3.6+ */
-                background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(117,78,53,0.8))); /* Chrome,Safari4+ */
-                background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* Chrome10+,Safari5.1+ */
-                background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* Opera 11.10+ */
-                background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* IE10+ */
-                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(117,78,53,0.8) 100%); /* W3C */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#cc754e35',GradientType=1 ); /* IE6-9 */
-            }
-            #banner_slide>.carousel-inner > .item > img {
-                margin: 0 auto;
-            }
-
-            /* Custom carousel promotions*/
-            #promotions_slide>.carousel-control {
-                padding-top:10%;
-                width:5%;
-            }
-
-            #promotions_slide>.carousel-indicators {
-                right: 50%;
-                top: auto;
-                bottom: -28px;
-                margin-right: -19px;
-            }
-
-            #promotions_slide>.carousel-indicators li {
-                background: #c0c0c0;
-            }
-
-            #promotions_slide>.carousel-indicators .active {
-                background: #333333;
-            }
-            #promotions_slide .thumbnail {
-                margin: 0;
-            }
-
-            /* Custom tabs products*/
-            .tab-pane {
-                margin-top: 10px;     
-            }
-        </style>
+        <?php echo css('customize-page.css'); ?>        
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
+        <?php echo js('jquery.elevateZoom.js'); ?>
     </head>
     <body>
-        <script>
-            $(document).ready(function() {
-                // Cache selectors
-                var lastId,
-                        topMenu = $("#top-menu"),
-                        topMenuHeight = topMenu.outerHeight() + 15,
-                        // All list items
-                        menuItems = topMenu.find("a"),
-                        // Anchors corresponding to menu items
-                        scrollItems = menuItems.map(function() {
-                            var item = $($(this).attr("href"));
-                            if (item.length) {
-                                return item;
-                            }
-                        });
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-                menuItems.click(function(e) {
-                    var href = $(this).attr("href"),
-                            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 14;
-                    $('html, body').stop().animate({
-                        scrollTop: offsetTop
-                    }, 300);
-                    e.preventDefault();
-
-                });
-// Bind to scroll
-                $(window).scroll(function() {
-                    // Get container scroll position
-                    var fromTop = $(this).scrollTop() + topMenuHeight;
-                    // Get id of current scroll item
-                    var cur = scrollItems.map(function() {
-                        if ($(this).offset().top < fromTop)
-                            return this;
-                    });
-                    // Get the id of the current element
-                    cur = cur[cur.length - 1];
-                    var id = cur && cur.length ? cur[0].id : "";
-                    if (lastId !== id) {
-                        lastId = id;
-                        // Set/remove active class
-                        menuItems
-                                .parent().removeClass("active")
-                                .end().filter("[href=#" + id + "]").parent().addClass("active");
-                    }
-                });
-            });
-            $(document).on('click', '.navbar-collapse.in', function(e) {
-                if ($(e.target).is('a')) {
-                    $(this).collapse('hide');
-                }
-            });
-        </script>
+        <?php echo js('customize-js.js'); ?>
         <!-- Fixed navbar -->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -190,12 +30,25 @@
                     <a class="navbar-brand" href="#"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaroung</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul id="top-menu" class="nav navbar-nav">
-                        <li class="active"><a href="#"><?= lang('menu_home') ?></a></li>
-                        <li><a href="#des_promotions"><?= lang('menu_promotions') ?></a></li>
-                        <li><a href="#des_products"><?= lang('menu_products') ?></a></li>                        
-                        <li><a href="#des_contactus"><?= lang('menu_contactus') ?></a></li>
-                    </ul>
+                    <?php
+                    if (!strpos(uri_string(), 'home')) {
+                        ?>
+                        <ul id="top-menu" class="nav navbar-nav">
+                            <li class="active"><a href="<?= base_url('home') ?>"><?= lang('menu_home') ?></a></li>
+                            <li><a href="<?= base_url('home/#des_promotions') ?>"><?= lang('menu_promotions') ?></a></li>
+                            <li><a href="<?= base_url('home/#des_products') ?>"><?= lang('menu_products') ?></a></li>                        
+                            <li><a href="<?= base_url('home/#des_contactus') ?>"><?= lang('menu_contactus') ?></a></li>
+                        </ul>
+                        <?php
+                    } else {
+                        ?>
+                        <ul id="top-menu" class="nav navbar-nav">
+                            <li class="active"><a href="#" id="home"><?= lang('menu_home') ?></a></li>
+                            <li><a href="#des_promotions" id="promotions"><?= lang('menu_promotions') ?></a></li>
+                            <li><a href="#des_products" id="products"><?= lang('menu_products') ?></a></li>                        
+                            <li><a href="#des_contactus" id="contactus"><?= lang('menu_contactus') ?></a></li>
+                        </ul>
+                    <?php } ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="hidden-xs"><?php echo img('logo.png', array('height' => '50px')); ?></li>
                         <li><?php echo anchor('lang/set/thai', img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
