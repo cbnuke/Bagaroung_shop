@@ -13,7 +13,7 @@
             <tr>
                 <th style="width: 25%" >ชื่อ</th>
                 <th style="width: 25%" >Username</th>
-                <th style="width: 10%" >Password</th>
+<!--                <th style="width: 10%" >Password</th>-->
                 <th style="width: 10%">สิทธิ</th>
                 <th style="width: 15%">เข้าใช้งานล่าสุด</th>
                 <th style="width: 15%"></th>
