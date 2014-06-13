@@ -49,21 +49,14 @@ class Users extends CI_Controller {
             $frm->set_rules($config);
 
             if ($this->form_validation->run() == TRUE) {
-//                $firstname = $this->input->post('firstname');
-//                $lastname = $this->input->post('lastname');
-//                $username = $this->input->post('username');
-//                $password = $this->input->post('password');
-//                $user_type = '2';
-//
-//                $sql = "INSERT INTO users(id,firstname,lastname,username,password,user_type) VALUE ('','$firstname','$lastname','$username',MD5('$password'),'$user_type')";
-//                $this->db->query($sql);
-                
+
                 $ar = array(
                     'firstname' => $this->input->post('firstname'),
                     'lastname' => $this->input->post('lastname'),
                     'username' => $this->input->post('username'),
                     'password' => md5($this->input->post('password')),
                     'user_type' => '2',
+                    'created'=>date('Y-m-d H:i:s'),
                 );
                 $this->db->insert('users',$ar);
                 
