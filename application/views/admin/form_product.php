@@ -231,7 +231,7 @@
                         <img data-src="holder.js/300x300/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">  
                     </div>  
                     <div id="" class="col-xs-6 col-sm-3 img-show placeholder">                        
-                       <div class="" id="btn_del_img" >                           
+                        <div class="" id="btn_del_img" >                           
                             <input type="button" class="btn btn-outline btn-circle btn-danger btn-xs pull-right" value='-'>                            
                         </div>
                         <img data-src="holder.js/300x300/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"> 
@@ -302,3 +302,4 @@
     </form>
 </div>
 
+  
