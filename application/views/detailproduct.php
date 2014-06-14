@@ -1,8 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <div class="row hidden-sm hidden-xs">
-                <div class="col-md-12" style="height: 300px; background-color: #999;"><h3>How to order.</h3></div>
+        <div class="col-md-2">
+            <div class="row hidden-sm hidden-xs">                
                 <div class="col-md-12">
                     <div class="row">
                         <h3>Recommend</h3>
@@ -33,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="row">
                 <div class="col-md-6">
                     <div class="row col-md-12 col-sm-12 col-xs-12 thumbnail center-block">
@@ -78,7 +77,7 @@
                 </div>
                 <div class="col-md-6">
                     <h3 class="text-center"><strong>Price</strong>  99999 THB</h3>
-                    <p class="text-center visible-xs"><a href="#howto" class="btn btn-primary" >How to order</a></p>
+                    <p class="text-center"><a href="#howto" class="btn btn-primary" >How to order</a></p>
                     <dl>
                         <dt>Detail</dt>
                         <dd>xxxxxxxxxxxxxx</dd>
@@ -101,7 +100,7 @@
             </div>
         </div>
     </div>
-    <div class="row visible-sm visible-xs" id="howto">
+    <div class="row " id="howto">
         <div class="col-sm-12 col-xs-12" style="height: 300px; background-color: #999;"><h3>How to order.</h3></div>
     </div>
 </div>
