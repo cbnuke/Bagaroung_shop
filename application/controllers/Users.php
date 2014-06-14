@@ -8,159 +8,91 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('m_template');
+        $this->load->model('m_users');
     }
 
     public function index() {
+        
+        $data['users'] = $this->m_users->get_users();
 
         $this->m_template->set_Title('รายชื่อผู้ใช้งาน');
-        $rs = $this->db->get('users');
-        $data['users'] = $rs->result_array();
-        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/users.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
     public function add() {
-        $this->m_template->set_Title('เพิ่มผู้ใช้งาน');
-        $data = array('mode' => 'add');
-        $frm = $this->form_validation;
-
-
+        $mode = 'add';
+        $data = array('mode' => $mode);
         if ($this->input->post('save') != NULL) {
-            $config = array(
-                array(
-                    'field' => 'username',
-                    'label' => 'Username',
-                    'rules' => 'callback_username_is_exist'
-                ),
-                array(
-                    'field' => 'password',
-                    'label' => 'Password',
-                    'rules' => 'trim|required|min_length[4]|max_length[32]'
-                ),
-                array(
-                    'field' => 'password_con',
-                    'label' => 'Password Confirmation',
-                    'rules' => 'trim|required|matches[password]'
-                )
-            );
-
-            $frm->set_message('callback_username_is_exist', 'มีผู้ใช้งานเเล้ว');
-            $frm->set_rules($config);
-
+            $this->m_users->set_mode($mode);
+            $data['config'] = $this->m_users->set_validation();
             if ($this->form_validation->run() == TRUE) {
-
-                $ar = array(
-                    'firstname' => $this->input->post('firstname'),
-                    'lastname' => $this->input->post('lastname'),
-                    'username' => $this->input->post('username'),
-                    'password' => md5($this->input->post('password')),
-                    'user_type' => '2',
-                    'created'=>date('Y-m-d H:i:s'),
-                );
-                $this->db->insert('users',$ar);
-                
-                redirect('users', 'refresh');
-                exit();
-            } 
+                $f_data = $this->m_users->get_post();
+                if ($this->m_users->insert_user($f_data)) {
+                    redirect('users', 'refresh');
+                    exit();
+                }
+            }
         }
-
-        $this->m_template->set_Debug($data);
+        $this->m_template->set_Title('เพิ่มผู้ใช้งาน');
+        // $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_user.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
     public function edit($id) {
-        $this->m_template->set_Title('แก้ไขผู้ใช้งาน');
-        $data = array('mode' => 'edit');
+        $mode = 'edit';
+        $data = array('mode' => $mode);
 
-        $this->db->where('id', $id);
-        $query = $this->db->get('users');
-
-        $data['user'] = $query->row_array();
+        $this->m_users->set_mode($mode);
+        $this->m_users->set_id($id);
+        $data['user'] = $this->m_users->get_users();
 
         if ($this->input->post('save') != NULL) {
-            $frm = $this->form_validation;
-            $check = TRUE;
-            if ($this->input->post('password_old') != NULL) {
-                $config = array(
-                    array(
-                        'field' => 'password_old',
-                        'label' => 'Password Old',
-                        'rules' => 'trim|min_length[4]|max_length[32]|callback_check_old_pass'
-                    ),
-                    array(
-                        'field' => 'password',
-                        'label' => 'Password',
-                        'rules' => 'trim|required|min_length[4]|max_length[32]'
-                    ),
-                    array(
-                        'field' => 'password_con',
-                        'label' => 'Password Confirmation',
-                        'rules' => 'trim|required|matches[password]'
-                    )
-                );
-                $frm->set_rules($config);
-                $check = $this->form_validation->run();
-                //$check=  $this->check_old_pass();
-            }
-
-
-
-
-            if ($check) {
-                $ar = array(
-                    'firstname' => $this->input->post('firstname'),
-                    'lastname' => $this->input->post('lastname'),
-                    'username' => $this->input->post('username'),
-                    'user_type' => '2',
-                );
-
-                if ($this->input->post('password') != NULL) {
-                    $ar['password'] = md5($this->input->post('password'));
+            $data['config'] = $this->m_users->set_validation();
+            //$this->form_validation->set_rules('username', 'Username', 'callback_new_username_check');
+            if ($this->form_validation->run() == TRUE) {
+                $f_data = $this->m_users->get_post();
+                if ($this->m_users->update_user($f_data)) {
+                    redirect('users', 'refresh');
+                    exit();
                 }
-
-                $this->db->where('id', $id);
-                $this->db->update('users', $ar);
-
-                redirect('users', 'refresh');
-                exit();
             }
         }
-
-        $this->m_template->set_Debug($data);
+        $this->m_template->set_Title('แก้ไขผู้ใช้งาน');
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_user.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
     public function delete($id) {
-        $this->db->where('id', $id);
-        $this->db->delete('users');
-        redirect('users', 'refresh');
-        exit();
+        $this->m_users->set_id($id);
+        if ($this->m_users->delete_user()) {
+            redirect('users', 'refresh');
+            exit();
+        }
     }
 
-    function username_is_exist() {
-        $this->db->where('username', trim($this->input->post('username')));
-        $query = $this->db->get('users');
+    function username_check($str) {
+        if ($this->m_users->username_check($str)) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+       
+    }
 
-        if ($query->num_rows() > 0) {
+    function new_username_check($str) {
+        if ($this->m_users->new_username_check($str)) {
             return FALSE;
         } else {
             return TRUE;
         }
     }
 
-    function check_old_pass() {
-        $pass = trim($this->input->post('password_old'));
-        $this->db->where('password', md5($pass));
-        $query = $this->db->get('users');
-
-        if ($query->num_rows() > 0) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
+    function check_old_pass($pass) {        
+        return $this->m_users->check_old_pass($pass);
     }
 
 }

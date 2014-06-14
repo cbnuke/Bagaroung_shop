@@ -20,11 +20,12 @@
         echo form_open('users/add', $attributes);
         $firstname = set_value('firstname');
         $lastname = set_value('lastname');
-        $username = set_value('username');
+        $username = set_value('username');        
         $password = '';
         $user_type = '1';
     }
-    ?>   
+    ?> 
+    
     <div class="form-group" id="error">
         <label class="col-sm-2 control-label"></label>
         <div class="col-sm-4">
@@ -38,18 +39,24 @@
         <div class="col-sm-5">
             <input type="text" class="form-control" name="firstname" id="firstname" placeholder="ชื่อ" value="<?= $firstname; ?>">
         </div>
+        <div class="col-sm-4" id="error">                
+            <?php echo form_error('firstname', '<font color="error">', '</font>'); ?>
+        </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">นามสกุล</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" name="lastname" id="lastname" placeholder="นามสกุล" value="<?= $lastname; ?>">
         </div>
+        <div class="col-sm-4" id="error">                
+            <?php echo form_error('lastname', '<font color="error">', '</font>'); ?>
+        </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">Username</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="username" id="username" required="" placeholder="Username" value="<?= $username; ?>">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="<?= $username; ?>">
         </div> 
         <div class="col-sm-4" id="error">                
             <?php echo form_error('username', '<font color="error">', '</font>'); ?>

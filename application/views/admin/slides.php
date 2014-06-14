@@ -12,10 +12,10 @@
     <table class="table table-responsive">
         <thead>
         <th>ลำดับ</th>
-        <th>ชื่อหลัก(TH)</th>
-        <th>ชื่อหลัก(EN)</th>
-        <th>ชื่อรอง(TH)</th>
-         <th>ชื่อรอง(EN)</th>
+        <th>ชื่อหลัก</th>
+        <th>Title)</th>
+        <th>ชื่อรอง</th>
+         <th>Sub Title</th>
         <th>ลิ้งค์</th>
         <th>รูปภาพ</th>
         <th>สถานะ</th>
@@ -35,8 +35,7 @@
                 <td>
                     <?= anchor('Slides/edit/1','<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข','type="button" class="btn btn-info btn-xs"')?>
                     <?= anchor('#','<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ','type="button" class="btn btn-danger btn-xs"')?>
-                </td>
-                
+                </td>                
             </tr>
         </tbody>
             

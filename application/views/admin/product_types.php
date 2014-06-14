@@ -19,8 +19,7 @@
             </tr>        
         </thead>
         <tbody>
-
-            <tr>
+<!--            <tr>
                 <td>ประเภทกระเป๋า</td>
                 <td>Bag Type</td>
                 <td>10</td>
@@ -29,18 +28,18 @@
                     <?= anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', 'type="button" class="btn btn-danger btn-xs"') ?>
 
                 </td>
-            </tr>
+            </tr>-->
             <?php
             if (count($type) > 0) {
                 foreach ($type as $r) {
                     echo '<tr>';
                     echo '<td>' . $r['product_type']['thai'] . '</td>';
                     echo '<td>' . $r['product_type']['english'] . '</td>';
-                    echo '<td>0</td>';
+                    echo '<td>'.$r['number'].'</td>';
                     echo '<td>';
                     echo anchor('ProductTypes/edit/' . $r['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"');
                     echo '&nbsp;';
-                    echo anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', 'type="button" class="btn btn-danger btn-xs"');
+                    echo anchor('ProductTypes/delete/' . $r['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', 'type="button" class="btn btn-danger btn-xs"');
                     echo '</td>';
                     echo '</tr>';
                 }

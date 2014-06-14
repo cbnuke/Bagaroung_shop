@@ -8,25 +8,15 @@ class Slides extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('m_template');
+        $this->load->model('m_slides');
     }
 
     public function index() {
+        
+        $data['slides'] = $this->m_slides->get_slides();
+        
         $this->m_template->set_Title('สไลด์');
-        $rs = $this->db->get('slides');
-        if (($rs->num_rows()) == 0) {
-            $data['slides'] = array();
-        } else {
-            $item = array();
-            foreach ($rs->result_array() as $r) {
-                $ar = array(
-                    'id' => $r['id'],
-                    'product_type' => unserialize($r['product_type'])
-                );
-                array_push($item, $ar);
-            }
-            $data['slides'] = $item;
-        }
-      $this->m_template->set_Debug($data);      
+        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/slides.php', $data);
         $this->m_template->showTemplateAdmin();
     }
@@ -56,7 +46,7 @@ class Slides extends CI_Controller {
     public function edit($id) {
         $this->m_template->set_Title('แก้ไขสไลด์');
         $data = array('mode' => 'edit');
-        
+
 //        $this->db->select('slides');
 //        $rs = $this->db->get_where('slides', array('id' => $id));
 //         
@@ -72,9 +62,9 @@ class Slides extends CI_Controller {
 //                array_push($item, $ar);
 //            }
 //            $data['slide'] = $item;
-        
-        
-          if ($this->input->post('save') != NULL) {
+
+
+        if ($this->input->post('save') != NULL) {
 
             $this->db->set('title', serialize($this->input->post('s_title')));
             $this->db->set('subtitle', serialize($this->input->post('s_subtitle')));
