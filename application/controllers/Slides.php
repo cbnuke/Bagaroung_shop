@@ -9,11 +9,12 @@ class Slides extends CI_Controller {
         parent::__construct();
         $this->load->model('m_template');
         $this->load->model('m_slides');
+        
     }
 
     public function index() {
 
-        $data['slides'] = $this->m_slides->get_slides();
+        $data['slides'] = '';//$this->m_slides->get_slides();
 
         $this->m_template->set_Title('สไลด์');
         $this->m_template->set_Debug($data);
@@ -26,21 +27,19 @@ class Slides extends CI_Controller {
         $data = array('mode' => 'add');
 
         if ($this->input->post('save') != NULL) {
-
-            $validation = $this->m_slides->set_validation();
-            if ($validation == TRUE) {
-//                $data['img_info'] = $this->m_slides->upload_image();
-              $data['f_post'] = $this->m_slides->get_post();
-//            $this->db->set('title', serialize($this->input->post('s_title')));
-//            $this->db->set('subtitle', serialize($this->input->post('s_subtitle')));
-//            $this->db->set('link_url', $this->input->post('link'));
-//            $this->db->set('status_slide', $this->input->post('status'));
-//            $this->db->set('image_id', $this->input->post('img'));
-//            $this->db->insert('slides');
-//                redirect('slides', 'refresh');
-//                exit();
+//            $data['form_data'] = $this->m_slides->get_post();
+            if ($this->m_slides->validation_add() && $this->form_validation->run() == TRUE) {
+                $form_data = $this->m_slides->get_post();                
+                //Insert data
+                $this->m_products->insert_product($form_data);
+                redirect('slides', 'refresh');
+                exit();
             }
         }
+            //Load form
+            $data['form'] = $this->m_slides->set_form_add();
+        
+
         $this->m_template->set_Title('เพิ่มสไลด์');
         $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
