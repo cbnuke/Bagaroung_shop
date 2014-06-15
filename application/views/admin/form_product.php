@@ -116,13 +116,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">ประเภทสินค้า</label>
         <div class="col-sm-3">
-            <select class="form-control">
-                <option>Type 1</option>
-                <option>Type 2</option>
-                <option>Type 3</option>
-                <option>Type 4</option>
-                <option>Type 5</option>
-            </select>
+            <?php echo $form['product_type_id']; ?>
         </div>
     </div>
 
