@@ -10,7 +10,6 @@ Class m_slides extends CI_Model {
             $this->db->insert('slides', $f_data);
             return TRUE;
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
             return FALSE;
         }
     }
@@ -21,10 +20,10 @@ Class m_slides extends CI_Model {
         $this->form_validation->set_rules('title[english]', 'Title', 'trim|required|xss_clean');
         $this->form_validation->set_rules('subtitle[english]', 'subtitle', 'required|trim|xss_clean');
         $this->form_validation->set_rules('link', 'ลิ้งค์', 'trim|required|xss_clean');
-//        if (empty($_FILES['userfile']['name'])) {
-//            $this->form_validation->set_rules('userfile', 'รูปภาพ', '');
-//        }
-//        
+        if (empty($_FILES['userfile']['name'])) {
+            $this->form_validation->set_rules('userfile', 'รูปภาพ', '');
+        }
+        
         return TRUE;
     }
 
@@ -76,9 +75,9 @@ Class m_slides extends CI_Model {
         $f_data = array(
             'title' => serialize($this->input->post('title')),
             'subtitle' => serialize($this->input->post('subtitle')),
-            'link' => $this->input->post('link'),
-            'imades_id' => $this->upload_image(),
-            'status' => $this->input->post('status'),
+            'link_url' => $this->input->post('link'),
+            'image_id' => $this->upload_image(),
+            'status_slide' => $this->input->post('status'),
         );
 
         return $f_data;
@@ -134,7 +133,7 @@ Class m_slides extends CI_Model {
 
         if (!$this->upload->do_upload()) {
             $finfo = $this->upload->display_errors();
-            return $finfo;
+            return '0';
         } else {
             $finfo = $this->upload->data();
 

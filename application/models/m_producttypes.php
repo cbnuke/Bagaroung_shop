@@ -21,7 +21,6 @@ Class m_producttypes extends CI_Model {
             $this->db->insert('product_types', $data);
             return TRUE;
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
             return FALSE;
         }
     }
@@ -32,7 +31,6 @@ Class m_producttypes extends CI_Model {
             $this->db->update('product_types', $f_data);
             return TRUE;
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
             return FALSE;
         }
     }
@@ -43,7 +41,6 @@ Class m_producttypes extends CI_Model {
             $this->db->delete('product_types');
             return TRUE;
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
             return FALSE;
         }
     }

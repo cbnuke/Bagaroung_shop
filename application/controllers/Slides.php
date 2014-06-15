@@ -31,7 +31,7 @@ class Slides extends CI_Controller {
             if ($this->m_slides->validation_add() && $this->form_validation->run() == TRUE) {
                 $form_data = $this->m_slides->get_post();                
                 //Insert data
-                $this->m_products->insert_product($form_data);
+                $this->m_slides->insert_slide($form_data);
                 redirect('slides', 'refresh');
                 exit();
             }
