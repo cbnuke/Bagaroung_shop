@@ -12,7 +12,7 @@
         $name_en = '';
         $attributes = array('class' => 'form-horizontal', 'id' => 'form_slide');
         if ($mode == 'edit') {
-            echo form_open('', $attributes);
+            echo form_open_multipart('', $attributes);
 //            foreach ($type as $r) {
 //                foreach ($r as $i) {
 //                    $name_th = $i['thai'];
@@ -20,7 +20,8 @@
 //                }
 //            }
         } else {
-            echo form_open('slides/add', $attributes);
+
+            echo form_open_multipart('slides/add', $attributes);
         }
         ?> 
         <div class="form-group" id="error">

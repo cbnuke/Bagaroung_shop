@@ -35,10 +35,8 @@ Class m_slides extends CI_Model {
 
     function get_post() {
         $f_data = array(
-            'title[thai]' => $this->input->post('title[thai]'),
-            'subtitle[thai]' => $this->input->post('subtitle[thai]'),
-            'title[english]' => $this->input->post('title[english]'),
-            'subtitle[english]' => $this->input->post('subtitle[english]'),
+            'title' => serialize($this->input->post('title')),
+            'subtitle' => userialize($this->input->post('subtitle')),            
             'link' => $this->input->post('link'),
         );
 
@@ -46,14 +44,12 @@ Class m_slides extends CI_Model {
     }
 
     function get_slides() {
-        $this->db->select('*');
-        $this->db->from('slides');        
+        $this->db->select('slides.id,slides.title,slides.subtitle,slides.status_slide,slides.create_date,images.name,images.small,images.full');
+        $this->db->from('slides');
         $this->db->join('images', 'images.id = slides.image_id');
 
         $rs = $this->db->get();
-// Produces: 
-// SELECT * FROM blogs
-// JOIN comments ON comments.id = blogs.id   
+// select slides.id,slides.title,slides.subtitle,slides.status_slide,slides.create_date,images.name,images.small,images.full from slides join images  on images.id = slides.image_id
         if (($rs->num_rows()) == 0) {
             $item = array();
         } else {
@@ -63,9 +59,11 @@ Class m_slides extends CI_Model {
                     'id' => $r['id'],
                     'title' => unserialize($r['title']),
                     'subtitle' => unserialize($r['subtitle']),
-                    'id' => $r['id'],
-                    'id' => $r['id'],
-                    'id' => $r['id'],
+                    'status_slide' => $r['status_slide'],
+                    'create_date' => $r[''],
+                    'name' => $r['name'],
+                    'small' => $r['small'],
+                    'full' => $r['full'],
                 );
                 array_push($item, $ar);
             }
@@ -74,10 +72,10 @@ Class m_slides extends CI_Model {
     }
 
     function get_silde($id) {
-        $this->db->select('*');
+        $this->db->select('slides.id,slides.title,slides.subtitle,slides.status_slide,slides.create_date,images.name,images.small,images.full');
         $this->db->from('slides');
+        $this->db->join('images', 'images.id = slides.image_id');   
         $this->db->where('slides.id', $id);
-        $this->db->join('images', 'images.id = slides.image_id');
         $rs = $this->db->get();
         $rs = $query->row_array();
         return $rs;

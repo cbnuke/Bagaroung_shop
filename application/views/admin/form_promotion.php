@@ -16,8 +16,11 @@
 </div>
 
 <div class="row">
-
-    <form class="form-horizontal" role='form'>
+    <?php
+    $artribute = ' class="form-horizontal" role="form"';
+    echo form_open_multipart('',$artribute);
+    ?>
+   
         <div class="form-group">
             <label class="col-sm-2 control-label">ชื่อ</label>
             <div class="col-sm-6">
