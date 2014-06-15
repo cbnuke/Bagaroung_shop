@@ -14,7 +14,7 @@ class Slides extends CI_Controller {
 
     public function index() {
 
-        $data['slides'] = '';//$this->m_slides->get_slides();
+        $data['slides'] = $this->m_slides->get_slides();
 
         $this->m_template->set_Title('สไลด์');
         $this->m_template->set_Debug($data);
