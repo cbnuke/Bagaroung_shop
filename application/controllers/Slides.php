@@ -12,9 +12,9 @@ class Slides extends CI_Controller {
     }
 
     public function index() {
-        
+
         $data['slides'] = $this->m_slides->get_slides();
-        
+
         $this->m_template->set_Title('สไลด์');
         $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/slides.php', $data);
@@ -22,23 +22,27 @@ class Slides extends CI_Controller {
     }
 
     public function add() {
-        $this->m_template->set_Title('เพิ่มสไลด์');
+
         $data = array('mode' => 'add');
 
         if ($this->input->post('save') != NULL) {
 
-            $this->db->set('title', serialize($this->input->post('s_title')));
-            $this->db->set('subtitle', serialize($this->input->post('s_subtitle')));
-            $this->db->set('link_url', $this->input->post('link'));
+            $validation = $this->m_slides->set_validation();
+            if ($validation == TRUE) {
+//                $data['img_info'] = $this->m_slides->upload_image();
+//                $data['f_post'] = $this->m_slides->get_post();
+//            $this->db->set('title', serialize($this->input->post('s_title')));
+//            $this->db->set('subtitle', serialize($this->input->post('s_subtitle')));
+//            $this->db->set('link_url', $this->input->post('link'));
 //            $this->db->set('status_slide', $this->input->post('status'));
 //            $this->db->set('image_id', $this->input->post('img'));
 //            $this->db->insert('slides');
-
-            redirect('slides', 'refresh');
-            exit();
+//                redirect('slides', 'refresh');
+//                exit();
+            }
         }
-
-//        $this->m_template->set_Debug($data);
+        $this->m_template->set_Title('เพิ่มสไลด์');
+        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
         $this->m_template->showTemplateAdmin();
     }

@@ -30,7 +30,15 @@
         <label class="col-sm-2 control-label"></label>
         <div class="col-sm-4">
             <div class="alert alert-danger">
-                <?= validation_errors(); ?>
+                 <?php
+                    $e = validation_errors();
+                    if ($e != '') {
+                        $error = 'FALSE';
+                    } else {
+                        $error = 'TRUE';
+                    }
+                    echo $e;
+                    ?>
             </div>
         </div>
     </div>
@@ -118,10 +126,9 @@
 <?= js('jquery.js'); ?>
 <script>
     $(document).ready(function() {
-        var error = '<?= validation_errors() ?>';
-//        alert(mode);
-        if (error == '')
-        {
+ var error = '<?= $error ?>';
+
+        if (error == 'TRUE') {
             $('#error').hide(true);
         } else
         {

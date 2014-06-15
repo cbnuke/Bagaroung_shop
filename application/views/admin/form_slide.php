@@ -28,7 +28,15 @@
             <label class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
                 <div class="alert alert-danger">
-                    <?= validation_errors(); ?>
+                    <?php
+                    $e = validation_errors();
+                    if ($e != '') {
+                        $error = 'FALSE';
+                    } else {
+                        $error = 'TRUE';
+                    }
+                    echo $e;
+                    ?>
                 </div>
             </div>
         </div>
@@ -66,7 +74,10 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Image</label>
             <div class="col-sm-5">
-                <input type="file" class="form-control"  id="" name="img"  >
+                <input type="file" class="form-control" name="userfile" required=""  >
+            </div>
+            <div class="col-sm-4" id="error">                
+                <?php echo form_error('userfile', '<font color="error">', '</font>'); ?>
             </div>
         </div>
         <div class="form-group" id="image">
@@ -76,7 +87,6 @@
                     <input type="button" class="btn btn-outline btn-circle btn-danger btn-xs" value='-'>                            
                 </div>
                 <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-
             </div>
         </div>
 
@@ -117,10 +127,9 @@
         {
             $('#image').hide();
         }
-        var error = '<?= validation_errors() ?>';
+        var error = '<?= $error ?>';
 
-        if (error == '')
-        {
+        if (error == 'TRUE') {
             $('#error').hide(true);
         } else
         {
