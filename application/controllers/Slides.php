@@ -30,7 +30,7 @@ class Slides extends CI_Controller {
             $validation = $this->m_slides->set_validation();
             if ($validation == TRUE) {
 //                $data['img_info'] = $this->m_slides->upload_image();
-//                $data['f_post'] = $this->m_slides->get_post();
+              $data['f_post'] = $this->m_slides->get_post();
 //            $this->db->set('title', serialize($this->input->post('s_title')));
 //            $this->db->set('subtitle', serialize($this->input->post('s_subtitle')));
 //            $this->db->set('link_url', $this->input->post('link'));
