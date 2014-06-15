@@ -5,6 +5,16 @@ if (!defined('BASEPATH'))
 
 Class m_products extends CI_Model {
 
+    function check_product_type() {
+        $query = $this->db->get('product_types');
+        $result = $query->result_array();
+        return $result;
+    }
+
+    function insert_product($data) {
+        $this->db->insert('products', $data);
+    }
+
     function set_form_add() {
         $i_product_name_th = array(
             'name' => 'product_name[thai]',
@@ -48,6 +58,13 @@ Class m_products extends CI_Model {
             'rows' => '3',
             'placeholder' => 'Detail of Product',
             'value' => set_value('detail[english]'));
+
+        $i_type = array();
+        $temp = $this->m_products->check_product_type();
+        foreach ($temp as $row) {
+            $i_type[$row['id']] = unserialize($row['product_type'])['thai'];
+        }
+
         $i_img_front = array(
             'name' => 'img_front',
             'class' => 'form-control');
@@ -64,7 +81,7 @@ Class m_products extends CI_Model {
 
 
         $all_form = array(
-            'form' => form_open('products/add', array('class' => 'form-horizontal')),
+            'form' => form_open_multipart('products/add', array('class' => 'form-horizontal')),
             'product_name[thai]' => form_input($i_product_name_th),
             'product_name[english]' => form_input($i_product_name_en),
             'product_price' => form_input($i_price),
@@ -73,6 +90,7 @@ Class m_products extends CI_Model {
             'weight' => form_input($i_weight),
             'detail[thai]' => form_textarea($i_detail_th),
             'detail[english]' => form_textarea($i_detail_en),
+            'product_type_id' => form_dropdown('product_type_id', $i_type, set_value('product_type_id'), 'class="form-control"'),
             'img_front' => form_upload($i_img_front),
             'img_back' => form_upload($i_img_back),
             'img_right' => form_upload($i_img_right),
@@ -90,10 +108,16 @@ Class m_products extends CI_Model {
         $this->form_validation->set_rules('weight', 'Weight', 'trim|required|xss_clean');
         $this->form_validation->set_rules('detail[thai]', 'รายละเอียดสินค้า', 'required|xss_clean');
         $this->form_validation->set_rules('detail[english]', 'Detail of Product', 'required|xss_clean');
-        $this->form_validation->set_rules('img_front', 'Image front', 'required|xss_clean');
-        $this->form_validation->set_rules('img_back', 'Image front', 'required|xss_clean');
-        $this->form_validation->set_rules('img_right', 'Image front', 'required|xss_clean');
-        $this->form_validation->set_rules('img_left', 'Image front', 'required|xss_clean');
+        $this->form_validation->set_rules('product_type_id', 'Product type', 'required|xss_clean');
+        if (empty($_FILES['img_front']['name'])) {
+            $this->form_validation->set_rules('img_front', 'Image front', 'required|xss_clean');
+        }if (empty($_FILES['img_back']['name'])) {
+            $this->form_validation->set_rules('img_back', 'Image back', 'required|xss_clean');
+        }if (empty($_FILES['img_right']['name'])) {
+            $this->form_validation->set_rules('img_right', 'Image right', 'required|xss_clean');
+        }if (empty($_FILES['img_left']['name'])) {
+            $this->form_validation->set_rules('img_left', 'Image left', 'required|xss_clean');
+        }
         return TRUE;
     }
 
@@ -105,8 +129,31 @@ Class m_products extends CI_Model {
             'hight' => $this->input->post('hight'),
             'weight' => $this->input->post('weight'),
             'detail' => $this->input->post('detail'),
+            'product_type_id' => $this->input->post('product_type_id'),
+            'img_front' => $this->upload_img('img_front'),
+            'img_back' => $this->upload_img('img_back'),
+            'img_right' => $this->upload_img('img_right'),
+            'img_left' => $this->upload_img('img_left'),
         );
         return $get_page_data;
+    }
+
+    function upload_img($name) {
+        $config['upload_path'] = "assets/img/products/";
+        $config['allowed_types'] = "gif|jpg|jpeg|png";
+        $config['encrypt_name'] = TRUE;
+        $config['max_size'] = "5000";
+        $config['max_width'] = "1920";
+        $config['max_height'] = "1080";
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($name)) {
+            return $this->upload->display_errors();
+        } else {
+            //Path img for insert to database
+            return 'products/'.$this->upload->data()['file_name'];
+        }
     }
 
 }
