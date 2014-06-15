@@ -8,6 +8,7 @@ class Products extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('m_template');
+        $this->load->model('m_products');
     }
 
     public function index() {
@@ -31,6 +32,15 @@ class Products extends CI_Controller {
     public function add() {
 
         $data = array('page_title' => 'เพิ่มสินค้า');
+        
+        
+        if($this->m_products->validation_set_form_add()&&$this->form_validation->run()==TRUE){
+            $this->m_template->set_Debug($this->m_products->get_post_set_form_add());
+        }else{
+            echo 'out';
+        }
+        //Load form
+        $data['form'] = $this->m_products->set_form_add();
 
 //      $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_product.php', $data);
