@@ -9,81 +9,71 @@ class Slides extends CI_Controller {
         parent::__construct();
         $this->load->model('m_template');
         $this->load->model('m_slides');
-        
     }
 
     public function index() {
 
-        $data['slides'] = $this->m_slides->get_slides();
+        $data['slides'] = $this->m_slides->get_all_slide();
 
         $this->m_template->set_Title('สไลด์');
-        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/slides.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
     public function add() {
-
-        $data = array('mode' => 'add');
-
         if ($this->input->post('save') != NULL) {
 //            $data['form_data'] = $this->m_slides->get_post();
             if ($this->m_slides->validation_add() && $this->form_validation->run() == TRUE) {
-                $form_data = $this->m_slides->get_post();                
+                $form_data = $this->m_slides->get_post_set_form_add();
                 //Insert data
                 $this->m_slides->insert_slide($form_data);
                 redirect('slides', 'refresh');
                 exit();
             }
         }
-            //Load form
-            $data['form'] = $this->m_slides->set_form_add();
-        
+        //Load form add
+        $data['form'] = $this->m_slides->set_form_add();
+
 
         $this->m_template->set_Title('เพิ่มสไลด์');
-        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
     public function edit($id) {
-        $this->m_template->set_Title('แก้ไขสไลด์');
-        $data = array('mode' => 'edit');
+        $this->m_slides->set_id($id);
+//        $data['path'] = $this->m_slides->get_image_path($id);
 
-//        $this->db->select('slides');
-//        $rs = $this->db->get_where('slides', array('id' => $id));
-//         
-//            $item = array();
-//            foreach ($rs->result_array() as $r) {
-//                $ar = array(
-//                    'title'=> unserialize('title'),
-//                    'subtitle'=>unserialize('subtitle'),
-//                    'link_url'=> 'link_url',
-//                    'status_slide'=>'status_slide',
-//                    'image_id'=>'image_id',                    
-//                );
-//                array_push($item, $ar);
-//            }
-//            $data['slide'] = $item;
-
-
-        if ($this->input->post('save') != NULL) {
-
-            $this->db->set('title', serialize($this->input->post('s_title')));
-            $this->db->set('subtitle', serialize($this->input->post('s_subtitle')));
-            $this->db->set('link_url', $this->input->post('link'));
-            $this->db->set('status_slide', $this->input->post('status'));
-            $this->db->set('image_id', $this->input->post('img'));
-            //$this->db->update('product_types');
-
-            redirect('slides', 'refresh');
-            exit();
+        if ($this->m_slides->validation_edit() && $this->form_validation->run() == TRUE) {
+            $form_data = $this->m_slides->get_post_set_form_edit();
+            //Update data
+            $this->m_slides->update_slide($form_data);
+            redirect('slides');
         }
 
+
+//      get detail and sent to load form
+
+        $detail = $this->m_slides->get_silde($id);      
+        if ($detail[0] != NULL) {
+            $data['form'] = $this->m_slides->set_form_edit($detail[0]);
+            $data['detail'] = $detail[0];
+        } else {
+            redirect('slides');
+        }
+        $this->m_template->set_Title('แก้ไขสไลด์');
 //        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
         $this->m_template->showTemplateAdmin();
-    }
+
+   }
+   public function delete($id) {
+       $this->m_slides->delete_slide($id);
+       
+       redirect('slides');
+   }
 
 }
 
