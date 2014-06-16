@@ -19,7 +19,12 @@
 
         <!-- SB Admin CSS - Include with every page -->        
         <?php echo css('sb-admin.css'); ?>
-
+        <?php echo css('bootstrap-datetimepicker.css'); ?>
+      
+        
+       <!-- Core Scripts - Include with every page -->
+        <?=js('jquery.js');?>
+        <?=js('bootstrap.js');?>
     </head>
 
     <body>
