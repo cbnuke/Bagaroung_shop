@@ -34,7 +34,7 @@
                     if (!strpos(uri_string(), 'home')) {
                         ?>
                         <ul id="top-menu" class="nav navbar-nav">
-                            <li class="active"><a href="<?= base_url('home') ?>"><?= lang('menu_home') ?></a></li>
+                            <li><a href="<?= base_url('home') ?>"><?= lang('menu_home') ?></a></li>
                             <li><a href="<?= base_url('home/#des_promotions') ?>"><?= lang('menu_promotions') ?></a></li>
                             <li><a href="<?= base_url('home/#des_products') ?>"><?= lang('menu_products') ?></a></li>                        
                             <li><a href="<?= base_url('home/#des_contactus') ?>"><?= lang('menu_contactus') ?></a></li>
