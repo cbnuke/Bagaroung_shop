@@ -23,6 +23,8 @@
             </tr>        
         </thead>
         <tbody>
+            <?php 
+            ?>
             <tr>
                 <td>Active</td>
                 <td  align="center" ><img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></td>
