@@ -49,10 +49,10 @@
         <div class="form-group <?= (form_error('start')) ? 'has-error' : '' ?>">
             <label class="col-sm-2 control-label">วันเริ่มต้น</label>
             <div class="col-sm-5">
-                <div class='input-group date' id='datetimepicker_start' data-date-format="YYYY-MM-DD HH:MM:SS">
+                <div class='input-group date' id='datetimepicker_start' data-date-format="YYYY-MM-DD hh:mm:ss">
                     <?= $form['start']; ?>
-                    
-                    <!--<input type='datetime' class="form-control" />-->
+
+<!--<input type='datetime' class="form-control" />-->
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
@@ -61,7 +61,7 @@
         <div class="form-group <?= (form_error('end')) ? 'has-error' : '' ?>">
             <label class="col-sm-2 control-label">วันสิ้นสุด</label>
             <div class="col-sm-5">
-                <div class='input-group date' id='datetimepicker_end' data-date-format="YYYY-MM-DD HH:MM:SS">
+                <div class='input-group date' id='datetimepicker_end' data-date-format="Y-m-d H:i:s">
                     <?= $form['end']; ?>
     <!--                <input type='text' class="form-control" readonly="" />-->
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -69,13 +69,28 @@
                 </div>
             </div>
         </div>
-        <div class="form-group <?= (form_error('img_promotion')) ? 'has-error' : '' ?>">
+        <div class="form-group <?= (form_error('img_promotion')) ? 'has-error' : '' ?>" id="img_add">
             <label class="col-sm-2 control-label">รูปภาพ</label>
             <div class="col-sm-4">
                 <?= $form['img_promotion'] ?>
                 <!--<input type="file" name="" id="">-->
             </div>
         </div>
+        <?php
+        $image = FALSE;
+        if ($form['image'] != NULL) {
+            $image = TRUE;
+            ?>
+            <div class="form-group" id="img_show">
+                <label class="col-sm-2 control-label">Image</label>
+                <div class="col-xs-6 col-sm-2 placeholder">
+                    <div class="pull-right" id="btn_del_img" >                           
+                        <input type="button" class="btn btn-outline btn-circle btn-danger btn-xs" value='-' id="del_img">                            
+                    </div>
+                    <?= $form['image'] ?>
+                </div>
+            </div>
+        <?php } ?>
         <div class="form-group">
             <label class="col-sm-2 control-label">สินค้าโปรโมชั่น</label>                
             <div class="col-sm-6">
@@ -97,28 +112,7 @@
                     </thead>
                     <tbody>
                         <?php echo $form['products_select']; ?>
-    <!--                    <tr name="row_product[]">
-                            <td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this)"></td>
-                            <td align="center"><img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></td>
-                            <td>ชื่อกระเป๋าแบบที่ 1</td>
-                            <td align="center">1000</td>
-                            <td><input type="text" name="price_promotion[]" value=""><span>&nbsp;บาท</span></td>
-                        </tr>
-                        <tr name="row_product[]">
-                            <td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this)"></td>
-                            <td align="center"><img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></td>
-                            <td>ชื่อกระเป๋าแบบที่ 2</td>
-                            <td align="center">1000</td>
-                            <td><input type="text" name="price_promotion[]" value=""><span>&nbsp;บาท</span></td>
-                        </tr >
-                        <tr name="row_product[]">
-                            <td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this)"></td>
-                            <td align="center"><img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></td>
-                            <td>ชื่อกระเป๋าแบบที่ 3</td>
-                            <td align="center">1000</td>
-                            <td><input type="text" name="price_promotion[]" required="" value=""><span>&nbsp;บาท</span></td>
-                        </tr>
-                    </tbody>-->
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -225,8 +219,8 @@
         });
         //<![CDATA[
         bkLib.onDomLoaded(function() {
-            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'center', 'left', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[thai]');
-            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'center', 'left', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[english]');
+            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'left','center', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[thai]');
+            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'left','center', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[english]');
 
         });
 
@@ -240,7 +234,21 @@
         $("#datetimepicker_end").on("dp.change", function(e) {
             $('#datetimepicker_start').data("DateTimePicker").setMaxDate(e.date);
         });
-        // add product to table
+        //edit
+        var img = '<?= $image ?>';
+//        alert(img);
+        if (img == true)
+        {
+            $('#img_add').hide();
+        }
+        $("#del_img").click(function() {
+//            alert("delete");
+            if (confirm('ลบรูปภาพ')) {
+                $('#img_add').show();
+                $('#img_show').hide(true);
+            }
+
+        });
 
     });
 

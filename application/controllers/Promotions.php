@@ -15,37 +15,40 @@ class Promotions extends CI_Controller {
     public function index() {
 
         $data['promotions'] = $this->m_promotions->get_all_promotions();
+        $data['products_had_promotion'] = $this->m_promotions->get_products_has_promotion();
 
         $this->m_template->set_Title('โปรโมชั่น');
-        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/promotions.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
     public function add() {
-        $re = '';
+        $f_data = '';
         if ($this->m_promotions->validation_form_add() && $this->form_validation->run() == TRUE) {
             $f_data = $this->m_promotions->get_post_form_add();
-            $re=$f_data;
-            $now = time();
-            $re['local_date']= unix_to_human($now, TRUE, 'us');
-//            //Insert data
-            $re['promotion_id'] = $this->m_promotions->insert_promotion($f_data);
-            //redirect('promotions', 'refresh');
+            //Insert data
+            $this->m_promotions->insert_promotion($f_data);
+            redirect('promotions', 'refresh');
         }
         $data['form'] = $this->m_promotions->set_form_add();
 
         $this->m_template->set_Title('เพิ่มโปรโมชั่น');
-        $this->m_template->set_Debug($re);
+        $this->m_template->set_Debug($f_data);
         $this->m_template->set_Content('admin/form_promotion.php', $data);
         $this->m_template->showTemplateAdmin();
     }
 
-    public function edit() {
+    public function edit($id) {
+        $data = array();
 
-        $data = array('page_title' => 'แก้ไขโปรโมชั่น');
+        //      get detail and sent to load form
+        $detail = $this->m_promotions->get_promotions($id);
+        $data['form'] = $this->m_promotions->set_form_edit($detail);
 
-//      $this->m_template->set_Debug($data);
+
+        $this->m_template->set_Title('แก้ไขโปรโมชั่น');
+        $this->m_template->set_Debug($detail);
         $this->m_template->set_Content('admin/form_promotion.php', $data);
         $this->m_template->showTemplateAdmin();
     }
