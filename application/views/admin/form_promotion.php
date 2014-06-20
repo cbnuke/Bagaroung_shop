@@ -1,8 +1,9 @@
 <script>
-    function deleteRow(r)
+    function deleteRow(r, id_check)
     {
         var i = r.parentNode.parentNode.rowIndex;
         document.getElementById("tb_products_promotion").deleteRow(i);
+        $('#' + id_check).prop('checked', false);
     }
 </script>
 <div class="row">
@@ -15,6 +16,11 @@
 
 <div class="row">
     <?php
+    if ($id != null) {
+        $promotion_id = $id;
+    }  else {
+        $promotion_id =NULL;
+    }
     echo $form['form'];
     ?>
     <div>
@@ -61,7 +67,7 @@
         <div class="form-group <?= (form_error('end')) ? 'has-error' : '' ?>">
             <label class="col-sm-2 control-label">วันสิ้นสุด</label>
             <div class="col-sm-5">
-                <div class='input-group date' id='datetimepicker_end' data-date-format="Y-m-d H:i:s">
+                <div class='input-group date' id='datetimepicker_end' data-date-format="YYYY-MM-DD hh:mm:ss">
                     <?= $form['end']; ?>
     <!--                <input type='text' class="form-control" readonly="" />-->
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -102,11 +108,11 @@
                 <table id="tb_products_promotion" class="table table-responsive" >
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>รูปภาพ</th>
-                            <th>ชื่อ</th>
-                            <th>ราคา</th>
-                            <th>ราคาโปรโมชั่น</th>
+                            <th style="width: 10%"></th>
+                            <th style="width: 20%">รูปภาพ</th>
+                            <th style="width: 30%">ชื่อ</th>
+                            <th style="width: 15%">ราคา</th>
+                            <th style="width: 25%">ราคาโปรโมชั่น</th>
 
                         </tr>
                     </thead>
@@ -143,7 +149,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <table class="table-condensed table-responsive">
+                            <table class="table-condensed table-responsive" id="tb_products">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%"></th>
@@ -154,7 +160,7 @@
 
                                     </tr>        
                                 </thead>
-                                <tbody>    
+                                <tbody >    
                                     <?= $form['products'] ?>
                                 </tbody>
                             </table> 
@@ -181,7 +187,6 @@
             var selected = $(".a:checked").map(function() {
                 return this.id;
             }).toArray();
-
             if (selected.length > 0) {
                 $('#tb_products_promotion tbody > tr').remove();
 
@@ -191,21 +196,21 @@
                         //set the data type
                         data: "id_product=" + value,
                         dataType: 'json',
-                        url: 'get_product_select', // target element(s) to be updated with server response 
+                        url: '<?= base_url(); ?>' + 'promotions/get_product_select', // target element(s) to be updated with server response 
                         cache: false,
                         //check this in firefox browser
                         success: function(response) {
                             //console.log(response);
-                            //alert(response);  
+                            //alert(response);                                                        
                             var row = '';
                             row += '<tr>';
-                            row += '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this)"></td>';
+                            row += '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' + response.id + ')"></td>';
                             row += '<td align="center">' + response.img_front + '</td>';
                             row += '<td>' + response.product_name + '</td>';
                             row += '<td>' + response.price + '</td>';
-                            row += '<td><input type="text" name="promotion_price[]" required="" value=""><span>&nbsp;บาท</span></td>';
+                            row += '<td><input type="text" name="promotion_price[]" required="" value="' + response.promotion_price + '"><span>&nbsp;บาท</span></td>';
                             row += '</tr>';
-                            console.log(row + '<----->');
+//                            console.log(row + '<----->');
                             $('#tb_products_promotion tbody').append(row);
                         },
                         error: function(error) {
@@ -217,10 +222,36 @@
             $('#myModal').modal('hide');
             return false;
         });
+
+        $("#product_type").change(function() {
+            var type_id = $(this).val();
+            var promotion_id = '<?= $promotion_id ?>';
+//            alert(promotion_id);
+//            alert($(this).val());
+            $.ajax({
+                type: "POST",
+                //set the data type
+                data: "type_id=" + type_id + "&promotion_id=" + promotion_id,
+                dataType: 'json',
+                url: '<?= base_url(); ?>' + 'promotions/get_products_by_type', // target element(s) to be updated with server response 
+                cache: false,
+                //check this in firefox browser
+                success: function(response) {
+//                    console.log(response);
+                    $('#tb_products tbody > tr').remove();
+                    $('#tb_products tbody').append(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+
+        });
+
         //<![CDATA[
         bkLib.onDomLoaded(function() {
-            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'left','center', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[thai]');
-            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'left','center', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[english]');
+            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'left', 'center', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[thai]');
+            new nicEditor({buttonList: ['fontSize', 'forecolor', 'bold', 'italic', 'left', 'center', 'right', 'underline', 'ol', 'ul', 'strikeThrough', 'subscript', 'superscript', 'html']}).panelInstance('detail[english]');
 
         });
 

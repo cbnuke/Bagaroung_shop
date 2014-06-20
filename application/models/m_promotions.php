@@ -2,6 +2,12 @@
 
 class m_promotions extends CI_Model {
 
+    private $promotion_id = '';
+
+    function set_promotion_id($id) {
+        $this->promotion_id = $id;
+    }
+
     function insert_promotion($data) {
         $this->db->trans_start();
         $this->db->insert('promotions', $data);
@@ -23,6 +29,28 @@ class m_promotions extends CI_Model {
 //        return $promotion_id;
     }
 
+    function update_promotion($f_data) {
+        $this->db->where('id', $this->promotion_id);
+        $this->db->update('promotions', $f_data);
+//delete
+        $this->db->where('promotion_id', $this->promotion_id);
+        $this->db->delete('products_has_promotions');
+//
+        $product_id = $this->input->post('product_id');
+        $promotion_price = $this->input->post('promotion_price');
+        if ($product_id != NULL && count($product_id) > 0) {
+            for ($i = 0; $i < count($product_id); $i++) {
+                $itemp = array(
+                    'promotion_id' => $this->promotion_id,
+                    'product_id' => $product_id[$i],
+                    'promotion_price' => $promotion_price[$i]
+                );
+                $this->db->insert('products_has_promotions', $itemp);
+            }
+        }
+        return;
+    }
+
     function validation_form_add() {
         $this->form_validation->set_rules('name[thai]', 'ชื่อโปรโมชั่น', 'trim|required|xss_clean');
         $this->form_validation->set_rules('name[english]', 'Promotion name', 'trim|required|xss_clean');
@@ -38,8 +66,18 @@ class m_promotions extends CI_Model {
         return TRUE;
     }
 
+    function validation_form_edit() {
+        $this->form_validation->set_rules('name[thai]', 'ชื่อโปรโมชั่น', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('name[english]', 'Promotion name', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('detail[thai]', 'รายละเอียด', 'required|trim|xss_clean');
+        $this->form_validation->set_rules('detail[english]', 'Detail of product', 'required|trim|xss_clean');
+        $this->form_validation->set_rules('start', 'วันเริ่มต้น', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('end', 'วันสิ้นสุด', 'trim|required|xss_clean');
+        return TRUE;
+    }
+
     function get_all_promotions() {
-        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,images.img_full');
+        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full');
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
         $query = $this->db->get();
@@ -119,7 +157,7 @@ class m_promotions extends CI_Model {
             'class' => 'form-control');
 
 //        product all 
-        $f_products = $this->set_products_list();
+        $f_products = $this->set_products_list_add();
 
         $f_type = array();
         $temp = $this->get_product_type();
@@ -127,7 +165,7 @@ class m_promotions extends CI_Model {
             $f_type[$row['id']] = unserialize($row['product_type'])['thai'];
         }
 //       product select
-        $f_product_selects = $this->set_products_list_select();
+        $f_product_selects = $this->set_products_list_select_add();
 
         $f_data = array(
             'form' => form_open_multipart('promotions/add', array('class' => 'form-horizontal', 'id' => 'form_promotion')),
@@ -140,7 +178,7 @@ class m_promotions extends CI_Model {
             'img_promotion' => form_upload($f_img),
             'image' => NULL,
             'products_select' => $f_product_selects,
-            'product_type_id' => form_dropdown('product_type_id', $f_type, set_value('product_type_id'), 'class="form-control"'),
+            'product_type_id' => form_dropdown('product_type_id', $f_type, set_value('product_type_id'), 'class="form-control" id="product_type"'),
             'products' => $f_products,
         );
 
@@ -148,7 +186,6 @@ class m_promotions extends CI_Model {
     }
 
     function set_form_edit($data) {
-//         'value' => (set_value('title[thai]') == NULL) ? unserialize($data ['title'])['thai'] : set_value('[thai]'));
         $f_name_th = array(
             'name' => 'name[thai]',
             'class' => 'form-control',
@@ -198,7 +235,7 @@ class m_promotions extends CI_Model {
             'class' => 'form-control');
 
 //        product all show in modal
-        $f_products = $this->set_products_list();
+        $f_products = $this->set_products_list_edit($this->promotion_id);
 
         $f_type = array();
         $temp = $this->get_product_type();
@@ -206,10 +243,10 @@ class m_promotions extends CI_Model {
             $f_type[$row['id']] = unserialize($row['product_type'])['thai'];
         }
 //       product select show in table 
-        $f_product_selects = $this->set_products_list_select_edit($data['id']);
+        $f_product_selects = $this->set_products_list_select_edit($this->promotion_id);
 
         $f_data = array(
-            'form' => form_open_multipart('promotions/edit/'.$data['id'], array('class' => 'form-horizontal', 'id' => 'form_promotion')),
+            'form' => form_open_multipart('promotions/edit/' . $this->promotion_id, array('class' => 'form-horizontal', 'id' => 'form_promotion')),
             'name[thai]' => form_input($f_name_th),
             'name[english]' => form_input($f_name_en),
             'detail[thai]' => form_textarea($f_detail_th),
@@ -219,7 +256,7 @@ class m_promotions extends CI_Model {
             'img_promotion' => form_upload($f_img),
             'image' => img($data['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '200', 'height' => '200')),
             'products_select' => $f_product_selects,
-            'product_type_id' => form_dropdown('product_type_id', $f_type, set_value('product_type_id'), 'class="form-control"'),
+            'product_type_id' => form_dropdown('product_type_id', $f_type, set_value('product_type_id'), 'class="form-control" id="product_type"'),
             'products' => $f_products,
         );
 
@@ -245,23 +282,49 @@ class m_promotions extends CI_Model {
         return $f_data;
     }
 
-//  add mode
-    function set_products_list() {
+    function get_post_form_edit() {
+        $s = new DateTime($this->input->post('start'));
+        $e = new DateTime($this->input->post('end'));
+
+        $start = $s->format('Y-m-d H:i:s');
+        $end = $e->format('Y-m-d H:i:s');
+
+        $f_data = array(
+            'name' => serialize($this->input->post('name')),
+            'detail' => serialize($this->input->post('detail')),
+            'start' => $start,
+            'end' => $end,
+        );
+        if (!empty($_FILES['img_promotion']['name'])) {
+            $this->upload_image('img_promotion', $this->get_image_id($this->promotion_id));
+        }
+
+        return $f_data;
+    }
+
+//  add mode 
+//  to modal    
+    function set_products_list_add($type_id = NULL) {
         $row = '';
+
         $product_id = $this->input->post('product_id');
-        $product = $this->get_products();
+        if ($type_id != NULL) {
+            $product = $this->get_product_by_type($type_id);
+        } else {
+            $product = $this->get_products();
+        }
+        $is_checked = FALSE;
         foreach ($product as $p) {
             $r = '<tr>';
-            if ($product_id != NULL && count($product_id) > 0) {
-                foreach ($product_id as $p_id) {
-                    if ($p_id == $p['id']) {
-                        $r.='<td><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '" id = "' . $p['id'] . '"checked></td>';
-                    } else {
-                        $r.='<td><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
-                    }
+            for ($i = 0; $i < count($product_id); $i++) {
+                if ($product_id[$i] == $p['id']) {
+                    $is_checked = TRUE;
                 }
+            }
+            if ($is_checked) {
+                $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '" id = "' . $p['id'] . '"checked></td>';
             } else {
-                $r.='<td><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
+                $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
             }
             $r.='<td>' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
@@ -273,7 +336,7 @@ class m_promotions extends CI_Model {
         return $row;
     }
 
-    function set_products_list_select() {
+    function set_products_list_select_add() {
         $row = '';
         $price_in = $this->input->post('promotion_price');
         $product_id = $this->input->post('product_id');
@@ -282,7 +345,7 @@ class m_promotions extends CI_Model {
             foreach ($price_in as $p) {
                 $product = $this->get_products($product_id[$i]);
                 $itemp = '<tr>';
-                $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this)"></td>';
+                $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $product_id[$i] . ')"></td>';
                 $itemp .= '<td align="center">' . img($product['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($product ['product_name'])['thai'] . '</td>';
                 $itemp .= '<td align="center">' . $product['product_price'] . '</td>';
@@ -292,12 +355,44 @@ class m_promotions extends CI_Model {
                 $row.= $itemp;
             }
         } else {
-            $row = '<tr><td colspan="5">ไม่มีสินค้าในโปรโมชั่น<td></tr>';
+            $row = '<tr><td colspan="5" align="center"  style="vertical-align: middle;">ไม่มีสินค้าในโปรโมชั่น<td></tr>';
         }
         return $row;
     }
 
 //    edit mode
+    function set_products_list_edit($id, $type_id = NULL) {
+        $product_has_promotion = $this->get_products_has_promotion($id);
+        if ($type_id != NULL) {
+            $product = $this->get_product_by_type($type_id);
+        } else {
+            $product = $this->get_products();
+        }
+        $row = '';
+        $is_checked = FALSE;
+        foreach ($product as $p) {
+            $r = '<tr>';
+            foreach ($product_has_promotion as $value) {
+                if ($value['promotion_id'] == $id && $value['product_id'] == $p['id']) {
+                    $is_checked = TRUE;
+                }
+            }
+            if ($is_checked) {
+                $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '" id = "' . $p['id'] . '"checked></td>';
+            } else {
+                $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
+            }
+
+            $r.='<td>' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+            $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
+            $r.='<td>' . $p['product_price'] . '</td>';
+            $r.='<td>' . unserialize($p ['product_type'])['thai'] . '</td >';
+            $r.='</tr>';
+            $row.=$r;
+        }
+        return $row;
+    }
+
     function set_products_list_select_edit($id) {
         $row = '';
         $product_pro = $this->get_products_has_promotion($id);
@@ -305,7 +400,7 @@ class m_promotions extends CI_Model {
             $i = 0;
             foreach ($product_pro as $p) {
                 $itemp = '<tr>';
-                $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this)"></td>';
+                $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $p['id'] . ')"></td>';
                 $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($p['product_name'])['thai'] . '</td>';
                 $itemp .= '<td align="center">1000</td>';
@@ -315,9 +410,22 @@ class m_promotions extends CI_Model {
                 $row.= $itemp;
             }
         } else {
-            $row = '<tr><td colspan="5">ไม่มีสินค้าในโปรโมชั่น<td></tr>';
+            $row = '<tr><td colspan="5" align="center"  style="vertical-align: middle;">ไม่มีสินค้าในโปรโมชั่น<td></tr>';
         }
         return $row;
+    }
+
+//  set itemps to modal when select dropdown
+    function set_product_by_type($type_id,$promotion_id=NULL) {
+        $rs = '';
+        if ($promotion_id == NULL) {
+            //add mode 
+            $rs = $this->set_products_list_add($type_id);
+        } else {
+            //edit mode
+            $rs = $this->set_products_list_edit($promotion_id, $type_id);            
+        }
+        return $rs;
     }
 
     function get_products($id = NULL) {
@@ -339,10 +447,31 @@ class m_promotions extends CI_Model {
         return $rs;
     }
 
+    function get_product_by_type($type_id) {
+        $rs = '';
+        $this->db->select('products.id,product_name,product_price,product_types.product_type,products.img_front');
+        $this->db->from('products');
+        $this->db->join('product_types', 'products.product_type_id = product_types.id');
+        $this->db->where('products.product_type_id', $type_id);
+        $query = $this->db->get();
+        $rs = $query->result_array();
+        return $rs;
+    }
+
     function get_product_type() {
         $query = $this->db->get('product_types');
         $result = $query->result_array();
         return $result;
+    }
+
+    function get_promotion_price($product_id, $promotion_id = NULL) {
+        $query = $this->db->get_where('products_has_promotions', array('product_id' => $product_id, 'promotion_id' => $promotion_id));
+        $result = $query->row_array();
+        if (count($result) > 0) {
+            return $result['promotion_price'];
+        } else {
+            return '';
+        }
     }
 
     function upload_image($name, $id = NULL) {
@@ -362,7 +491,7 @@ class m_promotions extends CI_Model {
             if (!$this->upload->do_upload($name)) {
                 return $this->upload->display_errors();
             } else {
-                //insert to database
+//insert to database
                 $finfo = $this->upload->data();
 
                 $data_img = array(
@@ -387,15 +516,6 @@ class m_promotions extends CI_Model {
         }
     }
 
-    function mdate($format, $microtime = null) {
-        $microtime = explode(' ', ($microtime ? $microtime : microtime()));
-        if (count($microtime) != 2)
-            return false;
-        $microtime[0] = $microtime[0] * 1000000;
-//        $format = str_replace('u', $microtime[0], $format);
-        return date($format, $microtime[1]);
-    }
-
     function get_image($id) {
         $this->db->select('images.img_full');
         $this->db->from('images');
@@ -404,6 +524,17 @@ class m_promotions extends CI_Model {
         $row = $query->row_array();
 
         return $row['img_full'];
+    }
+
+    function get_image_id($promotion_id) {
+        $this->db->select('images.id');
+        $this->db->from('promotions');
+        $this->db->join('images', 'images.id = promotions.image_id');
+        $this->db->where('promotions.id', $promotion_id);
+        $query = $this->db->get();
+        $row = $query->row_array();
+
+        return $row['id'];
     }
 
     function get_image_path($image_id) {

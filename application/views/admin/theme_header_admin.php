@@ -103,16 +103,12 @@
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <?= anchor('Promotions/add', '<i class="fa fa-plus-circle fa-fw"></i>&nbsp;สร้างโปรโมชั่น') ?>                                       
-                                    </li>                                   
+                                    </li>                                  
+                                    
                                     <li>
-                                        <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i>&nbsp;โปรโมชั่นปัจจุบัน</a>
+                                        <?= anchor('Promotions/', '<i class="fa fa-list fa-fm "></i>&nbsp;รายการโปรโมชั่นทั้งหมด') ?>   
                                     </li>
-                                    <li>
-                                        <?= anchor('Promotions', '<i class="fa fa-list fa-fm "></i>&nbsp;รายการโปรโมชั่นทั้งหมด') ?>   
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-trash-o fa-fw"></i>&nbsp;โปรโมชั่นหมดอายุ</a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                             <!-- Slides -->
