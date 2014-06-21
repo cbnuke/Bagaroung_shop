@@ -32,7 +32,7 @@ class ProductTypes extends CI_Controller {
         $data['type'] = $this->m_producttypes->get_types();
 
         $this->m_template->set_Title('ประเภทสินค้า');
-        //    $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/product_types.php', $data);
         $this->m_template->showTemplateAdmin();
     }
@@ -61,9 +61,8 @@ class ProductTypes extends CI_Controller {
         if ($this->m_producttypes->validation_form_edit() && $this->form_validation->run() == TRUE) {
             $form_data = $this->m_producttypes->get_post_form_edit();
 //            $this->m_template->set_Debug($form_data);
-              $this->m_producttypes->update_type($form_data);
+            $this->m_producttypes->update_type($form_data);
             redirect('ProductTypes', 'refresh');
-            
         }
 
         $detail = $this->m_producttypes->get_types($id);

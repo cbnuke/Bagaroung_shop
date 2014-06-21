@@ -21,18 +21,9 @@
             </tr>        
         </thead>
         <tbody>
-<!--            <tr>
-                <td>ประเภทกระเป๋า</td>
-                <td>Bag Type</td>
-                <td>10</td>
-                <td>
-            <?= anchor('ProductTypes/edit/1', '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') ?>
-            <?= anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', 'type="button" class="btn btn-danger btn-xs"') ?>
 
-                </td>
-            </tr>-->
             <?php
-            if (count($type) > 0) {
+            if (count($type) > 0 && $type != NULL) {
                 foreach ($type as $r) {
                     echo '<tr>';
                     echo '<td>' . $r['product_type']['thai'] . '</td>';
@@ -45,6 +36,8 @@
                     echo '</td>';
                     echo '</tr>';
                 }
+            }else {
+                echo '<tr><td colspan="4" class="text-center">ไม่พบประเภทสินค้าในระบบ</td></tr>';
             }
             ?> 
         </tbody>

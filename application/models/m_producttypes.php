@@ -127,6 +127,7 @@ Class m_producttypes extends CI_Model {
     }
 
     public function get_types($id = NULL) {
+        $item='';
         if ($id != NULL) {
             $this->db->where('id', $id);
             $query = $this->db->get('product_types');
