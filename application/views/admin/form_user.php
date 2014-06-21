@@ -123,7 +123,7 @@
 
 </div>
 
-<?= js('jquery.js'); ?>
+
 <script>
     $(document).ready(function() {
  var error = '<?= $error ?>';
@@ -134,8 +134,6 @@
         {
             $('#error').show();
         }
-
-
     });
 
 

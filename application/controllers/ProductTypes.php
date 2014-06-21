@@ -60,7 +60,7 @@ class ProductTypes extends CI_Controller {
 
         if ($this->m_producttypes->validation_form_edit() && $this->form_validation->run() == TRUE) {
             $form_data = $this->m_producttypes->get_post_form_edit();
-            $this->m_template->set_Debug($form_data);
+//            $this->m_template->set_Debug($form_data);
               $this->m_producttypes->update_type($form_data);
             redirect('ProductTypes', 'refresh');
             

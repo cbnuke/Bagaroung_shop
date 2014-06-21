@@ -94,7 +94,6 @@
 </form>   
 </div>
 
-<?= js('jquery.js'); ?>
 <script>
     $(document).ready(function() {
         var img = '<?= $image ?>';
