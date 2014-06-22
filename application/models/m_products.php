@@ -33,6 +33,17 @@ Class m_products extends CI_Model {
     function update_product($data) {
         $id = $data['id'];
         unset($data['id']);
+
+        $temp = $this->check_detail_product($id);
+        if (isset($data['img_front']))
+            unlink(img_path() . $temp[0]['img_front']);
+        if (isset($data['img_back']))
+            unlink(img_path() . $temp[0]['img_back']);
+        if (isset($data['img_right']))
+            unlink(img_path() . $temp[0]['img_right']);
+        if (isset($data['img_left']))
+            unlink(img_path() . $temp[0]['img_left']);
+
         $this->db->where('id', $id);
         $this->db->update('products', $data);
     }

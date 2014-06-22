@@ -9,6 +9,7 @@ class Products extends CI_Controller {
         parent::__construct();
         $this->load->model('m_template');
         $this->load->model('m_products');
+        $this->load->helper('file');
     }
 
     public function index() {
