@@ -76,7 +76,7 @@
         <div class="form-group" id="pass_old">
             <label class="col-sm-2 control-label"  >Password Old</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="password_old"  placeholder="Old Password" value="<?= $password ?>" >
+                <input type="password" class="form-control" name="password_old"  placeholder="Old Password" value="<?= $password ?>" >
             </div>
             <div class="col-sm-4">                
                 <?php echo form_error('password_old', '<font color="error">', '</font>'); ?>
@@ -86,7 +86,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Password</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="password" id="password" placeholder="Password" >
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" >
         </div>
         <div class="col-sm-4" id="error">                
             <?php echo form_error('password', '<font color="error">', '</font>'); ?>
@@ -95,22 +95,12 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Confrim Password</label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" name="password_con" id="password_con"  placeholder="Confrim Password" >
+            <input type="password" class="form-control" name="password_con" id="password_con"  placeholder="Confrim Password" >
         </div>
         <div class="col-sm-4" id="error">                
             <?php echo form_error('password_con', '<font color="error">', '</font>'); ?>
         </div>
     </div>
-
-    <!--    <div class="form-group">
-            <label class="col-sm-2 control-label">ประเภทผู้ใช้งาน</label>
-            <div class="col-sm-2">
-                <select class="form-control" name="user_type">                    
-                    <option value="2">User</option>
-                    <option value="1">Admin</option>
-                </select>
-            </div>
-        </div>-->
     <hr>
     <div class="form-group" >
         <label class="col-sm-2 control-label"></label>
@@ -132,7 +122,7 @@
             $('#error').hide(true);
         } else
         {
-            $('#error').show();
+            $('#error').hide(true);
         }
     });
 

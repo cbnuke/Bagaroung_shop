@@ -17,7 +17,7 @@
                 <th style="width: 35%" >ชื่อ</th>
                 <th style="width: 35%" >Name</th>
                 <th style="width: 10%">จำนวนสินค้า</th>
-                <th style="width: 10%"></th>
+                <th style="width: 20%"></th>
             </tr>        
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                     echo '<td>' . $r['product_type']['thai'] . '</td>';
                     echo '<td>' . $r['product_type']['english'] . '</td>';
                     echo '<td>' . $r['number'] . '</td>';
-                    echo '<td>';
+                    echo ' <td align="center"  style="vertical-align: middle;"> ';
                     echo anchor('ProductTypes/edit/' . $r['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"');
                     echo '&nbsp;';
                     echo anchor('ProductTypes/delete/' . $r['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', 'type="button" class="btn btn-danger btn-xs"');

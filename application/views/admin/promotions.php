@@ -9,7 +9,7 @@
 <div class="row">  
     <?= anchor('Promotions/add', '<i class="fa fa-plus fa-lg"></i>&nbsp;สร้างโปรโมชั่น', 'class="btn btn-success btn-lg pull-right"'); ?>      
 </div>
-<hr>
+<br>
 <div class="row"> 
     <div class="col-md-12">
         <!-- Nav tabs -->
@@ -28,15 +28,15 @@
         <div class="tab-content">
             <div class="tab-pane active" id="all">
                 <div class="row">
-                    <table class="table table-bordered table-responsive">
+                    <table class="table table-hover table-condensed table-responsive">
                         <thead>
                             <tr>
-                                <th style="width: 5%"><label align="center" >สถานะวันคงเหลือ</label></th>
-                                <th style="width: 15%"><label align="center" >รูปภาพ</label></th>
-                                <th style="width: 15%"><label align="center" >ชื่อ</label></th>                                   
-                                <th style="width: 20%"><label align="center" >รายละเอียด</label></th>
-                                <th style="width: 30%"><label align="center" >สินค้า</label></th>                  
-                                <th style="width: 15%"></th>
+                                <th style="width: 5% ; text-align:center ;vertical-align: middle">วันคงเหลือ</th>
+                                <th style="width: 15%; text-align:center;vertical-align: middle">รูปภาพ</th>
+                                <th style="width: 15%; text-align:center;vertical-align: middle">ชื่อ</th>                                   
+                                <th style="width: 20%; text-align:center;vertical-align: middle">รายละเอียด</th>
+                                <th style="width: 30%; text-align:center;vertical-align: middle">สินค้า</th>                  
+                                <th style="width: 15%; text-align:center;vertical-align: middle"></th>
                             </tr>        
                         </thead>
                         <tbody>
@@ -47,60 +47,69 @@
                                 $day = round($diff / 24);
                                 $hours = round($diff - ($day * 24));
                                 $status = $pro['status_promotion'];
+
+                                if ($status == '1' && $diff > 0) {
+                                    echo '<tr class="success">';
+                                } elseif ($status == '0' && $diff > 0) {
+                                    echo '<tr class="warning">';
+                                } else {
+                                    echo '<tr>';
+                                }
                                 ?>
-                                <tr class="active">
-                                    <td align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                    <td align="center"  style="vertical-align: middle;"> <?= img($pro['img_full'], array('class' => 'img-responsive', 'width' => '100', 'height' => '200')); ?></td>
-                                    <td>
-                                        <?= unserialize($pro['name'])['thai'] ?>
-                                        <hr>
-                                        <?= unserialize($pro['name'])['english'] ?>
-                                    </td>                
-                                    <td>  
-                                        <?= unserialize($pro['detail'])['thai'] ?>
-                                        <hr>
-                                        <?= unserialize($pro['detail'])['english'] ?>
-                                    </td>
-                                    <td>                        
-                                        <table class="table table-responsive">
-                                            <?php
-                                            foreach ($products_had_promotion as $p) {
-                                                if ($p['promotion_id'] == $pro['id']) {
-                                                    ?>
-                                                    <tr>
-                                                        <td align="center" style="vertical-align: middle;">
-                                                            <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
-                                                        </td>
-                                                        <td>
-                                                            <ul>
-                                                                <li><?= unserialize($p['product_name'])['thai']; ?></li>
-                                                                <li>ราคา&nbsp;<?= $p['promotion_price'] ?>&nbsp;บาท</li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
 
-                                                    <?php
-                                                }
-                                            }
+
+                            <td align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
+                            <td align="center"  style="vertical-align: middle;"> <?= img($pro['img_full'], array('class' => 'img-responsive', 'width' => '100', 'height' => '200')); ?></td>
+                            <td>
+                                <?= unserialize($pro['name'])['thai'] ?>
+                                <hr>
+                                <?= unserialize($pro['name'])['english'] ?>
+                            </td>                
+                            <td>  
+                                <?= unserialize($pro['detail'])['thai'] ?>
+                                <hr>
+                                <?= unserialize($pro['detail'])['english'] ?>
+                            </td>
+                            <td>                        
+                                <table class="table table-responsive">
+                                    <?php
+                                    foreach ($products_had_promotion as $p) {
+                                        if ($p['promotion_id'] == $pro['id']) {
                                             ?>
-                                        </table>
-                                    </td>
-                                    <td align="center"  style="vertical-align: middle;"> 
-                                        <?php
-                                        echo anchor('promotions/edit/' . $pro['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
-                                        if ($status == 0 && $diff > 0) {
-                                            echo anchor('promotions/active/' . $pro['id'], '<i class="fa fa-refresh fa-lg"></i>&nbsp;ใช้งาน', array('type' => "button", 'class' => "btn btn-success btn-xs", 'onclick' => "javascript : return confirm('เริ่มโปรโมชั้น');"));
-                                        } elseif ($status == 1 && $diff > 0) {
-                                            echo anchor('promotions/cancle/' . $pro['id'], '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', array('type' => "button", 'class' => "btn btn-danger btn-xs", 'onclick' => "javascript : return confirm('ยกเลิกโปรโมชั้น');"));
-                                        } else {
-                                            echo anchor('promotions/delete/' . $pro['id'], '<i class="fa fa-trash fa-lg"></i>&nbsp;ลบ', array('type' => "button", 'class' => "btn btn-danger btn-xs", 'onclick' => "javascript : return confirm('ลบโปรโมชั้น');"));
+                                            <tr>
+                                                <td align="center" style="vertical-align: middle;">
+                                                    <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                </td>
+                                                <td>
+                                                    <ul>
+                                                        <li><?= unserialize($p['product_name'])['thai']; ?></li>
+                                                        <li>ราคา&nbsp;<?= $p['promotion_price'] ?>&nbsp;บาท</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+
+                                            <?php
                                         }
-                                        ?>
+                                    }
+                                    ?>
+                                </table>
+                            </td>
+                            <td align="center"  style="vertical-align: middle;"> 
+                                <?php
+                                echo anchor('promotions/edit/' . $pro['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
+                                if ($status == 0 && $diff > 0) {
+                                    echo anchor('promotions/active/' . $pro['id'], '<i class="fa fa-refresh fa-lg"></i>&nbsp;ใช้งาน', array('type' => "button", 'class' => "btn btn-success btn-xs", 'onclick' => "javascript : return confirm('เริ่มโปรโมชั้น');"));
+                                } elseif ($status == 1 && $diff > 0) {
+                                    echo anchor('promotions/cancle/' . $pro['id'], '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', array('type' => "button", 'class' => "btn btn-danger btn-xs", 'onclick' => "javascript : return confirm('ยกเลิกโปรโมชั้น');"));
+                                } else {
+                                    echo anchor('promotions/delete/' . $pro['id'], '<i class="fa fa-trash fa-lg"></i>&nbsp;ลบ', array('type' => "button", 'class' => "btn btn-danger btn-xs", 'onclick' => "javascript : return confirm('ลบโปรโมชั้น');"));
+                                }
+                                ?>
 
-                                    </td>
-                                </tr>
+                            </td>
+                            </tr>
 
-                            <?php } ?>
+                        <?php } ?>
 
                         </tbody>
 
@@ -113,12 +122,12 @@
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th style="width: 5%"><label align="center" >สถานะวันคงเหลือ</label></th>
-                                <th style="width: 15%"><label align="center" >รูปภาพ</label></th>
-                                <th style="width: 15%"><label align="center" >ชื่อ</label></th>                                   
-                                <th style="width: 20%"><label align="center" >รายละเอียด</label></th>
-                                <th style="width: 30%"><label align="center" >สินค้า</label></th>                  
-                                <th style="width: 15%"></th>
+                                <th style="width: 5% ; text-align:center ;vertical-align: middle">วันคงเหลือ</th>
+                                <th style="width: 15%; text-align:center;vertical-align: middle">รูปภาพ</th>
+                                <th style="width: 15%; text-align:center;vertical-align: middle">ชื่อ</th>                                   
+                                <th style="width: 20%; text-align:center;vertical-align: middle">รายละเอียด</th>
+                                <th style="width: 30%; text-align:center;vertical-align: middle">สินค้า</th>                  
+                                <th style="width: 15%; text-align:center;vertical-align: middle"></th>
                             </tr>        
                         </thead>
                         <tbody>
@@ -188,14 +197,16 @@
                 <div class="row">
                     <table class="table table-bordered table-responsive">
                         <thead>
+
                             <tr>
-                                <th style="width: 5%"><label align="center" >สถานะ</label></th>
-                                <th style="width: 15%"><label align="center" >รูปภาพ</label></th>
-                                <th style="width: 15%"><label align="center" >ชื่อ</label></th>                                   
-                                <th style="width: 20%"><label align="center" >รายละเอียด</label></th>
-                                <th style="width: 30%"><label align="center" >สินค้า</label></th>                  
-                                <th style="width: 15%"></th>
-                            </tr>        
+                                <th style="width: 5% ; text-align:center ;vertical-align: middle">วันคงเหลือ</th>
+                                <th style="width: 15%; text-align:center;vertical-align: middle">รูปภาพ</th>
+                                <th style="width: 15%; text-align:center;vertical-align: middle">ชื่อ</th>                                   
+                                <th style="width: 20%; text-align:center;vertical-align: middle">รายละเอียด</th>
+                                <th style="width: 30%; text-align:center;vertical-align: middle">สินค้า</th>                  
+                                <th style="width: 15%; text-align:center;vertical-align: middle"></th>
+                            </tr>  
+
                         </thead>
                         <tbody>
                             <?php
