@@ -34,7 +34,7 @@
         <div class="col-sm-2" ></div>
         <div class="col-sm-3" >
             <div class="form-group <?= (form_error('width')) ? 'has-error' : '' ?>">
-                <label class="col-sm-4 control-label">ความกว้าง</label>
+                <label class="col-sm-5 control-label">ความกว้าง</label>
                 <div class="col-sm-5">
                     <?php echo $form['width']; ?>
                 </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="col-sm-3" >
             <div class="form-group <?= (form_error('hight')) ? 'has-error' : '' ?>">
-                <label class="col-sm-3 control-label">ความสูง</label>
+                <label class="col-sm-5 control-label">ความสูง</label>
                 <div class="col-sm-5">
                     <?php echo $form['hight']; ?>
                 </div>
@@ -52,11 +52,32 @@
         </div>
         <div class="col-sm-3" >
             <div class="form-group <?= (form_error('weight')) ? 'has-error' : '' ?>">
-                <label class="col-sm-3 control-label">น้ำหนัก</label>
+                <label class="col-sm-5 control-label">น้ำหนัก</label>
                 <div class="col-sm-5">
                     <?php echo $form['weight']; ?>
                 </div>
                 <span>kg.</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2" ></div>
+        <div class="col-sm-3" >
+            <div class="form-group <?= (form_error('top_width')) ? 'has-error' : '' ?>">
+                <label class="col-sm-5 control-label">ความกว้างด้านบน</label>
+                <div class="col-sm-5">
+                    <?php echo $form['top_width']; ?>
+                </div>
+                <span>cm.</span>
+            </div>
+        </div>
+        <div class="col-sm-3" >
+            <div class="form-group <?= (form_error('base_width')) ? 'has-error' : '' ?>">
+                <label class="col-sm-5 control-label">ความกว้างฐาน</label>
+                <div class="col-sm-5">
+                    <?php echo $form['base_width']; ?>
+                </div>
+                <span>cm.</span>
             </div>
         </div>
     </div>

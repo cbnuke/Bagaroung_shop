@@ -74,6 +74,16 @@ Class m_products extends CI_Model {
             'class' => 'form-control',
             'placeholder' => 'Hight',
             'value' => set_value('hight'));
+        $i_base_width = array(
+            'name' => 'base_width',
+            'class' => 'form-control',
+            'placeholder' => 'Base width',
+            'value' => set_value('base_width'));
+        $i_top_width = array(
+            'name' => 'top_width',
+            'class' => 'form-control',
+            'placeholder' => 'Top width',
+            'value' => set_value('top_width'));
         $i_weight = array(
             'name' => 'weight',
             'class' => 'form-control',
@@ -120,6 +130,8 @@ Class m_products extends CI_Model {
             'product_price' => form_input($i_price),
             'width' => form_input($i_width),
             'hight' => form_input($i_hight),
+            'base_width' => form_input($i_base_width),
+            'top_width' => form_input($i_top_width),
             'weight' => form_input($i_weight),
             'detail[thai]' => form_textarea($i_detail_th),
             'detail[english]' => form_textarea($i_detail_en),
@@ -137,6 +149,8 @@ Class m_products extends CI_Model {
         $this->form_validation->set_rules('product_name[english]', 'Product Name', 'trim|required|xss_clean');
         $this->form_validation->set_rules('product_price', 'Price', 'trim|required|xss_clean');
         $this->form_validation->set_rules('width', 'Width', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('base_width', 'Base width', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('top_width', 'Top width', 'trim|required|xss_clean');
         $this->form_validation->set_rules('hight', 'Hight', 'trim|required|xss_clean');
         $this->form_validation->set_rules('weight', 'Weight', 'trim|required|xss_clean');
         $this->form_validation->set_rules('detail[thai]', 'รายละเอียดสินค้า', 'required|xss_clean');
@@ -160,6 +174,8 @@ Class m_products extends CI_Model {
             'product_price' => $this->input->post('product_price'),
             'width' => $this->input->post('width'),
             'hight' => $this->input->post('hight'),
+            'base_width' => $this->input->post('base_width'),
+            'top_width' => $this->input->post('top_width'),
             'weight' => $this->input->post('weight'),
             'detail' => $this->input->post('detail'),
             'product_type_id' => $this->input->post('product_type_id'),
@@ -177,8 +193,8 @@ Class m_products extends CI_Model {
             $config['allowed_types'] = "gif|jpg|jpeg|png";
             $config['encrypt_name'] = TRUE;
             $config['max_size'] = "5000";
-            $config['max_width'] = "1920";
-            $config['max_height'] = "1080";
+            $config['max_width'] = "3840";
+            $config['max_height'] = "2160";
 
             $this->load->library('upload', $config);
 
@@ -219,6 +235,16 @@ Class m_products extends CI_Model {
             'class' => 'form-control',
             'placeholder' => 'Hight',
             'value' => (set_value('hight') == NULL) ? $data ['hight'] : set_value('hight'));
+        $i_base_width = array(
+            'name' => 'base_width',
+            'class' => 'form-control',
+            'placeholder' => 'Base width',
+            'value' => (set_value('base_width') == NULL) ? $data ['base_width'] : set_value('base_width'));
+        $i_top_width = array(
+            'name' => 'top_width',
+            'class' => 'form-control',
+            'placeholder' => 'Top width',
+            'value' => (set_value('top_width') == NULL) ? $data ['top_width'] : set_value('top_width'));
         $i_weight = array(
             'name' => 'weight',
             'class' => 'form-control',
@@ -265,6 +291,8 @@ Class m_products extends CI_Model {
             'product_price' => form_input($i_price),
             'width' => form_input($i_width),
             'hight' => form_input($i_hight),
+            'base_width' => form_input($i_base_width),
+            'top_width' => form_input($i_top_width),
             'weight' => form_input($i_weight),
             'detail[thai]' => form_textarea($i_detail_th),
             'detail[english]' => form_textarea($i_detail_en),
@@ -283,6 +311,8 @@ Class m_products extends CI_Model {
         $this->form_validation->set_rules('product_price', 'Price', 'trim|required|xss_clean');
         $this->form_validation->set_rules('width', 'Width', 'trim|required|xss_clean');
         $this->form_validation->set_rules('hight', 'Hight', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('base_width', 'Base width', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('top_width', 'Top width', 'trim|required|xss_clean');
         $this->form_validation->set_rules('weight', 'Weight', 'trim|required|xss_clean');
         $this->form_validation->set_rules('detail[thai]', 'รายละเอียดสินค้า', 'required|xss_clean');
         $this->form_validation->set_rules('detail[english]', 'Detail of Product', 'required|xss_clean');
@@ -305,6 +335,8 @@ Class m_products extends CI_Model {
             'product_price' => $this->input->post('product_price'),
             'width' => $this->input->post('width'),
             'hight' => $this->input->post('hight'),
+            'base_width' => $this->input->post('base_width'),
+            'top_width' => $this->input->post('top_width'),
             'weight' => $this->input->post('weight'),
             'detail' => $this->input->post('detail'),
             'product_type_id' => $this->input->post('product_type_id'),
