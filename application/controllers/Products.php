@@ -42,7 +42,12 @@ class Products extends CI_Controller {
             $form_data['product_name'] = serialize($form_data['product_name']);
             $form_data['detail'] = serialize($form_data['detail']);
             //Insert data
-            $this->m_products->insert_product($form_data);
+            if ($this->m_products->insert_product($form_data)) {
+                //Success
+                redirect('products');
+            } else {
+                //Fail
+            }
         }
         //Load form
         $data['form'] = $this->m_products->set_form_add();
@@ -63,7 +68,12 @@ class Products extends CI_Controller {
             $form_data['product_name'] = serialize($form_data['product_name']);
             $form_data['detail'] = serialize($form_data['detail']);
             //Update data
-            $this->m_products->update_product($form_data);
+            if ($this->m_products->update_product($form_data)) {
+                //Success
+                redirect('products');
+            } else {
+                //Fail
+            }
         }
 
         //Check detail and sent to load form
@@ -74,7 +84,7 @@ class Products extends CI_Controller {
         } else
             redirect('products');
 
-//        $this->m_template->set_Debug($detail);
+//        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_product_edit.php', $data);
         $this->m_template->showTemplateAdmin();
     }

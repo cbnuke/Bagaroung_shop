@@ -28,6 +28,8 @@ Class m_products extends CI_Model {
 
     function insert_product($data) {
         $this->db->insert('products', $data);
+        $this->insert_img_to_database($this->db->insert_id());
+        return TRUE;
     }
 
     function update_product($data) {
@@ -46,9 +48,21 @@ Class m_products extends CI_Model {
 
         $this->db->where('id', $id);
         $this->db->update('products', $data);
+        
+        //Delete old images
+        $this->delect_img_in_database($id);
+        //Insert new images in temp
+        $this->insert_img_to_database($id);
+        
+        return TRUE;
     }
 
     function set_form_add() {
+        //Clear folder temp
+        if ($this->form_validation->error_string() == NULL && $this->form_validation->run() != TRUE) {
+            $this->clear_upload_temp();
+        }
+
         $i_product_name_th = array(
             'name' => 'product_name[thai]',
             'class' => 'form-control',
@@ -210,6 +224,11 @@ Class m_products extends CI_Model {
     }
 
     function set_form_edit($data) {
+        //Prepare folder temp
+        if ($this->form_validation->error_string() == NULL && $this->form_validation->run() != TRUE) {
+            $this->load_img_to_temp($data['id']);
+        }
+
         $i_product_name_th = array(
             'name' => 'product_name[thai]',
             'class' => 'form-control',
@@ -356,6 +375,80 @@ Class m_products extends CI_Model {
             unset($get_page_data['img_left']);
 
         return $get_page_data;
+    }
+
+    function clear_upload_temp() {
+        delete_files(img_path() . 'temp/');
+    }
+
+    function load_img_to_temp($product_id) {
+        //Read images of product
+        $this->db->select();
+        $this->db->from('products_has_images');
+        $this->db->join('images', 'products_has_images.image_id=images.id', 'left');
+        $this->db->where('products_has_images.product_id', $product_id);
+        $query = $this->db->get();
+        $data = $query->result_array();
+        
+        //Copy images to temp
+        foreach ($data as $row){
+            copy(img_path().'products/'.$row['img_name'], img_path().'temp/'.$row['img_name']);
+            copy(img_path().'products/thumbs/'.$row['img_name'], img_path().'temp/thumbs/'.$row['img_name']);
+        }
+    }
+
+    function insert_img_to_database($product_id) {
+        $data_images = array();
+        //Prepare image and insert to images
+        $img = $this->get_img_from_temp();
+        foreach ($img as $row) {
+            $this->db->insert('images', $row);
+            $temp = array(
+                'product_id' => $product_id,
+                'image_id' => $this->db->insert_id()
+            );
+            array_push($data_images, $temp);
+            //Move img to products
+            rename(img_path() . 'temp/' . $row['img_name'], $row['img_path']);
+            rename(img_path() . 'temp/thumbs/' . $row['img_name'], img_path() . 'products/thumbs/' . $row['img_name']);
+        }
+        //Insert to products_has_images
+        $this->db->insert_batch('products_has_images', $data_images);
+        return TRUE;
+    }
+
+    function delect_img_in_database($product_id){
+        //Delect image in folder product
+        $this->db->select();
+        $this->db->from('products_has_images');
+        $this->db->join('images', 'products_has_images.image_id=images.id', 'left');
+        $this->db->where('products_has_images.product_id', $product_id);
+        $query = $this->db->get();
+        $data = $query->result_array();
+        foreach ($data as $row){
+            unlink(img_path().'products/'.$row['img_name']);
+            unlink(img_path().'products/thumbs/'.$row['img_name']);
+            //Delect image in images
+            $this->db->delete('images', array('id' => $row['image_id']));
+        }
+        //Delect image in products_has_images
+        $this->db->delete('products_has_images', array('product_id' => $product_id));
+        return TRUE;
+    }
+            
+    function get_img_from_temp() {
+        $data = array();
+        $name = get_filenames(img_path() . 'temp/thumbs/');
+        for ($i = 0; $i < count($name); $i++) {
+            $temp = array(
+                'img_name' => $name[$i],
+                'img_full' => 'products/' . $name[$i],
+                'img_small' => 'products/thumbs/' . $name[$i],
+                'img_path' => img_path() . 'products/' . $name[$i]
+            );
+            array_push($data, $temp);
+        }
+        return $data;
     }
 
 }
