@@ -29,14 +29,13 @@ class Slides extends CI_Controller {
                 //Insert data
                 $this->m_slides->insert_slide($form_data);
                 redirect('slides', 'refresh');
-                exit();
             }
         }
         //Load form add
         $data['form'] = $this->m_slides->set_form_add();
 
 
-        $this->m_template->set_Title('เพิ่มสไลด์');
+        $this->m_template->set_Title('สร้างสไลด์');
 //        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
         $this->m_template->showTemplateAdmin();
@@ -56,7 +55,7 @@ class Slides extends CI_Controller {
 
 //      get detail and sent to load form
 
-        $detail = $this->m_slides->get_silde($id);      
+        $detail = $this->m_slides->get_silde($id);
         if ($detail[0] != NULL) {
             $data['form'] = $this->m_slides->set_form_edit($detail[0]);
             $data['detail'] = $detail[0];
@@ -67,13 +66,35 @@ class Slides extends CI_Controller {
 //        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
         $this->m_template->showTemplateAdmin();
+    }
 
-   }
-   public function delete($id) {
-       $this->m_slides->delete_slide($id);
-       
-       redirect('slides');
-   }
+    public function delete($id) {
+
+        $this->m_slides->delete_slide($id);
+        redirect('slides');
+    }
+
+    public function cancle($slide_id) {
+        $data = array(
+            'status_slide' => '0',
+        );
+
+        $this->db->where('id', $slide_id);
+        $this->db->update('slides', $data);
+
+        redirect('slides', 'refresh');
+    }
+
+    public function active($slide_id) {
+        $data = array(
+            'status_slide' => '1',
+        );
+
+        $this->db->where('id', $slide_id);
+        $this->db->update('slides', $data);
+
+        redirect('slides', 'refresh');
+    }
 
 }
 

@@ -82,7 +82,17 @@ class m_promotions extends CI_Model {
         $this->db->join('images', 'images.id = promotions.image_id');
         $query = $this->db->get();
         $rs = $query->result_array();
+        $i=0;
+        foreach ($rs as $value) {
+            $rs[$i]['count_product'] = $this->count_product($rs[$i]['id']);
+            $i++;
+        }
         return $rs;
+    }
+    
+    function count_product($promotion_id) {
+        $rs= $this->db->get_where('products_has_promotions', array('promotion_id' => $promotion_id));
+        return $rs->num_rows();
     }
 
     function get_promotions($id) {
@@ -103,7 +113,7 @@ class m_promotions extends CI_Model {
             $this->db->where('promotion_id', $promotion_id);
         }
         $query = $this->db->get();
-        $rs = $query->result_array();
+        $rs = $query->result_array();        
         return $rs;
     }
 

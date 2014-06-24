@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Slide</h1>
+        <h1 class="page-header">
+            <?= $title; ?>
+        </h1>
     </div>
 </div>
 <div class="row"> 
@@ -8,81 +10,312 @@
 <!--    <a type="button" class="btn btn-success pull-right btn-lg" href="crate_slide.php" ><i class="fa fa-plus fa-lg"></i>&nbsp;Create Slide</a>   -->
 </div>
 <br>
-<div class="row">
-    <table class="table table-hover table-responsive">
-        <thead>
-        <th style="width: 5%; text-align:center" >ลำดับ</th>
-        <th style="width: 25%; text-align:center" >ชื่อหลัก</th>
-        <th style="width: 25%; text-align:center" >ชื่อรอง</th>
-        <th style="width: 5%; text-align:center" >ลิ้งค์</th>
-        <th style="width: 20%; text-align:center" >รูปภาพ</th>
-        <!--<th style="width: 5%; text-align:center" >สถานะ</th>-->
-        <th style="width: 15%" ></th>
+<div class="row"> 
+    <div class="col-md-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#all" data-toggle="tab">สไลด์ทั้งหมด</a></li>
+            <li><a href="#active" data-toggle="tab">สไลด์ที่ใช้งาน</a></li>
+            <li><a href="#non_active" data-toggle="tab">สไลด์ไม่ใช้งาน</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="all">
+                <table class="table table-hover table-striped table-responsive">
+                    <thead>
+                    <th style="width: 8%;" ></th>
+                    <!--<th style="width: 5%;" >ลำดับ</th>-->
+                    <th style="width: 25%;" >ชื่อหลัก</th>
+                    <th style="width: 25%;" >ชื่อรอง</th>
+                    <th style="width: 5%;" >ลิ้งค์</th>
+                    <th style="width: 20%;" >รูปภาพ</th>
 
-        </thead>
-        <tbody>
-            <?php
-            if ($slides != NULL) {
-                $i = 1;
-                foreach ($slides as $row) {
-                    if ($row['status_slide'] == '1') {
-                        echo '<tr class="success">';
+                    <th style="width: 15%" ></th>
+
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($slides != NULL) {
+                            $i = 1;
+                            foreach ($slides as $row) {
+                                if ($row['status_slide'] == '1') {
+                                    echo '<tr class="success">';
+                                    echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-check-square-o fa-lg"></i></td>';
+                                } else {
+                                    echo '<tr class="active">';
+                                    echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
+                                }
+                                ?>  
+                            <!--<td align="center"> <? $i ?></td>-->
+                            <td>
+                                <?= $row['title']['thai']; ?>
+                                <hr>
+                                <?= $row['title']['english']; ?>
+                            </td>
+
+                            <td>
+                                <?= $row['subtitle']['thai']; ?>
+                                <hr>
+                                <?= $row['subtitle']['english']; ?>
+                            </td>
+
+                            <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
+                            <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?></td>
+
+                            <td align="center"  style="vertical-align: middle;"> 
+                                <?php
+                                $delete = array(
+                                    'type' => "button",
+                                    'class' => "btn btn-danger btn-xs",
+                                    'data-id' => "2",
+                                    'data-title' => "ลบ",
+                                    'data-info' => $row['title']['thai'],
+                                    'data-toggle' => "modal",
+                                    'data-target' => "#confirm",
+                                    'data-href' => 'Slides/delete/' . $row['id'],
+                                );
+                                $cancle = array(
+                                    'type' => "button",
+                                    'class' => "btn btn-warning btn-xs",
+                                    'data-id' => "3",
+                                    'data-title' => "ยกเลิก",
+                                    'data-info' => $row['title']['thai'],
+                                    'data-toggle' => "modal",
+                                    'data-target' => "#confirm",
+                                    'data-href' => 'Slides/cancle/' . $row['id'],
+                                );
+                                $active = array(
+                                    'type' => "button",
+                                    'class' => "btn btn-success btn-xs",
+                                    'data-id' => "4",
+                                    'data-title' => "ใช้งาน",
+                                    'data-info' => $row['title']['thai'],
+                                    'data-toggle' => "modal",
+                                    'data-target' => "#confirm",
+                                    'data-href' => 'Slides/active/' . $row['id'],
+                                );
+                                echo anchor('Slides/edit/' . $row['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
+                                if ($row['status_slide'] == '1') {
+                                    echo anchor('#', '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', $cancle);
+                                } else {
+                                    echo anchor('Slides/active/' . $row['id'], '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+
+                                    echo anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                                }
+                                ?>
+
+                            </td>                
+                            </tr>
+
+                            <?php
+                            $i++;
+                        }
                     } else {
-                        echo '<tr>';
+                        echo '<tr><td colspan="9" class="text-center">ไม่พบข้อมูลสไลด์ในระบบ</td></tr>';
                     }
-                    ?>                   
-                <td align="center"> <?= $i ?></td>
-                <td>
-                    <?= $row['title']['thai']; ?>
-                    <hr>
-                    <?= $row['title']['english']; ?>
-                </td>
+                    ?>
 
-                <td>
-                    <?= $row['subtitle']['thai']; ?>
-                    <hr>
-                    <?= $row['subtitle']['english']; ?>
-                </td>
+                    </tbody>
 
-                <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) ?></td>
-                <?php
-//                if ($row['status_slide'] == '1') {
-//                    echo '<td><i class="fa fa-check-square-o fa-lg"></i>&nbsp;</td>';
-//                } else {
-//                    echo '<td><i class="fa fa-square-o fa-lg"></i>&nbsp;</td>';
-//                }
-                ?>    
-                <td align="center"  style="vertical-align: middle;"> 
-                    <?= anchor('Slides/edit/' . $row['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') ?>
-                    <?= anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', array('type' => "button", 'class' => "btn btn-danger btn-xs", 'onclick' => "javascript : return confirm('ลบสไลด์');")) ?>
-                </td>                
-                </tr>
+                </table>
+            </div>
+            <div class="tab-pane" id="active">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                    <th style="width: 10%;" ></th>
+                    <th style="width: 5%;" >ลำดับ</th>
+                    <th style="width: 25%;" >ชื่อหลัก</th>
+                    <th style="width: 25%;" >ชื่อรอง</th>
+                    <th style="width: 5%;" >ลิ้งค์</th>
+                    <th style="width: 20%;" >รูปภาพ</th>
 
-                <?php
-                $i++;
-            }
-        } else {
-            echo '<tr><td colspan="9" class="text-center">ไม่พบข้อมูลสไลด์ในระบบ</td></tr>';
-        }
-        ?>
+                    <th style="width: 15%" ></th>
 
-        </tbody>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($slides != NULL) {
+                            $i = 1;
+                            foreach ($slides as $row) {
+                                if ($row['status_slide'] == '1') {
+                                    if ($row['status_slide'] == '1') {
+                                        echo '<tr class="success">';
+                                        echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-check-square-o fa-lg"></i></td>';
+                                    } else {
+                                        echo '<tr>';
+                                        echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
+                                    }
+                                    ?>  
+                                <td align="center" style="vertical-align: middle;" > <?= $i ?></td>
+                                <td style="vertical-align: middle;">
+                                    <?= $row['title']['thai']; ?>
+                                    <hr>
+                                    <?= $row['title']['english']; ?>
+                                </td>
 
-    </table>
+                                <td style="vertical-align: middle;">
+                                    <?= $row['subtitle']['thai']; ?>
+                                    <hr>
+                                    <?= $row['subtitle']['english']; ?>
+                                </td>
 
-</div>
-<!-- <tr>
-                    <td>0</td>
-                    <td>ทดสอบชื่อเรื่องหลัก</td>
-                    <td>Title Test</td>
-                    <td>ชื่อเรื่องรอง</td>
-                    <td>Subtitle Test</td>
-                    <td><a>Link 12345678910</a></td>
-                    <td><img data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail" width="100" height="100"></td>
-                    <td><i class="fa fa-check-square-o fa-lg"></i> <i class="fa fa-check-square-0 fa-lg"></i></td>
-                    <td>
-                        <? //anchor('Slides/edit/1', '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') ?>
-                        <? //anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', 'type="button" class="btn btn-danger btn-xs"') ?>
-                    </td>                
-                </tr>-->
+                                <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
+                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?></td>
+
+                                <td align="center"  style="vertical-align: middle;"> 
+                                    <?php
+                                    $delete = array(
+                                        'type' => "button",
+                                        'class' => "btn btn-danger btn-xs",
+                                        'data-id' => "2",
+                                        'data-title' => "ลบ",
+                                        'data-info' => $row['title']['thai'],
+                                        'data-toggle' => "modal",
+                                        'data-target' => "#confirm",
+                                        'data-href' => 'Slides/delete/' . $row['id'],
+                                    );
+                                    $cancle = array(
+                                        'type' => "button",
+                                        'class' => "btn btn-warning btn-xs",
+                                        'data-id' => "3",
+                                        'data-title' => "ยกเลิก",
+                                        'data-info' => $row['title']['thai'],
+                                        'data-toggle' => "modal",
+                                        'data-target' => "#confirm",
+                                        'data-href' => 'Slides/cancle/' . $row['id'],
+                                    );
+                                    $active = array(
+                                        'type' => "button",
+                                        'class' => "btn btn-success btn-xs",
+                                        'data-id' => "4",
+                                        'data-title' => "ใช้งาน",
+                                        'data-info' => $row['title']['thai'],
+                                        'data-toggle' => "modal",
+                                        'data-target' => "#confirm",
+                                        'data-href' => 'Slides/active/' . $row['id'],
+                                    );
+                                    echo anchor('Slides/edit/' . $row['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
+                                    if ($row['status_slide'] == '1') {
+                                        echo anchor('#', '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', $cancle);
+                                    } else {
+                                        echo anchor('Slides/active/' . $row['id'], '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+
+                                        echo anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                                    }
+                                    ?>
+
+                                </td>                
+                                </tr>
+
+                                <?php
+                                $i++;
+                            }
+                        }
+                    } else {
+                        echo '<tr><td colspan="9" class="text-center">ไม่พบข้อมูลสไลด์ในระบบ</td></tr>';
+                    }
+                    ?>
+
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="tab-pane" id="non_active">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                    <th style="width: 8%;" ></th>
+                    <!--<th style="width: 5%;" >ลำดับ</th>-->
+                    <th style="width: 25%;" >ชื่อหลัก</th>
+                    <th style="width: 25%;" >ชื่อรอง</th>
+                    <th style="width: 5%;" >ลิ้งค์</th>
+                    <th style="width: 20%;" >รูปภาพ</th>
+
+                    <th style="width: 15%" ></th>
+
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($slides != NULL) {
+                            $i = 1;
+                            foreach ($slides as $row) {
+                                if ($row['status_slide'] == '0') {
+
+                                    echo '<tr class="active">';
+                                    echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
+                                    ?>  
+                                <!--<td align="center"> <? $i ?></td>-->
+                                <td>
+                                    <?= $row['title']['thai']; ?>
+                                    <hr>
+                                    <?= $row['title']['english']; ?>
+                                </td>
+
+                                <td>
+                                    <?= $row['subtitle']['thai']; ?>
+                                    <hr>
+                                    <?= $row['subtitle']['english']; ?>
+                                </td>
+
+                                <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
+                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?></td>
+
+                                <td align="center"  style="vertical-align: middle;"> 
+                                    <?php
+                                    $delete = array(
+                                        'type' => "button",
+                                        'class' => "btn btn-danger btn-xs",
+                                        'data-id' => "2",
+                                        'data-title' => "ลบ",
+                                        'data-info' => $row['title']['thai'],
+                                        'data-toggle' => "modal",
+                                        'data-target' => "#confirm",
+                                        'data-href' => 'Slides/delete/' . $row['id'],
+                                    );
+                                    $cancle = array(
+                                        'type' => "button",
+                                        'class' => "btn btn-warning btn-xs",
+                                        'data-id' => "3",
+                                        'data-title' => "ยกเลิก",
+                                        'data-info' => $row['title']['thai'],
+                                        'data-toggle' => "modal",
+                                        'data-target' => "#confirm",
+                                        'data-href' => 'Slides/cancle/' . $row['id'],
+                                    );
+                                    $active = array(
+                                        'type' => "button",
+                                        'class' => "btn btn-success btn-xs",
+                                        'data-id' => "4",
+                                        'data-title' => "ใช้งาน",
+                                        'data-info' => $row['title']['thai'],
+                                        'data-toggle' => "modal",
+                                        'data-target' => "#confirm",
+                                        'data-href' => 'Slides/active/' . $row['id'],
+                                    );
+                                    echo anchor('Slides/edit/' . $row['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
+                                    if ($row['status_slide'] == '1') {
+                                        echo anchor('#', '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', $cancle);
+                                    } else {
+                                        echo anchor('Slides/active/' . $row['id'], '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+
+                                        echo anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                                    }
+                                    ?>
+
+                                </td>                
+                                </tr>
+
+                                <?php
+                                $i++;
+                            }
+                        }
+                    } else {
+                        echo '<tr><td colspan="9" class="text-center">ไม่พบข้อมูลสไลด์ในระบบ</td></tr>';
+                    }
+                    ?>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+

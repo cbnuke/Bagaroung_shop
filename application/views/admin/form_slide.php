@@ -49,9 +49,9 @@
     </div>
     <div class="form-group <?= (form_error('img_slide')) ? 'has-error' : '' ?>" id="img_add">
         <label class="col-sm-2 control-label">Image</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <?php echo $form['img_slide']; ?>  
-            <!--<input type="file" class="form-control" name="img_slide" >-->
+            <p style="color:red;margin-top: 10px;">ขนาด&nbsp;<span class="label label-danger"><strong>900px*500px</strong></span>&nbsp;หรือมากกว่า</p>  
         </div>
 
     </div>

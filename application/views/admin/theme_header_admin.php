@@ -28,12 +28,12 @@
         <!-- SB Admin CSS - Include with every page -->        
         <?php echo css('sb-admin.css'); ?>
         <?php echo css('bootstrap-datetimepicker.css'); ?>
-      
-        
-       <!-- Core Scripts - Include with every page -->
-        <?=js('jquery.js');?>
-        <?=js('bootstrap.js');?>
-       <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+
+
+        <!-- Core Scripts - Include with every page -->
+        <?= js('jquery.js'); ?>
+        <?= js('bootstrap.js'); ?>
+        <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
         <?= js('fileupload/vendor/jquery.ui.widget.js') ?>
         <!-- The Templates plugin is included to render the upload/download listings -->
         <?= js('fileupload/tmpl.min.js') ?>
@@ -61,6 +61,18 @@
         <!--[if (gte IE 8)&(lt IE 10)]>
         <?= js('fileupload/jquery.xdr-transport.js') ?>
         <![endif]-->
+
+        <style>
+            th{
+                text-align: center;
+                vertical-align: middle ! important;
+            }
+            td{
+                vertical-align: middle;
+            }
+
+        </style>
+
     </head>
 
     <body>
@@ -140,11 +152,11 @@
                                     <li>
                                         <?= anchor('Promotions/add', '<i class="fa fa-plus-circle fa-fw"></i>&nbsp;สร้างโปรโมชั่น') ?>                                       
                                     </li>                                  
-                                    
+
                                     <li>
                                         <?= anchor('Promotions/', '<i class="fa fa-list fa-fm "></i>&nbsp;รายการโปรโมชั่นทั้งหมด') ?>   
                                     </li>
-                                    
+
                                 </ul>
                             </li>
                             <!-- Slides -->

@@ -269,7 +269,7 @@ Class m_slides extends CI_Model {
     function upload_image($name, $id = NULL) {
 
         if (!empty($_FILES[$name]['name'])) {
-            $config['upload_path'] = "assets/img/slides";
+            $config['upload_path'] = "assets/img/temp_slides";
             $config['allowed_types'] = "gif|jpg|jpeg|png";
             $config['encrypt_name'] = TRUE;
 //            $config['overwrite']=TRUE;
@@ -286,16 +286,32 @@ Class m_slides extends CI_Model {
                 //insert to database
                 $finfo = $this->upload->data();
 
+                // to re-size for thumbnail images un-comment and set path here and in json array
+                $config = array();
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $finfo['full_path'];
+                $config['create_thumb'] = TRUE;
+                $config['new_image'] = 'assets/img/slides/' . $finfo['file_name'];
+                $config['maintain_ratio'] = TRUE;
+                $config['thumb_marker'] = '';
+                $config['width'] = 900;
+                $config['height'] = 500;
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+
+
                 $data_img = array(
                     'img_name' => $finfo['file_name'],
                     'img_full' => 'slides/' . $finfo['file_name'],
-                    'img_path' => $finfo['file_path'],
+                    'img_path' => '/assets/img/slides',
                 );
+                unlink($finfo['full_path']);
                 if ($id == NULL) {
+                    $this->db->trans_start();
                     $this->db->insert('images', $data_img);
-                    $query = $this->db->get_where('images', $data_img);
-                    $rs = $query->row_array();
-                    return $rs['id'];
+                    $image_id = $this->db->insert_id();
+                    $this->db->trans_complete();
+                    return $image_id;
                 } else {
                     unlink($this->get_image_path($id));
                     $this->db->where('id', $id);
