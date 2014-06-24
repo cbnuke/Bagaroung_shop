@@ -4,29 +4,19 @@
             <div class="row hidden-sm hidden-xs">                
                 <div class="col-md-12">
                     <div class="row">
-                        <h3>Recommend</h3>
+                        <h3><?= lang('recommend') ?></h3>
                         <div class="col-md-12">
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="..." >
-                                <div class="caption">
-                                    <h4>Bag</h4>
-                                    <p>Price xxx THB</p>
-                                </div>
-                            </a>
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="..." >
-                                <div class="caption">
-                                    <h4>Bag</h4>
-                                    <p>Price xxx THB</p>
-                                </div>
-                            </a>
-                            <a href="#" class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="..." >
-                                <div class="caption">
-                                    <h4>Bag</h4>
-                                    <p>Price xxx THB</p>
-                                </div>
-                            </a>                            
+                            <?php
+                            foreach ($recommend as $row) {
+                                echo '<a href="' . $row['id'] . '" class="thumbnail">';
+                                echo '<img src="' . img_url() . $row['img_front'] . '" alt="..." >';
+                                echo '<div class="caption">';
+                                echo '<h4>' . unserialize($row['product_name'])[$language] . '</h4>';
+                                echo '<p>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</p>';
+                                echo '</div>';
+                                echo '</a>';
+                            }
+                            ?>        
                         </div>
                     </div>
                 </div>
@@ -36,71 +26,70 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="row col-md-12 col-sm-12 col-xs-12 thumbnail center-block">
-                        <img id="img_01" src="http://placehold.it/600x400" data-zoom-image="http://placehold.it/600x400"/> 
+                        <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"/> 
                     </div>
                     <div class="row" id="gallery_01">
                         <div class="col-md-3 col-xs-3">
-                            <a href="#" data-image="http://placehold.it/600x400/999" data-zoom-image="http://placehold.it/600x400/999"> 
-                                <img id="img_01" src="http://placehold.it/300x200/999" class="img-responsive"/>
+                            <a href="#" data-image="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"> 
+                                <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" class="img-responsive"/>
                             </a>
                         </div>
                         <div class="col-md-3 col-xs-3">
-                            <a href="#" data-image="http://placehold.it/600x400/888" data-zoom-image="http://placehold.it/600x400/888"> 
-                                <img id="img_01" src="http://placehold.it/300x200/888" class="img-responsive"/>
+                            <a href="#" data-image="<?= img_url() . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . $detail['img_back'] ?>"> 
+                                <img id="img_01" src="<?= img_url() . $detail['img_back'] ?>" class="img-responsive"/>
                             </a>
                         </div>
                         <div class="col-md-3 col-xs-3">
-                            <a href="#" data-image="http://placehold.it/600x400/777" data-zoom-image="http://placehold.it/600x400/777"> 
-                                <img id="img_01" src="http://placehold.it/300x200/777" class="img-responsive"/>
+                            <a href="#" data-image="<?= img_url() . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . $detail['img_right'] ?>"> 
+                                <img id="img_01" src="<?= img_url() . $detail['img_right'] ?>" class="img-responsive"/>
                             </a>
                         </div>
                         <div class="col-md-3 col-xs-3">
-                            <a href="#" data-image="http://placehold.it/600x400/666" data-zoom-image="http://placehold.it/600x400/666"> 
-                                <img id="img_01" src="http://placehold.it/300x200/666" class="img-responsive"/>
+                            <a href="#" data-image="<?= img_url() . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . $detail['img_left'] ?>"> 
+                                <img id="img_01" src="<?= img_url() . $detail['img_left'] ?>" class="img-responsive"/>
                             </a>
                         </div>
                     </div>
                     <script>
                         //initiate the plugin and pass the id of the div containing gallery images 
                         $("#img_01").elevateZoom({
-                            constrainType:"height", 
-                            constrainSize:274, 
-                            zoomType: "lens", 
+                            constrainType: "height",
+                            constrainSize: 274,
+                            zoomType: "lens",
                             lensShape: 'round',
-                            containLensZoom: true, 
-                            gallery:'gallery_01', 
+                            containLensZoom: true,
+                            gallery: 'gallery_01',
                             galleryActiveClass: "active",
                             loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
                         ////pass the images to Fancybox 
-                       
+
                     </script>
                 </div>
                 <div class="col-md-6">
-                    <h3 class="text-center"><strong>Price</strong>  99999 THB</h3>
-                    <p class="text-center"><a href="#howto" class="btn btn-primary" >How to order</a></p>
+                    <h3 class="text-center"><strong><?= lang('product_price') ?></strong>  <?= number_format($detail['product_price'], 2) ?> <?= lang('baht') ?></h3>
+                    <p class="text-center"><a href="#howto" class="btn btn-primary" ><?= lang('how_to_order') ?></a></p>
                     <dl>
-                        <dt>Detail</dt>
-                        <dd>xxxxxxxxxxxxxx</dd>
-                        <dt>Size</dt>
-                        <dd>Weight : xxx kg.</dd>
-                        <dd>Width : xxx cm.</dd>
-                        <dd>High : xxx cm.</dd>
+                        <dt><?= lang('detail_product') ?></dt>
+                        <dd><?= unserialize($detail['detail'])[$language] ?></dd>
+                        <dt><?= lang('product_size') ?></dt>
+                        <dd><?= lang('product_weight') ?> : <?= $detail['weight'] ?> <?= lang('kg') ?></dd>
+                        <dd><?= lang('product_width') ?> : <?= $detail['width'] ?> <?= lang('cm') ?></dd>
+                        <dd><?= lang('product_high') ?> : <?= $detail['hight'] ?> <?= lang('cm') ?></dd>
+                        <dd><?= lang('product_top_width') ?> : <?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
+                        <dd><?= lang('product_base_width') ?> : <?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
                     </dl>
                 </div>                
             </div>
             <div class="row" style="margin-top: 20px;">
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
-                <div class="col-md-6"><div class="thumbnail"><img src="http://placehold.it/600x400" alt="..." ></div></div>
+                <?php
+                foreach ($img as $row) {
+                    echo '<div class="col-md-6"><div class="thumbnail"><img src="' . img_url() . $row['img_full'] . '" alt="..." ></div></div>';
+                }
+                ?>
             </div>
         </div>
     </div>
     <div class="row " id="howto">
-        <div class="col-sm-12 col-xs-12" style="height: 300px; background-color: #999;"><h3>How to order.</h3></div>
+        <div class="col-sm-12 col-xs-12" style="height: 300px; background-color: #999;"><h3><?= lang('how_to_order') ?></h3></div>
     </div>
 </div>

@@ -51,8 +51,8 @@
                     <?php } ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="hidden-xs"><?php echo img('logo.png', array('height' => '50px')); ?></li>
-                        <li><?php echo anchor('lang/set/thai', img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
-                        <li><?php echo anchor('lang/set/english', img('usa.png', array('height' => '20px')) . 'English'); ?></li>
+                        <li><?php echo anchor('lang/set/thai?page=' . uri_string(), img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
+                        <li><?php echo anchor('lang/set/english?page=' . uri_string(), img('usa.png', array('height' => '20px')) . 'English'); ?></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

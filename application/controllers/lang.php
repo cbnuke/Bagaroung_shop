@@ -15,7 +15,11 @@ class Lang extends CI_Controller {
         } else {
             $this->session->set_userdata('site_lang', "thai");
         }
-        redirect(base_url());
+
+        if ($_GET['page'] != NULL)
+            redirect($_GET['page']);
+        else
+            redirect(base_url());
     }
 
 }

@@ -48,12 +48,12 @@ Class m_products extends CI_Model {
 
         $this->db->where('id', $id);
         $this->db->update('products', $data);
-        
+
         //Delete old images
         $this->delect_img_in_database($id);
         //Insert new images in temp
         $this->insert_img_to_database($id);
-        
+
         return TRUE;
     }
 
@@ -389,11 +389,11 @@ Class m_products extends CI_Model {
         $this->db->where('products_has_images.product_id', $product_id);
         $query = $this->db->get();
         $data = $query->result_array();
-        
+
         //Copy images to temp
-        foreach ($data as $row){
-            copy(img_path().'products/'.$row['img_name'], img_path().'temp/'.$row['img_name']);
-            copy(img_path().'products/thumbs/'.$row['img_name'], img_path().'temp/thumbs/'.$row['img_name']);
+        foreach ($data as $row) {
+            copy(img_path() . 'products/' . $row['img_name'], img_path() . 'temp/' . $row['img_name']);
+            copy(img_path() . 'products/thumbs/' . $row['img_name'], img_path() . 'temp/thumbs/' . $row['img_name']);
         }
     }
 
@@ -413,11 +413,12 @@ Class m_products extends CI_Model {
             rename(img_path() . 'temp/thumbs/' . $row['img_name'], img_path() . 'products/thumbs/' . $row['img_name']);
         }
         //Insert to products_has_images
-        $this->db->insert_batch('products_has_images', $data_images);
+        if ($data_images != NULL)
+            $this->db->insert_batch('products_has_images', $data_images);
         return TRUE;
     }
 
-    function delect_img_in_database($product_id){
+    function delect_img_in_database($product_id) {
         //Delect image in folder product
         $this->db->select();
         $this->db->from('products_has_images');
@@ -425,9 +426,9 @@ Class m_products extends CI_Model {
         $this->db->where('products_has_images.product_id', $product_id);
         $query = $this->db->get();
         $data = $query->result_array();
-        foreach ($data as $row){
-            unlink(img_path().'products/'.$row['img_name']);
-            unlink(img_path().'products/thumbs/'.$row['img_name']);
+        foreach ($data as $row) {
+            unlink(img_path() . 'products/' . $row['img_name']);
+            unlink(img_path() . 'products/thumbs/' . $row['img_name']);
             //Delect image in images
             $this->db->delete('images', array('id' => $row['image_id']));
         }
@@ -435,7 +436,7 @@ Class m_products extends CI_Model {
         $this->db->delete('products_has_images', array('product_id' => $product_id));
         return TRUE;
     }
-            
+
     function get_img_from_temp() {
         $data = array();
         $name = get_filenames(img_path() . 'temp/thumbs/');

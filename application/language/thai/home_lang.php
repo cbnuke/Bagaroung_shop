@@ -8,3 +8,7 @@ $lang['menu_contactus'] = "ติดต่อ";
 $lang['head_promotions'] = "โปรโมชั่น";
 $lang['head_products'] = "ผลิตภัณฑ์";
 $lang['head_contactus'] = "ติดต่อ";
+
+$lang['detail_product'] = "รายละเอียดสินค้า";
+$lang['product_price'] = "ราคา";
+$lang['baht'] = "บาท";

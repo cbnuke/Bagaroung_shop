@@ -8,3 +8,7 @@ $lang['menu_contactus'] = "Contact Us";
 $lang['head_promotions'] = "Promotions";
 $lang['head_products'] = "Products";
 $lang['head_contactus'] = "Contact Us";
+
+$lang['detail_product'] = "Detail product";
+$lang['product_price'] = "Price";
+$lang['baht'] = "Baht";

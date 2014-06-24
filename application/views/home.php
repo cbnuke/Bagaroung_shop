@@ -134,145 +134,52 @@
         <div class="col-md-12">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#model1" data-toggle="tab">Model A</a></li>
-                <li><a href="#model2" data-toggle="tab">Model B</a></li>
-                <li><a href="#model3" data-toggle="tab">Model  C</a></li>
+                <?php
+                $flag_first = TRUE;
+                foreach ($all_pro as $row) {
+                    $type_name = unserialize($row['product_type']);
+                    if ($flag_first) {
+                        echo '<li class="active"><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
+                        $flag_first = FALSE;
+                    } else {
+                        echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
+                    }
+                }
+                ?>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="model1">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="thumbnail">                                
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="model2">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="model3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/600x400" alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="<?php echo base_url('detailproduct'); ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                //Tab
+                $flag_first = TRUE;
+                foreach ($all_pro as $row) {
+                    if ($flag_first) {
+                        echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
+                        $flag_first = FALSE;
+                    } else {
+                        echo '<div class="tab-pane" id="type' . $row['id'] . '">';
+                    }
+                    echo '<div class="row">';
+                    foreach ($row['list'] as $product) {
+                        $product_name = unserialize($product['product_name']);
+                        echo '<div class="col-md-6">';
+                        echo '<div class="thumbnail">';
+                        echo '<img src="' . img_url() . $product['img_front'] . '" alt="...">';
+                        echo '<div class="caption">';
+                        echo '<h3>' . $product_name[$language] . '</h3>';
+                        echo '<div class="row">';
+                        echo '<div class="col-md-6"><a href="' . base_url('detailproduct/id/' . $product['id']) . '" class="btn btn-primary" role="button">' . lang('detail_product') . '</a></div>';
+                        echo '<div class="col-md-6"><h4 class="text-center"><small>' . lang('product_price') . '</small> ' . number_format($product['product_price'], 2) . ' <small>' . lang('baht') . '</small></h4></div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
             </div>
         </div>
     </div>
