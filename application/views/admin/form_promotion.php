@@ -18,8 +18,8 @@
     <?php
     if ($id != null) {
         $promotion_id = $id;
-    }  else {
-        $promotion_id =NULL;
+    } else {
+        $promotion_id = NULL;
     }
     echo $form['form'];
     ?>
@@ -88,10 +88,11 @@
             $image = TRUE;
             ?>
             <div class="form-group" id="img_show">
-                <label class="col-sm-2 control-label">Image</label>
+                <label class="col-sm-2 control-label">รูปภาพ</label>
                 <div class="col-xs-6 col-sm-2 placeholder">
-                    <div class="pull-right" id="btn_del_img" >                           
-                        <input type="button" class="btn btn-outline btn-circle btn-danger btn-xs" value='-' id="del_img">                            
+                    <div class="pull-right" id="btn_del_img" >
+                        <a></a>
+                        <button type="button" class="btn btn-outline btn-circle btn-danger btn-sm" id="del_img" ><i class="fa fa-times fa-lg" ></i></button>                      
                     </div>
                     <?= $form['image'] ?>
                 </div>
@@ -100,9 +101,8 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">สินค้าโปรโมชั่น</label>                
             <div class="col-sm-6">
-                <div class="pull-left">
-                    <!-- Button trigger modal -->                    
-                    <input type="button" class="btn btn-outline btn-circle btn-success btn-sm" data-toggle="modal" data-target="#myModal" value="+" >
+                <div class="pull-left">                    
+                    <button type="button" class="btn btn-outline btn-circle btn-success btn-sm" data-toggle="modal" data-target="#myModal"> <i class="fa fa-plus fa-lg"></i> </button>
                 </div>
                 <br>
                 <table id="tb_products_promotion" class="table table-responsive" >
@@ -274,11 +274,8 @@
         }
         $("#del_img").click(function() {
 //            alert("delete");
-            if (confirm('ลบรูปภาพ')) {
-                $('#img_add').show();
-                $('#img_show').hide(true);
-            }
-
+            $('#img_add').show();
+            $('#img_show').hide(true);
         });
 
     });

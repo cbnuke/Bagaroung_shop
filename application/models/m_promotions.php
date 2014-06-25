@@ -51,6 +51,24 @@ class m_promotions extends CI_Model {
         return;
     }
 
+    function delete_promotion($promoton_id) {
+        //delete image
+        $img_id = $this->get_image_id($promoton_id);
+        $this->deleteImage($img_id);
+        //delete data in images
+        $this->db->where('id', $img_id);
+        $this->db->delete('images');
+
+        //delete on products has promotion 
+        $this->db->where('promotion_id', $promoton_id);
+        $this->db->delete('products_has_promotions');       
+
+        //delete promotions
+        $this->db->where('id', $promoton_id);
+        $this->db->delete('promotions');
+        return;
+    }
+
     function validation_form_add() {
         $this->form_validation->set_rules('name[thai]', 'ชื่อโปรโมชั่น', 'trim|required|xss_clean');
         $this->form_validation->set_rules('name[english]', 'Promotion name', 'trim|required|xss_clean');
@@ -77,21 +95,21 @@ class m_promotions extends CI_Model {
     }
 
     function get_all_promotions() {
-        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full');
+        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
         $query = $this->db->get();
         $rs = $query->result_array();
-        $i=0;
+        $i = 0;
         foreach ($rs as $value) {
             $rs[$i]['count_product'] = $this->count_product($rs[$i]['id']);
             $i++;
         }
         return $rs;
     }
-    
+
     function count_product($promotion_id) {
-        $rs= $this->db->get_where('products_has_promotions', array('promotion_id' => $promotion_id));
+        $rs = $this->db->get_where('products_has_promotions', array('promotion_id' => $promotion_id));
         return $rs->num_rows();
     }
 
@@ -113,7 +131,7 @@ class m_promotions extends CI_Model {
             $this->db->where('promotion_id', $promotion_id);
         }
         $query = $this->db->get();
-        $rs = $query->result_array();        
+        $rs = $query->result_array();
         return $rs;
     }
 
@@ -426,14 +444,14 @@ class m_promotions extends CI_Model {
     }
 
 //  set itemps to modal when select dropdown
-    function set_product_by_type($type_id,$promotion_id=NULL) {
+    function set_product_by_type($type_id, $promotion_id = NULL) {
         $rs = '';
         if ($promotion_id == NULL) {
             //add mode 
             $rs = $this->set_products_list_add($type_id);
         } else {
             //edit mode
-            $rs = $this->set_products_list_edit($promotion_id, $type_id);            
+            $rs = $this->set_products_list_edit($promotion_id, $type_id);
         }
         return $rs;
     }
@@ -491,7 +509,7 @@ class m_promotions extends CI_Model {
             $config['allowed_types'] = "gif|jpg|jpeg|png";
             $config['encrypt_name'] = TRUE;
 //            $config['overwrite']=TRUE;
-            $config['max_size'] = "10240";
+            $config['max_size'] = "5000";
             $config['max_width'] = "2920";
             $config['max_height'] = "2080";
 
@@ -503,6 +521,24 @@ class m_promotions extends CI_Model {
             } else {
 //insert to database
                 $finfo = $this->upload->data();
+                $config2 = array();
+                $config2['image_library'] = 'gd2';
+                $config2['source_image'] = $finfo['full_path'];
+                $config2['create_thumb'] = TRUE;
+                $config2['new_image'] = 'assets/img/promotions/thumbs/' . $finfo['file_name'];
+                $config2['maintain_ratio'] = TRUE;
+                $config2['thumb_marker'] = '';
+                $config2['width'] = 100;
+                $config2['height'] = 100;
+                $this->load->library('image_lib', $config2);
+                $this->image_lib->resize();
+
+                $data_img = array(
+                    'img_name' => $finfo['file_name'],
+                    'img_full' => 'promotions/' . $finfo['file_name'],
+                    'img_small' => 'promotions/thumbs/' . $finfo['file_name'],
+                    'img_path' => $finfo['file_path'],
+                );
 
                 $data_img = array(
                     'img_name' => $finfo['file_name'],
@@ -516,7 +552,7 @@ class m_promotions extends CI_Model {
                     $this->db->trans_complete();
                     return $image_id;
                 } else {
-                    unlink($this->get_image_path($id));
+                    $this->deleteImage($id);
                     $this->db->where('id', $id);
                     $this->db->update('images', $data_img);
 
@@ -546,17 +582,16 @@ class m_promotions extends CI_Model {
 
         return $row['id'];
     }
-
-    function get_image_path($image_id) {
+   
+    public function deleteImage($image_id) {
         $this->db->select('img_path,img_name');
         $this->db->from('images');
         $this->db->where('id', $image_id);
         $query = $this->db->get();
         $row = $query->row_array();
-        $path = $row['img_path'];
-        $path.=$row['img_name'];
 
-        return $path;
+        unlink($row['img_path'] . $row['img_name']);
+        unlink($row['img_path'] . 'thumbs/' . $row['img_name']);
     }
 
 }

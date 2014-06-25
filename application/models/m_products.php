@@ -19,9 +19,36 @@ Class m_products extends CI_Model {
         $result = $query->result_array();
         return $result;
     }
+    function check_all_product_by_type($type_id) {
+        $this->db->select('*,products.id');
+        $this->db->from('products');
+        $this->db->join('product_types', 'products.product_type_id=product_types.id', 'left');
+        $this->db->where('product_type_id',$type_id);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
+    }
 
-    function check_product_type() {
-        $query = $this->db->get('product_types');
+    function check_product_type($id = NULL) {
+        if ($id == NULL) {
+            $query = $this->db->get('product_types');
+            $result = $query->result_array();
+            return $result;
+        } else {
+            $query = $this->db->get_where('product_types', array('id' => $id));
+            $row = $query->row_array();
+            return $row['product_type'];
+        }
+    }
+
+    function check_images_by_product($id) {
+        $this->db->select('*');
+        $this->db->from('images');
+        $this->db->join('products_has_images', 'products_has_images.image_id = images.id');
+//        $this->db->join('products', 'products_has_images.product_id = products.id', 'left');
+//        $this->db->join('product_types', 'products.product_type_id=product_types.id', 'left');
+        $this->db->where('product_id', $id);
+        $query = $this->db->get();
         $result = $query->result_array();
         return $result;
     }
@@ -55,6 +82,29 @@ Class m_products extends CI_Model {
         $this->insert_img_to_database($id);
 
         return TRUE;
+    }
+
+    function delete_product($id) {
+        //delete image
+        $this->delect_img_in_database($id);
+        
+        //delete on products has promotion 
+        $this->db->where('product_id', $id);
+        $this->db->delete('products_has_promotions');
+
+        
+        //delete image in table product
+        $query = $this->db->get_where('products', array('id' => $id));
+        $pro = $query->row_array();
+        $this->delete_image($pro['img_front']);
+        $this->delete_image($pro['img_back']);
+        $this->delete_image($pro['img_right']);
+        $this->delete_image($pro['img_left']);
+        
+        //delete on products 
+        $this->db->where('id', $id);
+        $this->db->delete('products');
+        
     }
 
     function set_form_add() {
@@ -197,6 +247,7 @@ Class m_products extends CI_Model {
             'img_back' => $this->upload_img('img_back'),
             'img_right' => $this->upload_img('img_right'),
             'img_left' => $this->upload_img('img_left'),
+            'product_status'=>'1',
         );
         return $get_page_data;
     }
@@ -221,6 +272,21 @@ Class m_products extends CI_Model {
         } else {
             return NULL;
         }
+    }
+   
+    public function delete_image($file) {
+        unlink(FCPATH . 'assets/img/' . $file);
+    }
+
+    function get_image_id($id) {
+        $this->db->select('images.id,images.img_name');
+        $this->db->from('images');
+        $this->db->join('products_has_images', 'products_has_images.image_id = images.id');
+        $this->db->where('products_has_images.product_id', $id);
+        $query = $this->db->get();
+        $row = $query->result_array();
+
+        return $row;
     }
 
     function set_form_edit($data) {
@@ -319,7 +385,8 @@ Class m_products extends CI_Model {
             'img_front' => form_upload($i_img_front),
             'img_back' => form_upload($i_img_back),
             'img_right' => form_upload($i_img_right),
-            'img_left' => form_upload($i_img_left)
+            'img_left' => form_upload($i_img_left),
+            'product_status'=>'1',
         );
         return $all_form;
     }
@@ -363,6 +430,7 @@ Class m_products extends CI_Model {
             'img_back' => $this->upload_img('img_back'),
             'img_right' => $this->upload_img('img_right'),
             'img_left' => $this->upload_img('img_left'),
+            'product_status'=>'1',
         );
         //Unset img if NULL
         if ($get_page_data['img_front'] == NULL)
@@ -450,6 +518,104 @@ Class m_products extends CI_Model {
             array_push($data, $temp);
         }
         return $data;
+    }
+
+    function set_form_view($data) {
+
+        $i_product_name_th = array(
+            'name' => 'product_name[thai]',
+            'class' => 'form-control',
+            'placeholder' => 'ชื่อสินค้า',
+            'value' => unserialize($data ['product_name'])['thai']);
+        $i_product_name_en = array(
+            'name' => 'product_name[english]',
+            'class' => 'form-control',
+            'placeholder' => 'Product Name',
+            'value' => unserialize($data ['product_name'])['english']);
+        $i_price = array(
+            'name' => 'product_price',
+            'class' => 'form-control',
+            'placeholder' => 'Price',
+            'value' => $data ['product_price']);
+        $i_width = array(
+            'name' => 'width',
+            'class' => 'form-control',
+            'placeholder' => 'Width',
+            'value' => $data ['width']);
+        $i_hight = array(
+            'name' => 'hight',
+            'class' => 'form-control',
+            'placeholder' => 'Hight',
+            'value' => $data ['hight']);
+        $i_base_width = array(
+            'name' => 'base_width',
+            'class' => 'form-control',
+            'placeholder' => 'Base width',
+            'value' => $data ['base_width']);
+        $i_top_width = array(
+            'name' => 'top_width',
+            'class' => 'form-control',
+            'placeholder' => 'Top width',
+            'value' => $data ['top_width']);
+        $i_weight = array(
+            'name' => 'weight',
+            'class' => 'form-control',
+            'placeholder' => 'Weight',
+            'value' => $data ['weight']);
+        $i_detail_th = array(
+            'name' => 'detail[thai]',
+            'class' => 'form-control',
+            'value' => unserialize($data ['detail'])['thai'],
+            'rows' => '3',
+            'placeholder' => 'รายละเอียดสินค้า');
+        $i_detail_en = array(
+            'name' => 'detail[english]',
+            'class' => 'form-control',
+            'rows' => '3',
+            'placeholder' => 'Detail of Product',
+            'value' => unserialize($data ['detail'])['english']);
+
+        $i_type = array();
+        $temp = $this->m_products->check_product_type();
+        foreach ($temp as $row) {
+            $i_type[$row['id']] = unserialize($row['product_type'])['thai'];
+        }
+
+        $i_img_front = array(
+            'name' => 'img_front',
+            'class' => 'form-control');
+        $i_img_back = array(
+            'name' => 'img_back',
+            'class' => 'form-control');
+        $i_img_right = array(
+            'name' => 'img_right',
+            'class' => 'form-control');
+        $i_img_left = array(
+            'name' => 'img_left',
+            'class' => 'form-control');
+
+
+
+        $all_form = array(
+            'form' => form_open_multipart('products/view/' . $data['id'], array('class' => 'form-horizontal')),
+            'product_name[thai]' => form_label($i_product_name_th),
+            'product_name[english]' => form_label($i_product_name_en),
+            'product_price' => form_label($i_price),
+            'width' => form_label($i_width),
+            'hight' => form_label($i_hight),
+            'base_width' => form_label($i_base_width),
+            'top_width' => form_label($i_top_width),
+            'weight' => form_label($i_weight),
+            'detail[thai]' => form_textarea($i_detail_th),
+            'detail[english]' => form_textarea($i_detail_en),
+            'product_type_id' => form_dropdown('product_type_id', $i_type, $data ['product_type_id'], 'class="form-control"'),
+            'img_front' => img($data['img_front'], array('class' => 'img-responsive thumbnail', 'style' => '"max-width:100%;"')),
+            'img_back' => img($data['img_back'], array('class' => 'img-responsive thumbnail', 'style' => '"max-width:100%;"')),
+            'img_right' => img($data['img_right'], array('class' => 'img-responsive thumbnail', 'style' => '"max-width:100%;"')),
+            'img_left' => img($data['img_left'], array('class' => 'img-responsive thumbnail', 'style' => '"max-width:100%;"')),
+            'product_status' => $data['product_status'],
+        );
+        return $all_form;
     }
 
 }

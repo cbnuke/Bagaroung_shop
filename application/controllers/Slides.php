@@ -14,9 +14,10 @@ class Slides extends CI_Controller {
     public function index() {
 
         $data['slides'] = $this->m_slides->get_all_slide();
-
+//        $image_id = '23';
+//        $rs = $this->m_slides->deleteImage($image_id);
         $this->m_template->set_Title('สไลด์');
-//        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($rs);
         $this->m_template->set_Content('admin/slides.php', $data);
         $this->m_template->showTemplateAdmin();
     }
@@ -33,8 +34,6 @@ class Slides extends CI_Controller {
         }
         //Load form add
         $data['form'] = $this->m_slides->set_form_add();
-
-
         $this->m_template->set_Title('สร้างสไลด์');
 //        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_slide.php', $data);
@@ -70,7 +69,7 @@ class Slides extends CI_Controller {
 
     public function delete($id) {
 
-        $this->m_slides->delete_slide($id);
+        $this->m_slides->delete_slide($id);  
         redirect('slides');
     }
 

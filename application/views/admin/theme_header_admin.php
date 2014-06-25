@@ -28,11 +28,13 @@
         <!-- SB Admin CSS - Include with every page -->        
         <?php echo css('sb-admin.css'); ?>
         <?php echo css('bootstrap-datetimepicker.css'); ?>
+        <?php echo css('colorbox.css'); ?>
 
 
         <!-- Core Scripts - Include with every page -->
         <?= js('jquery.js'); ?>
         <?= js('bootstrap.js'); ?>
+        <?= js('jquery.colorbox.js'); ?>
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
         <?= js('fileupload/vendor/jquery.ui.widget.js') ?>
         <!-- The Templates plugin is included to render the upload/download listings -->
@@ -68,7 +70,10 @@
                 vertical-align: middle ! important;
             }
             td{
-                vertical-align: middle;
+                vertical-align: middle ! important;
+            }
+            .td-text-center{
+                text-align: center;
             }
 
         </style>

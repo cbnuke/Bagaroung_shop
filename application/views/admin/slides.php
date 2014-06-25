@@ -14,12 +14,12 @@
     <div class="col-md-12">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified">
-            <li class="active"><a href="#all" data-toggle="tab">สไลด์ทั้งหมด</a></li>
-            <li><a href="#active" data-toggle="tab">สไลด์ที่ใช้งาน</a></li>
+            <li><a href="#all" data-toggle="tab">สไลด์ทั้งหมด</a></li>
+            <li class="active"><a href="#active" data-toggle="tab">สไลด์ที่ใช้งาน</a></li>
             <li><a href="#non_active" data-toggle="tab">สไลด์ไม่ใช้งาน</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="all">
+            <div class="tab-pane" id="all">
                 <table class="table table-hover table-striped table-responsive">
                     <thead>
                     <th style="width: 8%;" ></th>
@@ -45,7 +45,7 @@
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                 }
                                 ?>  
-                            <!--<td align="center"> <? $i ?></td>-->
+                                    <!--<td align="center"> <? $i ?></td>-->
                             <td>
                                 <?= $row['title']['thai']; ?>
                                 <hr>
@@ -59,7 +59,7 @@
                             </td>
 
                             <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                            <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?></td>
+                            <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail')); ?></td>
 
                             <td align="center"  style="vertical-align: middle;"> 
                                 <?php
@@ -97,9 +97,8 @@
                                 if ($row['status_slide'] == '1') {
                                     echo anchor('#', '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', $cancle);
                                 } else {
-                                    echo anchor('Slides/active/' . $row['id'], '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
-
-                                    echo anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                                    echo anchor('#', '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+                                    echo anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
                                 }
                                 ?>
 
@@ -118,7 +117,7 @@
 
                 </table>
             </div>
-            <div class="tab-pane" id="active">
+            <div class="tab-pane active" id="active">
                 <table class="table table-hover table-responsive">
                     <thead>
                     <th style="width: 10%;" ></th>
@@ -159,7 +158,7 @@
                                 </td>
 
                                 <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?></td>
+                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail')); ?></td>
 
                                 <td align="center"  style="vertical-align: middle;"> 
                                     <?php
@@ -197,9 +196,8 @@
                                     if ($row['status_slide'] == '1') {
                                         echo anchor('#', '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', $cancle);
                                     } else {
-                                        echo anchor('Slides/active/' . $row['id'], '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
-
-                                        echo anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                                        echo anchor('#', '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+                                        echo anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
                                     }
                                     ?>
 
@@ -242,7 +240,7 @@
                                     echo '<tr class="active">';
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                     ?>  
-                                <!--<td align="center"> <? $i ?></td>-->
+                                            <!--<td align="center"> <? $i ?></td>-->
                                 <td>
                                     <?= $row['title']['thai']; ?>
                                     <hr>
@@ -256,7 +254,7 @@
                                 </td>
 
                                 <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_full'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?></td>
+                                 <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail')); ?></td>
 
                                 <td align="center"  style="vertical-align: middle;"> 
                                     <?php
@@ -294,9 +292,8 @@
                                     if ($row['status_slide'] == '1') {
                                         echo anchor('#', '<i class="fa fa-minus fa-lg"></i>&nbsp;ยกเลิก', $cancle);
                                     } else {
-                                        echo anchor('Slides/active/' . $row['id'], '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
-
-                                        echo anchor('Slides/delete/' . $row['id'], '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                                        echo anchor('#', '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+                                        echo anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
                                     }
                                     ?>
 

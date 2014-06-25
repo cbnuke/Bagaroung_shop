@@ -21,24 +21,25 @@ Class m_slides extends CI_Model {
     }
 
     public function delete_slide($slide_id) {
-        $img_id = $this->get_image_id($slide_id);
-        $img_path = $this->get_image_path($img_id);
+        
+        //delete image
+        $img_id = $this->get_image_id($slide_id);      
+        $this->deleteImage($img_id);
 
         //delete slide
         $this->db->where('id', $slide_id);
         $this->db->delete('slides');
-        //delete image from folder
-        unlink($img_path);
-        //delete images
-//        $this->db->where('id', $img_id);
-//        $this->db->delete('images');
+        
+         //delete data in images
+        $this->db->where('id', $img_id);
+        $this->db->delete('images');  
     }
 
     function validation_add() {
         $this->form_validation->set_rules('title[thai]', 'ชื่อเรื่อง', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('subtitle[thai]', 'ชื่อเรื่องรอง', 'required|trim|xss_clean');
+//        $this->form_validation->set_rules('subtitle[thai]', 'ชื่อเรื่องรอง', 'required|trim|xss_clean');
         $this->form_validation->set_rules('title[english]', 'Title', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('subtitle[english]', 'subtitle', 'required|trim|xss_clean');
+//        $this->form_validation->set_rules('subtitle[english]', 'subtitle', 'required|trim|xss_clean');
         $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'trim|required|xss_clean');
         if (empty($_FILES['img_slide']['name'])) {
             $this->form_validation->set_rules('img_slide', 'รูปภาพ', 'required|xss_clean');
@@ -254,25 +255,13 @@ Class m_slides extends CI_Model {
         return $row['id'];
     }
 
-    function get_image_path($image_id) {
-        $this->db->select('img_path,img_name');
-        $this->db->from('images');
-        $this->db->where('id', $image_id);
-        $query = $this->db->get();
-        $row = $query->row_array();
-        $path = $row['img_path'];
-        $path.=$row['img_name'];
+    function upload_image($name, $id = NULL) {         
 
-        return $path;
-    }
-
-    function upload_image($name, $id = NULL) {
-
-        if (!empty($_FILES[$name]['name'])) {
-            $config['upload_path'] = "assets/img/temp_slides";
+        if (!empty($_FILES[$name]['name'])) {          
+            
+            $config['upload_path'] ="assets/img/slides";
             $config['allowed_types'] = "gif|jpg|jpeg|png";
             $config['encrypt_name'] = TRUE;
-//            $config['overwrite']=TRUE;
             $config['max_size'] = "5000";
             $config['max_width'] = "2920";
             $config['max_height'] = "2080";
@@ -286,40 +275,65 @@ Class m_slides extends CI_Model {
                 //insert to database
                 $finfo = $this->upload->data();
 
+//                // to re-size show images 
+//                $config = array();
+//                $config['image_library'] = 'gd2';
+//                $config['source_image'] = $finfo['full_path'];
+//                $config['create_thumb'] = TRUE;
+//                $config['new_image'] = 'assets/img/slides/' . $finfo['file_name'];
+//                $config['maintain_ratio'] = TRUE;
+//                $config['thumb_marker'] = '';
+//                $config['width'] = 900;
+//                $config['height'] = 500;
+//                $this->load->library('image_lib', $config);
+//                $this->image_lib->resize();
+               
                 // to re-size for thumbnail images un-comment and set path here and in json array
-                $config = array();
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = $finfo['full_path'];
-                $config['create_thumb'] = TRUE;
-                $config['new_image'] = 'assets/img/slides/' . $finfo['file_name'];
-                $config['maintain_ratio'] = TRUE;
-                $config['thumb_marker'] = '';
-                $config['width'] = 900;
-                $config['height'] = 500;
-                $this->load->library('image_lib', $config);
+                $config2 = array();
+                $config2['image_library'] = 'gd2';
+                $config2['source_image'] = $finfo['full_path'];
+                $config2['create_thumb'] = TRUE;
+                $config2['new_image'] = 'assets/img/slides/thumbs/' . $finfo['file_name'];
+                $config2['maintain_ratio'] = TRUE;
+                $config2['thumb_marker'] = '';
+                $config2['width'] = 100;
+                $config2['height'] = 100;
+                $this->load->library('image_lib', $config2);
                 $this->image_lib->resize();
-
 
                 $data_img = array(
                     'img_name' => $finfo['file_name'],
                     'img_full' => 'slides/' . $finfo['file_name'],
-                    'img_path' => '/assets/img/slides',
+                    'img_small' => 'slides/thumbs/' . $finfo['file_name'],
+                    'img_path' => $finfo['file_path'],
                 );
-                unlink($finfo['full_path']);
+//                unlink($finfo['full_path']);
                 if ($id == NULL) {
                     $this->db->trans_start();
                     $this->db->insert('images', $data_img);
                     $image_id = $this->db->insert_id();
                     $this->db->trans_complete();
                     return $image_id;
-                } else {
-                    unlink($this->get_image_path($id));
+                } else {                    
+                    $this->deleteImage($id);
                     $this->db->where('id', $id);
                     $this->db->update('images', $data_img);
                     return;
                 }
             }
         }
+    }
+     public function deleteImage($image_id) {
+         $this->db->select('img_path,img_name');
+        $this->db->from('images');
+        $this->db->where('id', $image_id);
+        $query = $this->db->get();
+        $row = $query->row_array();       
+         
+        unlink($row['img_path']. $row['img_name']);
+        unlink($row['img_path'].'thumbs/' . $row['img_name']);
+        
+       
     }
 
     /* echo '<pre>';

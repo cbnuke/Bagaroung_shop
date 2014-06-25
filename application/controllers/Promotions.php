@@ -68,7 +68,7 @@ class Promotions extends CI_Controller {
     }
 
     function delete($id) {
-        $this->m_promotions->set_promotion_id($id);
+        $this->m_promotions->delete_promotion($id);
 
         redirect('promotions', 'refresh');
     }

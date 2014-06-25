@@ -12,7 +12,7 @@
 
 <div class="row">
     <?php echo $form['form']; ?>
-    <div class="form-group <?= (form_error('subtitle[thai]')) ? 'has-error' : '' ?>">
+    <div class="form-group <?= (form_error('title[thai]')) ? 'has-error' : '' ?>">
         <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
         <div class="col-sm-8">
             <?php echo $form['title[thai]']; ?>   
@@ -40,7 +40,7 @@
             <!--<input type="text" class="form-control" name="subtitle[english]" placeholder="Sub Tltle">-->
         </div>
     </div>
-    <div class="form-group <?= (form_error('link')) ? 'has-error' : '' ?>">
+    <div class="form-group <?= (form_error('link_url')) ? 'has-error' : '' ?>">
         <label class="col-sm-2 control-label">Link</label>
         <div class="col-sm-9">
             <?php echo $form['link_url']; ?>  
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="form-group <?= (form_error('img_slide')) ? 'has-error' : '' ?>" id="img_add">
-        <label class="col-sm-2 control-label">Image</label>
+        <label class="col-sm-2 control-label">รูปภาพ</label>
         <div class="col-sm-4">
             <?php echo $form['img_slide']; ?>  
             <p style="color:red;margin-top: 10px;">ขนาด&nbsp;<span class="label label-danger"><strong>900px*500px</strong></span>&nbsp;หรือมากกว่า</p>  
@@ -61,10 +61,10 @@
         $image = TRUE;
         ?>
         <div class="form-group" id="img_show">
-            <label class="col-sm-2 control-label">Image</label>
+            <label class="col-sm-2 control-label">รูปภาพ</label>
             <div class="col-xs-6 col-sm-2 placeholder">
-                <div class="pull-right" id="btn_del_img" >                           
-                    <input type="button" class="btn btn-outline btn-circle btn-danger btn-xs" value='-' id="del_img">                            
+                <div class="pull-right" id="btn_del_img" >                     
+                    <button type="button" class="btn btn-outline btn-circle btn-danger btn-xs" id="del_img" ><i class="fa fa-times fa-lg" ></i></button>                             
                 </div>
                 <?= $form['image'] ?>
             </div>
@@ -72,13 +72,9 @@
     <?php } ?>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">Status</label>
+        <label class="col-sm-2 control-label">สถานะ</label>
         <div class="col-sm-3">
             <?php echo $form['status_slide'] ?>  
-<!--            <select class="form-control" name="status">
-                <option value="1" >ใช้งาน</option>
-                <option value="0">ไม่ใช้งาน</option>                        
-            </select>-->
         </div>
     </div>
     <hr>
@@ -104,10 +100,10 @@
         }
         $("#del_img").click(function() {
 //            alert("delete");
-            if (confirm('ลบรูปภาพ')) {
-                $('#img_add').show();
-                $('#img_show').hide(true);
-            }
+
+            $('#img_add').show();
+            $('#img_show').hide(true);
+
 
         });
 
