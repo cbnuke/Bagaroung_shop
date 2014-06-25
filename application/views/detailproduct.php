@@ -83,7 +83,7 @@
             <div class="row" style="margin-top: 20px;">
                 <?php
                 foreach ($img as $row) {
-                    echo '<div class="col-md-6"><div class="thumbnail"><img src="' . img_url() . $row['img_full'] . '" alt="..." ></div></div>';
+                    echo '<div class="col-md-6"><img src="' . img_url() . $row['img_full'] . '" class="img-responsive" alt="..." ></div>';
                 }
                 ?>
             </div>
