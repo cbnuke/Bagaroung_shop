@@ -9,7 +9,6 @@
 <div class="row">    
     <?= anchor('Products/add', '<i class="fa fa-plus fa-lg"></i>&nbsp;Add Product', 'type="button" class="btn btn-success btn-lg pull-right"'); ?>
 </div>
-<hr>
 <div class="row">
 
     <div class="col-sm-4"></div>
@@ -51,7 +50,7 @@
                     }
                     ?>
 
-                <td><?= img($row['img_front'], array('class' => 'img-responsive ')) ?></td>
+                <td><?= img($row['img_front'], array('class' => 'img-responsive ','width' => '100', 'height' => '100')) ?></td>
                 <td>
                     <?= unserialize($row['product_name'])['thai'] ?>
                     <hr>

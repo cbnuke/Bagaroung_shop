@@ -67,7 +67,7 @@
                                     }
                                     ?>                                                       
                                 <td rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive', 'width' => '100', 'height' => '200')); ?></td>
+                                <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive')); ?></td>
 
                                 <td rowspan="<?= $num; ?>">
                                     <?= unserialize($pro['name'])['thai'] ?>
@@ -231,7 +231,7 @@
                                         ?>
                                         <tr>
                                             <td rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_full'], array('class' => 'img-responsive', 'width' => '100', 'height' => '200')); ?></td>
+                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive')); ?></td>
 
                                             <td rowspan="<?= $num; ?>">
                                                 <?= unserialize($pro['name'])['thai'] ?>
@@ -390,7 +390,7 @@
                                         ?>
                                         <tr>
                                             <td rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_full'], array('class' => 'img-responsive', 'width' => '100', 'height' => '200')); ?></td>
+                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive')); ?></td>
 
                                             <td rowspan="<?= $num; ?>">
                                                 <?= unserialize($pro['name'])['thai'] ?>

@@ -540,11 +540,7 @@ class m_promotions extends CI_Model {
                     'img_path' => $finfo['file_path'],
                 );
 
-                $data_img = array(
-                    'img_name' => $finfo['file_name'],
-                    'img_full' => 'promotions/' . $finfo['file_name'],
-                    'img_path' => $finfo['file_path'],
-                );
+               
                 if ($id == NULL) {
                     $this->db->trans_start();
                     $this->db->insert('images', $data_img);
