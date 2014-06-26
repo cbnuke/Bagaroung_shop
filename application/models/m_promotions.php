@@ -431,7 +431,7 @@ class m_promotions extends CI_Model {
                 $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $p['id'] . ')"></td>';
                 $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($p['product_name'])['thai'] . '</td>';
-                $itemp .= '<td align="center">1000</td>';
+                $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
                 $itemp .= '<td><input type="text" name="promotion_price[]" required="" value="' . $p['promotion_price'] . '"><span>&nbsp;บาท</span></td>';
                 $itemp .= '</tr>';
                 $i++;

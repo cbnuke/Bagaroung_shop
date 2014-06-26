@@ -34,4 +34,13 @@ Class m_home extends CI_Model {
         return $data;
     }
 
+    function check_all_products_has_promotion() {
+        $this->db->select('*');
+        $this->db->from('products_has_promotions');
+        $this->db->join('products', 'products.id = products_has_promotions.product_id');
+        $query = $this->db->get();
+        $rs = $query->result_array();
+        return $rs;
+    }
+
 }

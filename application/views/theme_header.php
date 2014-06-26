@@ -10,7 +10,8 @@
         <?php echo css('bootstrap.css'); ?>
         <?php echo css('bootstrap-theme.css'); ?>
         <?php echo css('font-awesome.css'); ?>
-        <?php echo css('customize-page.css'); ?>        
+        <?php echo css('customize-page.css'); ?>  
+        <?php echo css('style.css'); ?>
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
