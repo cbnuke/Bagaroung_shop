@@ -40,6 +40,9 @@ Class m_home extends CI_Model {
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
         $this->db->where('end <',$dt_now);
+        $this->db->where('start >',$dt_now);
+        $this->db->where('end <',$dt_now);
+        $this->db->where('status_promotion',1);
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;

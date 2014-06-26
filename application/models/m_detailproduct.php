@@ -24,11 +24,27 @@ Class m_detailproduct extends CI_Model {
     function check_recommend() {
         $this->db->select();
         $this->db->from('products');
-        $this->db->order_by('view_count','desc');
+        $this->db->order_by('view_count', 'desc');
         $this->db->limit(5);
         $query = $this->db->get();
         $result = $query->result_array();
         return $result;
+    }
+
+    function check_detail_promotion($product_id) {
+        $dt_now = date('Y-m-d H:i:s');
+        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small,product_id,promotion_price');
+        $this->db->from('promotions');
+        $this->db->join('images', 'images.id = promotions.image_id');
+        $this->db->join('products_has_promotions', 'promotion_id=promotions.id');
+//        $this->db->where('promotions.start >',$dt_now);
+//        $this->db->where('end <',$dt_now);
+        $this->db->where('status_promotion',1);
+        $this->db->where('product_id', $product_id);
+        $query = $this->db->get();
+        $rs = $query->row_array();
+
+        return $rs;
     }
 
     function update_view_count($id) {

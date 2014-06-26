@@ -106,7 +106,7 @@
                                     $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
                                     $itemp .= '<td>' . unserialize($p['product_name'])[$language] . '</td>';
                                     $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
-                                    $itemp .= '<td align="center">' . $p['promotion_price'] . '</td>';
+                                    $itemp .= '<td align="center"><span  class="text-danger"  ><h3>' . $p['promotion_price'] . '</h3></span></td>';
                                     $itemp .='<td>';
                                     $itemp .='<a href="' . base_url('detailproduct/id/' . $p['id']) . '">' . lang('read_more') . '</a>';
                                     $itemp .='</td>';

@@ -39,6 +39,7 @@ class DetailProduct extends CI_Controller {
         $data['detail'] = $temp[0];
         $data['img'] = $this->m_detailproduct->check_images($id);
 
+        $data['promotion'] = $this->m_detailproduct->check_detail_promotion($id);
         //Increse view count
         $this->m_detailproduct->update_view_count($id);
 
