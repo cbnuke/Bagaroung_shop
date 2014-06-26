@@ -39,7 +39,7 @@ Class m_home extends CI_Model {
         $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
-        $this->db->where('end <',$dt_now);
+        $this->db->where('end <', $dt_now);
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;
@@ -52,6 +52,15 @@ Class m_home extends CI_Model {
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;
+    }
+
+    function check_slide_enable() {
+        $this->db->from('slides');
+        $this->db->join('images', 'images.id = slides.image_id');
+        $this->db->where('slides.status_slide', 1);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
     }
 
 }

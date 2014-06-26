@@ -9,10 +9,6 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
-
-body {
-    padding-top: 60px;
-}
 th{
     text-align: center;
     vertical-align: middle ! important;
@@ -53,7 +49,7 @@ img{max-width:100%;}*/
 
 .wrap{
     margin:0 auto;
-    width:80%;
+    width:100%;
 }
 /* start header */
 .top_bg{
@@ -1444,9 +1440,6 @@ span.color7{
 /* end tabs */
 /***** Media Quries *****/
 @media only screen and (max-width: 1366px) {
-    .wrap{
-        width:95%;
-    }
     .web_search {
         width: 26.33333%;
     }
@@ -1458,9 +1451,6 @@ span.color7{
     }
 }
 @media only screen and (max-width: 1280px) {
-    .wrap{
-        width:95%;
-    }
     .web_search {
         width: 30.33333%;
     }
@@ -1495,9 +1485,6 @@ span.color7{
     }
 }
 @media only screen and (max-width: 1024px) {
-    .wrap{
-        width:95%;
-    }
     .web_search {
         width: 34.33333%;
     }
@@ -1539,9 +1526,6 @@ span.color7{
     }
 }
 @media only screen and (max-width: 800px) {
-    .wrap{
-        width:95%;
-    }
     .web_search input[type="text"] {
         width: 68.33333%;
     }
@@ -1656,9 +1640,6 @@ span.color7{
     }
 }
 @media only screen and (max-width: 640px){
-    .wrap{
-        width:95%;
-    }
     .menu {
         display: none;
     }
@@ -1686,9 +1667,6 @@ span.color7{
     }
 }
 @media only screen and (max-width: 480px) {
-    .wrap{
-        width:95%;
-    }
     .web_search {
         display: none;
     }
@@ -1751,9 +1729,6 @@ span.color7{
 
 }
 @media only screen and (max-width: 320px) {
-    .wrap{
-        width:95%;
-    }
     .logo{
         float: none;
         text-align:center;

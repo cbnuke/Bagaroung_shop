@@ -12,3 +12,5 @@ $lang['head_contactus'] = "Contact Us";
 $lang['detail_product'] = "Detail product";
 $lang['product_price'] = "Price";
 $lang['baht'] = "Baht";
+
+$lang['description'] = "Description";
