@@ -92,8 +92,9 @@
                             }
 
                             //Show single product
-                            echo '<div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail">';
-                            echo '<img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive">';
+                            echo '<div class="col-sm-3 col-xs-6">';
+                            echo '<a href="' . base_url('detailpromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
+                            echo '<img src="' . img_url() . $p['img_front'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
                             echo '</a></div>';
 
                             //Close item and row
@@ -143,7 +144,7 @@
 
                     </div>
                     <!--/carousel-inner--> 
-                    <a class="left carousel-control" href="#promotions_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                    <a class="left carousel-control"  href="#promotions_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                     <a class="right carousel-control" href="#promotions_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
