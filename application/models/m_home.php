@@ -34,6 +34,17 @@ Class m_home extends CI_Model {
         return $data;
     }
 
+    function check_all_promotions() {
+        $dt_now = date('Y-m-d H:i:s');
+        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
+        $this->db->from('promotions');
+        $this->db->join('images', 'images.id = promotions.image_id');
+        $this->db->where('end <',$dt_now);
+        $query = $this->db->get();
+        $rs = $query->result_array();
+        return $rs;
+    }
+
     function check_all_products_has_promotion() {
         $this->db->select('*');
         $this->db->from('products_has_promotions');

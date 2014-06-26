@@ -35,6 +35,8 @@ class DetailPromotion extends CI_Controller {
 
         $data['promotion'] = $promotions;
         $data['products'] = $this->m_detailpromotion->get_products_has_promotion($id);
+        $temp = $this->DateThai($data['promotion']['end']);
+        $data['promotion']['end'] = $temp;
 
         //get recommend
         $data['recommend'] = $this->m_detailpromotion->get_recommend();
@@ -44,6 +46,23 @@ class DetailPromotion extends CI_Controller {
         $this->m_template->set_Content('detailpromotion.php', $data);
 //        $this->m_template->set_Debug($data);
         $this->m_template->showTemplate();
+    }
+
+    function DateThai($strDate) {
+        $date = new DateTime($strDate);
+        $strYear = date("Y", strtotime($strDate)) + 543;
+        $strMonth = date("n", strtotime($strDate));
+        $strDay = date("j", strtotime($strDate));
+        $strHour = date("H", strtotime($strDate));
+        $strMinute = date("i", strtotime($strDate));
+        $strSeconds = date("s", strtotime($strDate));
+        $strMonthCut = Array("", "มกราคม.", "กุมภาพัธ์.", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+        $strMonthThai = $strMonthCut[$strMonth];
+        if ($this->language == 'thai') {
+            return "$strDay $strMonthThai $strYear";
+        } else {
+            return $date->format('jS F Y');
+        }
     }
 
 }

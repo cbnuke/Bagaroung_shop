@@ -20,6 +20,8 @@ $lang['start']="เริ่ม";
 $lang['expire']="หมดเขต";
 $lang['products_pro']="สินค้าร่วมโปรโมชั่น";
 $lang['no_product_pro']="ไม่มีสินค้ารวมรายการ";
+$lang['read_more']="ดูสินค้า";
+$lang['name']="ชื่อสินค้า";
 
 
 

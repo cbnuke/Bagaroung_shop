@@ -26,11 +26,11 @@ class Home extends CI_Controller {
 
         $data['language'] = $this->language;
         $data['all_pro'] = $this->m_home->check_all_products();
-        
+        $data['promotion']=$this->m_home->check_all_promotions();
         $data['products_has_promotion']=$this->m_home->check_all_products_has_promotion();
 
         $this->m_template->set_Content('home.php', $data);
-//        $this->m_template->set_Debug($data);
+        $this->m_template->set_Debug($data);
         $this->m_template->showTemplate();
     }
 

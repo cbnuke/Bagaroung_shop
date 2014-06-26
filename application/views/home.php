@@ -60,12 +60,11 @@
                     <ol class="carousel-indicators">
                         <!-- Backup promotion indicators
                         <li data-target="#promotions_slide" data-slide-to="0" class="active"></li>
-                        <li data-target="#promotions_slide" data-slide-to="1"></li>
-                        -->
+                        <li data-target="#promotions_slide" data-slide-to="1"></li>                        -->
 
                         <?php
                         //Count number promotion
-                        $num = 20;
+                        $num = count($products_has_promotion);
                         //Number indicators
                         $count = $num / 4;
                         for ($i = 0; $i < $count; $i++) {
@@ -79,7 +78,9 @@
                         <?php
                         $all_promotion = 20;
                         $flag_first = TRUE;
-                        for ($i = 0; $i < $all_promotion; $i++) {
+                        $i = 0;
+//                        for ($i = 0; $i < $all_promotion; $i++) {                        
+                        foreach ($products_has_promotion as $p) {
                             //Start item and row
                             if ($i % 4 == 0) {
                                 if ($flag_first) {
@@ -94,11 +95,12 @@
                             echo '<div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail">';
                             echo '<img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive">';
                             echo '</a></div>';
-                            
+
                             //Close item and row
                             if ($i % 4 == 3) {
                                 echo '</div></div>';
                             }
+                            $i++;
                         }
                         ?>
 
