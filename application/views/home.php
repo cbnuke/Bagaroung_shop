@@ -58,110 +58,87 @@
             <div class="col-md-12">
                 <div id="promotions_slide" class="carousel slide">
                     <ol class="carousel-indicators">
-                        <!--                        <li data-target="#promotions_slide" data-slide-to="0" class="active"></li>
-                                                <li data-target="#promotions_slide" data-slide-to="1"></li>-->
+                        <!-- Backup promotion indicators
+                        <li data-target="#promotions_slide" data-slide-to="0" class="active"></li>
+                        <li data-target="#promotions_slide" data-slide-to="1"></li>
+                        -->
+
                         <?php
-                        $num = 20; //count($products_has_promotion);
-                        if ($num > 0) {
-                            if ($num < 4) {
-                                echo ' <li data-target="#promotions_slide" data-slide-to="0" class="active"></li>';
-                            } else {
-                                for ($i = 1; $i <= $num / 4; $i++) {
-                                    echo '<li data-target="#promotions_slide" data-slide-to="' . $i . '"></li>';
-                                }
-                            }
+                        //Count number promotion
+                        $num = 20;
+                        //Number indicators
+                        $count = $num / 4;
+                        for ($i = 0; $i < $count; $i++) {
+                            echo '<li data-target="#promotions_slide" data-slide-to="' . $i . '"></li>';
                         }
                         ?>
+
                     </ol>
                     <!-- Carousel items -->
                     <div class="carousel-inner">
                         <?php
+                        $all_promotion = 20;
                         $flag_first = TRUE;
-                        $i = 0;
-//                        foreach ($products_has_promotion as $product) {
-                        for ($j = 0; $j < $num; $j++) {
+                        for ($i = 0; $i < $all_promotion; $i++) {
+                            //Start item and row
                             if ($i % 4 == 0) {
-                                if($flag_first)
-                                {
-                                    echo '<div class="item active">';
-                                    $flag_first=FALSE;
-                                }  else {
-                                   echo '<div class="item">';
+                                if ($flag_first) {
+                                    echo '<div class="item active"><div class="row">';
+                                    $flag_first = FALSE;
+                                } else {
+                                    echo '<div class="item"><div class="row">';
                                 }
-                                
-                                echo '<div class="row">';
-                            }
-                            ?>
-                            <div class="col-sm-3 col-xs-6">
-                                <a href="#x" class="thumbnail">
-                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive">
-                                </a>
-                            </div>
-                            <?php
-                            if ($i % 4 == 0) {
-                                echo '</div>';
-                                echo '</div>';
                             }
 
-//                            if ($i%4==0) {
-//                                echo '<br>';
-//                            }
-//                            if ($flag_first) {
-//                                echo '<div class="item active">';
-//                                $flag_first = FALSE;
-//                            } else {
-//                                echo '<div class="item">';
-//                            }
-//                            echo '<div class="row">';
-//
-////                            echo '<div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail">';
-////                            echo '<img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive">';
-////                            echo '</a>';
-////                            echo '</div>';
-//
-//                            echo '</div>';
-//                            echo '</div>';
-                            $i++;
+                            //Show single product
+                            echo '<div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail">';
+                            echo '<img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive">';
+                            echo '</a></div>';
+                            
+                            //Close item and row
+                            if ($i % 4 == 3) {
+                                echo '</div></div>';
+                            }
                         }
                         ?>
 
-                        <!--                        <div class="item active">
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                    </div>
-                                                    row
-                                                </div>
-                                                /item
-                        
-                                                <div class="item">
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                        <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-                        
-                                                        </div>
-                                                    </div>
-                                                    row
-                                                </div>
-                                                /item-->
+                        <!-- Backup 4 colum in line
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        -->
+
                     </div>
                     <!--/carousel-inner--> 
                     <a class="left carousel-control" href="#promotions_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
