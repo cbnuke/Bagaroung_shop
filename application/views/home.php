@@ -196,7 +196,7 @@
                             echo '<div class="row">';
                             foreach ($row['list'] as $product) {
                                 $product_name = unserialize($product['product_name']);
-                                echo '<div class="col-md-6">';
+                                echo '<div class="col-md-4">';
                                 echo '<div class="thumbnail">';
                                 echo '<img src="' . img_url() . $product['img_front'] . '" alt="...">';
                                 echo '<div class="caption">';
