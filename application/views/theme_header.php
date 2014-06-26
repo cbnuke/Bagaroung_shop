@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaroung</a>
+                    <a class="navbar-brand" href="<?= site_url('home') ?>"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaroung</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <?php

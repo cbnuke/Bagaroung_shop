@@ -3,41 +3,40 @@
 <div id="banner_slide" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#banner_slide" data-slide-to="0" class="active"></li>
-        <li data-target="#banner_slide" data-slide-to="1"></li>
-        <li data-target="#banner_slide" data-slide-to="2"></li>
+        <?php
+        $flag_slide = TRUE;
+        foreach ($slide as $row) {
+            if ($flag_slide) {
+                echo '<li data-target="#banner_slide" data-slide-to="' . $row['id'] . '" class="active"></li>';
+                $flag_slide = FALSE;
+            } else {
+                echo '<li data-target="#banner_slide" data-slide-to="' . $row['id'] . '"></li>';
+            }
+        }
+        ?>
     </ol>
     <div class="carousel-inner">
-        <div class="item active">
-            <?php echo img('slides/pic1.jpg'); ?>
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Example headline.</h1>
-                    <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <?php echo img('slides/pic1.jpg'); ?>
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Another example headline.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <?php echo img('slides/pic1.jpg'); ?>
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>One more for good measure.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                </div>
-            </div>
-        </div>
+        <?php
+        $flag_slide = TRUE;
+        foreach ($slide as $row) {
+            if ($flag_slide) {
+                echo '<div class="item active">';
+                $flag_slide = FALSE;
+            } else {
+                echo '<div class="item">';
+            }
+
+            echo img($row['img_full']);
+            echo '<div class="container"><div class="carousel-caption">';
+            echo '<h1>' . unserialize($row['title'])[$language] . '</h1>';
+            echo '<p>' . unserialize($row['subtitle'])[$language] . '</p>';
+            echo '<p><a class="btn btn-lg btn-primary" href="' . $row['link_url'] . '" role="button">' . lang('description') . '</a></p>';
+            echo '</div></div>';
+
+            //End item
+            echo '</div>';
+        }
+        ?>
     </div>
     <a class="left carousel-control" href="#banner_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#banner_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -107,24 +106,6 @@
 
                         <!-- Backup 4 colum in line
                         <div class="item active">
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-
-                                </div>
-                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-
-                                </div>
-                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-
-                                </div>
-                                <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="item">
                             <div class="row">
                                 <div class="col-sm-3 col-xs-6"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;" class="img-responsive"></a>
 

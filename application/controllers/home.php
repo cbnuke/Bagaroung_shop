@@ -28,9 +28,10 @@ class Home extends CI_Controller {
         $data['all_pro'] = $this->m_home->check_all_products();
         $data['promotion']=$this->m_home->check_all_promotions();
         $data['products_has_promotion']=$this->m_home->check_all_products_has_promotion();
+        $data['slide'] = $this->m_home->check_slide_enable();
 
         $this->m_template->set_Content('home.php', $data);
-//        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data['slide']);
         $this->m_template->showTemplate();
     }
 
