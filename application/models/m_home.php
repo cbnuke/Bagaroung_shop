@@ -39,14 +39,14 @@ Class m_home extends CI_Model {
         $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
-<<<<<<< HEAD
+
         $this->db->where('end <',$dt_now);
         $this->db->where('start >',$dt_now);
         $this->db->where('end <',$dt_now);
         $this->db->where('status_promotion',1);
-=======
+
         $this->db->where('end <', $dt_now);
->>>>>>> origin/master
+
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;

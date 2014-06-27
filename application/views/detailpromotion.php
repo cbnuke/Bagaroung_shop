@@ -55,27 +55,36 @@
                         </div>                 
                         <div class="row">
                             <div class="media">    
-                                <h4 class="media-heading"><?= lang('detail_promotion'); ?> </h4>
-                                <div class="media-body"> 
-                                    <?= unserialize($promotion['detail'])[$language]; ?>                                   
+                                <h4 class="media-heading">
+                                    <dt>
+                                    <?= lang('detail_promotion'); ?> 
+                                    </dt>
+                                </h4>
+                                <div class="media-body">  
+                                    <blockquote>
+                                        <?= unserialize($promotion['detail'])[$language]; ?>   
+                                    </blockquote>                                
                                 </div>
                             </div>
                             <div class="clear"></div>
                         </div>                       
-
+                        <div class="row">
+                            <dl class="dl-horizontal">
+                                <h4 class="style">
+                                    <dt> <span class="label label-warning"><?= lang('expire') ?></span></dt>
+                                    <dd><span class="text-danger"  ><?= $promotion ['end']; ?></span></dd>
+                                </h4>   
+                            </dl>
+                            <div class="clear"></div>
+                        </div>
                         <div class="row">
                             <div class="top_main">                                
                                 <a href="#products_pro"><?= lang('products_pro') ?></a>
                                 <div class="clear"></div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <h3><span class="label label-warning"><?= lang('expire') ?></span></h3>   
-                            <div class="text-danger text-center">
-                                <h4><?= $promotion ['end']; ?></h4>                                    
-                            </div>
                             <div class="clear"></div>
                         </div>
+
                     </div>
                 </div>  
             </div>

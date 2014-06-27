@@ -9,6 +9,7 @@ Class m_detailpromotion extends CI_Model {
         $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
+        $this->db->where('status_promotion', 1);
         $this->db->where('promotions.id', $id);
         $query = $this->db->get();
         $rs = $query->row_array();
@@ -23,14 +24,17 @@ Class m_detailpromotion extends CI_Model {
         if ($promotion_id != NULL) {
             $this->db->where('promotion_id', $promotion_id);
         }
+        $this->db->where('product_status', 1);
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;
     }
+
     function get_recommend() {
         $this->db->select();
         $this->db->from('products');
-        $this->db->order_by('view_count','desc');
+        $this->db->where('product_status', 1);
+        $this->db->order_by('view_count', 'desc');
         $this->db->limit(5);
         $query = $this->db->get();
         $result = $query->result_array();

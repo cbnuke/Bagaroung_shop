@@ -28,8 +28,34 @@
                                     echo '<p>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</p>';
                                     echo '</div>';
                                     echo '</a>';
+                                    
+                                    
                                 }
-                                ?>        
+                                ?> 
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://placehold.it/100x100" class="img-responsive thumbnail" alt="...">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            ชื่อสินค้า 
+                                        </h4>     
+                                        <del>ราคา 215461 บาท</del> 
+                                        ราคา 1254 บาท 
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://placehold.it/100x100" class="img-responsive thumbnail" alt="...">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            ชื่อสินค้า 
+                                        </h4>     
+                                        <del>ราคา 215461 บาท</del> 
+                                        ราคา 1254 บาท 
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,14 +135,57 @@
 //                                            echo lang('baht') ;
                                             echo '</div>';
                                         }
-                                        ?>
-                                        <span ></span>
-
-                                    </h3>
-                                    <a href="#howto" class="pull-right"><?= lang('how_to_order') ?></a>
+                                        ?>   
+                                    </h3>                                    
                                 </div>
                             </div>
                             <div class="clear"></div>                            
+                        </div>
+                        <div class="row">
+                            <div class="top_main">                                
+                                <a href="#howto"><?= lang('how_to_order') ?></a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>                    
+
+                        <div class="row">
+                            <div class="media">
+                                <h4 class="media-heading">
+                                    <dt><?= lang('product_size') ?></dt>
+                                </h4>
+                                <div class="media-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4 class="style">
+                                                <dl class="dl-horizontal">
+                                                    <dt><?= lang('product_width') ?></dt>
+                                                    <dd><?= $detail['width'] ?> <?= lang('cm') ?></dd>
+                                                </dl>
+                                                <dl class="dl-horizontal">
+                                                    <dt><?= lang('product_high') ?></dt>
+                                                    <dd><?= $detail['hight'] ?> <?= lang('cm') ?></dd>
+                                                </dl>
+                                                <dl class="dl-horizontal">
+                                                    <dt><?= lang('product_weight') ?> </dt>
+                                                    <dd><?= $detail['weight'] ?> <?= lang('kg') ?></dd>
+                                                </dl>
+                                            </h4>      
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4 class="style">                                            
+                                                <dl class="dl-horizontal">
+                                                    <dt><?= lang('product_top_width') ?> </dt>
+                                                    <dd><?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
+                                                </dl>
+                                                <dl class="dl-horizontal">
+                                                    <dt><?= lang('product_base_width') ?></dt>
+                                                    <dd><?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
+                                                </dl>
+                                            </h4>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>                           
                         </div>
 
                         <div class="row">
@@ -125,38 +194,23 @@
                                     <dt><?= lang('detail_product') ?></dt>
                                 </h4>
                                 <div class="media-body">
-                                    <dd><?= unserialize($detail['detail'])[$language] ?></dd>  
+                                    <blockquote>
+                                        <?= unserialize($detail['detail'])[$language] ?> 
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                    </blockquote>
                                 </div>
                             </div>
                             <div class="clear"></div>
                         </div>
-                        <div class="row">
-                            <h4><span class="label label-default"><?= lang('product_size') ?></span></h4> 
-
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <dd><?= lang('product_width') ?> : <?= $detail['width'] ?> <?= lang('cm') ?></dd>
+                        <div class="row row_content text-center" >
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="fb-like" 
+                                     data-href="<?= current_url(); ?>" 
+                                     data-layout="standard" data-action="like" data-show-faces="false" data-share="true">                                         
                                 </div>
-                                <div class="col-md-6">
-                                    <dd><?= lang('product_high') ?> : <?= $detail['hight'] ?> <?= lang('cm') ?></dd>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <dd><?= lang('product_top_width') ?> : <?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
-                                </div>
-                                <div class="col-md-6">
-                                    <dd><?= lang('product_base_width') ?> : <?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">                                   
-                                    <dd><?= lang('product_weight') ?> : <?= $detail['weight'] ?> <?= lang('kg') ?></dd>                                
-                                </div>                                
-                            </div>
-
+                            </div>                            
                         </div>
+
                     </div>                
                 </div>
                 <div class="row" style="margin-top: 20px;margin-bottom: 20px">
@@ -173,12 +227,25 @@
     </div>
 
 </div>
-<div style="height: 300px; background-color: #999;">
-    <div class="wrap" >
-        <div class="row " id="howto">
-            <div class="col-sm-12 col-xs-12"><h3><?= lang('how_to_order') ?></h3></div>
+<div id="howto" >
+    <div class="top_bg">
+        <div class="wrap">
+            <div class="main_top">
+                <h2 class="style"><?= lang('how_to_order') ?></h2>
+            </div>
+        </div>
+    </div>
+    <div class="main_bg">
+        <div class="wrap">
+            <div class="main">
+                <div class="row" style="height: 300px;">
+                    <h2 class="style"><?= lang('how_to_order') ?></h2>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 
