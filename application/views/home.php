@@ -44,10 +44,18 @@
     </div><!-- /.carousel -->
     <hr>
     <script>
-        $(document).ready(function() {
+        $(window).load(function() {
             $('#promotions_slide').carousel({
                 interval: 10000
-            })
+            });
+            $(window).scroll(function() {
+                var pt_scroll = $(this).scrollTop()+80;
+                if (pt_scroll >= $('#des_products').offset().top&&pt_scroll <= ($('#des_products').offset().top+$('#des_products').height())) {
+                    $('#scroll-top').removeClass('hidden');
+                }else{
+                    $('#scroll-top').addClass('hidden');
+                }
+            });
         });
     </script>
 </div>
@@ -188,42 +196,42 @@
                 </div>
                 <!--start test-->                
 
-<!--                <div class="col-md-12">
-                    <div class="row">                    
-                        <div class="col-md-4">
-                            <div class="thumbnail row_has_3">
-                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">
-                                <a href="">
-                                    <h3>even &amp; odd</h3>
-                                    <span class="price">$145,99</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail row_has_3">
-                                <img src="http://placehold.it/500x350"  alt="...">
-                                <a href="" class="">
-                                    <h3>buffalo decollete</h3>
-                                    <span class="price">$185,99</span>
-                                    <span class="price1 bg">on sale</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail row_has_3">
-                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">
-                                <a href="" data-toggle="tooltip" data-placement="bottom" title="<?= lang('detail_product'); ?> ">
-                                    <h3>even &amp; odd</h3>
-                                    <span class="price">$145,99</span>
-                                    <span class="price1 bg1">out of stock</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div> 
-
-                </div>-->
+                <!--                <div class="col-md-12">
+                                    <div class="row">                    
+                                        <div class="col-md-4">
+                                            <div class="thumbnail row_has_3">
+                                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">
+                                                <a href="">
+                                                    <h3>even &amp; odd</h3>
+                                                    <span class="price">$145,99</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="thumbnail row_has_3">
+                                                <img src="http://placehold.it/500x350"  alt="...">
+                                                <a href="" class="">
+                                                    <h3>buffalo decollete</h3>
+                                                    <span class="price">$185,99</span>
+                                                    <span class="price1 bg">on sale</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="thumbnail row_has_3">
+                                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">
+                                                <a href="" data-toggle="tooltip" data-placement="bottom" title="<?= lang('detail_product'); ?> ">
+                                                    <h3>even &amp; odd</h3>
+                                                    <span class="price">$145,99</span>
+                                                    <span class="price1 bg1">out of stock</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div> 
                 
+                                </div>-->
+
                 <!--end test-->   
             </div>
 
@@ -252,6 +260,10 @@
         </div>
     </div>
 </div>
+
+<ul class="nav pull-right scroll-top hidden" id="scroll-top">
+  <li><a href="#des_promotions" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+</ul>
 
 
 
