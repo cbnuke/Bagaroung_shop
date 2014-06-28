@@ -15,7 +15,9 @@ Class m_home extends CI_Model {
         $this->db->select('*,products.id');
         $this->db->from('products');
         $this->db->join('products_has_promotions', 'product_id = id', 'left');
-        $this->db->join('promotions', 'promotions.id = promotion_id', 'left'); 
+        $this->db->join('promotions', 'promotions.id = promotion_id 
+                                        and promotions.end > NOW()
+                                         and promotions.start < NOW()', 'left'); 
         $this->db->where('product_status', 1);
         $this->db->where('product_type_id', $type_id);
          $query = $this->db->get();

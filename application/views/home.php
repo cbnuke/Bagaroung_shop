@@ -18,20 +18,20 @@
             ?>
         </ol>
         <div class="carousel-inner">
-<!--            <div class="item active">
-                <img src="http://lorempixel.com/1500/500/"  class="img-responsive">
-                <div class="wrap">
-                    <div class="carousel-caption">
-                        <h2>Bootstrap 3 Carousel Layout</h2>                       
-                        <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
-                        <div class="read_more pull-right" >
-                            <a  href="http://getbootstrap.com">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            
-              
+            <!--            <div class="item active">
+                            <img src="http://lorempixel.com/1500/500/"  class="img-responsive">
+                            <div class="wrap">
+                                <div class="carousel-caption">
+                                    <h2>Bootstrap 3 Carousel Layout</h2>                       
+                                    <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
+                                    <div class="read_more pull-right" >
+                                        <a  href="http://getbootstrap.com">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+
             <?php
             $flag_slide = TRUE;
             foreach ($slide as $row) {
@@ -259,7 +259,8 @@
                                      <?php
                                      echo '<h3>' . $product_name[$language] . '</h3>';
                                      echo '<span class="price"><strong>' . number_format($product['product_price'], 2) . '</strong><small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
-                                     if ($product['status_promotion'] != 0) {
+                                     $dt_now = date('Y-m-d H:i:s');
+                                     if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
                                          echo '<span class="price1 bg">on sale</span>';
                                      }
                                      echo '</a>';

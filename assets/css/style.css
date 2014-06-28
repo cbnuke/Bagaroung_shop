@@ -279,7 +279,7 @@ h4.style{
     font-size: 1.1525em;
     padding: 5% 5%;
     position: absolute;
-    bottom: 25%;
+    bottom: 15%;
     left: 3%;
 }
 .price1{
@@ -305,7 +305,7 @@ h4.style{
     padding: 5% 3%;    
     position: absolute;
     top: 0%;
-    right: 10%;
+    right: 5%;
     text-transform:uppercase;
 }
 .price_pro.bg{
