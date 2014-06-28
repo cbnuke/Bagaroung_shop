@@ -23,3 +23,5 @@ $lang['products_pro']="Products Promotions";
 $lang['no_product_pro']="No Product Promotions";
 $lang['read_more']="View more";
 $lang['name']="Product name";
+
+$lang['detail_product'] = "Detail";

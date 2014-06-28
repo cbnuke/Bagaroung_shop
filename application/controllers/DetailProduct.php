@@ -43,11 +43,12 @@ class DetailProduct extends CI_Controller {
         //Increse view count
         $this->m_detailproduct->update_view_count($id);
 
-        //Check recommend
+                //get recommend
         $data['recommend'] = $this->m_detailproduct->check_recommend();
+        $data['all_promotion'] = $this->m_detailproduct->check_all_promotions();
 
         $this->m_template->set_Content('detailproduct.php', $data);
-//        $this->m_template->set_Debug($data);
+//        $this->m_template->set_Debug($data['recommend']);
         $this->m_template->showTemplate();
     }
 

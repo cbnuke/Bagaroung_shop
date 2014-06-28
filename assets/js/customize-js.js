@@ -55,6 +55,75 @@ $(document).ready(function() {
                     .end().filter("[href=#" + id + "]").parent().addClass("active");
         }
     });
+    
+    $("#owl-4").owlCarousel({
+            items: 4, //4 items above 1000px browser width
+            itemsDesktop: [1199, 3], //5 items between 1199px and 979px
+            itemsDesktopSmall: [979, 3], // betweem 979px and 601px
+            itemsTablet: [768, 1], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+            lazyLoad: true,
+            autoPlay: true,
+            navigation: true,
+            navigationText: ["", ""],
+            rewindNav: true,
+            scrollPerPage: true,
+            //Pagination
+            pagination: true,
+            paginationNumbers: false,
+        });
+        $("#owl-3").owlCarousel({
+            items: 3, //3 items above 1000px browser width
+            itemsDesktop: [1199, 3], //5 items between 1199px and 979px
+            itemsDesktopSmall: [979, 3], // betweem 979px and 601px
+            itemsTablet: [768, 1], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+            lazyLoad: true,
+            autoPlay: true,
+            navigation: true,
+            navigationText: ["", ""],
+            rewindNav: true,
+            scrollPerPage: true,
+            //Pagination
+            pagination: true,
+            paginationNumbers: false,
+        });
+        $("#owl-2").owlCarousel({
+            items: 2, //2 items above 1000px browser width
+            itemsDesktop: [1199, 2], //5 items between 1199px and 979px
+            itemsDesktopSmall: [979, 2], // betweem 979px and 601px
+            itemsTablet: [768, 1], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+            lazyLoad: true,
+            autoPlay: true,
+            navigation: true,
+            navigationText: ["", ""],
+            rewindNav: true,
+            scrollPerPage: true,
+            //Pagination
+            pagination: true,
+            paginationNumbers: false,
+        });
+        $("#owl-1").owlCarousel({
+            items: 1, //2 items above 1000px browser width
+            itemsDesktop: [1199, 1], //5 items between 1199px and 979px
+            itemsDesktopSmall: [979, 1], // betweem 979px and 601px
+            itemsTablet: [768, 1], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+            lazyLoad: true,
+            autoPlay: true,
+            navigation: true,
+            navigationText: ["", ""],
+            rewindNav: true,
+            scrollPerPage: true,
+            //Pagination
+            pagination: true,
+            paginationNumbers: false,
+        });
 });
 $(document).on('click', '.navbar-collapse.in', function(e) {
     if ($(e.target).is('a')) {

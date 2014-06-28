@@ -15,6 +15,12 @@
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
+        <!-- Owl Carousel Assets -->        
+        <?php echo css('owl.carousel.css'); ?>
+        <!-- Owl Carousel Assets -->
+        <!-- Prettify -->       
+        <?php echo js('owl.carousel.js'); ?>      
+        <!-- //Owl Carousel Assets -->
     </head>
     <body>
         <?php echo js('customize-js.js'); ?>

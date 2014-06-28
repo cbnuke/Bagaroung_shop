@@ -13,4 +13,4 @@ $lang['detail_product'] = "รายละเอียดสินค้า";
 $lang['product_price'] = "ราคา";
 $lang['baht'] = "บาท";
 
-$lang['description'] = "รายละเอียด";
+$lang['description'] = "รายละเอียด...";

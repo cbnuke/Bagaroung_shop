@@ -9,7 +9,7 @@
 </div>
 
 <!-- start main -->
-<div class="main_bg">
+<div class="main_bg" id="des_products">
     <div class="wrap">
         <div class="row">
             <!-- start right_sidebar -->
@@ -21,41 +21,36 @@
                             <div class="col-md-12">
                                 <?php
                                 foreach ($recommend as $row) {
-                                    echo '<a href="' . $row['id'] . '" class="thumbnail">';
-                                    echo '<img src="' . img_url() . $row['img_front'] . '" alt="..." >';
-                                    echo '<div class="caption">';
-                                    echo '<h4>' . unserialize($row['product_name'])[$language] . '</h4>';
-                                    echo '<p>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</p>';
-                                    echo '</div>';
-                                    echo '</a>';
-                                    
-                                    
-                                }
-                                ?> 
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://placehold.it/100x100" class="img-responsive thumbnail" alt="...">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            ชื่อสินค้า 
-                                        </h4>     
-                                        <del>ราคา 215461 บาท</del> 
-                                        ราคา 1254 บาท 
+                                    ?>     
+                                    <div class="media">
+                                        <a class="pull-left thumbnail" href="<?php echo base_url('detailproduct/id/' . $row['id']); ?>">                                        
+                                            <!--<img class="media-object" src="<?= img_url() . $row['img_front'] ?>" width="90px" alt="...">-->
+                                            <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . $row['img_front'] ?>"
+                                                 onmouseover="this.src = '<?= img_url() . $row['img_back'] ?>'" 
+                                                 onmouseout="this.src = '<?= img_url() . $row['img_front'] ?>'" 
+                                                 width="90px" alt="..."/>
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                <?= unserialize($row['product_name'])[$language]; ?>
+                                            </h4>
+                                            <?php
+                                            $is_expire = FALSE;
+                                            foreach ($all_promotion as $pro) {                                                
+                                                if ($pro['id'] == $row['promotion_id']) {
+                                                    $is_expire = TRUE;
+                                                }
+                                            }
+                                            if ($is_expire == FALSE) {
+                                                echo lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht');
+                                            } else {
+                                                echo '<span><del><small>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</small></del></span> ';
+                                                echo '<span class="text-danger">' . lang('product_price') . ' ' . number_format($row['promotion_price'], 2) . ' ' . lang('baht') . '</span>';
+                                            }
+                                            ?>                                        
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://placehold.it/100x100" class="img-responsive thumbnail" alt="...">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            ชื่อสินค้า 
-                                        </h4>     
-                                        <del>ราคา 215461 บาท</del> 
-                                        ราคา 1254 บาท 
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -95,7 +90,8 @@
                                     <img id="img_01" src="<?= img_url() . $detail['img_left'] ?>" class="img-responsive"/>
                                 </a>
                             </div>
-                        </div>
+                        </div>                       
+
                         <script>
                             //initiate the plugin and pass the id of the div containing gallery images 
                             $("#img_01").elevateZoom({
@@ -110,6 +106,9 @@
                             ////pass the images to Fancybox 
 
                         </script>
+                        <!--test-->
+
+                        <!--end test-->
                     </div>
                     <div class="col-md-6">
                         <div class="row">
@@ -118,9 +117,9 @@
                                 <div class="desc1">  
                                     <h3 class="text-center">
                                         <?php
-                                        if ($promotion == NULL || count($promotion) == 0) {
+                                        if ($promotion == NULL) {
                                             echo '<strong>' . lang('product_price') . '</strong>' . '&nbsp;&nbsp;';
-                                            echo '<span>' . number_format($detail['product_price'], 2) . '</span>';
+                                            echo '<span>' . number_format($detail['product_price'], 2) . '</span>' . '&nbsp;&nbsp;';
                                             echo lang('baht');
                                         } else {
                                             echo '<div class="row">';
@@ -129,10 +128,8 @@
                                             echo lang('baht');
                                             echo '</div>';
 
-                                            echo '<div class="row">';
-//                                            echo '<strong>'.lang('product_price') .'</strong>'.'&nbsp;&nbsp;';
+                                            echo '<div class="row">'; //                                           
                                             echo '<span  class="text-danger"  >' . number_format($promotion['promotion_price'], 2) . '</span>' . '&nbsp;&nbsp;';
-//                                            echo lang('baht') ;
                                             echo '</div>';
                                         }
                                         ?>   
@@ -196,7 +193,7 @@
                                 <div class="media-body">
                                     <blockquote>
                                         <?= unserialize($detail['detail'])[$language] ?> 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
                                     </blockquote>
                                 </div>
                             </div>
@@ -204,10 +201,10 @@
                         </div>
                         <div class="row row_content text-center" >
                             <div class="col-md-6 col-md-offset-3">
-                                <div class="fb-like" 
-                                     data-href="<?= current_url(); ?>" 
-                                     data-layout="standard" data-action="like" data-show-faces="false" data-share="true">                                         
-                                </div>
+                                <!--                                <div class="fb-like" 
+                                                                     data-href="<? current_url(); ?>" 
+                                                                     data-layout="standard" data-action="like" data-show-faces="false" data-share="true">                                         
+                                                                </div>-->
                             </div>                            
                         </div>
 
@@ -239,7 +236,7 @@
         <div class="wrap">
             <div class="main">
                 <div class="row" style="height: 300px;">
-                    <h2 class="style"><?= lang('how_to_order') ?></h2>
+                    <h2 class="style"><?= lang('how_to_order'); ?></h2>
                 </div>
             </div>
         </div>

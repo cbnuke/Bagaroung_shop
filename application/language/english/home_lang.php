@@ -13,4 +13,4 @@ $lang['detail_product'] = "Detail product";
 $lang['product_price'] = "Price";
 $lang['baht'] = "Baht";
 
-$lang['description'] = "Description";
+$lang['description'] = "Read more ...";

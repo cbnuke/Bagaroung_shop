@@ -18,20 +18,41 @@
             <div class="col-md-2">
                 <div class="row hidden-sm hidden-xs">                
                     <div class="col-md-12">
-                        <div class="row">
-                            <h3><? lang('recommend') ?></h3>
+                        <div class="row">                            
                             <div class="col-md-12">
+                                <h3><?= lang('recommend') ?></h3>
                                 <?php
                                 foreach ($recommend as $row) {
-                                    echo '<a href="' . $row['id'] . '" class="thumbnail">';
-                                    echo '<img src="' . img_url() . $row['img_front'] . '" alt="..." >';
-                                    echo '<div class="caption">';
-                                    echo '<h4>' . unserialize($row['product_name'])[$language] . '</h4>';
-                                    echo '<p>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</p>';
-                                    echo '</div>';
-                                    echo '</a>';
-                                    ?>                                 
-                                <?php } ?>
+                                    ?>     
+                                    <div class="media">
+                                        <a class="pull-left thumbnail" href="<?php echo base_url('detailproduct/id/' . $row['id']); ?>">                                        
+                                            <!--<img class="media-object" src="<?= img_url() . $row['img_front'] ?>" width="90px" alt="...">-->
+                                            <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . $row['img_front'] ?>"
+                                                 onmouseover="this.src = '<?= img_url() . $row['img_back'] ?>'" 
+                                                 onmouseout="this.src = '<?= img_url() . $row['img_front'] ?>'" 
+                                                 width="90px" alt="..."/>
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                <?= unserialize($row['product_name'])[$language]; ?>
+                                            </h4>
+                                            <?php
+                                            $is_expire = FALSE;
+                                            foreach ($all_promotion as $pro) {                                                
+                                                if ($pro['id'] == $row['promotion_id']) {
+                                                    $is_expire = TRUE;
+                                                }
+                                            }
+                                            if ($is_expire == FALSE) {
+                                                echo lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht');
+                                            } else {
+                                                echo '<span><del><small>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</small></del></span> ';
+                                                echo '<span class="text-danger">' . lang('product_price') . ' ' . number_format($row['promotion_price'], 2) . ' ' . lang('baht') . '</span>';
+                                            }
+                                            ?>                                        
+                                        </div>
+                                    </div>
+<?php } ?>
                             </div>
                         </div>
                     </div>
@@ -57,12 +78,12 @@
                             <div class="media">    
                                 <h4 class="media-heading">
                                     <dt>
-                                    <?= lang('detail_promotion'); ?> 
+<?= lang('detail_promotion'); ?> 
                                     </dt>
                                 </h4>
                                 <div class="media-body">  
                                     <blockquote>
-                                        <?= unserialize($promotion['detail'])[$language]; ?>   
+<?= unserialize($promotion['detail'])[$language]; ?>   
                                     </blockquote>                                
                                 </div>
                             </div>
@@ -106,24 +127,24 @@
                         </thead>
 
                         <tbody>
-                            <?php
-                            if ($products == null || count($products) < 0) {
-                                echo '<tr><td colspan="4" >' . lang('no_product_pro') . '</td></tr>';
-                            } else {
-                                foreach ($products as $p) {
-                                    $itemp = '<tr class="active">';
-                                    $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
-                                    $itemp .= '<td>' . unserialize($p['product_name'])[$language] . '</td>';
-                                    $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
-                                    $itemp .= '<td align="center"><span  class="text-danger"  ><h3>' . $p['promotion_price'] . '</h3></span></td>';
-                                    $itemp .='<td>';
-                                    $itemp .='<a href="' . base_url('detailproduct/id/' . $p['id']) . '">' . lang('read_more') . '</a>';
-                                    $itemp .='</td>';
-                                    $itemp .= '</tr>';
-                                    echo $itemp;
-                                }
-                            }
-                            ?>
+<?php
+if ($products == null || count($products) < 0) {
+    echo '<tr><td colspan="4" >' . lang('no_product_pro') . '</td></tr>';
+} else {
+    foreach ($products as $p) {
+        $itemp = '<tr class="active">';
+        $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
+        $itemp .= '<td>' . unserialize($p['product_name'])[$language] . '</td>';
+        $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
+        $itemp .= '<td align="center"><span  class="text-danger"  ><h3>' . $p['promotion_price'] . '</h3></span></td>';
+        $itemp .='<td>';
+        $itemp .='<a href="' . base_url('detailproduct/id/' . $p['id']) . '">' . lang('read_more') . '</a>';
+        $itemp .='</td>';
+        $itemp .= '</tr>';
+        echo $itemp;
+    }
+}
+?>
                         </tbody>
                     </table>
                 </div>                        
@@ -133,7 +154,7 @@
 
 </div>
 
-</div>
+
 
 
 

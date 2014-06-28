@@ -25,12 +25,13 @@
 
 
 
+
 <script>
-     $(document).ready(function() {
+    $(document).ready(function() {
         //Examples of how to assign the Colorbox event to elements        
         $(".group3").colorbox({rel: 'group3', transition: "none", width: "75%", height: "75%"});
-       
-     
+
+
     });
     $('#confirm').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data('id');
@@ -91,6 +92,11 @@
 ?>
 </div> <!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
+<div class="footer">                
+    <div class="copy">
+        <p>Page Generation: {elapsed_time} &copy; CBNUKE & VORD 2014</p>
+    </div>
+</div>
 
 <!-- Core Scripts - Include with every page -->
 <?= js('plugins/metisMenu/jquery.metisMenu.js'); ?>

@@ -21,9 +21,25 @@ Class m_detailproduct extends CI_Model {
         return $result;
     }
 
-    function check_recommend() {
+       function check_all_promotions() {
+        $dt_now = date('Y-m-d H:i:s');
+        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
+        $this->db->from('promotions');
+        $this->db->join('images', 'images.id = promotions.image_id');       
+        $this->db->where('start <',$dt_now);
+        $this->db->where('end >',$dt_now);
+        $this->db->where('status_promotion',1); 
+        $query = $this->db->get();
+        $rs = $query->result_array();
+        return $rs;
+    }
+
+    function check_recommend() {        
         $this->db->select();
         $this->db->from('products');
+        $this->db->join('products_has_promotions', 'product_id = id', 'left'); 
+//        $this->db->join('promotions', 'promotions.id = promotion_id AND status_promotion = 1', 'left');  
+        $this->db->where('product_status', 1);
         $this->db->order_by('view_count', 'desc');
         $this->db->limit(5);
         $query = $this->db->get();
@@ -37,8 +53,8 @@ Class m_detailproduct extends CI_Model {
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');
         $this->db->join('products_has_promotions', 'promotion_id=promotions.id');
-//        $this->db->where('promotions.start >',$dt_now);
-//        $this->db->where('end <',$dt_now);
+        $this->db->where('start <',$dt_now);
+        $this->db->where('end >',$dt_now);
         $this->db->where('status_promotion',1);
         $this->db->where('product_id', $product_id);
         $query = $this->db->get();

@@ -40,11 +40,11 @@ class DetailPromotion extends CI_Controller {
 
         //get recommend
         $data['recommend'] = $this->m_detailpromotion->get_recommend();
-
+        $data['all_promotion'] = $this->m_detailpromotion->check_all_promotions();
 
 
         $this->m_template->set_Content('detailpromotion.php', $data);
-//        $this->m_template->set_Debug($data);
+//       $this->m_template->set_Debug($data['recommend'] );
         $this->m_template->showTemplate();
     }
 

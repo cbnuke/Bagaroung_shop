@@ -11,8 +11,14 @@ Class m_home extends CI_Model {
         return $result;
     }
 
-    function check_product_in_types($type_id) {
-        $query = $this->db->get_where('products', array('product_type_id' => $type_id));
+    function check_product_in_types($type_id) {        
+        $this->db->select('*,products.id');
+        $this->db->from('products');
+        $this->db->join('products_has_promotions', 'product_id = id', 'left');
+        $this->db->join('promotions', 'promotions.id = promotion_id', 'left'); 
+        $this->db->where('product_status', 1);
+        $this->db->where('product_type_id', $type_id);
+         $query = $this->db->get();
         $result = $query->result_array();
         return $result;
     }
@@ -38,24 +44,23 @@ Class m_home extends CI_Model {
         $dt_now = date('Y-m-d H:i:s');
         $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
         $this->db->from('promotions');
-        $this->db->join('images', 'images.id = promotions.image_id');
-
-        $this->db->where('end <',$dt_now);
-        $this->db->where('start >',$dt_now);
-        $this->db->where('end <',$dt_now);
-        $this->db->where('status_promotion',1);
-
-        $this->db->where('end <', $dt_now);
-
+        $this->db->join('images', 'images.id = promotions.image_id');       
+        $this->db->where('start <',$dt_now);
+        $this->db->where('end >',$dt_now);
+        $this->db->where('status_promotion',1); 
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;
     }
 
     function check_all_products_has_promotion() {
+        $dt_now = date('Y-m-d H:i:s');
         $this->db->select('*');
         $this->db->from('products_has_promotions');
         $this->db->join('products', 'products.id = products_has_promotions.product_id');
+        $this->db->join('promotions', 'promotions.id = promotion_id AND status_promotion = 1', 'left');
+        $this->db->where('start <',$dt_now);
+        $this->db->where('end >',$dt_now);
         $query = $this->db->get();
         $rs = $query->result_array();
         return $rs;

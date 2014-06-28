@@ -31,7 +31,7 @@ class Home extends CI_Controller {
         $data['slide'] = $this->m_home->check_slide_enable();
 
         $this->m_template->set_Content('home.php', $data);
-//        $this->m_template->set_Debug($data['slide']);
+//        $this->m_template->set_Debug($data['all_pro']);
         $this->m_template->showTemplate();
     }
 

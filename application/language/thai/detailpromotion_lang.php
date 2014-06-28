@@ -25,7 +25,7 @@ $lang['name']="ชื่อสินค้า";
 
 
 
-
+$lang['detail_product'] = "รายละเอียด";
 $lang['product_size'] = "ขนาด";
 $lang['product_weight'] = "น้ำหนัก";
 $lang['product_width'] = "ความกว้าง";

@@ -126,38 +126,6 @@ end reset*/
 .copy p a:hover{
     color: #7D7D7D;
 }
-/* start about */
-.about{
-    display: block;
-}
-.cont-grid {
-    float: left;
-    width: 62.3333%;
-}
-.cont-grid-img{
-    margin-right: 3.3333%;
-    width: 34.33333%;
-    float:left;
-}
-.cont-grid-img img{
-    margin-top: 10px;
-}
-.cont-grid h4{
-    line-height:1.5em;
-    font-size: 1.5em;
-    text-transform: capitalize;
-    color: #333333;
-    text-shadow: 0 1px 0 #ffffff;
-}
-p.para{
-    color: #555555;
-    text-shadow: 0 1px 0 #ffffff;
-    line-height:1.5em;
-    font-size: 0.8725em;
-}
-.cont-grid p,.about-p{
-    margin-top: 2%;
-}
 .read_more {
     margin-top: 2%;
 }
@@ -184,6 +152,21 @@ p.para{
 .read_more a:hover{
     background: #57C5A0;
     border: 1px solid #57c5a0;
+}
+
+.main_top h2:hover{
+    color: #57C5A0;
+    /*border: 1px solid #57c5a0;*/
+    text-transform: capitalize;
+    -webkit-appearance: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
 }
 
 h2.style{
@@ -294,18 +277,18 @@ h4.style{
     background: #57C5A0;
     color: #ffffff;
     font-size: 1.1525em;
-    padding: 20px 30px;
+    padding: 5% 5%;
     position: absolute;
-    bottom: 50px;
-    left: 15px;
+    bottom: 25%;
+    left: 3%;
 }
 .price1{
     font-size: 0.8725em;
     color: #ffffff;
-    padding: 20px 30px;
+    padding: 5% 3%;
     position: absolute;
     top: 0px;
-    right: 10px;
+    right: 5%;
     text-transform:uppercase;
 }
 .price1.bg{
@@ -315,16 +298,31 @@ h4.style{
     background: #F27E4B;
     /*width: 60px;*/
 }
-.bg_itemp{    
-    background: #ffffff;	
+
+.price_pro{
+    font-size: 0.8725em;
+    color: #ffffff;
+    padding: 5% 3%;    
+    position: absolute;
+    top: 0%;
+    right: 10%;
+    text-transform:uppercase;
 }
+.price_pro.bg{
+    background: #242424;
+}
+.price_pro.bg1{
+    background: #F27E4B;
+    /*width: 60px;*/
+}
+
 /**
  * CSS3 social icon hover effect
  * Read more on my blog: http://webbb.be/blog/
  */
 
-a,a:visited { color: #fff; }
-a:hover { color: #fff; }
+/*a,a:visited { color: #fff; }
+a:hover { color: #fff; }*/
 
 .social {
     float: left;
@@ -373,3 +371,23 @@ a:hover { color: #fff; }
 .social:hover {
     transform: rotateY(100deg);
 }
+
+/*#owl-demo .item{   
+    background: #3fbf79;
+    padding: 30px 0px;
+    margin: 10px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+}*/
+/*#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}*/
+
