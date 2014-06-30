@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title><?php echo $title; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Bagaroung shop">
+        <meta name="description" content="Bagaround shop">
         <meta name="author" content="CBNUKE & VORD">
         <link rel="shortcut icon" href="<?php echo base_url() . 'assets/img/favicon.ico'; ?>">
         <?php echo css('bootstrap.css'); ?>
@@ -15,6 +15,7 @@
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
+        <?php echo js('docs.min.js'); ?>
         <!-- Owl Carousel Assets -->        
         <?php echo css('owl.carousel.css'); ?>
         <!-- Owl Carousel Assets -->
@@ -34,7 +35,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= site_url('home') ?>"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaroung</a>
+                    <a class="navbar-brand" href="<?= site_url('home') ?>"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaround</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <?php

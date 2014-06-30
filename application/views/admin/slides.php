@@ -22,14 +22,14 @@
             <div class="tab-pane" id="all">
                 <table class="table table-hover table-striped table-responsive">
                     <thead>
-                    <th style="width: 8%;" ></th>
+                    <th style="width: 5%;" ></th>
                     <!--<th style="width: 5%;" >ลำดับ</th>-->
-                    <th style="width: 25%;" >ชื่อหลัก</th>
-                    <th style="width: 25%;" >ชื่อรอง</th>
+                    <th style="width: 20%;" >ชื่อหลัก</th>
+                    <th style="width: 20%;" >ชื่อรอง</th>
                     <th style="width: 5%;" >ลิ้งค์</th>
                     <th style="width: 20%;" >รูปภาพ</th>
 
-                    <th style="width: 15%" ></th>
+                    <th style="width: 30%" ></th>
 
                     </thead>
                     <tbody>
@@ -120,14 +120,14 @@
             <div class="tab-pane active" id="active">
                 <table class="table table-hover table-responsive">
                     <thead>
-                    <th style="width: 10%;" ></th>
+                    <th style="width: 5%;" ></th>
                     <th style="width: 5%;" >ลำดับ</th>
-                    <th style="width: 25%;" >ชื่อหลัก</th>
-                    <th style="width: 25%;" >ชื่อรอง</th>
+                    <th style="width: 20%;" >ชื่อหลัก</th>
+                    <th style="width: 20%;" >ชื่อรอง</th>
                     <th style="width: 5%;" >ลิ้งค์</th>
                     <th style="width: 20%;" >รูปภาพ</th>
 
-                    <th style="width: 15%" ></th>
+                    <th style="width: 25%" ></th>
 
                     </thead>
                     <tbody>
@@ -220,14 +220,14 @@
             <div class="tab-pane" id="non_active">
                 <table class="table table-hover table-responsive">
                     <thead>
-                    <th style="width: 8%;" ></th>
+                    <th style="width: 5%;" ></th>
                     <!--<th style="width: 5%;" >ลำดับ</th>-->
-                    <th style="width: 25%;" >ชื่อหลัก</th>
-                    <th style="width: 25%;" >ชื่อรอง</th>
+                    <th style="width: 20%;" >ชื่อหลัก</th>
+                    <th style="width: 20%;" >ชื่อรอง</th>
                     <th style="width: 5%;" >ลิ้งค์</th>
                     <th style="width: 20%;" >รูปภาพ</th>
 
-                    <th style="width: 15%" ></th>
+                    <th style="width: 30%" ></th>
 
                     </thead>
                     <tbody>
@@ -237,7 +237,7 @@
                             foreach ($slides as $row) {
                                 if ($row['status_slide'] == '0') {
 
-                                    echo '<tr class="active">';
+                                    echo '<tr>';
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                     ?>  
                                             <!--<td align="center"> <? $i ?></td>-->

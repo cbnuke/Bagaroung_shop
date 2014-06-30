@@ -14,7 +14,7 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
         <form method="post" action="" name="myform" >
-           <?=$product_types?>
+            <?= $product_types ?>
         </form>
     </div>
     <div class="col-sm-4"></div>
@@ -26,17 +26,17 @@
         <thead>
             <tr>
                 <th style="width: 15%"></th>
-                <th style="width: 20%">ชื่อ(TH)</th>
+                <th style="width: 20%">ชื่อ</th>
 <!--                <th style="width: 25%">ชื่อ(EN)</th>-->
-                <th style="width: 10%">ราคา(THB)</th>
-                <th style="width: 2%">กว้าง(cm)</th>
+                <th style="width: 15%">ราคา(บาท)</th>
+<!--                <th style="width: 2%">กว้าง(cm)</th>
                 <th style="width: 2%">สูง(cm)</th>
                 <th style="width: 2%">ฐานกว้าง(cm)</th>
                 <th style="width: 2%">ช่วงบนกว้าง(cm)</th>
-                <th style="width: 2%">หนัก(kg)</th>   
+                <th style="width: 2%">หนัก(kg)</th>   -->
 
-                <th style="width: 8%">รายละเอียด</th>
-                <th style="width: 10%"></th>
+                <th style="width: 10%">รายละเอียด</th>
+                <th style="width: 20%"></th>
             </tr>        
         </thead>
         <tbody>
@@ -50,22 +50,23 @@
                     }
                     ?>
 
-                <td><?= img($row['img_front'], array('class' => 'img-responsive ','width' => '100', 'height' => '100')) ?></td>
+                <td align="center"  style="vertical-align: middle;" ><?= img($row['img_front'], array('class' => 'img-responsive ', 'width' => '100', 'height' => '100')) ?></td>
                 <td>
                     <?= unserialize($row['product_name'])['thai'] ?>
                     <hr>
                     <?= unserialize($row['product_name'])['english'] ?>
                 </td>
-                <td class="td-text-center"><?= $row['product_price'] ?></td>    
-                <td class="td-text-center"><?= $row['width'] ?></td>
-                <td class="td-text-center"><?= $row['hight'] ?></td>
-                <td class="td-text-center"><?= $row['base_width'] ?></td>
-                <td class="td-text-center"><?= $row['top_width'] ?></td>
-                <td class="td-text-center"><?= $row['weight'] ?></td>                
+                <td class="td-text-center"><?= number_format($row['product_price'],2) ?></td> 
+
+        <!--                <td class="td-text-center"><? $row['width'] ?></td>
+        <td class="td-text-center"><? $row['hight'] ?></td>
+        <td class="td-text-center"><? $row['base_width'] ?></td>
+        <td class="td-text-center"><? $row['top_width'] ?></td>
+        <td class="td-text-center"><? $row['weight'] ?></td>                -->
                 <?php
                 $delete = array(
                     'type' => "button",
-                    'class' => "btn btn-danger btn-xs",
+                    'class' => "btn btn-danger btn-sm",
                     'data-id' => "2",
                     'data-title' => "ลบ",
                     'data-info' => unserialize($row['product_name'])['thai'],
@@ -75,7 +76,7 @@
                 );
                 $cancle = array(
                     'type' => "button",
-                    'class' => "btn btn-warning btn-xs",
+                    'class' => "btn btn-warning btn-sm",
                     'data-id' => "3",
                     'data-title' => "ยกเลิกขาย",
                     'data-info' => unserialize($row['product_name'])['thai'],
@@ -85,7 +86,7 @@
                 );
                 $active = array(
                     'type' => "button",
-                    'class' => "btn btn-success btn-xs",
+                    'class' => "btn btn-success btn-sm",
                     'data-id' => "4",
                     'data-title' => "ขาย",
                     'data-info' => unserialize($row['product_name'])['thai'],
@@ -96,13 +97,13 @@
                 ?>
                 <td class="td-text-center"><?= anchor('Products/view/' . $row['id'], '<i class="fa fa-file-o fa-3x"></i>') ?></td>
                 <td class="td-text-center">
-                    <?= anchor('products/edit/' . $row['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp'; ?>
+                    <?= anchor('products/edit/' . $row['id'], '<i class="fa fa-pencil fa-2x"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-sm"') . '&nbsp'; ?>
                     <?php
                     if ($row['product_status'] == '1') {
-                        echo anchor('#', '<i class="fa fa-power-off fa-lg"></i>&nbsp;ยกเลิก', $cancle);
+                        echo anchor('#', '<i class="fa fa-power-off fa-2x"></i>&nbsp;ยกเลิก', $cancle);
                     } else {
-                        echo anchor('#', '<i class="fa fa-refresh fa-lg fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
-                        echo anchor('#', '<i class="fa fa-trash-o fa-lg"></i>&nbsp;ลบ', $delete);
+                        echo anchor('#', '<i class="fa fa-refresh fa-2x fa-spin"></i>&nbsp;ใช้งาน', $active) . '&nbsp;&nbsp';
+                        echo anchor('#', '<i class="fa fa-trash-o fa-2x"></i>&nbsp;ลบ', $delete);
                     }
                     ?>                   
                 </td>

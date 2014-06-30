@@ -16,6 +16,16 @@ th{
 td{
     vertical-align: middle ! important;
 }
+/*.container a{
+
+    color: #BCB4A7 ! important ;
+    
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+}*/
 /*
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -27,10 +37,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 img{max-width:100%;}
 end reset*/
 
-.wrap{
+/*.wrap{
     margin:0 auto;
     width:80%;
-}
+}*/
 /* start header */
 .top_bg{
     background: #242424;
@@ -276,8 +286,8 @@ h4.style{
 .price{
     background: #57C5A0;
     color: #ffffff;
-    font-size: 1.1525em;
-    padding: 5% 5%;
+    font-size: 0.9525em;
+    padding: 5% 3%;
     position: absolute;
     bottom: 15%;
     left: 3%;
@@ -371,6 +381,8 @@ a:hover { color: #fff; }*/
 .social:hover {
     transform: rotateY(100deg);
 }
+
+
 
 /*#owl-demo .item{   
     background: #3fbf79;

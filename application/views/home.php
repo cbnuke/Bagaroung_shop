@@ -206,7 +206,7 @@
 
 <div id="des_products">
     <div class="top_bg">
-        <div class="wrap">
+        <div class="container">
             <div class="main_top">
                 <h2 class="style"><?= lang('head_products') ?></h2>
             </div>
@@ -214,7 +214,7 @@
     </div>
     <!-- start main product-->
     <div class="main_bg">
-        <div class="wrap">
+        <div class="container">
             <div class="row main">
                 <div class="col-md-12">
                     <!-- Nav tabs -->
@@ -330,7 +330,7 @@
 <div id="des_contactus" > 
     <!-- sub header  -->
     <div  class="top_bg">
-        <div class="wrap">
+        <div class="container">
             <div class="main_top">
                 <h2 class="style"><?= lang('head_contactus') ?></h2>
             </div>
@@ -338,8 +338,8 @@
     </div>
     <!-- sub content -->
     <div  class="main_bg">
-        <div class="wrap">
-            <div class="row main" style="height: 1000px;">
+        <div class="container">
+            <div class="row main" style="height: 900px;">
                 เบอร์
             </div>
         </div>

@@ -102,11 +102,6 @@
                             <i class="fa fa-user fa-fw"></i> User Login <i class="fa fa-caret-down"></i> 
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
                             <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
@@ -119,10 +114,7 @@
                 <div class="navbar-default navbar-static-side" role="navigation">
                     <div class="sidebar-collapse">
                         <ul class="nav" id="side-menu">                        
-                            <li>
-                                <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-
-                            </li>
+                        
                             <!-- Product menu -->
                             <li>
                                 <a href="#"><i class="fa fa-file-o fa-fw"></i>&nbsp;Products<span class="fa arrow"></span></a>
