@@ -91,7 +91,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href=""><?php echo img('logo.png', array('height' => '30px')); ?>&nbsp;Bag Aroung Shop Admin</a>
+                    <a class="navbar-brand" href=""><?php echo img('logo.png', array('height' => '30px')); ?>&nbsp;Bag Around Shop Admin</a>
                 </div>
                 <!-- /.navbar-header -->
 

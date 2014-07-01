@@ -61,7 +61,7 @@ class m_promotions extends CI_Model {
 
         //delete on products has promotion 
         $this->db->where('promotion_id', $promoton_id);
-        $this->db->delete('products_has_promotions');       
+        $this->db->delete('products_has_promotions');
 
         //delete promotions
         $this->db->where('id', $promoton_id);
@@ -188,10 +188,13 @@ class m_promotions extends CI_Model {
         $f_products = $this->set_products_list_add();
 
         $f_type = array();
+        $f_type[0] = "ทั้งหมด";
         $temp = $this->get_product_type();
         foreach ($temp as $row) {
             $f_type[$row['id']] = unserialize($row['product_type'])['thai'];
         }
+
+
 //       product select
         $f_product_selects = $this->set_products_list_select_add();
 
@@ -266,6 +269,7 @@ class m_promotions extends CI_Model {
         $f_products = $this->set_products_list_edit($this->promotion_id);
 
         $f_type = array();
+        $f_type[0] = "ทั้งหมด";
         $temp = $this->get_product_type();
         foreach ($temp as $row) {
             $f_type[$row['id']] = unserialize($row['product_type'])['thai'];
@@ -334,12 +338,11 @@ class m_promotions extends CI_Model {
 //  to modal    
     function set_products_list_add($type_id = NULL) {
         $row = '';
-
         $product_id = $this->input->post('product_id');
         if ($type_id != NULL) {
-            $product = $this->get_product_by_type($type_id);
+            $product = $this->get_products_no_promotion($type_id);
         } else {
-            $product = $this->get_products();
+            $product = $this->get_products_no_promotion();
         }
         $is_checked = FALSE;
         foreach ($product as $p) {
@@ -357,7 +360,6 @@ class m_promotions extends CI_Model {
             $r.='<td>' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
             $r.='<td>' . $p['product_price'] . '</td>';
-            $r.='<td>' . unserialize($p ['product_type'])['thai'] . '</td >';
             $r.='</tr>';
             $row.=$r;
         }
@@ -368,6 +370,7 @@ class m_promotions extends CI_Model {
         $row = '';
         $price_in = $this->input->post('promotion_price');
         $product_id = $this->input->post('product_id');
+
         if (count($price_in) > 0 && $price_in != NULL) {
             $i = 0;
             foreach ($price_in as $p) {
@@ -391,15 +394,13 @@ class m_promotions extends CI_Model {
 //    edit mode
     function set_products_list_edit($id, $type_id = NULL) {
         $product_has_promotion = $this->get_products_has_promotion($id);
-        if ($type_id != NULL) {
-            $product = $this->get_product_by_type($type_id);
-        } else {
-            $product = $this->get_products();
-        }
+        $product = $this->get_products_no_promotion($type_id, $id);
+
         $row = '';
-        $is_checked = FALSE;
+        
         foreach ($product as $p) {
             $r = '<tr>';
+            $is_checked = FALSE;
             foreach ($product_has_promotion as $value) {
                 if ($value['promotion_id'] == $id && $value['product_id'] == $p['id']) {
                     $is_checked = TRUE;
@@ -414,7 +415,6 @@ class m_promotions extends CI_Model {
             $r.='<td>' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
             $r.='<td>' . $p['product_price'] . '</td>';
-            $r.='<td>' . unserialize($p ['product_type'])['thai'] . '</td >';
             $r.='</tr>';
             $row.=$r;
         }
@@ -458,16 +458,21 @@ class m_promotions extends CI_Model {
 
     function get_products($id = NULL) {
         $rs = '';
-        if ($id == NULL) {
+        if ($id == NULL) 
+            {
             $this->db->select('products.id,product_name,product_price,product_types.product_type,products.img_front');
             $this->db->from('products');
             $this->db->join('product_types', 'products.product_type_id = product_types.id');
+            $this->db->join('products_has_promotions', 'product_id = products.id', 'LEFT OUTER JOIN');
+            $this->db->where('product_id', NULL);
             $query = $this->db->get();
             $rs = $query->result_array();
-        } else {
-            $this->db->select('products.id,product_name,product_price,product_types.product_type,products.img_front');
+        } 
+        else {
+            $this->db->select('products.id,product_name,product_price,promotion_price,product_types.product_type,products.img_front');
             $this->db->from('products');
             $this->db->join('product_types', 'products.product_type_id = product_types.id');
+            $this->db->join('products_has_promotions', 'product_id = products.id','left');
             $this->db->where('products.id', $id);
             $query = $this->db->get();
             $rs = $query->row_array();
@@ -475,14 +480,29 @@ class m_promotions extends CI_Model {
         return $rs;
     }
 
-    function get_product_by_type($type_id) {
-        $rs = '';
-        $this->db->select('products.id,product_name,product_price,product_types.product_type,products.img_front');
-        $this->db->from('products');
-        $this->db->join('product_types', 'products.product_type_id = product_types.id');
-        $this->db->where('products.product_type_id', $type_id);
-        $query = $this->db->get();
+    function get_products_no_promotion($type_id = NULL, $promotion_id = NULL) {
+        $sql = 'SELECT * FROM   products '
+                . 'LEFT OUTER JOIN  products_has_promotions ON product_id = id '
+                . 'WHERE product_id IS NULL';
+        if ($type_id != 0 && $type_id != NULL) {
+            $sql .=' AND product_type_id = ' . $type_id;
+        }
+        if ($promotion_id != NULL) {
+            $sql .=' OR promotion_id = ' . $promotion_id;
+        }
+        $query = $this->db->query($sql);
         $rs = $query->result_array();
+
+        return $rs;
+    }
+
+    function check_product_by_type($type_id, $promotion_id = NULL) {
+        if ($promotion_id == NULL) {
+            $rs = $this->set_products_list_add($type_id);
+        } else {
+            $rs = $this->set_products_list_edit($promotion_id, $type_id);
+        }
+
         return $rs;
     }
 
@@ -528,8 +548,8 @@ class m_promotions extends CI_Model {
                 $config2['new_image'] = 'assets/img/promotions/thumbs/' . $finfo['file_name'];
                 $config2['maintain_ratio'] = TRUE;
                 $config2['thumb_marker'] = '';
-                $config2['width'] = 100;
-                $config2['height'] = 100;
+//                $config2['width'] = 500;
+                $config2['height'] = 500;
                 $this->load->library('image_lib', $config2);
                 $this->image_lib->resize();
 
@@ -540,7 +560,7 @@ class m_promotions extends CI_Model {
                     'img_path' => $finfo['file_path'],
                 );
 
-               
+
                 if ($id == NULL) {
                     $this->db->trans_start();
                     $this->db->insert('images', $data_img);
@@ -578,7 +598,7 @@ class m_promotions extends CI_Model {
 
         return $row['id'];
     }
-   
+
     public function deleteImage($image_id) {
         $this->db->select('img_path,img_name');
         $this->db->from('images');

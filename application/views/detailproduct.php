@@ -14,7 +14,7 @@
         <div class="row">
 
             <!-- start right_sidebar -->
-            <div class="col-md-2 hidden-sm hidden-xs">
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
                 <div class="row">                
                     <div class="col-md-12">
                         <div class="row">
@@ -62,7 +62,7 @@
 
             <!-- start content -->
 
-            <div class="col-md-10" style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 co" style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
 
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 hidden-lg hidden-md">
@@ -222,7 +222,7 @@
                             </h4>
                             <div class="media-body">
                                 <blockquote>
-                                    <?= unserialize($detail['detail'])[$language] ?>
+                                    <p><?= unserialize($detail['detail'])[$language] ?></p> 
                                 </blockquote>
                             </div>
                         </div>
@@ -259,9 +259,28 @@
     <div class="main_bg">
         <div class="container">
             <div class="main">
-                <div class="row" style="height: 300px;">
-                    <div class="col-md-12 col-xs-12">
-                        <h2 class="style"><?= lang('how_to_order'); ?></h2>
+                <div class="row" >
+                    <div class="placeholders center-block">
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Label</h4>
+                            <span class="text-muted">Something else</span>
+                        </div>
                     </div>
                 </div>
             </div>

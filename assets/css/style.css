@@ -54,10 +54,13 @@ end reset*/
     padding: 2% 4%;
 }
 .main{
-    padding:4%;
+    /*padding:4%;*/
+    padding-bottom: 4%;
+    padding-top: 4%;
+        
 }
 .top_main{
-    margin:3% 0;
+    margin:3% 0%;
 }
 .top_main:first-child{
     margin-top: 0;
@@ -331,56 +334,10 @@ h4.style{
  * Read more on my blog: http://webbb.be/blog/
  */
 
-/*a,a:visited { color: #fff; }
-a:hover { color: #fff; }*/
+/*#des_contactus a,a:visited { color: #fff; }
+#des_contactus a:hover { color: #fff; }*/
 
-.social {
-    float: left;
-    margin: 2em 2em; width: 100px; height: 100px; 	
-    display: block; text-align: center; line-height:103px; color: #fff;
 
-    position: relative;
-    transform:rotateY(0deg);
-    transition:transform .25s ease-out;
-    transform-style:preserve-3d;
-}
-.social > div {
-    width: 100px; height: 100px; background: #000;
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-}
-.social >.front {
-    transform:translateZ(40px);
-}
-.social >.back {
-    background: #3B5998; font-size: 3em;
-    transform:rotateY(-100deg) translateZ(40px);
-}
-
-/*  Social Media Colors 
-        Facebook #3B5998
-        Flickr #FE0883
-        Foursquare #8FD400
-        Google+ #C63D2D
-        Instagram #4E433C
-        Linkedin #4875B4
-        Tumblr #2B4964
-        Twitter #33CCFF
-        Vimeo #86B32D
-        Youtube #FF3333
-        Dribbble #ea4c89
-*/
-.social.social-twitter > .back { background: #55ACEE; }
-.social.social-github > .back { background: #f3f3f3; color: #000; }
-.social.social-pinterest > .back { background: #e3262e; }
-.social.social-googleplus > .back { background: #dd4B39; }
-.social.social-skype > .back { background: #12A5F4; }
-.social.social-linkedin > .back { background: #4875B4; }
-.social.social-dribbble > .back { background: #ea4c89; }
-
-/* Hover */
-.social:hover {
-    transform: rotateY(100deg);
-}
 
 
 
@@ -394,12 +351,45 @@ a:hover { color: #fff; }*/
     border-radius: 3px;
     text-align: center;
 }*/
-/*#owl-demo .item{
+.item{
   margin: 3px;
 }
-#owl-demo .item img{
+/*#owl-demo .item img{
   display: block;
   width: 100%;
   height: auto;
 }*/
+/*
+ * Placeholder dashboard ideas
+ */
 
+#des_contactus .placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+#des_contactus .placeholders h4 {
+  margin-bottom: 0;
+}
+#des_contactus .placeholder {
+  margin-bottom: 20px;
+}
+#des_contactus .placeholder img {
+  display: inline-block;
+  border-radius: 1%;
+}
+
+
+#howto .placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+#howto .placeholders h4 {
+  margin-bottom: 0;
+}
+#howto .placeholder {
+  margin-bottom: 20px;
+}
+#howto .placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}

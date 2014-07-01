@@ -4,7 +4,7 @@
 ?>
 <!-- start top_bg -->
 <div class="top_bg">
-    <div class="wrap">
+    <div class="container">
         <div class="main_top">
             <h2 class="style"><?= lang('head_promotions') ?></h2>
         </div>
@@ -12,16 +12,15 @@
 </div>
 <!-- start main -->
 <div class="main_bg">
-    <div class="wrap">
+    <div class="container">
         <div class="row">
             <!-- start right_sidebar -->
-            <div class="col-md-2">
-                <div class="row hidden-sm hidden-xs">                
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+                <div class="row ">                
                     <div class="col-md-12">
                         <div class="row">
                             <h4 class="style"><?= lang('recommend') ?></h4>                            
                             <div class="col-md-12">
-
                                 <div class="row placeholders">
                                     <?php
                                     foreach ($recommend as $row) {
@@ -62,7 +61,7 @@
             </div>
             <!-- end right_sidebar --> 
             <!-- start content -->         
-            <div class="col-md-10" style="padding-top: 25px">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" style="padding-top: 25px">
 
                 <div class="row">                        
                     <div class="col-md-6 bg">
@@ -101,17 +100,19 @@
                             <div class="clear"></div>
                         </div>
                         <div class="row">
-                            <div class="top_main">                                
-                                <a href="#products_pro"><?= lang('products_pro') ?></a>
+                            <div class="col-sm-12">
+                                <div class="top_main">                                
+                                    <a href="#products_pro"><?= lang('products_pro') ?></a>
+                                    <div class="clear"></div>
+                                </div>
                                 <div class="clear"></div>
                             </div>
-                            <div class="clear"></div>
                         </div>
 
                     </div>
                 </div>  
 
-                <div class="row" id="products_pro" style="padding-top: 20px">
+                <div class="row center-block" id="products_pro" style="padding-top: 20px">
                     <div class="panel panel-default">
                         <div class="panel-heading"><h4><?= lang('products_pro'); ?></h4></div>
                         <div class="panel-body">                            
@@ -149,7 +150,8 @@
                             </table>
                         </div>                        
                     </div>
-                </div>   
+                </div>  
+
             </div>
         </div>
         <!-- end content -->

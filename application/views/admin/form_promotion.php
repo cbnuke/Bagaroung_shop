@@ -138,33 +138,31 @@
                         <h4 class="modal-title" id="myModalLabel">เลือกสินค้า</h4>
                     </div>
                     <div class="modal-body ">
-                        <div class="row" > 
-                            <div class="col-lg-3">  </div>
-                            <div class="col-lg-6">
-                                <div class="col-sm-12">
+                        <div class="row" style="padding-bottom: 10px">   
+                            <div class="col-sm-12"> 
+                                <div class="col-sm-6 col-sm-offset-3">                                
                                     <?= $form['product_type_id']; ?>
                                 </div>  
                             </div>
-                            <div class="col-lg-3">  </div>
                         </div>
-                        <br>
                         <div class="row">
-                            <table class="table-condensed table-responsive" id="tb_products">
+                            <table class="table table-condensed table-responsive" id="tb_products">
                                 <thead>
                                     <tr>
-                                        <th style="width: 5%"></th>
-                                        <th style="width: 15%"></th>
-                                        <th style="width: 25%">ชื่อ(TH)</th>                             
-                                        <th style="width: 2%">ราคา(THB)</th>
-                                        <th style="width: 5%">ประเภท</th>                    
-
+                                        <th style="width: 10%"></th>
+                                        <th style="width: 20%"></th>
+                                        <th style="width: 25%">ชื่อ</th>                             
+                                        <th style="width: 20%">ราคา</th>  
                                     </tr>        
                                 </thead>
                                 <tbody >    
                                     <?= $form['products'] ?>
+
                                 </tbody>
                             </table> 
+
                         </div>
+
                     </div>
                     <div class="modal-footer">                    
                         <input type="button" class="btn btn-primary" id="button" value='ตกลง'>
@@ -208,9 +206,14 @@
                             row += '<td align="center">' + response.img_front + '</td>';
                             row += '<td>' + response.product_name + '</td>';
                             row += '<td>' + response.price + '</td>';
-                            row += '<td><input type="text" name="promotion_price[]" required="" value="' + response.promotion_price + '"><span>&nbsp;บาท</span></td>';
+                            var pro_price = '';
+                            if (response.promotion_price != null)
+                            {
+                                pro_price = response.promotion_price;
+                            }
+                            row += '<td><input type="text" name="promotion_price[]" required="" value="' + pro_price + '"><span>&nbsp;บาท</span></td>';
                             row += '</tr>';
-//                            console.log(row + '<----->');
+                            //                            console.log(row + '<----->');
                             $('#tb_products_promotion tbody').append(row);
                         },
                         error: function(error) {
@@ -226,18 +229,18 @@
         $("#product_type").change(function() {
             var type_id = $(this).val();
             var promotion_id = '<?= $promotion_id ?>';
-//            alert(promotion_id);
-//            alert($(this).val());
+            //            alert(promotion_id);
+            //            alert($(this).val());            
             $.ajax({
                 type: "POST",
                 //set the data type
                 data: "type_id=" + type_id + "&promotion_id=" + promotion_id,
                 dataType: 'json',
-                url: '<?= base_url(); ?>' + 'promotions/get_products_by_type', // target element(s) to be updated with server response 
+                url: '<?= base_url(); ?>' + 'promotions/check_products_by_type', // target element(s) to be updated with server response 
                 cache: false,
                 //check this in firefox browser
                 success: function(response) {
-//                    console.log(response);
+                    //                    console.log(response);
                     $('#tb_products tbody > tr').remove();
                     $('#tb_products tbody').append(response);
                 },

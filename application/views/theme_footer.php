@@ -11,7 +11,7 @@
                         the master-builder of human happiness.
                     </p>
                 </div>
-                <div class="col-xs-12 col-sm-4">
+                <div class="col-sm-4 hidden-xs">
                     <address>
                         <strong>Twitter, Inc.</strong><br>
                         795 Folsom Ave, Suite 600<br>
@@ -29,15 +29,19 @@
                 </div>  
 
                 <div class="col-xs-12 col-sm-4">
-                    <div class="fb-like-box" 
-                         data-href="https://www.facebook.com/BagAround" 
-                         data-colorscheme="dark" 
-                         data-show-faces="true" 
-                         data-header="false" 
-                         data-stream="true" 
-                         data-show-border="false">
+                    <div class="row center-block">
+                        <div class="fb-like-box" 
+                             data-href="https://www.facebook.com/BagAround" 
+                             data-colorscheme="dark" 
+                             data-show-faces="true" 
+                             data-header="false" 
+                             data-stream="true" 
+                             data-show-border="false"
+                             data-width="250px"
+                             >
+                        </div>
                     </div>
-                    
+
                     <div id="fb-root"></div>
                     <script>(function(d, s, id) {
                             var js, fjs = d.getElementsByTagName(s)[0];

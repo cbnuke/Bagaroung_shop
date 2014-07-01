@@ -44,7 +44,9 @@ Class m_home extends CI_Model {
 
     function check_all_promotions() {
         $dt_now = date('Y-m-d H:i:s');
-        $this->db->select('promotions.id,promotions.name,promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
+        $this->db->select('promotions.id as promotion_id,'
+                . 'promotions.name as promotion_name'
+                . ',promotions.detail,promotions.start,promotions.end,promotions.status_promotion,images.img_full,images.img_small');
         $this->db->from('promotions');
         $this->db->join('images', 'images.id = promotions.image_id');       
         $this->db->where('start <',$dt_now);
@@ -57,10 +59,11 @@ Class m_home extends CI_Model {
 
     function check_all_products_has_promotion() {
         $dt_now = date('Y-m-d H:i:s');
-        $this->db->select('*');
+        $this->db->select('promotion_id,product_id,product_name,product_price,promotion_price,img_front,img_back,img_right,img_left,product_status,name as promotion_name,start,end,status_promotion,img_full,img_small');
         $this->db->from('products_has_promotions');
         $this->db->join('products', 'products.id = products_has_promotions.product_id');
         $this->db->join('promotions', 'promotions.id = promotion_id AND status_promotion = 1', 'left');
+        $this->db->join('images', 'images.id = promotions.image_id'); 
         $this->db->where('start <',$dt_now);
         $this->db->where('end >',$dt_now);
         $query = $this->db->get();

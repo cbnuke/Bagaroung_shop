@@ -95,10 +95,10 @@ class Promotions extends CI_Controller {
         redirect('promotions', 'refresh');
     }
 
-    function get_products_by_type() {
+    function check_products_by_type() {
         $type_id = $this->input->post('type_id');
         $promotion_id = $this->input->post('promotion_id');
-        $rs = $this->m_promotions->set_product_by_type($type_id,$promotion_id);
+        $rs = $this->m_promotions->check_product_by_type($type_id,$promotion_id);
         echo json_encode($rs);
     }
 
@@ -110,7 +110,7 @@ class Promotions extends CI_Controller {
             'img_front' => img($row['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')),
             'product_name' => unserialize($row['product_name'])['thai'],
             'price' => $row['product_price'],
-            'promotion_price' => $this->m_promotions->get_promotion_price('4'),
+            'promotion_price' => $row['promotion_price'],
             'product_type' => unserialize($row ['product_type'])['thai'],
         );
         echo json_encode($rs);

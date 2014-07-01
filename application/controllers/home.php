@@ -19,6 +19,7 @@ class Home extends CI_Controller {
             $this->lang->load('home', 'thai');
             $this->language = 'thai';
         }
+       
     }
 
     public function index() {
@@ -26,17 +27,13 @@ class Home extends CI_Controller {
 
         $data['language'] = $this->language;
         $data['all_pro'] = $this->m_home->check_all_products();
-        $data['promotion']=$this->m_home->check_all_promotions();
-        $data['products_has_promotion']=$this->m_home->check_all_products_has_promotion();
+        $data['promotions'] = $this->m_home->check_all_promotions();
+        $data['products_has_promotion'] = $this->m_home->check_all_products_has_promotion();
         $data['slide'] = $this->m_home->check_slide_enable();
 
         $this->m_template->set_Content('home.php', $data);
-//        $this->m_template->set_Debug($data['all_pro']);
+//        $this->m_template->set_Debug($data['products_has_promotion']);
         $this->m_template->showTemplate();
-    }
-
-    public function view() {
-        $this->load->view('login');
     }
 
 }

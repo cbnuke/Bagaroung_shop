@@ -42,7 +42,7 @@
                     echo '<div class="item">';
                 }
 
-                echo img($row['img_full']);
+                echo img($row['img_small']);
                 echo '<div class="container"><div class="carousel-caption">';
                 echo '<h2>' . unserialize($row['title'])[$language] . '</h2>';
                 echo '<p>' . unserialize($row['subtitle'])[$language] . '</p>';
@@ -80,13 +80,14 @@
 <div id="des_promotions"> 
     <!-- start main promotions-->
     <div class="main_bg">
-        <div class="wrap">
+        <div class="container">
             <div class="main">
                 <!--<h2 class="style"><?lang('head_promotions') ?></h2>-->
                 <div class="row">
                     <?php
                     //Count number promotion
-                    $num = count($products_has_promotion);
+//                    $num = count($products_has_promotion);
+                    $num = count($promotions);
                     if ($num >= 4) {
                         echo'<div class = "col-md-12">';
                         echo'<div id = "owl-4">';
@@ -102,11 +103,12 @@
                         echo'<div id = "owl-1">';
                     }
 //                    for ($i = 0; $i < $num; $i++) {
-                    foreach ($products_has_promotion as $p) {
+//                    foreach ($products_has_promotion as $p) {
+                    foreach ($promotions as $p) {
                         echo'<div class = "item">';
                         echo'<div class = "row_has_3">';
                         echo'<a href="' . base_url('detailpromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
-                        echo'<img src="' . img_url() . $p['img_right'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
+                        echo'<img src="' . img_url() . $p['img_small'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
                         echo'<span class = "price_pro bg1">' . lang('head_promotions') . '</span>';
                         echo'</a>';
 
@@ -173,35 +175,7 @@
                         <a class="left carousel-control"  href="#promotions_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                         <a class="right carousel-control" href="#promotions_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>-->
-<!--test promotion-->
-<!--                    <div class="row"  >                        
-                        --start-promotion-cursual--
-                        <div id="owl-demo" class="center-block">
-                            <div class="item">
-                                <div class="row_has_3">
-                                    <a href="" class="thumbnail"> 
-                                        <img src="http://placehold.it/500x350" class="img-responsive" alt="...">                                        
-                                        <span class="price_pro bg1">promotion</span>
-                                    </a>
-                                </div>                                
-                            </div>                            
 
-                        </div>
-                        --//End-promotion-cursual--
-                        
-                    </div>-->
-
-<!--                    <div class="col-sm-3 col-xs-6">
-                        <div class="thumbnail row_has_3">
-                            <a href=""> 
-                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">  
-                                <span class="price_promotion">$145,99</span>
-                                <span class="price1 bg1">promotion </span>
-                            </a>
-                        </div>
-                    </div>-->
-
-<!--end test promotion-->
 
 
 <div id="des_products">
@@ -339,12 +313,85 @@
     <!-- sub content -->
     <div  class="main_bg">
         <div class="container">
-            <div class="row main" style="height: 900px;">
-                เบอร์
-            </div>
+            <div class="row main">
+                <div class="col-sm-6">   
+                    <div class="row placeholders center-block">
+                        <div class="col-xs-12 col-sm-6 placeholder">
+                            <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4 class="style">089-532-9866</h4>
+                            <!--<span class="text-muted">Something else</span>-->
+                        </div>
+                        <div class="col-xs-12 col-sm-6 placeholder">
+                            <a href="https://www.facebook.com/BagAround/message">
+                                <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                            </a>
+                            <h4 class="style">Bagaround</h4>
+                            <!--<span class="text-muted">Something else</span>-->
+                        </div>
+                        <div class="col-xs-12 col-sm-6 placeholder">
+                            <a href="#">
+                                <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                            </a>
+                            <h4 class="style">ID : Bagaround</h4>
+                            <!--<span class="text-muted">Something else</span>-->
+                        </div>
+                        <div class="col-xs-12 col-sm-6 placeholder">
+                            <a href="http://instagram.com/bagaround">
+                                <img src="<?php echo base_url() . 'assets/img/Instagram-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                            </a>
+                            <h4 class="style">Bagaround</h4>
+                            <!--<span class="text-muted">Something else</span>-->                          
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h4><?= lang('head_contactus') ?></h4></div>
+                        <div class="panel-body">
+                            <!--Start Contact form -->	                    
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="txt_name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="txt_name" placeholder="Name" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt_phone" class="col-sm-2 control-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        <input type="tel" class="form-control" id="txt_phone" placeholder="Name" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="txt_email" placeholder="Email" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txt_message" class="col-sm-2 control-label">Comments</label>
+                                    <div class="col-sm-10">                                
+                                        <textarea rows="5" name="txt_message" id="txt_message" class="form-control"  placeholder="Comments" required=""></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" value="Send Message" name="btn_submit" id="btn_submit" class="btn btn-info pull-right" title="Click here to submit your message!" />
+                                    </div>
+                                </div>
+                            </form>
+                            <!--End Contact form -->	
+                        </div>
+                    </div>	
+                </div>
+            </div>            
         </div>
     </div>
 </div>
+
 
 <ul class="nav pull-right scroll-top hidden" id="scroll-top">
     <li><a href="#des_promotions" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>

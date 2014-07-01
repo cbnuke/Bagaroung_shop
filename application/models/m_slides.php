@@ -36,11 +36,11 @@ Class m_slides extends CI_Model {
     }
 
     function validation_add() {
-        $this->form_validation->set_rules('title[thai]', 'ชื่อเรื่อง', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('subtitle[thai]', 'ชื่อเรื่องรอง', 'required|trim|xss_clean');
-        $this->form_validation->set_rules('title[english]', 'Title', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('subtitle[english]', 'subtitle', 'required|trim|xss_clean');
-        $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('title[thai]', 'ชื่อเรื่อง', 'trim|xss_clean');
+        $this->form_validation->set_rules('subtitle[thai]', 'ชื่อเรื่องรอง', 'trim|xss_clean');
+        $this->form_validation->set_rules('title[english]', 'Title', 'trim|xss_clean');
+        $this->form_validation->set_rules('subtitle[english]', 'subtitle', 'trim|xss_clean');
+        $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'trim|xss_clean');
         if (empty($_FILES['img_slide']['name'])) {
             $this->form_validation->set_rules('img_slide', 'รูปภาพ', 'required|xss_clean');
         }
@@ -49,11 +49,11 @@ Class m_slides extends CI_Model {
     }
 
     function validation_edit() {
-        $this->form_validation->set_rules('title[thai]', 'ชื่อเรื่อง', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('title[thai]', 'ชื่อเรื่อง', 'trim|xss_clean');
         $this->form_validation->set_rules('subtitle[thai]', 'ชื่อเรื่องรอง', 'trim|xss_clean');
-        $this->form_validation->set_rules('title[english]', 'Title', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('title[english]', 'Title', 'trim|xss_clean');
         $this->form_validation->set_rules('subtitle[english]', 'subtitle', 'trim|xss_clean');
-        $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'trim|xss_clean');
         return TRUE;
     }
 
@@ -296,8 +296,8 @@ Class m_slides extends CI_Model {
                 $config2['new_image'] = 'assets/img/slides/thumbs/' . $finfo['file_name'];
                 $config2['maintain_ratio'] = TRUE;
                 $config2['thumb_marker'] = '';
-                $config2['width'] = 100;
-                $config2['height'] = 100;
+//                $config2['width'] = 100;
+                $config2['height'] = 500;
                 $this->load->library('image_lib', $config2);
                 $this->image_lib->resize();
 
