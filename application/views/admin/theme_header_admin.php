@@ -18,7 +18,7 @@
         <?php echo css('bootstrap.css'); ?>
         <?php echo css('font-awesome.css'); ?>
         <!-- Generic page styles -->
-        <?= css('style.css') ?>
+        <!--<? css('style.css') ?>-->
         <!-- blueimp Gallery styles -->
         <?= css('blueimp-gallery.min.css') ?>
         <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->

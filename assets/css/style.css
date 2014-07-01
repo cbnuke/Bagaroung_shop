@@ -57,7 +57,7 @@ end reset*/
     /*padding:4%;*/
     padding-bottom: 4%;
     padding-top: 4%;
-        
+
 }
 .top_main{
     margin:3% 0%;
@@ -201,6 +201,8 @@ h4.style{
     margin-right: 2%;
     /*background: #2e2e2e;*/
 }
+.soc_icons a,a:visited { color:  #2e2e2e; }
+.soc_icons a:hover { color: #fff; }
 
 .soc_icons i{
     /*display: block;*/
@@ -352,7 +354,7 @@ h4.style{
     text-align: center;
 }*/
 .item{
-  margin: 3px;
+    margin: 3px;
 }
 /*#owl-demo .item img{
   display: block;
@@ -364,32 +366,32 @@ h4.style{
  */
 
 #des_contactus .placeholders {
-  margin-bottom: 30px;
-  text-align: center;
+    margin-bottom: 30px;
+    text-align: center;
 }
 #des_contactus .placeholders h4 {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 #des_contactus .placeholder {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 #des_contactus .placeholder img {
-  display: inline-block;
-  border-radius: 1%;
+    display: inline-block;
+    border-radius: 20%;
 }
 
 
 #howto .placeholders {
-  margin-bottom: 30px;
-  text-align: center;
+    margin-bottom: 30px;
+    text-align: center;
 }
 #howto .placeholders h4 {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 #howto .placeholder {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 #howto .placeholder img {
-  display: inline-block;
-  border-radius: 50%;
+    display: inline-block;
+    border-radius: 50%;
 }

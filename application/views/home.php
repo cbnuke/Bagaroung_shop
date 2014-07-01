@@ -18,20 +18,6 @@
             ?>
         </ol>
         <div class="carousel-inner">
-            <!--            <div class="item active">
-                            <img src="http://lorempixel.com/1500/500/"  class="img-responsive">
-                            <div class="wrap">
-                                <div class="carousel-caption">
-                                    <h2>Bootstrap 3 Carousel Layout</h2>                       
-                                    <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
-                                    <div class="read_more pull-right" >
-                                        <a  href="http://getbootstrap.com">Learn More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-
-
             <?php
             $flag_slide = TRUE;
             foreach ($slide as $row) {
@@ -46,7 +32,9 @@
                 echo '<div class="container"><div class="carousel-caption">';
                 echo '<h2>' . unserialize($row['title'])[$language] . '</h2>';
                 echo '<p>' . unserialize($row['subtitle'])[$language] . '</p>';
-                echo '<div class="read_more pull-right" ><a  href="' . $row['link_url'] . '" role="button">' . lang('description') . '</a></div>';
+                if ($row['link_url'] != NULL || $row['link_url'] == '') {
+                    echo '<div class="read_more pull-right" ><a  href="' . $row['link_url'] . '" role="button">' . lang('description') . '</a></div>';
+                }
                 echo '</div></div>';
 
                 //End item
@@ -133,56 +121,6 @@
         </div>
     </div>
 </div>
-<!--                    <div id="promotions_slide" class="carousel slide">
-                        <ol class="carousel-indicators">
-<?php
-//                    //Count number promotion
-//                    $num = count($products_has_promotion);
-//                    //Number indicators
-//                    $count = $num / 4;
-//                    for ($i = 0; $i < $count; $i++) {
-//                        echo '<li data-target="#promotions_slide" data-slide-to="' . $i . '"></li>';
-//                    }
-?>
-
-                        </ol>
-                         Carousel items 
-                        <div class="carousel-inner">
-<?php
-//                            $all_promotion = 20;
-//                            $flag_first = TRUE;
-//                            $i = 0;
-////                        for ($i = 0; $i < $all_promotion; $i++) {                        
-//                            foreach ($products_has_promotion as $p) {
-//                                //Start item and row
-//                                if ($i % 4 == 0) {
-//                                    if ($flag_first) {
-//                                        echo '<div class="item active"><div class="row">';
-//                                        $flag_first = FALSE;
-//                                    } else {
-//                                        echo '<div class="item"><div class="row">';
-//                                    }
-//                                }
-//
-//                                //Show single product
-//                                echo '<div class="col-sm-3 col-xs-6">';
-//                                echo '<a href="' . base_url('detailpromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
-//                                echo '<img src="' . img_url() . $p['img_front'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
-//                                echo '</a></div>';
-//
-//                                //Close item and row
-//                                if ($i % 4 == 3) {
-//                                    echo '</div></div>';
-//                                }
-//                                $i++;
-//                            }
-?>
-                        </div>
-                        /carousel-inner 
-                        <a class="left carousel-control"  href="#promotions_slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                        <a class="right carousel-control" href="#promotions_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>-->
-
 
 
 <div id="des_products">
@@ -350,49 +288,41 @@
                             <!--<span class="text-muted">Something else</span>-->                          
 
                         </div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <address>
+                                    <strong>E-mail</strong><br>
+                                    <a href="mailto:bagaround@hotmail.com">bagaround@hotmail.com</a>
+                                </address>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><h4><?= lang('head_contactus') ?></h4></div>
-                        <div class="panel-body">
-                            <!--Start Contact form -->	                    
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label for="txt_name" class="col-sm-2 control-label">Name</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="txt_name" placeholder="Name" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txt_phone" class="col-sm-2 control-label">Phone</label>
-                                    <div class="col-sm-10">
-                                        <input type="tel" class="form-control" id="txt_phone" placeholder="Name" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="txt_email" placeholder="Email" required="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="txt_message" class="col-sm-2 control-label">Comments</label>
-                                    <div class="col-sm-10">                                
-                                        <textarea rows="5" name="txt_message" id="txt_message" class="form-control"  placeholder="Comments" required=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <input type="submit" value="Send Message" name="btn_submit" id="btn_submit" class="btn btn-info pull-right" title="Click here to submit your message!" />
-                                    </div>
-                                </div>
-                            </form>
-                            <!--End Contact form -->	
+                    <div class="row text-center">
+                        <div class="fb-like-box" 
+                             data-href="https://www.facebook.com/BagAround" 
+                             data-colorscheme="light" 
+                             data-show-faces="true" 
+                             data-header="false" 
+                             data-stream="true" 
+                             data-show-border="true"
+                             data-width="350px"
+                             >
                         </div>
-                    </div>	
+                    </div>
+
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id))
+                                return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
                 </div>
             </div>            
         </div>
