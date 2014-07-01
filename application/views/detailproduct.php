@@ -62,7 +62,7 @@
 
             <!-- start content -->
 
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 co" style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
+            <div id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 co" style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
 
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 hidden-lg hidden-md">
@@ -233,7 +233,7 @@
                     <div class="col-md-12 col-xs-12 col-sm-12">
                         <?php
                         foreach ($img as $row) {
-                            echo '<div class="col-md-6"><img src="' . img_url() . $row['img_full'] . '" class="img-responsive" width="100%" alt="..." ></div>';
+                            echo '<div class="col-md-6"><a class="fancybox" rel="gallery1" href="' . img_url() . $row['img_full'] . '"><img src="' . img_url() . $row['img_full'] . '" class="img-responsive" width="100%" alt="..." ></a></div>';
                         }
                         ?>
                     </div>
@@ -287,6 +287,31 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(window).load(function() {
+        $(window).scroll(function() {
+            var pt_scroll = $(this).scrollTop() + 80;
+            if (pt_scroll >= $('#content').offset().top) {
+                $('#scroll-top').removeClass('hidden');
+            } else {
+                $('#scroll-top').addClass('hidden');
+            }
+        });
+
+        $('#link_promotions').on('click', function(event) {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 1000);
+
+        });
+        
+        $(".fancybox").fancybox();
+    });
+</script>
+<ul class="nav pull-right scroll-top hidden" id="scroll-top">
+    <li><a title="Scroll to top" id="link_promotions" style="color:#222;"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+</ul>
 
 
 

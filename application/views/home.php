@@ -73,6 +73,13 @@
                     $('#scroll-top').addClass('hidden');
                 }
             });
+
+            $('#link_promotions').on('click', function(event) {
+                $('html, body').animate({
+                    scrollTop: $('#des_products').offset().top - 80
+                }, 1000);
+
+            });
         });
     </script>
 </div>
@@ -394,7 +401,7 @@
 
 
 <ul class="nav pull-right scroll-top hidden" id="scroll-top">
-    <li><a href="#des_promotions" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+    <li><a title="Scroll to top" id="link_promotions" style="color:#222;"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
 </ul>
 
 

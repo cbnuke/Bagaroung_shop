@@ -61,7 +61,7 @@
             </div>
             <!-- end right_sidebar --> 
             <!-- start content -->         
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" style="padding-top: 25px">
+            <div id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12" style="padding-top: 25px">
 
                 <div class="row">                        
                     <div class="col-md-6 bg">
@@ -158,6 +158,29 @@
     </div>	
 
 </div>
+
+<script>
+    $(window).load(function() {
+        $(window).scroll(function() {
+            var pt_scroll = $(this).scrollTop() + 80;
+            if (pt_scroll >= $('#content').offset().top) {
+                $('#scroll-top').removeClass('hidden');
+            } else {
+                $('#scroll-top').addClass('hidden');
+            }
+        });
+
+        $('#link_promotions').on('click', function(event) {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 1000);
+
+        });
+    });
+</script>
+<ul class="nav pull-right scroll-top hidden" id="scroll-top">
+    <li><a title="Scroll to top" id="link_promotions" style="color:#222;"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+</ul>
 
 
 

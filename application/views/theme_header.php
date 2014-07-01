@@ -12,9 +12,11 @@
         <?php echo css('font-awesome.css'); ?>
         <?php echo css('customize-page.css'); ?>  
         <?php echo css('style.css'); ?>
+        <?php echo css('jquery.fancybox.css'); ?>
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
+        <?php echo js('jquery.fancybox.pack.js'); ?>
         <?php echo js('docs.min.js'); ?>
         <!-- Owl Carousel Assets -->        
         <?php echo css('owl.carousel.css'); ?>
