@@ -39,7 +39,7 @@ class Upload extends CI_Controller {
                     $foundFiles[$f]['url'] = $upload_path_url . $fileName;
                     $foundFiles[$f]['thumbnailUrl'] = $upload_path_url . 'thumbs/' . $fileName;
                     $foundFiles[$f]['deleteUrl'] = base_url() . 'Upload/deleteImage/' . $fileName;
-                    $foundFiles[$f]['deleteType'] = 'DELETE';
+                    $foundFiles[$f]['deleteType'] = 'POST';
                     $foundFiles[$f]['error'] = null;
 
                     $f++;
