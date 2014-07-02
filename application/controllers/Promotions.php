@@ -10,6 +10,9 @@ class Promotions extends CI_Controller {
         $this->load->model('m_template');
         $this->load->model('m_promotions');
         $this->load->helper('date');
+        if ($this->session->userdata('loged_in') != TRUE) {
+            redirect('administrator');
+        }
     }
 
     private $promotion_id = '';

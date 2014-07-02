@@ -1,5 +1,5 @@
-<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade bs-example-modal-sm" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -90,11 +90,14 @@
  * and open the template in the editor.
  */
 ?>
+
+
 </div> <!-- /#page-wrapper -->
+
 </div><!-- /#wrapper -->
-<div class="footer">                
-    <div class="copy">
-        <p>Page Generation: {elapsed_time} &copy; CBNUKE & VORD 2014</p>
+<div class="footer" style="padding-top: 10%">
+    <div class="container ">
+        <p class="text-muted">Page Generation: {elapsed_time} &copy; CBNUKE & VORD 2014</p>
     </div>
 </div>
 

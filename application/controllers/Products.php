@@ -10,12 +10,15 @@ class Products extends CI_Controller {
         $this->load->model('m_template');
         $this->load->model('m_products');
         $this->load->helper('file');
+        if ($this->session->userdata('loged_in') != TRUE) {
+            redirect('administrator');
+        }
     }
 
     public function index() {
         $i_type = array();
         $temp = $this->m_products->check_product_type();
-        $i_type[0]="ทั้งหมด";
+        $i_type[0] = "ทั้งหมด";
         foreach ($temp as $row) {
             $i_type[$row['id']] = unserialize($row['product_type'])['thai'];
         }

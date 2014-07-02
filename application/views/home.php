@@ -1,4 +1,4 @@
-<div id="top_slide">
+<div id="top_slide">   
     <!-- Carousel
  ================================================== -->
     <div id="banner_slide" class="carousel slide" data-ride="carousel">
@@ -193,51 +193,6 @@
                     </div>   
 
                 </div>
-                <!--start test-->                
-
-                <!--                <div class="col-md-12">
-                                    <div class="row">                    
-                                        <div class="col-md-4">
-                                            <div class="thumbnail row_has_3">
-                                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">
-                                                <a href="">
-                                                    <h3>even &amp; odd</h3>
-                                                    <span class="price">$145,99</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="thumbnail row_has_3">
-                                                <img src="http://placehold.it/500x350"  alt="...">
-                                                <a href="" class="">
-                                                    <h3>buffalo decollete</h3>
-                                                    <span class="price">$185,99</span>
-                                                    <span class="price1 bg">on sale</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="thumbnail row_has_3">
-                                                <img src="http://placehold.it/500x350" class="img-responsive" alt="...">
-                                                <a href="" data-toggle="tooltip" data-placement="bottom" title="<?= lang('detail_product'); ?> ">
-                                                    <h3>even &amp; odd</h3>
-                                                    <span class="price">$145,99</span>
-                                                    <span class="price1 bg1">out of stock</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div> 
-                
-                                </div>-->
-
-                <!--                <div class="row">    
-                                    <img title="Hello" src="http://localhost/Bagaroung_shop/assets/img/products/092e727f6396942a2279e5d2d731ab76.jpg"
-                                         onmouseover="this.src = 'http://localhost/Bagaroung_shop/assets/img/products/191ef50fb03982c42fd20687ef0da006.jpg'" 
-                                         onmouseout="this.src = 'http://localhost/Bagaroung_shop/assets/img/products/092e727f6396942a2279e5d2d731ab76.jpg'" />
-                
-                                </div>-->
-                <!--end test-->   
 
             </div>
 
@@ -261,46 +216,45 @@
             <div class="row main">
                 <div class="col-sm-6">   
                     <div class="row placeholders center-block">
-                        <div class="col-xs-12 col-sm-6 placeholder">
+                        <div class="col-xs-6 col-sm-6 placeholder">
                             <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             <h4 class="style">089-532-9866</h4>
                             <!--<span class="text-muted">Something else</span>-->
                         </div>
-                        <div class="col-xs-12 col-sm-6 placeholder">
+                        <div class="col-xs-6 col-sm-6 placeholder">
                             <a href="https://www.facebook.com/BagAround/message">
                                 <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             </a>
                             <h4 class="style">Bagaround</h4>
                             <!--<span class="text-muted">Something else</span>-->
                         </div>
-                        <div class="col-xs-12 col-sm-6 placeholder">
+                        <div class="col-xs-6 col-sm-6 placeholder">
                             <a href="#">
                                 <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             </a>
                             <h4 class="style">ID : Bagaround</h4>
                             <!--<span class="text-muted">Something else</span>-->
                         </div>
-                        <div class="col-xs-12 col-sm-6 placeholder">
+                        <div class="col-xs-6 col-sm-6 placeholder">
                             <a href="http://instagram.com/bagaround">
                                 <img src="<?php echo base_url() . 'assets/img/Instagram-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             </a>
                             <h4 class="style">Bagaround</h4>
-                            <!--<span class="text-muted">Something else</span>-->                          
-
+                            <!--<span class="text-muted">Something else</span>-->     
                         </div>
-                        <div class="col-md-12 col-sm-12">
-                            <div class="col-sm-6 col-sm-offset-3">
-                                <address>
-                                    <strong>E-mail</strong><br>
-                                    <a href="mailto:bagaround@hotmail.com">bagaround@hotmail.com</a>
-                                </address>
+                        <div class="col-md-12 col-sm-12 col-xs-12 placeholder">
+                            <div class="col-xs-6 col-sm-6 col-sm-offset-3">
+                                <a href="mailto:bagaround@hotmail.com">
+                                    <img src="<?php echo base_url() . 'assets/img/hotmail-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail" height="50%">
+                                </a>
+                                <h4 class="style">bagaround@hotmail.com</h4>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="row text-center">
+                    <div class="row text-center hidden-xs">
                         <div class="fb-like-box" 
                              data-href="https://www.facebook.com/BagAround" 
                              data-colorscheme="light" 

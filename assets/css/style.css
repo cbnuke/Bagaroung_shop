@@ -89,6 +89,24 @@ end reset*/
     background:#BCB4A7;
     color: #fff;
 }
+.top_main button{
+    font-size: 1em;
+    float: right;
+    text-transform: capitalize;
+    padding: 8px 20px;
+    background:#BCB4A7;
+    color: #fff;
+    border: 1px solid #BCB4A7;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.top_main button:hover{
+    background:#EBE7DA;
+    border: 1px solid #fff;
+    color:#BCB4A7 ;
+}
 
 /* start footer_top */
 .footer_top{
@@ -145,11 +163,11 @@ end reset*/
 .read_more a{
     display:inline-block;
     font-family: 'Maven Pro', sans-serif;
-    background: #242424;
+    background: #242424 ;
     border: 1px solid #242424;
     padding: 10px 20px;
     outline: none;
-    color: #ffffff;
+    color: #ffffff ! important;
     font-size: 1em;
     text-transform: capitalize;
     -webkit-appearance: none;
@@ -163,7 +181,7 @@ end reset*/
     -o-border-radius: 2px;
 }
 .read_more a:hover{
-    background: #57C5A0;
+    background: #57C5A0;    
     border: 1px solid #57c5a0;
 }
 
@@ -331,39 +349,10 @@ h4.style{
     /*width: 60px;*/
 }
 
-/**
- * CSS3 social icon hover effect
- * Read more on my blog: http://webbb.be/blog/
- */
 
-/*#des_contactus a,a:visited { color: #fff; }
-#des_contactus a:hover { color: #fff; }*/
-
-
-
-
-
-/*#owl-demo .item{   
-    background: #3fbf79;
-    padding: 30px 0px;
-    margin: 10px;
-    color: #FFF;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-align: center;
-}*/
 .item{
     margin: 3px;
 }
-/*#owl-demo .item img{
-  display: block;
-  width: 100%;
-  height: auto;
-}*/
-/*
- * Placeholder dashboard ideas
- */
 
 #des_contactus .placeholders {
     margin-bottom: 30px;
@@ -393,5 +382,18 @@ h4.style{
 }
 #howto .placeholder img {
     display: inline-block;
-    border-radius: 50%;
+    border-radius: 20%;
+}
+#howto .row{
+    padding-top: 2%;      
+}
+
+.panel-heading a:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";    
+    float: right; 
+    color: grey; 
+}
+.panel-heading a.collapsed:after {
+    content: "\e080";
 }

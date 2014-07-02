@@ -9,6 +9,7 @@ class ProductTypes extends CI_Controller {
         parent::__construct();
         $this->load->model('m_template');
         $this->load->model('m_producttypes');
+       
     }
 
     private $type_id = '';

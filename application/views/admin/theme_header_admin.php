@@ -98,11 +98,16 @@
                 <ul class="nav navbar-top-links navbar-right visible-md visible-lg">                     
                     <!-- /.dropdown -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> User Login <i class="fa fa-caret-down"></i> 
+                        <?php
+                        $f_name = $this->session->userdata('firstname');
+                        $f_last = $this->session->userdata('lastname');
+                        ?>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">                            
+                            <i class="fa fa-user fa-fw"></i>&nbsp;&nbsp; <?= $f_name . '  ' . $f_last ?> &nbsp;&nbsp;<i class="fa fa-caret-down"></i> 
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li>
+                                <?= anchor('administrator/logout', '<i class="fa fa-sign-out fa-fw"></i>&nbsp;ออกจากระบบ'); ?> 
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -114,7 +119,7 @@
                 <div class="navbar-default navbar-static-side" role="navigation">
                     <div class="sidebar-collapse">
                         <ul class="nav" id="side-menu">                        
-                        
+
                             <!-- Product menu -->
                             <li>
                                 <a href="#"><i class="fa fa-file-o fa-fw"></i>&nbsp;Products<span class="fa arrow"></span></a>

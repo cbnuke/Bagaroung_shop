@@ -162,11 +162,11 @@
                             <div class="col-sm-12"> 
                                 <div class="top_main"> 
                                     <div class="fb-send" style="vertical-align: middle;"
-                                         data-href="https://www.facebook.com/BagAround/message" 
+                                         data-href="<? current_url(); ?>" 
                                          data-colorscheme="light">
                                     </div>
-                                    <!--"<? current_url(); ?>"-->
-                                    <a href="#howto"><?= lang('how_to_order') ?></a>
+                                    <!--"<? current_url(); ?>"-->                                    
+                                    <button title="<?= lang('how_to_order') ?>" id='link_howto'><?= lang('how_to_order') ?></button>
                                 </div>
                             </div>
                             <div id="fb-root"></div>
@@ -248,7 +248,7 @@
 </div>
 <!--end main-->
 
-<div id="howto"  >
+<div id="howto" >
     <div class="top_bg">
         <div class="container">
             <div class="main_top">
@@ -259,30 +259,170 @@
     <div class="main_bg">
         <div class="container">
             <div class="main">
-                <div class="row" >
-                    <div class="placeholders center-block">
-                        <div class="col-xs-6 col-sm-3 placeholder">
-                            <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                            <h4>Label</h4>
-                            <span class="text-muted">Something else</span>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 placeholder">
-                            <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                            <h4>Label</h4>
-                            <span class="text-muted">Something else</span>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 placeholder">
-                            <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                            <h4>Label</h4>
-                            <span class="text-muted">Something else</span>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 placeholder">
-                            <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                            <h4>Label</h4>
-                            <span class="text-muted">Something else</span>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel">
+                                <div class="panel-heading">                                    
+                                    <h4 class="panel-title">                                        
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">                                            
+                                            สอบถามการสั่งซื้อ
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+
+                                        <div class="row placeholders center-block">
+                                            <div class="col-xs-6 col-sm-4 placeholder">
+                                                <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                <h4 class="style">089-532-9866</h4>
+                                                <!--<span class="text-muted">Something else</span>-->
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 placeholder">
+                                                <a href="https://www.facebook.com/BagAround/message">
+                                                    <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                </a>
+                                                <h4 class="style">Bagaround</h4>
+                                                <!--<span class="text-muted">Something else</span>-->
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 placeholder">
+                                                <a href="#">
+                                                    <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                </a>
+                                                <h4 class="style">ID : Bagaround</h4>
+                                                <!--<span class="text-muted">Something else</span>-->
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 placeholder">
+                                                <a href="http://instagram.com/bagaround">
+                                                    <img src="<?php echo base_url() . 'assets/img/Instagram-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                </a>
+                                                <h4 class="style">Bagaround</h4>
+                                                <!--<span class="text-muted">Something else</span>-->                          
+
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 placeholder">
+                                                <a href="mailto:bagaround@hotmail.com">
+                                                    <img src="<?php echo base_url() . 'assets/img/hotmail-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail" height="50%">
+                                                </a>
+                                                <h4 class="style">bagaround@hotmail.com</h4>
+                                            </div>                                      
+
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                            ช่องทางการชำระเงิน
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        รอการยืนยัน ออเดอร์กลับจากทางร้านพร้อม และสามารถชำระเงินในช่องทางต่อไปนี้
+
+                                        <div class="row">
+
+                                            <div class="col-sm-8 col-sm-offset-2">
+                                                <div class="placeholders center-block">
+                                                    <div class="col-xs-6 col-sm-4 placeholder">
+                                                        <img data-src="holder.js/75x75/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                        <h4 class="style">XXXXXXXXXXXXXXX</h4>
+                                                        <!--<span class="text-muted">Something else</span>-->
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 placeholder">
+                                                        <img data-src="holder.js/75x75/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                        <h4 class="style">XXXXXXXXXXXXXXX</h4>
+                                                        <!--<span class="text-muted">Something else</span>-->
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-4 placeholder">
+                                                        <img data-src="holder.js/75x75/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                        <h4 class="style">XXXXXXXXXXXXXXX</h4>
+                                                        <!--<span class="text-muted">Something else</span>-->
+                                                    </div>
+                                                </div>   
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                            ยืนยันการชำระเงิน
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            หลังจากชำระเงินเสร็จเรียบร้อยเเล้ว กรุณาติดต่อทางร้านเพื่อยืนยันการชำระเงิน 
+                                        </div>
+                                        <div class="row placeholders center-block">
+                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                                <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                <h4 class="style">089-532-9866</h4>
+                                                <!--<span class="text-muted">Something else</span>-->
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                                <a href="https://www.facebook.com/BagAround/message">
+                                                    <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                </a>
+                                                <h4 class="style">Bagaround</h4>
+                                                <!--<span class="text-muted">Something else</span>-->
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                                <a href="#">
+                                                    <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
+                                                </a>
+                                                <h4 class="style">ID : Bagaround</h4>
+                                                <!--<span class="text-muted">Something else</span>-->
+                                            </div>                                           
+                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                                <a href="mailto:bagaround@hotmail.com">
+                                                    <img src="<?php echo base_url() . 'assets/img/hotmail-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail" height="50%">
+                                                </a>
+                                                <h4 class="style">bagaround@hotmail.com</h4>
+                                            </div>                                      
+
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            รับรหัสพัสดุ
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        ทางร้าน จะจัดส่งของให้พร้อมเเจ้งรหัสรับสอค้า หลังจากนั่นลูกค้าสามารถตรวจสอบสถานะ
+<!--                                        <div class="row hidden-xs">
+                                            <div class="col-sm-12 center-block">
+                                                <iframe border="0" marginwidth="0" framespacing="0" marginheight="0" 
+                                                        src="http://track.thailandpost.co.th/trackinternet/Default.aspx" 
+                                                        frameborder="0" 
+                                                        scrolling="no" style="width: 100%; height: 600px;max-width: 100%">
+                                                </iframe>
+                                            </div>
+                                        </div>                                        -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>          
             </div>
         </div>
     </div>
@@ -305,7 +445,14 @@
             }, 1000);
 
         });
-        
+
+        $('#link_howto').on('click', function(event) {
+            $('html, body').animate({
+                scrollTop: $("#howto").offset().top
+            }, 2000);
+
+        });
+
         $(".fancybox").fancybox();
     });
 </script>

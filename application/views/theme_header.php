@@ -26,45 +26,47 @@
         <!-- //Owl Carousel Assets -->
     </head>
     <body>
-        <?php echo js('customize-js.js'); ?>
+        <?php echo js('customize-js.js'); ?>       
         <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?= site_url('home') ?>"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaround</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <?php
-                    if (!strpos(uri_string(), 'home')) {
-                        ?>
-                        <ul id="top-menu" class="nav navbar-nav">
-                            <li><a href="<?= base_url('home') ?>"><?= lang('menu_home') ?></a></li>
-                            <li><a href="<?= base_url('home/#des_promotions') ?>"><?= lang('menu_promotions') ?></a></li>
-                            <li><a href="<?= base_url('home/#des_products') ?>"><?= lang('menu_products') ?></a></li>                        
-                            <li><a href="<?= base_url('home/#des_contactus') ?>"><?= lang('menu_contactus') ?></a></li>
-                        </ul>
+        <div class="navbar navbar-default navbar-fixed-top row" role="navigation">            
+            <div class="row">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<?= site_url('home') ?>"><?php echo img('logo.png', array('height' => '44px', 'class' => 'visible-xs', 'style' => 'float: left;margin-top:-15px;')); ?> Bagaround</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
                         <?php
-                    } else {
-                        ?>
-                        <ul id="top-menu" class="nav navbar-nav">
-                            <li class="active"><a href="#" id="home"><?= lang('menu_home') ?></a></li>
-                            <li><a href="#des_promotions" id="promotions"><?= lang('menu_promotions') ?></a></li>
-                            <li><a href="#des_products" id="products"><?= lang('menu_products') ?></a></li>                        
-                            <li><a href="#des_contactus" id="contactus"><?= lang('menu_contactus') ?></a></li>
+                        if (!strpos(uri_string(), 'home')) {
+                            ?>
+                            <ul id="top-menu" class="nav navbar-nav">
+                                <li><a href="<?= base_url('home') ?>"><?= lang('menu_home') ?></a></li>
+                                <li><a href="<?= base_url('home/#des_promotions') ?>"><?= lang('menu_promotions') ?></a></li>
+                                <li><a href="<?= base_url('home/#des_products') ?>"><?= lang('menu_products') ?></a></li>                        
+                                <li><a href="<?= base_url('home/#des_contactus') ?>"><?= lang('menu_contactus') ?></a></li>
+                            </ul>
+                            <?php
+                        } else {
+                            ?>
+                            <ul id="top-menu" class="nav navbar-nav">
+                                <li class="active"><a href="#" id="home"><?= lang('menu_home') ?></a></li>
+                                <li><a href="#des_promotions" id="promotions"><?= lang('menu_promotions') ?></a></li>
+                                <li><a href="#des_products" id="products"><?= lang('menu_products') ?></a></li>                        
+                                <li><a href="#des_contactus" id="contactus"><?= lang('menu_contactus') ?></a></li>
+                            </ul>
+                        <?php } ?>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="hidden-xs"><?php echo img('logo.png', array('height' => '50px')); ?></li>
+                            <li><?php echo anchor('lang/set/thai?page=' . uri_string(), img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
+                            <li><?php echo anchor('lang/set/english?page=' . uri_string(), img('usa.png', array('height' => '20px')) . 'English'); ?></li>
                         </ul>
-                    <?php } ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden-xs"><?php echo img('logo.png', array('height' => '50px')); ?></li>
-                        <li><?php echo anchor('lang/set/thai?page=' . uri_string(), img('thailand.png', array('height' => '20px')) . 'Thai'); ?></li>
-                        <li><?php echo anchor('lang/set/english?page=' . uri_string(), img('usa.png', array('height' => '20px')) . 'English'); ?></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                    </div><!--/.nav-collapse -->
+                </div>
             </div>
         </div>
 

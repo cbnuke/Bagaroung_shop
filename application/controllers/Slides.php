@@ -9,6 +9,9 @@ class Slides extends CI_Controller {
         parent::__construct();
         $this->load->model('m_template');
         $this->load->model('m_slides');
+        if ($this->session->userdata('loged_in') != TRUE) {
+            redirect('administrator');
+        }
     }
 
     public function index() {
