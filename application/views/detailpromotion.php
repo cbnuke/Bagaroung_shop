@@ -26,7 +26,7 @@
                                     foreach ($recommend as $row) {
                                         ?>     
                                         <div class="placeholder thumbnail">
-                                            <a href="<?php echo base_url('detailproduct/id/' . $row['id']); ?>">  
+                                            <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
                                                 <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . $row['img_front'] ?>"
                                                      onmouseover="this.src = '<?= img_url() . $row['img_back'] ?>'" 
                                                      onmouseout="this.src = '<?= img_url() . $row['img_front'] ?>'" 
@@ -139,7 +139,7 @@
                                             $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
                                             $itemp .= '<td align="center"><span  class="text-danger"  ><h3>' . $p['promotion_price'] . '</h3></span></td>';
                                             $itemp .='<td>';
-                                            $itemp .='<a href="' . base_url('detailproduct/id/' . $p['id']) . '">' . lang('read_more') . '</a>';
+                                            $itemp .='<a href="' . base_url('DetailProduct/id/' . $p['id']) . '">' . lang('read_more') . '</a>';
                                             $itemp .='</td>';
                                             $itemp .= '</tr>';
                                             echo $itemp;

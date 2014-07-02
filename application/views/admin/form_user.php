@@ -17,7 +17,7 @@
         $password = set_value('password_old');
         $user_type = '1';
     } else {
-        echo form_open('users/add', $attributes);
+        echo form_open('Users/add', $attributes);
         $firstname = set_value('firstname');
         $lastname = set_value('lastname');
         $username = set_value('username');        

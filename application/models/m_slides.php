@@ -96,7 +96,7 @@ Class m_slides extends CI_Model {
         );
 
         $form_add = array(
-            'form' => form_open_multipart('slides/add', array('class' => 'form-horizontal', 'id' => 'form_slide')),
+            'form' => form_open_multipart('Slides/add', array('class' => 'form-horizontal', 'id' => 'form_slide')),
             'title[thai]' => form_input($f_title_th),
             'title[english]' => form_input($f_title_en),
             'subtitle[thai]' => form_input($f_sub_title_th),
@@ -150,7 +150,7 @@ Class m_slides extends CI_Model {
 
         $id = $data['id'];
         $form_edit = array(
-            'form' => form_open_multipart('slides/edit/' . $data['id'], array('class' => 'form-horizontal', 'id' => 'form_slide')),
+            'form' => form_open_multipart('Slides/edit/' . $data['id'], array('class' => 'form-horizontal', 'id' => 'form_slide')),
             'title[thai]' => form_input($f_title_th),
             'title[english]' => form_input($f_title_en),
             'subtitle[thai]' => form_input($f_sub_title_th),

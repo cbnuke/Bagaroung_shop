@@ -88,7 +88,7 @@
                                     'data-info' => unserialize($pro['name'])['thai'],
                                     'data-toggle' => "modal",
                                     'data-target' => "#confirm",
-                                    'data-href' => 'promotions/delete/' . $pro['id'],
+                                    'data-href' => 'Promotions/delete/' . $pro['id'],
                                 );
                                 $cancle = array(
                                     'type' => "button",
@@ -98,7 +98,7 @@
                                     'data-info' => unserialize($pro['name'])['thai'],
                                     'data-toggle' => "modal",
                                     'data-target' => "#confirm",
-                                    'data-href' => 'promotions/cancle/' . $pro['id'],
+                                    'data-href' => 'Promotions/cancle/' . $pro['id'],
                                 );
                                 $active = array(
                                     'type' => "button",
@@ -108,13 +108,13 @@
                                     'data-info' => unserialize($pro['name'])['thai'],
                                     'data-toggle' => "modal",
                                     'data-target' => "#confirm",
-                                    'data-href' => 'promotions/active/' . $pro['id'],
+                                    'data-href' => 'Promotions/active/' . $pro['id'],
                                 );
 
                                 if ($num == 0) {
                                     echo '<td colspan="2"  align="center"  style="vertical-align: middle;">ไม่มีสินค้าในโปรโมชั่น </td>';
                                     echo '<td align="center"  style="vertical-align: middle;" rowspan="' . $num . '"> ';
-                                    echo anchor('promotions/edit/' . $pro['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
+                                    echo anchor('Promotions/edit/' . $pro['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-xs"') . '&nbsp;&nbsp';
                                     if ($status == 0 && $diff > 0) {
                                         echo anchor('#', '<i class="fa fa-refresh fa-lg"></i>&nbsp;ใช้งาน', $active);
                                     } elseif ($status == 1 && $diff > 0) {

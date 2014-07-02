@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="row"> 
-    <?= anchor('slides/add', '<i class="fa fa-plus fa-lg"></i>&nbsp;สร้างสไลด์', 'type="button" class="btn btn-success pull-right btn-lg"') ?>
+    <?= anchor('Slides/add', '<i class="fa fa-plus fa-lg"></i>&nbsp;สร้างสไลด์', 'type="button" class="btn btn-success pull-right btn-lg"') ?>
 <!--    <a type="button" class="btn btn-success pull-right btn-lg" href="crate_slide.php" ><i class="fa fa-plus fa-lg"></i>&nbsp;Create Slide</a>   -->
 </div>
 <br>

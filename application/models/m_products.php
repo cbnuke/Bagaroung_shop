@@ -188,7 +188,7 @@ Class m_products extends CI_Model {
 
 
         $all_form = array(
-            'form' => form_open_multipart('products/add', array('class' => 'form-horizontal')),
+            'form' => form_open_multipart('Products/add', array('class' => 'form-horizontal')),
             'product_name[thai]' => form_input($i_product_name_th),
             'product_name[english]' => form_input($i_product_name_en),
             'product_price' => form_input($i_price),
@@ -370,7 +370,7 @@ Class m_products extends CI_Model {
 
 
         $all_form = array(
-            'form' => form_open_multipart('products/edit/' . $data['id'], array('class' => 'form-horizontal')),
+            'form' => form_open_multipart('Products/edit/' . $data['id'], array('class' => 'form-horizontal')),
             'product_name[thai]' => form_input($i_product_name_th),
             'product_name[english]' => form_input($i_product_name_en),
             'product_price' => form_input($i_price),
@@ -597,7 +597,7 @@ Class m_products extends CI_Model {
 
 
         $all_form = array(
-            'form' => form_open_multipart('products/view/' . $data['id'], array('class' => 'form-horizontal')),
+            'form' => form_open_multipart('Products/view/' . $data['id'], array('class' => 'form-horizontal')),
             'product_name[thai]' => form_label($i_product_name_th),
             'product_name[english]' => form_label($i_product_name_en),
             'product_price' => form_label($i_price),

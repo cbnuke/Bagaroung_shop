@@ -38,7 +38,7 @@ class Promotions extends CI_Controller {
             $f_data = $this->m_promotions->get_post_form_add();
             //Insert data
             $this->m_promotions->insert_promotion($f_data);
-            redirect('promotions', 'refresh');
+            redirect('Promotions', 'refresh');
         }
         $data['form'] = $this->m_promotions->set_form_add();
         $data['id'] = NULL;
@@ -56,7 +56,7 @@ class Promotions extends CI_Controller {
 //            $this->m_template->set_Debug($f_data);
             //Update data
             $this->m_promotions->update_promotion($f_data);
-            redirect('promotions');
+            redirect('Promotions');
         }
 
 //      get detail and sent to load form
@@ -73,7 +73,7 @@ class Promotions extends CI_Controller {
     function delete($id) {
         $this->m_promotions->delete_promotion($id);
 
-        redirect('promotions', 'refresh');
+        redirect('Promotions', 'refresh');
     }
 
     public function cancle($promotion_id) {
@@ -84,7 +84,7 @@ class Promotions extends CI_Controller {
         $this->db->where('id', $promotion_id);
         $this->db->update('promotions', $data);
 
-        redirect('promotions', 'refresh');
+        redirect('Promotions', 'refresh');
     }
 
     public function active($promotion_id) {
@@ -95,7 +95,7 @@ class Promotions extends CI_Controller {
         $this->db->where('id', $promotion_id);
         $this->db->update('promotions', $data);
 
-        redirect('promotions', 'refresh');
+        redirect('Promotions', 'refresh');
     }
 
     function check_products_by_type() {

@@ -33,7 +33,7 @@ class Users extends CI_Controller {
             if ($this->form_validation->run() == TRUE) {
                 $f_data = $this->m_users->get_post();
                 if ($this->m_users->insert_user($f_data)) {
-                    redirect('users', 'refresh');
+                    redirect('Users', 'refresh');
                     exit();
                 }
             }
@@ -58,7 +58,7 @@ class Users extends CI_Controller {
             if ($this->form_validation->run() == TRUE) {
                 $f_data = $this->m_users->get_post();
                 if ($this->m_users->update_user($f_data)) {
-                    redirect('users', 'refresh');
+                    redirect('Users', 'refresh');
                     exit();
                 }
             }
@@ -72,7 +72,7 @@ class Users extends CI_Controller {
     public function delete($id) {
         $this->m_users->set_id($id);
         if ($this->m_users->delete_user()) {
-            redirect('users', 'refresh');
+            redirect('Users', 'refresh');
             exit();
         }
     }

@@ -82,7 +82,7 @@
         <label class="col-sm-2 control-label"></label>
         <div class="col-sm-9">
             <input type="submit" class="btn btn-success btn-lg" name="save" value="บันทึก" >
-            <?= anchor('slides', 'ยกเลิก', 'class="btn btn-danger btn-lg"'); ?>   
+            <?= anchor('Slides', 'ยกเลิก', 'class="btn btn-danger btn-lg"'); ?>   
         </div>
     </div>
 

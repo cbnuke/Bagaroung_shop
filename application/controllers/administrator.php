@@ -19,7 +19,7 @@ class administrator extends CI_Controller {
             $user = $this->m_login->select_user($input['username'], $input['password']); 
 //            $user['loged_in'] = TRUE;
 //            $this->session->set_userdata($user);
-            redirect('products', 'refresh');
+            redirect('Products', 'refresh');
         }
         $this->load->view('login');
     }

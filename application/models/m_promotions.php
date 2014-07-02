@@ -199,7 +199,7 @@ class m_promotions extends CI_Model {
         $f_product_selects = $this->set_products_list_select_add();
 
         $f_data = array(
-            'form' => form_open_multipart('promotions/add', array('class' => 'form-horizontal', 'id' => 'form_promotion')),
+            'form' => form_open_multipart('Promotions/add', array('class' => 'form-horizontal', 'id' => 'form_promotion')),
             'name[thai]' => form_input($f_name_th),
             'name[english]' => form_input($f_name_en),
             'detail[thai]' => form_textarea($f_detail_th),
@@ -278,7 +278,7 @@ class m_promotions extends CI_Model {
         $f_product_selects = $this->set_products_list_select_edit($this->promotion_id);
 
         $f_data = array(
-            'form' => form_open_multipart('promotions/edit/' . $this->promotion_id, array('class' => 'form-horizontal', 'id' => 'form_promotion')),
+            'form' => form_open_multipart('Promotions/edit/' . $this->promotion_id, array('class' => 'form-horizontal', 'id' => 'form_promotion')),
             'name[thai]' => form_input($f_name_th),
             'name[english]' => form_input($f_name_en),
             'detail[thai]' => form_textarea($f_detail_th),

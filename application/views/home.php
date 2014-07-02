@@ -32,7 +32,7 @@
                 echo '<div class="container"><div class="carousel-caption">';
                 echo '<h2>' . unserialize($row['title'])[$language] . '</h2>';
                 echo '<p>' . unserialize($row['subtitle'])[$language] . '</p>';
-                if ($row['link_url'] != NULL || $row['link_url'] == '') {
+                if ($row['link_url'] != NULL || $row['link_url'] != '') {
                     echo '<div class="read_more pull-right" ><a  href="' . $row['link_url'] . '" role="button">' . lang('description') . '</a></div>';
                 }
                 echo '</div></div>';
@@ -102,7 +102,7 @@
                     foreach ($promotions as $p) {
                         echo'<div class = "item">';
                         echo'<div class = "row_has_3">';
-                        echo'<a href="' . base_url('detailpromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
+                        echo'<a href="' . base_url('DetailPromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
                         echo'<img src="' . img_url() . $p['img_small'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
                         echo'<span class = "price_pro bg1">' . lang('head_promotions') . '</span>';
                         echo'</a>';
@@ -169,7 +169,7 @@
                                 $product_name = unserialize($product['product_name']);
                                 echo '<div class="col-md-4">';
                                 echo '<div class="thumbnail row_has_3">';
-                                echo '<a href="' . base_url('detailproduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
+                                echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
                                 ?>
                                 <img title="" src="<?= img_url() . $product['img_front'] ?>"
                                      onmouseover="this.src = '<?= img_url() . $product['img_back'] ?>'" 

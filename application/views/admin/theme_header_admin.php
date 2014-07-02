@@ -163,7 +163,7 @@
                             </li>
                             <!-- Slides -->
                             <li>
-                                <?= anchor('slides', '<i class="fa fa-play fa-fw"></i>&nbsp;Slides') ?>
+                                <?= anchor('Slides', '<i class="fa fa-play fa-fw"></i>&nbsp;Slides') ?>
 <!--                                <a href="slides"><i class="fa fa-play fa-fw"></i>&nbsp;Slides</a>                             -->
                             </li>                           
                             <!-- User -->

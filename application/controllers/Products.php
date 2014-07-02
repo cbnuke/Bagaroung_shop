@@ -45,7 +45,7 @@ class Products extends CI_Controller {
             $data['data']['type_name'] = $this->m_products->check_product_type($detail[0]['product_type_id']);
             $data['images'] = $images;
         } else
-            redirect('products');
+            redirect('Products');
 
         $name = unserialize($detail[0]['product_name'])['thai'];
 
@@ -66,7 +66,7 @@ class Products extends CI_Controller {
             //Insert data
             if ($this->m_products->insert_product($form_data)) {
                 //Success
-                redirect('products');
+                redirect('Products');
             } else {
                 //Fail
             }
@@ -92,7 +92,7 @@ class Products extends CI_Controller {
             //Update data
             if ($this->m_products->update_product($form_data)) {
                 //Success
-                redirect('products');
+                redirect('Products');
             } else {
                 //Fail
             }
@@ -104,7 +104,7 @@ class Products extends CI_Controller {
             $data['form'] = $this->m_products->set_form_edit($detail[0]);
             $data['detail'] = $detail[0];
         } else
-            redirect('products');
+            redirect('Products');
 
 //        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/form_product_edit.php', $data);
@@ -113,7 +113,7 @@ class Products extends CI_Controller {
 
     public function delete($id) {
         $this->m_products->delete_product($id);
-        redirect('products', 'refresh');
+        redirect('Products', 'refresh');
     }
 
     public function cancle($id) {
@@ -124,7 +124,7 @@ class Products extends CI_Controller {
         $this->db->where('id', $id);
         $this->db->update('products', $data);
 
-        redirect('products', 'refresh');
+        redirect('Products', 'refresh');
     }
 
     public function active($id) {
@@ -135,7 +135,7 @@ class Products extends CI_Controller {
         $this->db->where('id', $id);
         $this->db->update('products', $data);
 
-        redirect('products', 'refresh');
+        redirect('Products', 'refresh');
     }
 
 }

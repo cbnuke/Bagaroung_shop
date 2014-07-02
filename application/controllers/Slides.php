@@ -32,7 +32,7 @@ class Slides extends CI_Controller {
                 $form_data = $this->m_slides->get_post_set_form_add();
                 //Insert data
                 $this->m_slides->insert_slide($form_data);
-                redirect('slides', 'refresh');
+                redirect('Slides', 'refresh');
             }
         }
         //Load form add
@@ -51,7 +51,7 @@ class Slides extends CI_Controller {
             $form_data = $this->m_slides->get_post_set_form_edit();
             //Update data
             $this->m_slides->update_slide($form_data);
-            redirect('slides');
+            redirect('Slides');
         }
 
 
@@ -62,7 +62,7 @@ class Slides extends CI_Controller {
             $data['form'] = $this->m_slides->set_form_edit($detail[0]);
             $data['detail'] = $detail[0];
         } else {
-            redirect('slides');
+            redirect('Slides');
         }
         $this->m_template->set_Title('แก้ไขสไลด์');
 //        $this->m_template->set_Debug($data);
@@ -73,7 +73,7 @@ class Slides extends CI_Controller {
     public function delete($id) {
 
         $this->m_slides->delete_slide($id);  
-        redirect('slides');
+        redirect('Slides');
     }
 
     public function cancle($slide_id) {
@@ -84,7 +84,7 @@ class Slides extends CI_Controller {
         $this->db->where('id', $slide_id);
         $this->db->update('slides', $data);
 
-        redirect('slides', 'refresh');
+        redirect('Slides', 'refresh');
     }
 
     public function active($slide_id) {
@@ -95,7 +95,7 @@ class Slides extends CI_Controller {
         $this->db->where('id', $slide_id);
         $this->db->update('slides', $data);
 
-        redirect('slides', 'refresh');
+        redirect('Slides', 'refresh');
     }
 
 }

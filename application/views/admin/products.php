@@ -58,11 +58,6 @@
                 </td>
                 <td class="td-text-center"><?= number_format($row['product_price'],2) ?></td> 
 
-        <!--                <td class="td-text-center"><? $row['width'] ?></td>
-        <td class="td-text-center"><? $row['hight'] ?></td>
-        <td class="td-text-center"><? $row['base_width'] ?></td>
-        <td class="td-text-center"><? $row['top_width'] ?></td>
-        <td class="td-text-center"><? $row['weight'] ?></td>                -->
                 <?php
                 $delete = array(
                     'type' => "button",
@@ -72,7 +67,7 @@
                     'data-info' => unserialize($row['product_name'])['thai'],
                     'data-toggle' => "modal",
                     'data-target' => "#confirm",
-                    'data-href' => 'products/delete/' . $row['id'],
+                    'data-href' => 'Products/delete/' . $row['id'],
                 );
                 $cancle = array(
                     'type' => "button",
@@ -82,7 +77,7 @@
                     'data-info' => unserialize($row['product_name'])['thai'],
                     'data-toggle' => "modal",
                     'data-target' => "#confirm",
-                    'data-href' => 'products/cancle/' . $row['id'],
+                    'data-href' => 'Products/cancle/' . $row['id'],
                 );
                 $active = array(
                     'type' => "button",
@@ -97,7 +92,7 @@
                 ?>
                 <td class="td-text-center"><?= anchor('Products/view/' . $row['id'], '<i class="fa fa-file-o fa-3x"></i>') ?></td>
                 <td class="td-text-center">
-                    <?= anchor('products/edit/' . $row['id'], '<i class="fa fa-pencil fa-2x"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-sm"') . '&nbsp'; ?>
+                    <?= anchor('Products/edit/' . $row['id'], '<i class="fa fa-pencil fa-2x"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-sm"') . '&nbsp'; ?>
                     <?php
                     if ($row['product_status'] == '1') {
                         echo anchor('#', '<i class="fa fa-power-off fa-2x"></i>&nbsp;ยกเลิก', $cancle);
