@@ -38,7 +38,7 @@ class Upload extends CI_Controller {
                     $foundFiles[$f]['size'] = $info['size'];
                     $foundFiles[$f]['url'] = $upload_path_url . $fileName;
                     $foundFiles[$f]['thumbnailUrl'] = $upload_path_url . 'thumbs/' . $fileName;
-                    $foundFiles[$f]['deleteUrl'] = base_url() . 'upload/deleteImage/' . $fileName;
+                    $foundFiles[$f]['deleteUrl'] = base_url() . 'Upload/deleteImage/' . $fileName;
                     $foundFiles[$f]['deleteType'] = 'DELETE';
                     $foundFiles[$f]['error'] = null;
 
@@ -91,8 +91,8 @@ class Upload extends CI_Controller {
             $info->url = $upload_path_url . $data['file_name'];
             // I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
             $info->thumbnailUrl = $upload_path_url . 'thumbs/' . $data['file_name'];
-            $info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
-            $info->deleteType = 'DELETE';
+            $info->deleteUrl = base_url() . 'Upload/deleteImage/' . $data['file_name'];
+            $info->deleteType = 'POST';
             $info->error = null;
 
             $files[] = $info;
@@ -116,8 +116,8 @@ class Upload extends CI_Controller {
         //info to see if it is doing what it is supposed to
         $info = new StdClass;
         $info->sucess = $success;
-        $info->path = base_url() . 'uploads/' . $file;
-        $info->file = is_file(FCPATH . 'uploads/' . $file);
+        $info->path = base_url() . 'assets/img/temp/' . $file;
+        $info->file = is_file(FCPATH . 'assets/img/temp/' . $file);
 
         if ($this->input->is_ajax_request()) {
             //I don't think it matters if this is set but good for error checking in the console/firebug
