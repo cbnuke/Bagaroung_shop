@@ -19,11 +19,12 @@ Class m_products extends CI_Model {
         $result = $query->result_array();
         return $result;
     }
+
     function check_all_product_by_type($type_id) {
         $this->db->select('*,products.id');
         $this->db->from('products');
         $this->db->join('product_types', 'products.product_type_id=product_types.id', 'left');
-        $this->db->where('product_type_id',$type_id);
+        $this->db->where('product_type_id', $type_id);
         $query = $this->db->get();
         $result = $query->result_array();
         return $result;
@@ -64,14 +65,22 @@ Class m_products extends CI_Model {
         unset($data['id']);
 
         $temp = $this->check_detail_product($id);
-        if (isset($data['img_front']))
-            unlink(img_path() . $temp[0]['img_front']);
-        if (isset($data['img_back']))
-            unlink(img_path() . $temp[0]['img_back']);
-        if (isset($data['img_right']))
-            unlink(img_path() . $temp[0]['img_right']);
-        if (isset($data['img_left']))
-            unlink(img_path() . $temp[0]['img_left']);
+        if (isset($data['img_front'])) {
+            unlink(img_path() . 'products/' . $temp[0]['img_front']);
+            unlink(img_path() . 'products/thumbs/' . $temp[0]['img_front']);
+        }
+        if (isset($data['img_back'])) {
+            unlink(img_path() . 'products/' . $temp[0]['img_back']);
+            unlink(img_path() . 'products/thumbs/' . $temp[0]['img_back']);
+        }
+        if (isset($data['img_right'])) {
+            unlink(img_path() . 'products/' . $temp[0]['img_right']);
+            unlink(img_path() . 'products/thumbs/' . $temp[0]['img_right']);
+        }
+        if (isset($data['img_left'])) {
+            unlink(img_path() . 'products/' . $temp[0]['img_left']);
+            unlink(img_path() . 'products/thumbs/' . $temp[0]['img_left']);
+        }
 
         $this->db->where('id', $id);
         $this->db->update('products', $data);
@@ -87,12 +96,12 @@ Class m_products extends CI_Model {
     function delete_product($id) {
         //delete image
         $this->delect_img_in_database($id);
-        
+
         //delete on products has promotion 
         $this->db->where('product_id', $id);
         $this->db->delete('products_has_promotions');
 
-        
+
         //delete image in table product
         $query = $this->db->get_where('products', array('id' => $id));
         $pro = $query->row_array();
@@ -100,11 +109,10 @@ Class m_products extends CI_Model {
         $this->delete_image($pro['img_back']);
         $this->delete_image($pro['img_right']);
         $this->delete_image($pro['img_left']);
-        
+
         //delete on products 
         $this->db->where('id', $id);
         $this->db->delete('products');
-        
     }
 
     function set_form_add() {
@@ -247,7 +255,7 @@ Class m_products extends CI_Model {
             'img_back' => $this->upload_img('img_back'),
             'img_right' => $this->upload_img('img_right'),
             'img_left' => $this->upload_img('img_left'),
-            'product_status'=>'1',
+            'product_status' => '1',
         );
         return $get_page_data;
     }
@@ -266,14 +274,29 @@ Class m_products extends CI_Model {
             if (!$this->upload->do_upload($name)) {
                 return $this->upload->display_errors();
             } else {
+                //Get data from do_upload
+                $data = $this->upload->data();
+                //Config to resize image
+                $config = array();
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $data['full_path'];
+                $config['new_image'] = $data['file_path'] . 'thumbs/';
+                $config['width'] = 360;
+                $config['height'] = 1;
+                $config['maintain_ratio'] = TRUE;
+                $config['master_dim'] = 'width';
+                $this->load->library('image_lib');
+                $this->image_lib->initialize($config);
+                $this->image_lib->resize();
+                $this->image_lib->clear();
                 //Path img for insert to database
-                return 'products/' . $this->upload->data()['file_name'];
+                return $this->upload->data()['file_name'];
             }
         } else {
             return NULL;
         }
     }
-   
+
     public function delete_image($file) {
         unlink(FCPATH . 'assets/img/' . $file);
     }
@@ -386,7 +409,7 @@ Class m_products extends CI_Model {
             'img_back' => form_upload($i_img_back),
             'img_right' => form_upload($i_img_right),
             'img_left' => form_upload($i_img_left),
-            'product_status'=>'1',
+            'product_status' => '1',
         );
         return $all_form;
     }
@@ -430,7 +453,7 @@ Class m_products extends CI_Model {
             'img_back' => $this->upload_img('img_back'),
             'img_right' => $this->upload_img('img_right'),
             'img_left' => $this->upload_img('img_left'),
-            'product_status'=>'1',
+            'product_status' => '1',
         );
         //Unset img if NULL
         if ($get_page_data['img_front'] == NULL)
