@@ -131,7 +131,7 @@
                                             $product_id_frist = $p['product_id'];
                                             ?>
                                             <td align="center" style="vertical-align: middle;">
-                                                <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                             </td>
                                             <td>
                                                 <ul>
@@ -171,7 +171,7 @@
                                                 }
                                                 ?>
                                                 <td align="center" style="vertical-align: middle;">
-                                                    <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                    <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                 </td>
                                                 <td>
                                                     <ul>
@@ -291,7 +291,7 @@
                                                         $product_id_frist = $p['product_id'];
                                                         ?>
                                                         <td align="center" style="vertical-align: middle;">
-                                                            <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                            <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                         </td>
                                                         <td>
                                                             <ul>
@@ -325,7 +325,7 @@
                                                         ?>
                                                         <tr>
                                                             <td align="center" style="vertical-align: middle;">
-                                                                <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                                <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                             </td>
                                                             <td>
                                                                 <ul>
@@ -449,7 +449,7 @@
                                                         $product_id_frist = $p['product_id'];
                                                         ?>
                                                         <td align="center" style="vertical-align: middle;">
-                                                            <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                            <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                         </td>
                                                         <td>
                                                             <ul>
@@ -490,7 +490,7 @@
                                                         }
                                                         ?>
                                                     <td align="center" style="vertical-align: middle;">
-                                                        <?= img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                        <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                     </td>
                                                     <td>
                                                         <ul>

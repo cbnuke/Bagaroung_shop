@@ -357,7 +357,7 @@ class m_promotions extends CI_Model {
             } else {
                 $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
             }
-            $r.='<td>' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+            $r.='<td>' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
             $r.='<td>' . $p['product_price'] . '</td>';
             $r.='</tr>';
@@ -377,7 +377,7 @@ class m_promotions extends CI_Model {
                 $product = $this->get_products($product_id[$i]);
                 $itemp = '<tr>';
                 $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $product_id[$i] . ')"></td>';
-                $itemp .= '<td align="center">' . img($product['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+                $itemp .= '<td align="center">' . img('products/thumbs/'.$product['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($product ['product_name'])['thai'] . '</td>';
                 $itemp .= '<td align="center">' . $product['product_price'] . '</td>';
                 $itemp .= '<td><input type="text" name="promotion_price[]" required="" value="' . $p . '"><span>&nbsp;บาท</span></td>';
@@ -412,7 +412,7 @@ class m_promotions extends CI_Model {
                 $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
             }
 
-            $r.='<td>' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+            $r.='<td>' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
             $r.='<td>' . $p['product_price'] . '</td>';
             $r.='</tr>';
@@ -429,7 +429,7 @@ class m_promotions extends CI_Model {
             foreach ($product_pro as $p) {
                 $itemp = '<tr>';
                 $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $p['id'] . ')"></td>';
-                $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+                $itemp .= '<td align="center">' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($p['product_name'])['thai'] . '</td>';
                 $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
                 $itemp .= '<td><input type="text" name="promotion_price[]" required="" value="' . $p['promotion_price'] . '"><span>&nbsp;บาท</span></td>';

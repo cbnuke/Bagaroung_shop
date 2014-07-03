@@ -27,9 +27,9 @@
                                         ?>     
                                         <div class="placeholder thumbnail">
                                             <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
-                                                <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . $row['img_front'] ?>"
-                                                     onmouseover="this.src = '<?= img_url() . $row['img_back'] ?>'" 
-                                                     onmouseout="this.src = '<?= img_url() . $row['img_front'] ?>'" 
+                                                <img title="<?= lang('detail_product'); ?>" src="<?= img_url().'products/thumbs/' . $row['img_front'] ?>"
+                                                     onmouseover="this.src = '<?= img_url().'products/thumbs/' . $row['img_back'] ?>'" 
+                                                     onmouseout="this.src = '<?= img_url().'products/thumbs/' . $row['img_front'] ?>'" 
                                                      width="100%" alt="..."/>
                                             </a>
                                             <h4>
@@ -134,7 +134,7 @@
                                     } else {
                                         foreach ($products as $p) {
                                             $itemp = '<tr class="active">';
-                                            $itemp .= '<td align="center">' . img($p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
+                                            $itemp .= '<td align="center">' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
                                             $itemp .= '<td>' . unserialize($p['product_name'])[$language] . '</td>';
                                             $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
                                             $itemp .= '<td align="center"><span  class="text-danger"  ><h3>' . $p['promotion_price'] . '</h3></span></td>';

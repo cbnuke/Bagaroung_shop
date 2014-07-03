@@ -110,7 +110,7 @@ class Promotions extends CI_Controller {
         $row = $this->m_promotions->get_products($id);
         $rs = array(
             'id' => $row['id'],
-            'img_front' => img($row['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')),
+            'img_front' => img('products/thumbs/'.$row['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')),
             'product_name' => unserialize($row['product_name'])['thai'],
             'price' => $row['product_price'],
             'promotion_price' => $row['promotion_price'],
