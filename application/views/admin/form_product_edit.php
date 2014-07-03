@@ -147,19 +147,19 @@
 
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <?= img($detail['img_front'], array('class' => 'img-responsive thumbnail')) ?>
+                    <?= img('products/thumbs/' . $detail['img_front'], array('class' => 'img-responsive thumbnail')) ?>
                     <h4>ด้านหน้า</h4>                        
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <?= img($detail['img_back'], array('class' => 'img-responsive thumbnail')) ?>
+                    <?= img('products/thumbs/' . $detail['img_back'], array('class' => 'img-responsive thumbnail')) ?>
                     <h4>ด้านหลัง</h4>                        
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <?= img($detail['img_right'], array('class' => 'img-responsive thumbnail')) ?>
+                    <?= img('products/thumbs/' . $detail['img_right'], array('class' => 'img-responsive thumbnail')) ?>
                     <h4>ด้านขวา</h4>                       
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <?= img($detail['img_left'], array('class' => 'img-responsive thumbnail')) ?>
+                    <?= img('products/thumbs/' . $detail['img_left'], array('class' => 'img-responsive thumbnail')) ?>
                     <h4>ด้านซ้าย</h4>                        
                 </div>
             </div>
@@ -170,7 +170,7 @@
         <?= anchor('Products', 'ยกเลิก', 'class="btn btn-danger btn-lg"'); ?>
     </div>
     <?php echo form_close(); ?>
-    
+
     <!-- #### jQuery Upload File #### -->
     <!-- The file upload form used as target for the file upload widget -->
     <?= form_open_multipart('upload/do_upload', array('id' => 'fileupload')) ?>

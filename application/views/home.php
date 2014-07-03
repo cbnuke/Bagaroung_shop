@@ -131,14 +131,14 @@
         </div>
     </div>
     <!-- start main product-->
-<!--    <div class="main_bg">
-        <div class="container">
-            <div class="row main">
-
-                <div class="col-md-12">
-                     Nav tabs 
-                    <ul class="nav nav-tabs nav-justified">
-                        <?php
+    <!--    <div class="main_bg">
+            <div class="container">
+                <div class="row main">
+    
+                    <div class="col-md-12">
+                         Nav tabs 
+                        <ul class="nav nav-tabs nav-justified">
+    <?php
 //                        $flag_first = TRUE;
 //                        foreach ($all_pro as $row) {
 //                            $type_name = unserialize($row['product_type']);
@@ -149,13 +149,13 @@
 //                                echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
 //                            }
 //                        }
-                        ?>
-                    </ul>
-
-                     Tab panes 
-
-                    <div class="tab-content">
-                        <?php
+    ?>
+                        </ul>
+    
+                         Tab panes 
+    
+                        <div class="tab-content">
+    <?php
 //Tab
 //                        $flag_first = TRUE;
 //                        foreach ($all_pro as $row) {
@@ -171,12 +171,13 @@
 //                                echo '<div class="col-md-4">';
 //                                echo '<div class="thumbnail row_has_3">';
 //                                echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
-//                                ?>
-                                <img title="" src="//<? img_url() . $product['img_front'] ?>"
-                                     onmouseover="this.src = '//<? img_url() . $product['img_back'] ?>'" 
-                                     onmouseout="this.src = '//<? img_url() . $product['img_front'] ?>'" 
-                                     />
-                                     //<?php
+//                                
+    ?>
+                                    <img title="" src="//<? img_url() . $product['img_front'] ?>"
+                                         onmouseover="this.src = '//<? img_url() . $product['img_back'] ?>'" 
+                                         onmouseout="this.src = '//<? img_url() . $product['img_front'] ?>'" 
+                                         />
+                                         //<?php
 //                                     echo '<h3>' . $product_name[$language] . '</h3>';
 //                                     echo '<span class="price"><strong>' . number_format($product['product_price'], 2) . '</strong><small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
 //                                     $dt_now = date('Y-m-d H:i:s');
@@ -190,16 +191,16 @@
 //                                 echo '</div>';
 //                                 echo '</div>';
 //                             }
-                             ?>
-                    </div>   
-
+    ?>
+                        </div>   
+    
+                    </div>
+    
                 </div>
-
+    
+    
             </div>
-
-
-        </div>
-    </div>-->
+        </div>-->
     <!-- end main product-->
 
     <!-- start products list-->
@@ -227,7 +228,7 @@
                     <?php
 //Tab
                     $flag_first = TRUE;
-                    foreach ($all_pro as $row) {                       
+                    foreach ($all_pro as $row) {
                         if ($flag_first) {
                             echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
                             $flag_first = FALSE;
@@ -236,16 +237,16 @@
                         }
                         echo '<div class="row">';
                         foreach ($row['list'] as $product) {
-                             $product_name = unserialize($product['product_name']);
+                            $product_name = unserialize($product['product_name']);
                             echo '<div class = "col-sm-6 col-md-4 ">';
                             echo '<div class = "product">';
 
                             echo ' <a class = "link-product" href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
                             echo '<span class="image-product">  ';
                             ?>
-                            <img title="" src="<?= img_url() . $product['img_front'] ?>"
-                                 onmouseover="this.src = '<?= img_url() . $product['img_back'] ?>'" 
-                                 onmouseout="this.src = '<?= img_url() . $product['img_front'] ?>'" 
+                            <img title="" src="<?= img_url() . 'products/thumbs/' . $product['img_front'] ?>"
+                                 onmouseover="this.src = '<?= img_url() . 'products/thumbs/' . $product['img_back'] ?>'" 
+                                 onmouseout="this.src = '<?= img_url() . 'products/thumbs/' . $product['img_front'] ?>'" 
                                  />
                                  <?php
                                  echo '</span>';
@@ -254,10 +255,10 @@
                                  echo '</span>';
                                  echo '</a>';
                                  echo '<span class = "price_product">' . number_format($product['product_price'], 0) . '<small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
-                                  $dt_now = date('Y-m-d H:i:s');
-                                     if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
-                                         echo '<span class="price1 bg">on sale</span>';
-                                     }
+                                 $dt_now = date('Y-m-d H:i:s');
+                                 if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
+                                     echo '<span class="price1 bg">on sale</span>';
+                                 }
                                  echo '</div>';
                                  echo '</div>';
                              }
@@ -268,29 +269,29 @@
                 </div> 
 
 
-<!--                <div class="products-list">
-                    <div id="content">  
-                        <div class="col-md-4 col-sm-6">
-                            <div class="product">
-                                <a class="link-product" title="Tessie Small Satchel" href="/shop/whats-new/whats-new-all/tessie-small-satchel-black-soft-small-grain">   
-                                    <span class="image-product">                            
-                                        <img data-src="holder.js/160x160/auto/vine" class="img-responsive">
-                                    </span>
-                                    <span class="title">
-                                        <span class="text">Tessie Small Satchel</span>
-                                    </span>
-                                </a>
-                                <span class="price_product">                               
-                                    £495
-                                </span>
-
-                            </div>
-                        </div>
-                        </div>                   
-                    </div>
-
-                </div>-->
+                <!--                <div class="products-list">
+                                    <div id="content">  
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="product">
+                                                <a class="link-product" title="Tessie Small Satchel" href="/shop/whats-new/whats-new-all/tessie-small-satchel-black-soft-small-grain">   
+                                                    <span class="image-product">                            
+                                                        <img data-src="holder.js/160x160/auto/vine" class="img-responsive">
+                                                    </span>
+                                                    <span class="title">
+                                                        <span class="text">Tessie Small Satchel</span>
+                                                    </span>
+                                                </a>
+                                                <span class="price_product">                               
+                                                    £495
+                                                </span>
                 
+                                            </div>
+                                        </div>
+                                        </div>                   
+                                    </div>
+                
+                                </div>-->
+
             </div>
         </div>
     </div>

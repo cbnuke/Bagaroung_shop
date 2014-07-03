@@ -29,9 +29,9 @@
                                         ?>     
                                         <div class="placeholder thumbnail">
                                             <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
-                                                <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . $row['img_front'] ?>"
-                                                     onmouseover="this.src = '<?= img_url() . $row['img_back'] ?>'" 
-                                                     onmouseout="this.src = '<?= img_url() . $row['img_front'] ?>'" 
+                                                <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>"
+                                                     onmouseover="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_back'] ?>'" 
+                                                     onmouseout="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>'" 
                                                      width="100%" alt="..."/>
                                             </a>
                                             <h4>
@@ -77,28 +77,28 @@
                         <div class="col-md-6">
 
                             <div class="row col-xs-12 col-sm-12 col-md-12 thumbnail center-block">
-                                <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"/> 
+                                <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_front'] ?>"/> 
                             </div>
 
                             <div class="row" id="gallery_01">
                                 <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" class="img-responsive"/>
+                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_front'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" class="img-responsive"/>
                                     </a>
                                 </div>
                                 <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . $detail['img_back'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . $detail['img_back'] ?>" class="img-responsive"/>
+                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_back'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_back'] ?>" class="img-responsive"/>
                                     </a>
                                 </div>
                                 <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . $detail['img_right'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . $detail['img_right'] ?>" class="img-responsive"/>
+                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_right'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_right'] ?>" class="img-responsive"/>
                                     </a>
                                 </div>
                                 <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . $detail['img_left'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . $detail['img_left'] ?>" class="img-responsive"/>
+                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_left'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_left'] ?>" class="img-responsive"/>
                                     </a>
                                 </div>
                             </div> 
@@ -186,7 +186,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 ">
                                         <dt><?= lang('product_size') ?></dt>
-                                        
+
                                         <dl class="dl-horizontal">
                                             <?php if ($detail['width'] != 0) { ?>
                                                 <dt><?= lang('product_width') ?></dt>
@@ -213,7 +213,7 @@
                                                 <dd><?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
                                             <?php } ?>
                                         </dl>
-                                        
+
                                         <div class="product-description">
                                             <p><?= unserialize($detail['detail'])[$language] ?></p> 
                                             <p>Using beautiful thick and tactile leather, the Tessie Small Satchel has a refined yet retro elegance. Its shape is inspired by vintage satchels from the Mulberry archives and it has an adjustable leather shoulder strap that can be worn on the shoulder or as a hands-free messenger bag.</p>

@@ -109,23 +109,19 @@
 
                 <div class="row placeholders">
                     <div class="col-xs-6 col-sm-3 placeholder">
-                        <?php echo img($data['img_front'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
-                        <!--<img src="<?= $data['img_front'] ?>" class="img-responsive" style="max-width:100%;" alt="Generic placeholder thumbnail">-->
+                        <?php echo img('products/thumbs/' . $data['img_front'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
                         <h4>ด้านหน้า</h4>                        
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder"> 
-                        <?php echo img($data['img_back'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
-                        <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive"style="max-width:100%;" alt="Generic placeholder thumbnail">-->
+                        <?php echo img('products/thumbs/' . $data['img_back'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
                         <h4>ด้านหลัง</h4>                        
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">  
-                        <?php echo img($data['img_left'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
-                        <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" style="max-width:100%;" alt="Generic placeholder thumbnail">-->
+                        <?php echo img('products/thumbs/' . $data['img_left'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
                         <h4>ด้านซ้าย</h4>                        
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder"> 
-                        <?php echo img($data['img_right'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
-                        <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive" style="max-width:100%;"  alt="Generic placeholder thumbnail">-->
+                        <?php echo img('products/thumbs/' . $data['img_right'], array('class' => 'img-responsive thumbnail', 'style' => 'max-width:100%;')); ?>
                         <h4>ด้านขวา</h4>                       
                     </div>
                 </div>
@@ -164,7 +160,7 @@
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-9 ">
                     <br>
-                    <?= anchor('Products/edit/'.$data['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-lg"') ?>
+                    <?= anchor('Products/edit/' . $data['id'], '<i class="fa fa-pencil fa-lg"></i>&nbsp;แก้ไข', 'type="button" class="btn btn-info btn-lg"') ?>
                     <?= anchor('Products', 'กลับ', 'class="btn btn-success btn-lg"'); ?>
                 </div>
             </div>

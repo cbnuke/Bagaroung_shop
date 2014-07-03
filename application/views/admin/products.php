@@ -50,13 +50,13 @@
                     }
                     ?>
 
-                <td align="center"  style="vertical-align: middle;" ><?= img($row['img_front'], array('class' => 'img-responsive ', 'width' => '100', 'height' => '100')) ?></td>
+                <td align="center"  style="vertical-align: middle;" ><?= img('products/thumbs/' . $row['img_front'], array('class' => 'img-responsive ', 'width' => '100', 'height' => '100')) ?></td>
                 <td>
                     <?= unserialize($row['product_name'])['thai'] ?>
                     <hr>
                     <?= unserialize($row['product_name'])['english'] ?>
                 </td>
-                <td class="td-text-center"><?= number_format($row['product_price'],2) ?></td> 
+                <td class="td-text-center"><?= number_format($row['product_price'], 2) ?></td> 
 
                 <?php
                 $delete = array(
