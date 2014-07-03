@@ -216,7 +216,7 @@
 
                                         <div class="product-description">
                                             <p><?= unserialize($detail['detail'])[$language] ?></p> 
-                                            <p>Using beautiful thick and tactile leather, the Tessie Small Satchel has a refined yet retro elegance. Its shape is inspired by vintage satchels from the Mulberry archives and it has an adjustable leather shoulder strap that can be worn on the shoulder or as a hands-free messenger bag.</p>
+                                            <!--<p>Using beautiful thick and tactile leather, the Tessie Small Satchel has a refined yet retro elegance. Its shape is inspired by vintage satchels from the Mulberry archives and it has an adjustable leather shoulder strap that can be worn on the shoulder or as a hands-free messenger bag.</p>-->
                                         </div>
 
                                     </div>
@@ -447,7 +447,7 @@
         $('#link_howto').on('click', function(event) {
             $('html, body').animate({
                 scrollTop: $("#howto").offset().top
-            }, 2000);
+            }, 1000);
 
         });
 

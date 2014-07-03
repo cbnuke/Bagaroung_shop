@@ -144,13 +144,14 @@ end reset*/
     -moz-border-radius: 2px;
     -o-border-radius: 2px;
 }
+
 .read_more a:hover{
     background: #57C5A0;    
     border: 1px solid #57c5a0;
 }
 
 .main_top h2:hover{
-    color: #57C5A0;
+    color: #fff;
     /*border: 1px solid #57c5a0;*/
     text-transform: capitalize;
     -webkit-appearance: none;
@@ -242,6 +243,10 @@ h4.style{
 
 
 /* start grids_of_3 */
+.thumbnail {
+    border: 0 none;
+    /*box-shadow: none;*/
+}
 .row_has_3{	
     text-align:center;
     display: block;
@@ -254,8 +259,8 @@ h4.style{
 .row_has_3 a{
     display: block;
 }
-.row_has_3 a:hover h3{
-    color: #57C5A0;
+.row_has_3 a:hover h3{    
+    color: #1A1005;    
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -272,13 +277,15 @@ h4.style{
     text-transform: capitalize;
 }
 .price{
-    background: #57C5A0;
-    color: #ffffff;
-    font-size: 0.9525em;
+    /*#57C5A0*/
+    background: #F5F5F5;
+    color: #1A1005;
+    font-size: 1.07525em;
     padding: 5% 3%;
     position: absolute;
     bottom: 15%;
     left: 3%;
+    border-radius: 5%;
 }
 .price1{
     font-size: 0.8725em;
