@@ -16,9 +16,9 @@
         <div class="row main">
 
             <!-- start right_sidebar -->
-            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+            <div class="col-md-2 col-lg-2 hidden-sm hidden-xs">
                 <div class="row">                
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-md-12 col-lg-12 ">
                         <div class="row">
                             <h4 class="style"><?= lang('recommend') ?></h4>
                             <div class="col-md-12">
@@ -64,7 +64,7 @@
 
             <!-- start content -->
 
-            <div id="content" class="col-lg-10 col-md-10" style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
+            <div id="content" class="col-md-10 col-lg-10 " style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
                 <div class="col-sm-12 col-xs-12" > 
 
                     <div class="row">
@@ -73,49 +73,49 @@
                         </div>
                     </div>
                     <div class="row">                 
-                         <!--problem in   moble respontive--> 
+                        <!--problem in   moble respontive--> 
                         <div class="col-md-6">
-                            
-                                <div class="row col-md-12 col-sm-12 col-xs-12 thumbnail center-block">
-                                    <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"/> 
-                                </div>
-                            
-                                <div class="row" id="gallery_01">
-                                    <div class="col-md-3 col-xs-3">
-                                        <a href="#" data-image="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"> 
-                                            <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" class="img-responsive"/>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3 col-xs-3">
-                                        <a href="#" data-image="<?= img_url() . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . $detail['img_back'] ?>"> 
-                                            <img id="img_01" src="<?= img_url() . $detail['img_back'] ?>" class="img-responsive"/>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3 col-xs-3">
-                                        <a href="#" data-image="<?= img_url() . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . $detail['img_right'] ?>"> 
-                                            <img id="img_01" src="<?= img_url() . $detail['img_right'] ?>" class="img-responsive"/>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3 col-xs-3">
-                                        <a href="#" data-image="<?= img_url() . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . $detail['img_left'] ?>"> 
-                                            <img id="img_01" src="<?= img_url() . $detail['img_left'] ?>" class="img-responsive"/>
-                                        </a>
-                                    </div>
-                                </div> 
 
-                                <div class="row" style="padding-top: 10px">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="fb-like" 
-                                             data-href="<?= current_url(); ?>"
-                                             data-layout="standard" 
-                                             data-action="like" 
-                                             data-show-faces="true" 
-                                             data-share="true">
-                                        </div>
+                            <div class="row col-xs-12 col-sm-12 col-md-12 thumbnail center-block">
+                                <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"/> 
+                            </div>
+
+                            <div class="row" id="gallery_01">
+                                <div class="col-xs-3 col-md-3 ">
+                                    <a href="#" data-image="<?= img_url() . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . $detail['img_front'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . $detail['img_front'] ?>" class="img-responsive"/>
+                                    </a>
+                                </div>
+                                <div class="col-xs-3 col-md-3 ">
+                                    <a href="#" data-image="<?= img_url() . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . $detail['img_back'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . $detail['img_back'] ?>" class="img-responsive"/>
+                                    </a>
+                                </div>
+                                <div class="col-xs-3 col-md-3 ">
+                                    <a href="#" data-image="<?= img_url() . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . $detail['img_right'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . $detail['img_right'] ?>" class="img-responsive"/>
+                                    </a>
+                                </div>
+                                <div class="col-xs-3 col-md-3 ">
+                                    <a href="#" data-image="<?= img_url() . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . $detail['img_left'] ?>"> 
+                                        <img id="img_01" src="<?= img_url() . $detail['img_left'] ?>" class="img-responsive"/>
+                                    </a>
+                                </div>
+                            </div> 
+
+                            <div class="row" style="padding-top: 10px">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="fb-like" 
+                                         data-href="<?= current_url(); ?>"
+                                         data-layout="standard" 
+                                         data-action="like" 
+                                         data-show-faces="true" 
+                                         data-share="true">
                                     </div>
                                 </div>
                             </div>
-                        
+                        </div>
+
                         <script>
                             //initiate the plugin and pass the id of the div containing gallery images 
                             $("#img_01").elevateZoom({
@@ -184,24 +184,36 @@
                                 </div> 
 
                                 <div class="row">
-                                    <div class="col-md-12 col-sm-12 ">
+                                    <div class="col-sm-12 col-md-12 ">
                                         <dt><?= lang('product_size') ?></dt>
+                                        
                                         <dl class="dl-horizontal">
-                                            <dt><?= lang('product_width') ?></dt>
-                                            <dd><?= $detail['width'] ?> <?= lang('cm') ?></dd>
+                                            <?php if ($detail['width'] != 0) { ?>
+                                                <dt><?= lang('product_width') ?></dt>
+                                                <dd><?= $detail['width'] ?> <?= lang('cm') ?></dd>
+                                            <?php } ?>
 
-                                            <dt><?= lang('product_high') ?></dt>
-                                            <dd><?= $detail['hight'] ?> <?= lang('cm') ?></dd>
+                                            <?php if ($detail['hight'] != 0) { ?>
+                                                <dt><?= lang('product_high') ?></dt>
+                                                <dd><?= $detail['hight'] ?> <?= lang('cm') ?></dd>
+                                            <?php } ?>
 
-                                            <dt><?= lang('product_weight') ?> </dt>
-                                            <dd><?= $detail['weight'] ?> <?= lang('kg') ?></dd>
+                                            <?php if ($detail['weight'] != 0) { ?>
+                                                <dt><?= lang('product_weight') ?> </dt>
+                                                <dd><?= $detail['weight'] ?> <?= lang('kg') ?></dd>
+                                            <?php } ?>
 
-                                            <dt><?= lang('product_top_width') ?> </dt>
-                                            <dd><?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
+                                            <?php if ($detail['top_width'] != 0) { ?>
+                                                <dt><?= lang('product_top_width') ?> </dt>
+                                                <dd><?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
+                                            <?php } ?>
 
-                                            <dt><?= lang('product_base_width') ?></dt>
-                                            <dd><?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
+                                            <?php if ($detail['base_width'] != 0) { ?>
+                                                <dt><?= lang('product_base_width') ?></dt>
+                                                <dd><?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
+                                            <?php } ?>
                                         </dl>
+                                        
                                         <div class="product-description">
                                             <p><?= unserialize($detail['detail'])[$language] ?></p> 
                                             <p>Using beautiful thick and tactile leather, the Tessie Small Satchel has a refined yet retro elegance. Its shape is inspired by vintage satchels from the Mulberry archives and it has an adjustable leather shoulder strap that can be worn on the shoulder or as a hands-free messenger bag.</p>
@@ -216,14 +228,12 @@
                     </div>
 
 
-                    <div class="row" style="margin-top: 20px;margin-bottom: 20px">
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                            <?php
-                            foreach ($img as $row) {
-                                echo '<div class="col-md-6"><a class="fancybox" rel="gallery1" href="' . img_url() . $row['img_full'] . '"><img src="' . img_url() . $row['img_full'] . '" class="img-responsive" width="100%" alt="..." ></a></div>';
-                            }
-                            ?>
-                        </div>
+                    <div class="row" style="margin-top: 20px;margin-bottom: 20px">                        
+                        <?php
+                        foreach ($img as $row) {
+                            echo '<div class="col-md-6"><a class="fancybox" rel="gallery1" href="' . img_url() . $row['img_full'] . '"><img src="' . img_url() . $row['img_full'] . '" class="img-responsive" width="100%" alt="..." ></a></div>';
+                        }
+                        ?>                        
                     </div>
 
                 </div>
@@ -261,26 +271,26 @@
                                 <div id="collapseOne" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                         <div class="row placeholders">                                            
-                                            <div class="col-lg-2 col-md-2  col-sm-4 col-xs-6 placeholder">
+                                            <div class="col-md-2 col-sm-4 col-xs-6  placeholder">
                                                 <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 <h5 class="style">089-532-9866</h5>
                                                 <!--<span class="text-muted">Something else</span>-->
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 placeholder">
+                                            <div class="col-md-2 col-sm-4 col-xs-6 placeholder">
                                                 <a href="https://www.facebook.com/BagAround/message">
                                                     <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 </a>
                                                 <h5 class="style">Bagaround</h5>
                                                 <!--<span class="text-muted">Something else</span>-->
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 placeholder">
+                                            <div class="col-md-2 col-sm-4 col-xs-6 placeholder">
                                                 <a href="#">
                                                     <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 </a>
                                                 <h5 class="style">ID : Bagaround</h5>
                                                 <!--<span class="text-muted">Something else</span>-->
                                             </div>
-                                            <div class="col-lg-2 col-md-2  col-sm-4 col-xs-6 placeholder">
+                                            <div class="col-md-2  col-sm-4 col-xs-6 placeholder">
                                                 <a href="http://instagram.com/bagaround">
                                                     <img src="<?php echo base_url() . 'assets/img/Instagram-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 </a>
@@ -288,7 +298,7 @@
                                                 <!--<span class="text-muted">Something else</span>-->                          
 
                                             </div>
-                                            <div class="col-lg-2 col-md-2  col-sm-4 col-xs-6 placeholder">
+                                            <div class="col-md-2  col-sm-4 col-xs-6 placeholder">
                                                 <a href="mailto:bagaround@hotmail.com">
                                                     <img src="<?php echo base_url() . 'assets/img/hotmail-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail" height="50%">
                                                 </a>
@@ -325,19 +335,19 @@
                                                             สาขา อเวนิว รัชโยธิน
                                                         </span>
                                                     </div>
-                                                    <div class="col-xs-6 col-sm-4 placeholder">
+                                                    <div class="col-sm-4 col-xs-6  placeholder">
                                                         <img src="<?php echo base_url() . 'assets/img/kbank.jpg'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                         <h4 class="style">627-2-19798-7</h4>
-                                                         <span class="text-muted">
+                                                        <span class="text-muted">
                                                             นพณัฐ วัฒน์หิรัญวงศ์
                                                             <br> 
                                                             สาขา อเวนิว รัชโยธิน
                                                         </span>
                                                     </div>
-                                                    <div class="col-xs-6 col-sm-4 placeholder">
+                                                    <div class="col-sm-4 col-xs-6  placeholder">
                                                         <img src="<?php echo base_url() . 'assets/img/bkk.jpg'; ?>"class="img-responsive" alt="Generic placeholder thumbnail">
                                                         <h4 class="style">941-0-06252-6</h4>
-                                                         <span class="text-muted">
+                                                        <span class="text-muted">
                                                             นพณัฐ วัฒน์หิรัญวงศ์
                                                             <br> 
                                                             สาขา รัชโยธิน
@@ -362,28 +372,28 @@
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse">
                                     <div class="panel-body">                                        
-                                            หลังจากชำระเงินเสร็จเรียบร้อยเเล้ว กรุณาติดต่อทางร้านเพื่อยืนยันการชำระเงิน                                         
+                                        หลังจากชำระเงินเสร็จเรียบร้อยเเล้ว กรุณาติดต่อทางร้านเพื่อยืนยันการชำระเงิน                                         
                                         <div class="row placeholders center-block">
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-sm-3 col-xs-6  placeholder">
                                                 <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 <h5 class="style">089-532-9866</h5>
                                                 <!--<span class="text-muted">Something else</span>-->
                                             </div>
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-sm-3 col-xs-6  placeholder">
                                                 <a href="https://www.facebook.com/BagAround/message">
                                                     <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 </a>
                                                 <h5 class="style">Bagaround</h5>
                                                 <!--<span class="text-muted">Something else</span>-->
                                             </div>
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-sm-3 col-xs-6  placeholder">
                                                 <a href="#">
                                                     <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 </a>
                                                 <h5 class="style">ID : Bagaround</h5>
                                                 <!--<span class="text-muted">Something else</span>-->
                                             </div>                                           
-                                            <div class="col-xs-6 col-sm-3 placeholder">
+                                            <div class="col-sm-3 col-xs-6  placeholder">
                                                 <a href="mailto:bagaround@hotmail.com">
                                                     <img src="<?php echo base_url() . 'assets/img/hotmail-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                                                 </a>
@@ -404,16 +414,7 @@
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        ทางร้าน จะจัดส่งของให้พร้อมเเจ้งรหัสรับสอค้า หลังจากนั่นลูกค้าสามารถตรวจสอบสถานะ
-                                        <!--                                        <div class="row hidden-xs">
-                                                                                    <div class="col-sm-12 center-block">
-                                                                                        <iframe border="0" marginwidth="0" framespacing="0" marginheight="0" 
-                                                                                                src="http://track.thailandpost.co.th/trackinternet/Default.aspx" 
-                                                                                                frameborder="0" 
-                                                                                                scrolling="no" style="width: 100%; height: 600px;max-width: 100%">
-                                                                                        </iframe>
-                                                                                    </div>
-                                                                                </div>                                        -->
+                                        ทางร้าน จะจัดส่งของให้พร้อมเเจ้งรหัสรับสอค้า หลังจากนั่นลูกค้าสามารถตรวจสอบสถานะ                                   
                                     </div>
                                 </div>
                             </div>

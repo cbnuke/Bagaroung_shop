@@ -139,16 +139,16 @@
                      Nav tabs 
                     <ul class="nav nav-tabs nav-justified">
                         <?php
-                        $flag_first = TRUE;
-                        foreach ($all_pro as $row) {
-                            $type_name = unserialize($row['product_type']);
-                            if ($flag_first) {
-                                echo '<li class="active"><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
-                                $flag_first = FALSE;
-                            } else {
-                                echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
-                            }
-                        }
+//                        $flag_first = TRUE;
+//                        foreach ($all_pro as $row) {
+//                            $type_name = unserialize($row['product_type']);
+//                            if ($flag_first) {
+//                                echo '<li class="active"><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
+//                                $flag_first = FALSE;
+//                            } else {
+//                                echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
+//                            }
+//                        }
                         ?>
                     </ul>
 
@@ -157,39 +157,39 @@
                     <div class="tab-content">
                         <?php
 //Tab
-                        $flag_first = TRUE;
-                        foreach ($all_pro as $row) {
-                            if ($flag_first) {
-                                echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
-                                $flag_first = FALSE;
-                            } else {
-                                echo '<div class="tab-pane" id="type' . $row['id'] . '">';
-                            }
-                            echo '<div class="row">';
-                            foreach ($row['list'] as $product) {
-                                $product_name = unserialize($product['product_name']);
-                                echo '<div class="col-md-4">';
-                                echo '<div class="thumbnail row_has_3">';
-                                echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
-                                ?>
-                                <img title="" src="<?= img_url() . $product['img_front'] ?>"
-                                     onmouseover="this.src = '<?= img_url() . $product['img_back'] ?>'" 
-                                     onmouseout="this.src = '<?= img_url() . $product['img_front'] ?>'" 
+//                        $flag_first = TRUE;
+//                        foreach ($all_pro as $row) {
+//                            if ($flag_first) {
+//                                echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
+//                                $flag_first = FALSE;
+//                            } else {
+//                                echo '<div class="tab-pane" id="type' . $row['id'] . '">';
+//                            }
+//                            echo '<div class="row">';
+//                            foreach ($row['list'] as $product) {
+//                                $product_name = unserialize($product['product_name']);
+//                                echo '<div class="col-md-4">';
+//                                echo '<div class="thumbnail row_has_3">';
+//                                echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
+//                                ?>
+                                <img title="" src="//<? img_url() . $product['img_front'] ?>"
+                                     onmouseover="this.src = '//<? img_url() . $product['img_back'] ?>'" 
+                                     onmouseout="this.src = '//<? img_url() . $product['img_front'] ?>'" 
                                      />
-                                     <?php
-                                     echo '<h3>' . $product_name[$language] . '</h3>';
-                                     echo '<span class="price"><strong>' . number_format($product['product_price'], 2) . '</strong><small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
-                                     $dt_now = date('Y-m-d H:i:s');
-                                     if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
-                                         echo '<span class="price1 bg">on sale</span>';
-                                     }
-                                     echo '</a>';
-                                     echo '</div>';
-                                     echo '</div>';
-                                 }
-                                 echo '</div>';
-                                 echo '</div>';
-                             }
+                                     //<?php
+//                                     echo '<h3>' . $product_name[$language] . '</h3>';
+//                                     echo '<span class="price"><strong>' . number_format($product['product_price'], 2) . '</strong><small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
+//                                     $dt_now = date('Y-m-d H:i:s');
+//                                     if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
+//                                         echo '<span class="price1 bg">on sale</span>';
+//                                     }
+//                                     echo '</a>';
+//                                     echo '</div>';
+//                                     echo '</div>';
+//                                 }
+//                                 echo '</div>';
+//                                 echo '</div>';
+//                             }
                              ?>
                     </div>   
 
@@ -227,7 +227,7 @@
                     <?php
 //Tab
                     $flag_first = TRUE;
-                    foreach ($all_pro as $row) {
+                    foreach ($all_pro as $row) {                       
                         if ($flag_first) {
                             echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
                             $flag_first = FALSE;
@@ -236,7 +236,8 @@
                         }
                         echo '<div class="row">';
                         foreach ($row['list'] as $product) {
-                            echo '<div class = "col-md-4 col-sm-6">';
+                             $product_name = unserialize($product['product_name']);
+                            echo '<div class = "col-sm-6 col-md-4 ">';
                             echo '<div class = "product">';
 
                             echo ' <a class = "link-product" href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
@@ -315,33 +316,33 @@
             <div class="row main">
                 <div class="col-sm-6">   
                     <div class="row placeholders center-block">
-                        <div class="col-xs-6 col-sm-6 placeholder">
+                        <div class="col-sm-6 col-xs-6 placeholder">
                             <img src="<?php echo base_url() . 'assets/img/phone-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             <h5 class="style">089-532-9866</h5>
                             <!--<span class="text-muted">Something else</span>-->
                         </div>
-                        <div class="col-xs-6 col-sm-6 placeholder">
+                        <div class="col-sm-6 col-xs-6  placeholder">
                             <a href="https://www.facebook.com/BagAround/message">
                                 <img src="<?php echo base_url() . 'assets/img/facebook-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             </a>
                             <h5 class="style">Bagaround</h5>
                             <!--<span class="text-muted">Something else</span>-->
                         </div>
-                        <div class="col-xs-6 col-sm-6 placeholder">
+                        <div class="col-sm-6 col-xs-6  placeholder">
                             <a href="#">
                                 <img src="<?php echo base_url() . 'assets/img/line-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             </a>
                             <h5 class="style">ID : Bagaround</h5>
                             <!--<span class="text-muted">Something else</span>-->
                         </div>
-                        <div class="col-xs-6 col-sm-6 placeholder">
+                        <div class="col-xs-6 col-sm-6  placeholder">
                             <a href="http://instagram.com/bagaround">
                                 <img src="<?php echo base_url() . 'assets/img/Instagram-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail">
                             </a>
                             <h5 class="style">Bagaround</h5>
                             <!--<span class="text-muted">Something else</span>-->     
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 placeholder">
+                        <div class="col-sm-12 col-md-12 col-xs-12   placeholder">
                             <div class="col-xs-6 col-sm-6 col-sm-offset-3">
                                 <a href="mailto:bagaround@hotmail.com">
                                     <img src="<?php echo base_url() . 'assets/img/hotmail-icon.png'; ?>" class="img-responsive" alt="Generic placeholder thumbnail" height="50%">

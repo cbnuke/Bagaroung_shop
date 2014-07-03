@@ -26,16 +26,7 @@ body {
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */  
-#des_products {
-    background: #f2f7ff; /* Old browsers */
-    background: -moz-linear-gradient(left,  #f2f7ff 0%, #f9fdff 40%, #f9fdff 60%, #f2f7ff 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f2f7ff), color-stop(40%,#f9fdff), color-stop(60%,#f9fdff), color-stop(100%,#f2f7ff)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* IE10+ */
-    background: linear-gradient(to right,  #f2f7ff 0%,#f9fdff 40%,#f9fdff 60%,#f2f7ff 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f7ff', endColorstr='#f2f7ff',GradientType=1 ); /* IE6-9 */
-}
+
 hr {
     margin: 0px auto;
 }
@@ -80,30 +71,6 @@ code {
 }
 #banner_slide>.carousel-inner > .item > img {
     margin: 0 auto;
-}
-
-/* Custom carousel promotions*/
-#promotions_slide>.carousel-control {
-    padding-top:10%;
-    width:5%;
-}
-
-#promotions_slide>.carousel-indicators {
-    right: 50%;
-    top: auto;
-    bottom: -28px;
-    margin-right: -19px;
-}
-
-#promotions_slide>.carousel-indicators li {
-    background: #c0c0c0;
-}
-
-#promotions_slide>.carousel-indicators .active {
-    background: #333333;
-}
-#promotions_slide .thumbnail {
-    margin: 0;
 }
 
 /* Custom tabs products*/
