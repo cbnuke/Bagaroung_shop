@@ -13,7 +13,7 @@ Class m_login extends CI_Model {
 
         $this->db->where('id', $id);
         $this->db->update('users', $data);
-        return;
+        return TRUE;
     }
 
     function select_user($user, $pass) {
