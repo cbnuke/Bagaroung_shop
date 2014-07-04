@@ -35,5 +35,16 @@
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+
+<?php echo js('gallery/masonry.pkgd.min.js'); ?>  
+<?php echo js('gallery/imagesloaded.pkgd.min.js'); ?>  
+<?php echo js('gallery/classie.js'); ?> 
+<?php echo js('gallery/colorfinder-1.1.js'); ?> 
+<?php echo js('gallery/gridScrollFx.js'); ?> 
+<script>
+    new GridScrollFx(document.getElementById('grid'), {
+        viewportFactor: 0.4
+    });
+</script>
 </body>
 </html>

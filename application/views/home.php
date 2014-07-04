@@ -1,4 +1,4 @@
-<div id="top_slide">   
+<section id="top_slide"> 
     <!-- Carousel
  ================================================== -->
     <div id="banner_slide" class="carousel slide" data-ride="carousel">
@@ -8,12 +8,12 @@
             <?php
             $flag_slide = TRUE;
             foreach ($slide as $row) {
-            if ($flag_slide) {
-            echo '<li data-target="#banner_slide" data-slide-to="' . $row['id'] . '" class="active"></li>';
-            $flag_slide = FALSE;
-            } else {
-            echo '<li data-target="#banner_slide" data-slide-to="' . $row['id'] . '"></li>';
-            }
+                if ($flag_slide) {
+                    echo '<li data-target="#banner_slide" data-slide-to="' . $row['id'] . '" class="active"></li>';
+                    $flag_slide = FALSE;
+                } else {
+                    echo '<li data-target="#banner_slide" data-slide-to="' . $row['id'] . '"></li>';
+                }
             }
             ?>
         </ol>
@@ -21,24 +21,24 @@
             <?php
             $flag_slide = TRUE;
             foreach ($slide as $row) {
-            if ($flag_slide) {
-            echo '<div class="item active">';
-            $flag_slide = FALSE;
-            } else {
-            echo '<div class="item">';
-            }
+                if ($flag_slide) {
+                    echo '<div class="item active">';
+                    $flag_slide = FALSE;
+                } else {
+                    echo '<div class="item">';
+                }
 
-            echo img($row['img_small']);
-            echo '<div class="container"><div class="carousel-caption">';
-            echo '<h2>' . unserialize($row['title'])[$language] . '</h2>';
-            echo '<p>' . unserialize($row['subtitle'])[$language] . '</p>';
-            if ($row['link_url'] != NULL || $row['link_url'] != '') {
-            echo '<div class="read_more pull-right" ><a  href="' . $row['link_url'] . '" role="button">' . lang('description') . '</a></div>';
-            }
-            echo '</div></div>';
+                echo img($row['img_small']);
+                echo '<div class="container"><div class="carousel-caption">';
+                echo '<h2>' . unserialize($row['title'])[$language] . '</h2>';
+                echo '<p>' . unserialize($row['subtitle'])[$language] . '</p>';
+                if ($row['link_url'] != NULL || $row['link_url'] != '') {
+                    echo '<div class="read_more pull-right" ><a  href="' . $row['link_url'] . '" role="button">' . lang('description') . '</a></div>';
+                }
+                echo '</div></div>';
 
-            //End item
-            echo '</div>';
+                //End item
+                echo '</div>';
             }
             ?>
         </div>
@@ -46,56 +46,86 @@
         <a class="right carousel-control" href="#banner_slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div><!-- /.carousel -->
 
-</div>
+</section>
+
+<section class="gallery" >
+    <div class="container-fluid">
+        <div class="col-md-12"> 
+            <div class="row">
+                <div class="grid-wrap">
+                    <ul class="grid swipe-right" id="grid">
+                        <li class="title-box">
+                            <h4>Illustrations by <a href="http://ryotakemasa.com/">Ryo Takemasa</a></h4>
+                        </li>                                             
+                        <?php
+                        for ($i = 0; $i < 25; $i++) {
+                            $leng = 50;
+                            if ($i % 2 == 1) {
+                                $leng = rand(200, 500);
+                            } else {
+                                $leng = rand(200, 500);
+                            }
+                            echo '<li><a href="#"><img src="http://placekitten.com/300/'.$leng.'" alt="dummy"><h3>A fantastic title</h3></a></li>';
+                        }
+                        ?>
+
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 <?php
-if (count($promotions)<= 0) {
-echo '<div id="des_promotions" hidden="">';
+if (count($promotions) <= 0) {
+    echo '<div id="des_promotions" hidden="">';
 } else {
-?>
-<div id="des_promotions" > 
-    <?php } ?>
+    ?>
+    <div id="des_promotions" > 
+<?php } ?>
     <!-- start main promotions-->
     <div class="main_bg">
         <div class="container">
             <div class="main">
                 <!--<h2 class="style"><?lang('head_promotions') ?></h2>-->
                 <div class="row">
-                    <?php
+<?php
 //Count number promotion
 //                    $num = count($products_has_promotion);
-                    $num = count($promotions);
-                    if ($num >= 4) {
-                    echo'<div class = "col-md-12">';
-                    echo'<div id = "owl-4">';
-                    } elseif ($num == 3) {
-                    echo'<div class = "col-md-10 col-md-offset-1">';
+$num = count($promotions);
+if ($num >= 4) {
+    echo'<div class = "col-md-12">';
+    echo'<div id = "owl-4">';
+} elseif ($num == 3) {
+    echo'<div class = "col-md-10 col-md-offset-1">';
 
-                    echo'<div id = "owl-3">';
-                    } elseif ($num == 2) {
-                    echo'<div class = "col-md-6 col-md-offset-3">';
-                    echo'<div id = "owl-2">';
-                    } else {
-                    echo'<div class = "col-md-3 col-md-offset-4">';
-                    echo'<div id = "owl-1">';
-                    }
+    echo'<div id = "owl-3">';
+} elseif ($num == 2) {
+    echo'<div class = "col-md-6 col-md-offset-3">';
+    echo'<div id = "owl-2">';
+} else {
+    echo'<div class = "col-md-3 col-md-offset-4">';
+    echo'<div id = "owl-1">';
+}
 //                    for ($i = 0; $i < $num; $i++) {
 //                    foreach ($products_has_promotion as $p) {
-                    foreach ($promotions as $p) {
-                    echo'<div class = "item">';
-                    echo'<div class = "row_has_3">';
-                    echo'<a href="' . base_url('DetailPromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
-                    echo'<img src="' . img_url() . $p['img_small'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
-                    echo'<span class = "price_pro bg1">' . lang('head_promotions') . '</span>';
-                    echo'</a>';
+foreach ($promotions as $p) {
+    echo'<div class = "item">';
+    echo'<div class = "row_has_3">';
+    echo'<a href="' . base_url('DetailPromotion/id/' . $p['promotion_id']) . '" class="thumbnail">';
+    echo'<img src="' . img_url() . $p['img_small'] . '" alt="Image" style="max-width:100%;" class="img-responsive">';
+    echo'<span class = "price_pro bg1">' . lang('head_promotions') . '</span>';
+    echo'</a>';
 
-                    echo'</div>';
-                    echo'</div>';
-                    }
+    echo'</div>';
+    echo'</div>';
+}
 
-                    echo'</div>';
-                    echo'</div>';
-                    ?>
+echo'</div>';
+echo'</div>';
+?>
 
 
                 </div>
@@ -120,59 +150,59 @@ echo '<div id="des_promotions" hidden="">';
                 <div class="col-md-12">
                     <!--Nav tabs--> 
                     <ul class="nav nav-tabs nav-justified">
-                        <?php
-                        $flag_first = TRUE;
-                        foreach ($all_pro as $row) {
-                        $type_name = unserialize($row['product_type']);
-                        if ($flag_first) {
-                        echo '<li class="active"><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
-                        $flag_first = FALSE;
-                        } else {
-                        echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
-                        }
-                        }
-                        ?>
+<?php
+$flag_first = TRUE;
+foreach ($all_pro as $row) {
+    $type_name = unserialize($row['product_type']);
+    if ($flag_first) {
+        echo '<li class="active"><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
+        $flag_first = FALSE;
+    } else {
+        echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
+    }
+}
+?>
                     </ul>
 
                     <!--Tab panes--> 
 
                     <div class="tab-content">
-                        <?php
+<?php
 //Tab
-                        $flag_first = TRUE;
-                        foreach ($all_pro as $row) {
-                        if ($flag_first) {
-                        echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
-                        $flag_first = FALSE;
-                        } else {
-                        echo '<div class="tab-pane" id="type' . $row['id'] . '">';
-                        }
-                        echo '<div class="row" id="product">';
-                        foreach ($row['list'] as $product) {
-                        $product_name = unserialize($product['product_name']);
-                        echo '<div class="col-md-4">';
-                        echo '<div class="thumbnail row_has_3">';
-                        echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
-                        ?>
-                        <img title="" src="<?php echo img_url(). 'products/thumbs/' . $product['img_front'] ?>"
-                             onmouseover="this.src = '<?php echo img_url() . 'products/thumbs/' . $product['img_back'] ?>'" 
-                             onmouseout="this.src = '<?php echo img_url() . 'products/thumbs/'. $product['img_front'] ?>'"                              
-                             />
-                             <?php
-                             echo '<h3>' . $product_name[$language] . '</h3>';
-                             echo '<span class="price"><strong>' . number_format($product['product_price'], 2) . '</strong><small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
-                             $dt_now = date('Y-m-d H:i:s');
-                             if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
-                             echo '<span class="price1 bg">on sale</span>';
-                             }
-                             echo '</a>';
-                             echo '</div>';
-                             echo '</div>';
-                             }
-                             echo '</div>';
-                             echo '</div>';
-                             }
-                             ?>
+$flag_first = TRUE;
+foreach ($all_pro as $row) {
+    if ($flag_first) {
+        echo '<div class="tab-pane active" id="type' . $row['id'] . '">';
+        $flag_first = FALSE;
+    } else {
+        echo '<div class="tab-pane" id="type' . $row['id'] . '">';
+    }
+    echo '<div class="row" id="product">';
+    foreach ($row['list'] as $product) {
+        $product_name = unserialize($product['product_name']);
+        echo '<div class="col-md-4">';
+        echo '<div class="thumbnail row_has_3">';
+        echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
+        ?>
+                                <img title="" src="<?php echo img_url() . 'products/thumbs/' . $product['img_front'] ?>"
+                                     onmouseover="this.src = '<?php echo img_url() . 'products/thumbs/' . $product['img_back'] ?>'" 
+                                     onmouseout="this.src = '<?php echo img_url() . 'products/thumbs/' . $product['img_front'] ?>'"                              
+                                     />
+        <?php
+        echo '<h3>' . $product_name[$language] . '</h3>';
+        echo '<span class="price"><strong>' . number_format($product['product_price'], 2) . '</strong><small>&nbsp;&nbsp;' . lang('baht') . '</small></span>';
+        $dt_now = date('Y-m-d H:i:s');
+        if ($product['status_promotion'] != 0 && $product['start'] <= $dt_now && $product['end'] >= $dt_now) {
+            echo '<span class="price1 bg">on sale</span>';
+        }
+        echo '</a>';
+        echo '</div>';
+        echo '</div>';
+    }
+    echo '</div>';
+    echo '</div>';
+}
+?>
                     </div>   
 
                 </div>
@@ -190,7 +220,7 @@ echo '<div id="des_promotions" hidden="">';
                 <div class="col-sm-12">-->
     <!-- Nav tabs -->
     <!--<ul class="nav nav-tabs nav-justified">-->
-    <?php
+<?php
 //                    $flag_first = TRUE;
 //                    foreach ($all_pro as $row) {
 //                        $type_name = unserialize($row['product_type']);
@@ -201,12 +231,12 @@ echo '<div id="des_promotions" hidden="">';
 //                            echo '<li><a href="#type' . $row['id'] . '" data-toggle="tab">' . $type_name[$language] . '</a></li>';
 //                        }
 //                    }
-    ?>
+?>
     <!--</ul>-->
     <!--Tab panes--> 
 
     <!--<div class="tab-content">-->
-    <?php
+<?php
 //Tab
 //                    $flag_first = TRUE;
 //                    foreach ($all_pro as $row) {
@@ -224,12 +254,12 @@ echo '<div id="des_promotions" hidden="">';
 //
 //                            echo ' <a class = "link-product" href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
 //                            echo '<span class="image-product">  ';
-    ?>
+?>
 <!--                            <img title="" src="<? img_url() . 'products/thumbs/' . $product['img_front'] ?>"
                      onmouseover="this.src = '<? img_url() . 'products/thumbs/' . $product['img_back'] ?>'" 
                      onmouseout="this.src = '<? img_url() . 'products/thumbs/' . $product['img_front'] ?>'" 
                      />-->
-    <?php
+<?php
 //                                 echo '</span>';
 //                                 echo '<span class = "title">';
 //                                 echo '<span class = "text">' . $product_name[$language] . '</span>';
@@ -246,7 +276,7 @@ echo '<div id="des_promotions" hidden="">';
 //                             echo '</div>';
 //                             echo '</div>';
 //    }
-    ?>
+?>
     <!--                </div> -->
 
 

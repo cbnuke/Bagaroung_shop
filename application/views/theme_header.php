@@ -13,6 +13,12 @@
         <?php echo css('customize-page.css'); ?>  
         <?php echo css('style.css'); ?>
         <?php echo css('jquery.fancybox.css'); ?>
+        <!--css for gallery-->
+        <?php echo css('gallery/normalize.css'); ?>     
+        <?php echo css('gallery/component.css'); ?>
+        <!--end css for gallery-->
+
+        <script src="js/modernizr.custom.js"></script>
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
@@ -23,7 +29,10 @@
         <!-- Owl Carousel Assets -->
         <!-- Prettify -->       
         <?php echo js('owl.carousel.min.js'); ?>      
-        <!-- //Owl Carousel Assets -->
+        <!-- js for gallery-->
+        <?php echo js('gallery/modernizr.custom.js'); ?>  
+
+        <!--end js for gallery-->
     </head>
     <body>
         <?php echo js('customize-js.js'); ?>       
