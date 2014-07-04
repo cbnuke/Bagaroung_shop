@@ -117,7 +117,7 @@
                         </div>
 
                         <script>
-                            //initiate the plugin and pass the id of the div containing gallery images 
+                            //Zoom
                             $("#img_01").elevateZoom({
                                 constrainType: "height",
                                 constrainSize: 274,
@@ -127,8 +127,7 @@
                                 gallery: 'gallery_01',
                                 galleryActiveClass: "active",
                                 loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
-                            ////pass the images to Fancybox 
-
+                            //End Zoom
                         </script>   
 
                         <div class="col-md-6">
