@@ -1,249 +1,267 @@
 <!-- start top_bg -->
+<section id="top-title">
+    <div class="top_bg">
+        <div class="container">
 
-<div class="top_bg">
-    <div class="container">
-
-        <div class="main_top">
-            <h2 class="style"><?= lang('head_products') ?></h2>
-        </div>
-
-    </div>
-</div>
-
-<!-- start main -->
-<div class="main_bg">
-    <div class="container">
-        <div class="row main">
-
-            <!-- start right_sidebar -->
-            <div class="col-md-2 col-lg-2 hidden-sm hidden-xs">
-                <div class="row">                
-                    <div class="col-md-12 col-lg-12 ">
-                        <div class="row">
-                            <h4 class="style"><?= lang('recommend') ?></h4>
-                            <div class="col-md-12">
-
-                                <div class="row placeholders">
-                                    <?php
-                                    foreach ($recommend as $row) {
-                                        ?>     
-                                        <div class="placeholder thumbnail">
-                                            <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
-                                                <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>"
-                                                     onmouseover="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_back'] ?>'" 
-                                                     onmouseout="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>'" 
-                                                     width="100%" alt="..."/>
-                                            </a>
-                                            <h4>
-                                                <?= unserialize($row['product_name'])[$language]; ?>
-                                            </h4>
-                                            <?php
-                                            $is_expire = FALSE;
-                                            foreach ($all_promotion as $pro) {
-                                                if ($pro['id'] == $row['promotion_id']) {
-                                                    $is_expire = TRUE;
-                                                }
-                                            }
-                                            if ($is_expire == FALSE) {
-                                                echo '<span class="text-muted">' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</span>';
-                                            } else {
-                                                echo '<span class="text-muted"><del><small>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</small></del></span> ';
-                                                echo '<br>';
-                                                echo '<span class="text-danger">' . lang('product_price') . ' ' . number_format($row['promotion_price'], 2) . ' ' . lang('baht') . '</span>';
-                                            }
-                                            ?> 
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="main_top">
+                <h2 class="style"><?= lang('head_products') ?></h2>
             </div>
-            <!-- end right_sidebar --> 
 
-            <!-- start content -->
+        </div>
+    </div>
+</section>
 
-            <div id="content" class="col-md-10 col-lg-10 " style="padding-top: 25px;padding-left: 10px;padding-right: 10px">
-                <div class="col-sm-12 col-xs-12" > 
+<section id="detail_product">
+    <div class="">
+        <div class="container">
+            <div class="main">
 
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3 hidden-lg hidden-md">
-                            <h3><?= unserialize($detail['product_name'])[$language] ?></h3>
-                        </div>
-                    </div>
-                    <div class="row">                 
-                        <!--problem in   moble respontive--> 
-                        <div class="col-md-6">
-
-                            <div class="row col-xs-12 col-sm-12 col-md-12 thumbnail center-block">
-                                <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_front'] ?>"/> 
-                            </div>
-
-                            <div class="row" id="gallery_01">
-                                <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_front'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" class="img-responsive"/>
-                                    </a>
-                                </div>
-                                <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_back'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_back'] ?>" class="img-responsive"/>
-                                    </a>
-                                </div>
-                                <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_right'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_right'] ?>" class="img-responsive"/>
-                                    </a>
-                                </div>
-                                <div class="col-xs-3 col-md-3 ">
-                                    <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_left'] ?>"> 
-                                        <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_left'] ?>" class="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div> 
-
-                            <div class="row" style="padding-top: 10px">
-                                <div class="col-md-10 col-md-offset-1">
-                                    <div class="fb-like" 
-                                         data-href="<?= current_url(); ?>"
-                                         data-layout="standard" 
-                                         data-action="like" 
-                                         data-show-faces="true" 
-                                         data-share="true">
-                                    </div>
-                                </div>
+                <div class="row">
+                    <div id="content" class="col-md-12">               
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 hidden-lg hidden-md">
+                                <h3><?= unserialize($detail['product_name'])[$language] ?></h3>
                             </div>
                         </div>
 
-                        <script>
-                            //Zoom
-                            $("#img_01").elevateZoom({
-                                constrainType: "height",
-                                constrainSize: 274,
-                                zoomType: "lens",
-                                lensShape: 'round',
-                                containLensZoom: true,
-                                gallery: 'gallery_01',
-                                galleryActiveClass: "active",
-                                loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
-                            //End Zoom
-                        </script>   
+                        <div class="row">                 
+                            <!--problem in   moble respontive--> 
+                            <div class="col-md-6 hidden-xs">
 
-                        <div class="col-md-6">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="hidden-sm hidden-xs">
-                                        <h3><?= unserialize($detail['product_name'])[$language] ?></h3>
-                                    </div>
-                                    <div class="text-center">  
-                                        <h4>
-                                            <?php
-                                            if ($promotion == NULL) {
-                                                echo '<strong>' . lang('product_price') . '</strong>' . '&nbsp;&nbsp;';
-                                                echo '<span>' . number_format($detail['product_price'], 2) . '</span>' . '&nbsp;&nbsp;';
-                                                echo lang('baht');
-                                            } else {
-                                                echo '<div class="row">';
-                                                echo '<strong>' . lang('product_price') . '</strong>' . '&nbsp;&nbsp;';
-                                                echo '<span  style="text-decoration:line-through;" >' . number_format($detail['product_price'], 2) . '</span>' . '&nbsp;&nbsp;';
-                                                echo lang('baht');
-                                                echo '</div>';
-
-                                                echo '<div class="row">'; //                                           
-                                                echo '<span  class="text-danger"  >' . number_format($promotion['promotion_price'], 2) . '</span>' . '&nbsp;&nbsp;';
-                                                echo '</div>';
-                                            }
-                                            ?>   
-                                        </h4>                                    
-                                    </div>      
+                                <div class="row col-xs-12 col-sm-12 col-md-12 thumbnail center-block">
+                                    <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_front'] ?>"/> 
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12"> 
-                                        <div class="top_main"> 
-                                            <div class="fb-send" style="vertical-align: middle;"
-                                                 data-href="<? current_url(); ?>" 
-                                                 data-colorscheme="light">
-                                            </div>
-                                            <!--"<? current_url(); ?>"-->                                    
-                                            <button title="<?= lang('how_to_order') ?>" id='link_howto'><?= lang('how_to_order') ?></button>
-                                        </div>
+                                <div class="row" id="gallery_01">
+                                    <div class="col-xs-3 col-md-3 ">
+                                        <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_front'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_front'] ?>"> 
+                                            <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" class="img-responsive"/>
+                                        </a>
                                     </div>
-                                    <div id="fb-root"></div>
-                                    <script>(function(d, s, id) {
-                                            var js, fjs = d.getElementsByTagName(s)[0];
-                                            if (d.getElementById(id))
-                                                return;
-                                            js = d.createElement(s);
-                                            js.id = id;
-                                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-                                            fjs.parentNode.insertBefore(js, fjs);
-                                        }(document, 'script', 'facebook-jssdk'));</script>
+                                    <div class="col-xs-3 col-md-3 ">
+                                        <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_back'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_back'] ?>"> 
+                                            <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_back'] ?>" class="img-responsive"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-3 col-md-3 ">
+                                        <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_right'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_right'] ?>"> 
+                                            <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_right'] ?>" class="img-responsive"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-3 col-md-3 ">
+                                        <a href="#" data-image="<?= img_url() . 'products/' . $detail['img_left'] ?>" data-zoom-image="<?= img_url() . 'products/' . $detail['img_left'] ?>"> 
+                                            <img id="img_01" src="<?= img_url() . 'products/thumbs/' . $detail['img_left'] ?>" class="img-responsive"/>
+                                        </a>
+                                    </div>
                                 </div> 
 
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 ">
-                                        <dt><?= lang('product_size') ?></dt>
+                                <div class="row" style="padding-top: 10px">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="fb-like" 
+                                             data-href="<?= current_url(); ?>"
+                                             data-layout="standard" 
+                                             data-action="like" 
+                                             data-show-faces="true" 
+                                             data-share="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <dl class="dl-horizontal">
-                                            <?php if ($detail['width'] != 0) { ?>
-                                                <dt><?= lang('product_width') ?></dt>
-                                                <dd><?= $detail['width'] ?> <?= lang('cm') ?></dd>
-                                            <?php } ?>
+                            <div class="col-md-6 hidden-lg hidden-md hidden-sm">
 
-                                            <?php if ($detail['hight'] != 0) { ?>
-                                                <dt><?= lang('product_high') ?></dt>
-                                                <dd><?= $detail['hight'] ?> <?= lang('cm') ?></dd>
-                                            <?php } ?>
+                                <div id="owl-product" class="owl-carousel" >
+                                    <div class="item">
+                                        <img src="<?= img_url() . 'products/thumbs/' . $detail['img_back'] ?>"  class="img-responsive"/>
+                                    </div>
+                                    <div class="item">
+                                        <img src="<?= img_url() . 'products/thumbs/' . $detail['img_front'] ?>" class="img-responsive"/>
+                                    </div>
+                                    <div class="item">
+                                        <img src="<?= img_url() . 'products/thumbs/' . $detail['img_right'] ?>" class="img-responsive"/>
+                                    </div>
+                                    <div class="item">
+                                        <img src="<?= img_url() . 'products/thumbs/' . $detail['img_left'] ?>" class="img-responsive"/>
+                                    </div>
+                                </div>
 
-                                            <?php if ($detail['weight'] != 0) { ?>
-                                                <dt><?= lang('product_weight') ?> </dt>
-                                                <dd><?= $detail['weight'] ?> <?= lang('kg') ?></dd>
-                                            <?php } ?>
+                            </div>
 
-                                            <?php if ($detail['top_width'] != 0) { ?>
-                                                <dt><?= lang('product_top_width') ?> </dt>
-                                                <dd><?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
-                                            <?php } ?>
+                            <script>
+                                //Zoom
+                                $("#img_01").elevateZoom({
+                                    constrainType: "height",
+                                    constrainSize: 274,
+                                    zoomType: "lens",
+                                    lensShape: 'round',
+                                    containLensZoom: true,
+                                    gallery: 'gallery_01',
+                                    galleryActiveClass: "active",
+                                    loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
+                                //End Zoom
+                            </script>   
 
-                                            <?php if ($detail['base_width'] != 0) { ?>
-                                                <dt><?= lang('product_base_width') ?></dt>
-                                                <dd><?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
-                                            <?php } ?>
-                                        </dl>
+                            <div class="col-md-6">
+                                <div class="col-md-12">
 
-                                        <div class="product-description">
-                                            <p><?= unserialize($detail['detail'])[$language] ?></p> 
-                                            <!--<p>Using beautiful thick and tactile leather, the Tessie Small Satchel has a refined yet retro elegance. Its shape is inspired by vintage satchels from the Mulberry archives and it has an adjustable leather shoulder strap that can be worn on the shoulder or as a hands-free messenger bag.</p>-->
+                                    <div class="row">
+                                        <div class="hidden-sm hidden-xs">
+                                            <h3><?= unserialize($detail['product_name'])[$language] ?></h3>
+                                        </div>
+                                        <div class="text-center">  
+                                            <h4>
+                                                <?php
+                                                if ($promotion == NULL) {
+                                                    echo '<strong>' . lang('product_price') . '</strong>' . '&nbsp;&nbsp;';
+                                                    echo '<span>' . number_format($detail['product_price'], 2) . '</span>' . '&nbsp;&nbsp;';
+                                                    echo lang('baht');
+                                                } else {
+                                                    echo '<div class="row">';
+                                                    echo '<strong>' . lang('product_price') . '</strong>' . '&nbsp;&nbsp;';
+                                                    echo '<span  style="text-decoration:line-through;" >' . number_format($detail['product_price'], 2) . '</span>' . '&nbsp;&nbsp;';
+                                                    echo lang('baht');
+                                                    echo '</div>';
+
+                                                    echo '<div class="row">'; //                                           
+                                                    echo '<span  class="text-danger"  >' . number_format($promotion['promotion_price'], 2) . '</span>' . '&nbsp;&nbsp;';
+                                                    echo '</div>';
+                                                }
+                                                ?>   
+                                            </h4>                                    
+                                        </div>      
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12"> 
+                                            <div class="top_main"> 
+                                                <div class="fb-send" style="vertical-align: middle;"
+                                                     data-href="<? current_url(); ?>" 
+                                                     data-colorscheme="light">
+                                                </div>
+                                                <!--"<? current_url(); ?>"-->                                    
+                                                <button title="<?= lang('how_to_order') ?>" id='link_howto'><?= lang('how_to_order') ?></button>
+                                            </div>
+                                        </div>
+                                        <div id="fb-root"></div>
+                                        <script>(function(d, s, id) {
+                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                if (d.getElementById(id))
+                                                    return;
+                                                js = d.createElement(s);
+                                                js.id = id;
+                                                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+                                                fjs.parentNode.insertBefore(js, fjs);
+                                            }(document, 'script', 'facebook-jssdk'));</script>
+                                    </div> 
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 ">
+                                            <dt><?= lang('product_size') ?></dt>
+
+                                            <dl class="dl-horizontal">
+                                                <?php if ($detail['width'] != 0) { ?>
+                                                    <dt><?= lang('product_width') ?></dt>
+                                                    <dd><?= $detail['width'] ?> <?= lang('cm') ?></dd>
+                                                <?php } ?>
+
+                                                <?php if ($detail['hight'] != 0) { ?>
+                                                    <dt><?= lang('product_high') ?></dt>
+                                                    <dd><?= $detail['hight'] ?> <?= lang('cm') ?></dd>
+                                                <?php } ?>
+
+                                                <?php if ($detail['weight'] != 0) { ?>
+                                                    <dt><?= lang('product_weight') ?> </dt>
+                                                    <dd><?= $detail['weight'] ?> <?= lang('kg') ?></dd>
+                                                <?php } ?>
+
+                                                <?php if ($detail['top_width'] != 0) { ?>
+                                                    <dt><?= lang('product_top_width') ?> </dt>
+                                                    <dd><?= $detail['top_width'] ?> <?= lang('cm') ?></dd>
+                                                <?php } ?>
+
+                                                <?php if ($detail['base_width'] != 0) { ?>
+                                                    <dt><?= lang('product_base_width') ?></dt>
+                                                    <dd><?= $detail['base_width'] ?> <?= lang('cm') ?></dd>
+                                                <?php } ?>
+                                            </dl>
+
+                                            <div class="product-description">
+                                                <p><?= unserialize($detail['detail'])[$language] ?></p> 
+                                                <!--<p>Using beautiful thick and tactile leather, the Tessie Small Satchel has a refined yet retro elegance. Its shape is inspired by vintage satchels from the Mulberry archives and it has an adjustable leather shoulder strap that can be worn on the shoulder or as a hands-free messenger bag.</p>-->
+                                            </div>
+
                                         </div>
 
                                     </div>
 
+
+
                                 </div>
+                            </div>    
 
-                            </div>
-                        </div>                         
+                        </div>
+
+
+
                     </div>
-
-
-                    <div class="row" style="margin-top: 20px;margin-bottom: 20px">                        
-                        <?php
-                        foreach ($img as $row) {
-                            echo '<div class="col-md-6"><a class="fancybox" rel="gallery1" href="' . img_url() . $row['img_full'] . '"><img src="' . img_url() . $row['img_full'] . '" class="img-responsive" width="100%" alt="..." ></a></div>';
-                        }
-                        ?>                        
-                    </div>
-
                 </div>
-            </div>      
 
-            <!--end content--> 
+                <hr>
+                
+                <div class="row" id="images_product"   style="margin-top: 3%;"> 
+                    <?php
+                    foreach ($img as $row) {
+                        echo '<a class="fancybox" rel="gallery1" href="' . img_url() . $row['img_full'] . '"><img src="' . img_url() . $row['img_full'] . '"alt="..." ></a>';
+                    }
+                    ?> 
+                </div>
 
+
+
+                <div class="row hidden-xs"> 
+                    <div class="title-recommed">
+                        <h4 class="style"><?= lang('recommend') ?></h4>
+                    </div>
+                    <div id = "owl-recommend">  
+                        <?php
+                        foreach ($recommend as $row) {
+                            ?>     
+                            <div class="placeholder thumbnail item">
+                                <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
+                                    <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>"
+                                         onmouseover="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_back'] ?>'" 
+                                         onmouseout="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>'" 
+                                         width="100%" alt="..."/>
+                                </a>
+                                <h4>
+                                    <?= unserialize($row['product_name'])[$language]; ?>
+                                </h4>
+                                <?php
+                                $is_expire = FALSE;
+                                foreach ($all_promotion as $pro) {
+                                    if ($pro['id'] == $row['promotion_id']) {
+                                        $is_expire = TRUE;
+                                    }
+                                }
+                                if ($is_expire == FALSE) {
+                                    echo '<span class="text-muted">' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</span>';
+                                } else {
+                                    echo '<span class="text-muted"><del><small>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</small></del></span> ';
+                                    echo '<br>';
+                                    echo '<span class="text-danger">' . lang('product_price') . ' ' . number_format($row['promotion_price'], 2) . ' ' . lang('baht') . '</span>';
+                                }
+                                ?> 
+                            </div>
+                        <?php } ?>
+                    </div>                   
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-<!--end main-->
+</section>
+
+
 
 <div id="howto" >
     <div class="top_bg">
@@ -451,6 +469,39 @@
         });
 
         $(".fancybox").fancybox();
+
+        $("#owl-product").owlCarousel({
+            autoPlay: 3000,
+            items: 1, //1 items above 1000px browser width
+            itemsDesktop: [1199, 1], //1 items between 1199px and 979px
+            itemsDesktopSmall: [979, 1], // betweem 979px and 601px
+            itemsTablet: [768, 1], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+            lazyLoad: true,
+            navigation: true,
+            navigationText: ['<i class="fa fa-chevron-left fa-2x"></i>', '<i class="fa fa-chevron-right fa-2x"></i>'],
+            rewindNav: true,
+            scrollPerPage: true,
+            //Pagination
+            pagination: true,
+            paginationNumbers: false,
+        });
+
+        $("#owl-recommend").owlCarousel({
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+            items: 4,
+            itemsDesktop: [1199, 4],
+            itemsDesktopSmall: [979, 4],
+            itemsTablet: [768, 4], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+
+
+        });
+
+
     });
 </script>
 <ul class="nav pull-right scroll-top hidden" id="scroll-top">

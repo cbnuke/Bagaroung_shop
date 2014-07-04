@@ -17,7 +17,7 @@
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
         <?php echo js('jquery.fancybox.pack.js'); ?>
-        <?php // echo js('docs.min.js'); ?>
+        <?php echo js('docs.min.js'); ?>
         <!-- Owl Carousel Assets -->        
         <?php echo css('owl.carousel.css'); ?>
         <!-- Owl Carousel Assets -->
