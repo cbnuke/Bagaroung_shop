@@ -275,19 +275,7 @@ Class m_slides extends CI_Model {
                 //insert to database
                 $finfo = $this->upload->data();
 
-//                // to re-size show images 
-//                $config = array();
-//                $config['image_library'] = 'gd2';
-//                $config['source_image'] = $finfo['full_path'];
-//                $config['create_thumb'] = TRUE;
-//                $config['new_image'] = 'assets/img/slides/' . $finfo['file_name'];
-//                $config['maintain_ratio'] = TRUE;
-//                $config['thumb_marker'] = '';
-//                $config['width'] = 900;
-//                $config['height'] = 500;
-//                $this->load->library('image_lib', $config);
-//                $this->image_lib->resize();
-               
+             $this->image_lib->resize();               
                 // to re-size for thumbnail images un-comment and set path here and in json array
                 $config2 = array();
                 $config2['image_library'] = 'gd2';
@@ -296,8 +284,10 @@ Class m_slides extends CI_Model {
                 $config2['new_image'] = 'assets/img/slides/thumbs/' . $finfo['file_name'];
                 $config2['maintain_ratio'] = TRUE;
                 $config2['thumb_marker'] = '';
-//                $config2['width'] = 100;
+                 $config2['width'] = 1;
                 $config2['height'] = 500;
+                $config2['maintain_ratio'] = TRUE;
+                $config2['master_dim'] = 'height';
                 $this->load->library('image_lib', $config2);
                 $this->image_lib->resize();
 

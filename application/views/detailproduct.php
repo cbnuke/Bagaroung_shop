@@ -207,7 +207,7 @@
                 </div>
 
                 <hr>
-                
+
                 <div class="row" id="images_product"   style="margin-top: 3%;"> 
                     <?php
                     foreach ($img as $row) {
@@ -218,7 +218,19 @@
 
 
 
-                <div class="row hidden-xs"> 
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="recommed">
+    <div class="main_bg">
+        <div class="container">            
+            <div class="col-md-12">
+                <div class="row main_top hidden-xs">                     
                     <div class="title-recommed">
                         <h4 class="style"><?= lang('recommend') ?></h4>
                     </div>
@@ -253,17 +265,18 @@
                                 ?> 
                             </div>
                         <?php } ?>
-                    </div>                   
+                    </div>    
                 </div>
-
             </div>
+
+
         </div>
     </div>
 </section>
 
 
 
-<div id="howto" >
+<section id="howto" >
     <div class="top_bg">
         <div class="container">
             <div class="main_top">
@@ -441,7 +454,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>>
 
 <script>
     $(window).load(function() {

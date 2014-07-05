@@ -330,7 +330,6 @@ class m_promotions extends CI_Model {
         if (!empty($_FILES['img_promotion']['name'])) {
             $this->upload_image('img_promotion', $this->get_image_id($this->promotion_id));
         }
-
         return $f_data;
     }
 
@@ -357,7 +356,7 @@ class m_promotions extends CI_Model {
             } else {
                 $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
             }
-            $r.='<td>' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+            $r.='<td>' . img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
             $r.='<td>' . $p['product_price'] . '</td>';
             $r.='</tr>';
@@ -377,7 +376,7 @@ class m_promotions extends CI_Model {
                 $product = $this->get_products($product_id[$i]);
                 $itemp = '<tr>';
                 $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $product_id[$i] . ')"></td>';
-                $itemp .= '<td align="center">' . img('products/thumbs/'.$product['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+                $itemp .= '<td align="center">' . img('products/thumbs/' . $product['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($product ['product_name'])['thai'] . '</td>';
                 $itemp .= '<td align="center">' . $product['product_price'] . '</td>';
                 $itemp .= '<td><input type="text" name="promotion_price[]" required="" value="' . $p . '"><span>&nbsp;บาท</span></td>';
@@ -397,7 +396,7 @@ class m_promotions extends CI_Model {
         $product = $this->get_products_no_promotion($type_id, $id);
 
         $row = '';
-        
+
         foreach ($product as $p) {
             $r = '<tr>';
             $is_checked = FALSE;
@@ -412,7 +411,7 @@ class m_promotions extends CI_Model {
                 $r.='<td align="center"  style="vertical-align: middle;"><input type = "checkbox" class = "a" name = "product_id[]" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
             }
 
-            $r.='<td>' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+            $r.='<td>' . img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
             $r.='<td>' . unserialize($p ['product_name'])['thai'] . '</td>';
             $r.='<td>' . $p['product_price'] . '</td>';
             $r.='</tr>';
@@ -429,7 +428,7 @@ class m_promotions extends CI_Model {
             foreach ($product_pro as $p) {
                 $itemp = '<tr>';
                 $itemp .= '<td align="middle"><input type="button" class="btn btn-outline btn-circle btn-danger btn-sm" value="-" onclick="deleteRow(this,' . $p['id'] . ')"></td>';
-                $itemp .= '<td align="center">' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+                $itemp .= '<td align="center">' . img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
                 $itemp .= '<td>' . unserialize($p['product_name'])['thai'] . '</td>';
                 $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
                 $itemp .= '<td><input type="text" name="promotion_price[]" required="" value="' . $p['promotion_price'] . '"><span>&nbsp;บาท</span></td>';
@@ -458,8 +457,7 @@ class m_promotions extends CI_Model {
 
     function get_products($id = NULL) {
         $rs = '';
-        if ($id == NULL) 
-            {
+        if ($id == NULL) {
             $this->db->select('products.id,product_name,product_price,product_types.product_type,products.img_front');
             $this->db->from('products');
             $this->db->join('product_types', 'products.product_type_id = product_types.id');
@@ -467,12 +465,11 @@ class m_promotions extends CI_Model {
             $this->db->where('product_id', NULL);
             $query = $this->db->get();
             $rs = $query->result_array();
-        } 
-        else {
+        } else {
             $this->db->select('products.id,product_name,product_price,promotion_price,product_types.product_type,products.img_front');
             $this->db->from('products');
             $this->db->join('product_types', 'products.product_type_id = product_types.id');
-            $this->db->join('products_has_promotions', 'product_id = products.id','left');
+            $this->db->join('products_has_promotions', 'product_id = products.id', 'left');
             $this->db->where('products.id', $id);
             $query = $this->db->get();
             $rs = $query->row_array();
@@ -546,10 +543,11 @@ class m_promotions extends CI_Model {
                 $config2['source_image'] = $finfo['full_path'];
                 $config2['create_thumb'] = TRUE;
                 $config2['new_image'] = 'assets/img/promotions/thumbs/' . $finfo['file_name'];
-                $config2['maintain_ratio'] = TRUE;
                 $config2['thumb_marker'] = '';
-//                $config2['width'] = 500;
+                $config2['width'] = 1;
                 $config2['height'] = 500;
+                $config2['maintain_ratio'] = TRUE;
+                $config2['master_dim'] = 'height';
                 $this->load->library('image_lib', $config2);
                 $this->image_lib->resize();
 

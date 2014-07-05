@@ -51,18 +51,31 @@
 <section class="gallery" >
     <div class="grid-wrap">
         <ul class="grid swipe-right" id="grid">
-            <li class="title-box">
-                <h4>Illustrations by <a href="http://ryotakemasa.com/">Ryo Takemasa</a></h4>
-            </li>                                             
+            <li class="title-box" >
+                <h4>our product by <a href="#des_products" id="products">Bag around</a></h4>
+
+            </li>              
             <?php
-            for ($i = 0; $i < 25; $i++) {
-                $leng = 50;
-                if ($i % 2 == 1) {
-                    $leng = rand(200, 500);
+            foreach ($gallery as $img) {
+                $title = unserialize($img['title'])[$language];
+                if ($title == NULL) {
+                    echo '<li><a href="' . $img['link_url'] . '"><img src="' . img_url() . $img['img_small'] . '" alt="Our Products"></a></li>';
                 } else {
-                    $leng = rand(200, 500);
+                    echo '<li><a href="' . $img['link_url'] . '"><img src="' . img_url() . $img['img_small'] . '" alt="Our Products"><h3>' . $title . '</h3></a></li>';
                 }
-                echo '<li><a href="#"><img src="http://placekitten.com/300/' . $leng . '" alt="dummy"><h3>A fantastic title</h3></a></li>';
+            }
+            ?>
+
+            <?php
+            for ($i = 0; $i < 5; $i++) {
+                $leng = 0;
+                if ($i % 2 == 1) {
+                    $leng = rand(200, 800);
+                    echo '<li><a href="#"><img src="http://placebeard.it/350/' . $leng . '" alt="Product"><h3>A fantastic title</h3></a></li>';
+                } else {
+                    $leng = rand(200, 800);
+                    echo '<li><a href="#"><img src="http://placekitten.com/500/' . $leng . '" alt="Product"><h3>A fantastic title</h3></a></li>';
+                }
             }
             ?>
 
@@ -71,16 +84,17 @@
 </section>
 
 
+<section id="des_promotions" > 
 
-<?php
-if (count($promotions) <= 0) {
-    echo '<div id="des_promotions" hidden="">';
-} else {
-    ?>
-    <div id="des_promotions" > 
-    <?php } ?>
     <!-- start main promotions-->
-    <div class="main_bg">
+    <?php
+    if (count($promotions) <= 0) {
+        echo '<div class="main_bg" hidden="">';
+    } else {
+        ?>
+        <div class="main_bg">
+        <?php } ?>
+
         <div class="container">
             <div class="main">
                 <!--<h2 class="style"><?lang('head_promotions') ?></h2>-->
@@ -126,9 +140,9 @@ if (count($promotions) <= 0) {
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div id="des_products">
+<section id="des_products">
     <div class="top_bg">
         <div class="container">
             <div class="main_top">
@@ -305,9 +319,9 @@ if (count($promotions) <= 0) {
 <!--end products list-->
 
 
-</div>
+</section>
 
-<div id="des_contactus" > 
+<section id="des_contactus" > 
     <!-- sub header  -->
     <div  class="top_bg">
         <div class="container">
@@ -387,11 +401,11 @@ if (count($promotions) <= 0) {
             </div>            
         </div>
     </div>
-</div>
+</section>
 
 
 <ul class="nav pull-right scroll-top hidden" id="scroll-top">
-    <li><a title="Scroll to top" id="link_promotions" style="color:#222;"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+    <li><a title="Scroll to Products" id="link_promotions" style="color:#222;"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
 </ul>
 
 

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            <?= $title; ?>
+            <?php echo 'ห้อง' . $title; ?>
         </h1>
     </div>
 </div>
@@ -41,7 +41,7 @@
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                 }
                                 ?>  
-                                                                                                                                    <!--<td align="center"> <? $i ?></td>-->
+                                                                                                                                                            <!--<td align="center"> <? $i ?></td>-->
                             <td>
                                 <?= unserialize($row['title'])['thai']; ?>
                                 <hr>
@@ -66,7 +66,7 @@
                                     'type' => "button",
                                     'class' => "btn btn-warning btn-xs",
                                     'data-id' => "3",
-                                    'data-title' => "ยกเลิก",
+                                    'data-title' => "ยกเลิกการ",
                                     'data-info' => unserialize($row['title'])['thai'],
                                     'data-toggle' => "modal",
                                     'data-target' => "#confirm",
@@ -76,7 +76,7 @@
                                     'type' => "button",
                                     'class' => "btn btn-success btn-xs",
                                     'data-id' => "4",
-                                    'data-title' => "ใช้งาน",
+                                    'data-title' => "",
                                     'data-info' => unserialize($row['title'])['thai'],
                                     'data-toggle' => "modal",
                                     'data-target' => "#confirm",
@@ -211,7 +211,7 @@
                             foreach ($gallery as $row) {
                                 if ($row['status'] == '0') {
 
-                                    echo '<tr>';
+                                    echo '<tr class="active">';
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                     ?>  
                                 <td>

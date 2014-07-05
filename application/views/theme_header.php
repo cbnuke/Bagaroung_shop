@@ -18,7 +18,7 @@
         <?php echo css('gallery/component.css'); ?>
         <!--end css for gallery-->
 
-        <script src="js/modernizr.custom.js"></script>
+        
         <?php echo js('jquery.js'); ?>
         <?php echo js('bootstrap.js'); ?>
         <?php echo js('jquery.elevateZoom.js'); ?>
@@ -30,9 +30,8 @@
         <!-- Prettify -->       
         <?php echo js('owl.carousel.min.js'); ?>      
         <!-- js for gallery-->
-        <?php echo js('gallery/modernizr.custom.js'); ?>  
-
-        <!--end js for gallery-->
+        <?php echo js('gallery/modernizr.custom.js'); ?> 
+        <!--end js for gallery-->        
     </head>
     <body>
         <?php echo js('customize-js.js'); ?>       

@@ -18,7 +18,7 @@ class Gallery extends CI_Controller {
 
         $data['gallery'] = $this->m_gallery->get_all_gallery();
 
-        $this->m_template->set_Title('ห้องแสดงภาพ');
+        $this->m_template->set_Title('แสดงภาพ');
 //        $this->m_template->set_Debug($data);
         $this->m_template->set_Content('admin/gallery.php', $data);
         $this->m_template->showTemplateAdmin();
@@ -92,6 +92,12 @@ class Gallery extends CI_Controller {
         $this->db->update('gallery', $data);
 
         redirect('Gallery');
+    }
+        function check_products_by_type() {
+        $type_id = $this->input->post('type_id');
+        $rs = $this->m_gallery->set_products_list($type_id);
+//        $rs = $this->m_gallery->check_all_product($type_id);
+        echo json_encode($rs);
     }
 
 }

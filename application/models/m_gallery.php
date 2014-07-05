@@ -38,7 +38,7 @@ Class m_gallery extends CI_Model {
     function validation_add() {
         $this->form_validation->set_rules('title[thai]', 'ชื่อเรื่อง', 'trim|xss_clean');
         $this->form_validation->set_rules('title[english]', 'Title', 'trim|xss_clean');
-        $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'trim|xss_clean');
+        $this->form_validation->set_rules('link_url', 'ลิ้งค์', 'required|trim|xss_clean');
         if (empty($_FILES['img_upload']['name'])) {
             $this->form_validation->set_rules('img_upload', 'รูปภาพ', 'required|xss_clean');
         }
@@ -67,6 +67,7 @@ Class m_gallery extends CI_Model {
             'value' => set_value('title[english]'));
 
         $f_link = array(
+            'id' => 'link_url',
             'name' => 'link_url',
             'class' => 'form-control',
             'placeholder' => 'ลิ้งค์',
@@ -79,6 +80,13 @@ Class m_gallery extends CI_Model {
             '0' => 'ไม่ใช้งาน',
         );
 
+        $f_type = array();
+        $f_type[0] = "ทั้งหมด";
+        $temp = $this->get_product_type();
+        foreach ($temp as $row) {
+            $f_type[$row['id']] = unserialize($row['product_type'])['thai'];
+        }
+
         $form_add = array(
             'form' => form_open_multipart('Gallery/add', array('class' => 'form-horizontal', 'id' => 'form_slide')),
             'title[thai]' => form_input($f_title_th),
@@ -87,6 +95,8 @@ Class m_gallery extends CI_Model {
             'img_upload' => form_upload($f_img),
             'status' => form_dropdown('status', $f_status, set_value('status'), 'class="form-control"'),
             'image' => NULL,
+            'product_type_id' => form_dropdown('product_type_id', $f_type, set_value('product_type_id'), 'class="form-control" id="product_type"'),
+            'products' => $this->set_products_list(),
         );
 
         return $form_add;
@@ -104,6 +114,7 @@ Class m_gallery extends CI_Model {
             'placeholder' => 'Title',
             'value' => (set_value('title[english]') == NULL) ? unserialize($data ['title'])['english'] : set_value('title[english]'));
         $f_link = array(
+            'id' => 'link_url',
             'name' => 'link_url',
             'class' => 'form-control',
             'placeholder' => 'ลิ้งค์',
@@ -115,6 +126,13 @@ Class m_gallery extends CI_Model {
             '1' => 'ใช้งาน',
             '0' => 'ไม่ใช้งาน',
         );
+        $f_type = array();
+        $f_type[0] = "ทั้งหมด";
+        $temp = $this->get_product_type();
+        foreach ($temp as $row) {
+            $f_type[$row['id']] = unserialize($row['product_type'])['thai'];
+        }
+
 
         $id = $data['id'];
         $form_edit = array(
@@ -125,6 +143,8 @@ Class m_gallery extends CI_Model {
             'img_upload' => form_upload($f_img),
             'status' => form_dropdown('status', $f_status, (set_value('status') == NULL) ? $data ['status'] : set_value('status'), 'class="form-control"'),
             'image' => img($this->get_image($id), array('class' => 'img-responsive thumbnail', 'width' => '200', 'height' => '200')),
+            'product_type_id' => form_dropdown('product_type_id', $f_type, set_value('product_type_id'), 'class="form-control" id="product_type"'),
+            'products' => $this->set_products_list(),
         );
         //Unset img if NULL        
         if ($form_edit['img_upload'] == NULL)
@@ -156,6 +176,12 @@ Class m_gallery extends CI_Model {
             $this->upload_image('img_upload', $this->get_image_id($this->slide_id));
         }
         return $get_page_data;
+    }
+
+    function get_product_type() {
+        $query = $this->db->get('product_types');
+        $result = $query->result_array();
+        return $result;
     }
 
     function get_all_gallery() {
@@ -262,6 +288,40 @@ Class m_gallery extends CI_Model {
 
         unlink($row['img_path'] . $row['img_name']);
         unlink($row['img_path'] . 'thumbs/' . $row['img_name']);
+    }
+
+//    to modal
+    function set_products_list($type_id = NULL) {
+        $row = '';
+        if ($type_id != NULL) {
+            $product = $this->check_all_product($type_id);
+        } else {
+            $product = $this->check_all_product();
+        }
+
+        foreach ($product as $p) {
+            $r = '<tr class="active">';
+            $r.='<td align="center"  style="vertical-align: middle;"><input type = "radio" class="radio" name = "products_id" value = "' . $p['id'] . '"id = "' . $p['id'] . '"></td>';
+            $r.='<td>' . img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')) . '</td>';
+            $r.='<td class="text-center" >' . unserialize($p ['product_name'])['thai'] . '</td>';
+            $r.='<td class="text-center" >' . $p['product_price'] . '</td>';
+            $r.='</tr>';
+            $row.=$r;
+        }
+
+        return $row;
+    }
+
+    function check_all_product($type_id = null) {
+        $this->db->select('*,products.id');
+        $this->db->from('products');
+        $this->db->join('product_types', 'products.product_type_id=product_types.id', 'left');
+        if ($type_id != NULL && $type_id != 0) {
+            $this->db->where('product_type_id', $type_id);
+        }
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
     }
 
 }

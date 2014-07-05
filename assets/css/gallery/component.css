@@ -1,10 +1,10 @@
-a {
+#gallery a {
     color: #FF2A48;
     text-decoration: none;
     outline: none;
 }
 
-a:hover, a:focus {
+#gallery a:hover, a:focus {
     color: #2E3444;
 }
 .grid-wrap {
@@ -50,7 +50,7 @@ a:hover, a:focus {
 /* Title box */
 .title-box h4 {
     display: block;
-    margin: 7px;
+    margin: 5px;
     padding: 20px;
     background: #FFFFF0;
     color: #483C32;
@@ -65,7 +65,8 @@ a:hover, a:focus {
 }
 
 .title-box h4 a:hover {
-    color: #D3EEE2;
+    color: #333333;
+    opacity: 0.8;
 }
 
 /* Anchor and image */
@@ -81,7 +82,7 @@ a:hover, a:focus {
 .grid li > a {
     position: relative;
     overflow: hidden;
-    margin: 7px;
+    margin: 2%;
 }
 
 /* Curtain element */
@@ -92,7 +93,8 @@ a:hover, a:focus {
     z-index: 100;
     width: 100%;
     height: 100%;
-    background: #96cdc8;
+    background: #A9F5D0;
+
 }
 
 .grid.swipe-right .curtain {

@@ -1,116 +1,42 @@
-<?php
-//	$strDate = "2008-08-14 13:42:44";
-//	echo "ThaiCreate.Com Time now : ".DateThai($strDate);
-?>
+
 <!-- start top_bg -->
-<div class="top_bg">
-    <div class="container">
-        <div class="main_top">
-            <h2 class="style"><?= lang('head_promotions') ?></h2>
-        </div>
-    </div>
-</div>
-<!-- start main -->
-<div class="main_bg">
-    <div class="container">
-        <div class="row">
-            <!-- start right_sidebar -->
-            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
-                <div class="row ">                
-                    <div class="col-md-12">
-                        <div class="row">
-                            <h4 class="style"><?= lang('recommend') ?></h4>                            
-                            <div class="col-md-12">
-                                <div class="row placeholders">
-                                    <?php
-                                    foreach ($recommend as $row) {
-                                        ?>     
-                                        <div class="placeholder thumbnail">
-                                            <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
-                                                <img title="<?= lang('detail_product'); ?>" src="<?= img_url().'products/thumbs/' . $row['img_front'] ?>"
-                                                     onmouseover="this.src = '<?= img_url().'products/thumbs/' . $row['img_back'] ?>'" 
-                                                     onmouseout="this.src = '<?= img_url().'products/thumbs/' . $row['img_front'] ?>'" 
-                                                     width="100%" alt="..."/>
-                                            </a>
-                                            <h4>
-                                                <?= unserialize($row['product_name'])[$language]; ?>
-                                            </h4>
-                                            <?php
-                                            $is_expire = FALSE;
-                                            foreach ($all_promotion as $pro) {
-                                                if ($pro['id'] == $row['promotion_id']) {
-                                                    $is_expire = TRUE;
-                                                }
-                                            }
-                                            if ($is_expire == FALSE) {
-                                                echo '<span class="text-muted">' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</span>';
-                                            } else {
-                                                echo '<span class="text-muted"><del><small>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</small></del></span> ';
-                                                echo '<br>';
-                                                echo '<span class="text-danger">' . lang('product_price') . ' ' . number_format($row['promotion_price'], 2) . ' ' . lang('baht') . '</span>';
-                                            }
-                                            ?> 
-                                        </div>
-                                    <?php } ?>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<section id="top-title">
+    <div class="top_bg">
+        <div class="container">
+            <div class="main_top">
+                <h2 class="style"><?= lang('head_promotions') ?></h2>
             </div>
-            <!-- end right_sidebar --> 
-            <!-- start content -->         
-            <div id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12" style="padding-top: 25px">
+        </div>
+    </div>  
+</section>
 
-                <div class="row">                        
-                    <div class="col-md-6 bg">
-                        <div class="">
-                            <img src="<?= img_url() . $promotion['img_full'] ?>" alt="..." class="img-responsive">
-                        </div>                           
+<section id="detail_promotion">
+    <div class="main_bg">
+        <div class="container">
+            <div class="main">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="<?= img_url() . $promotion['img_full'] ?>" alt="..." width="100%" class="img-responsive">
                     </div>
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="text-center">
-                                <h2><?= unserialize($promotion['name'])[$language]; ?></h2>
-                            </div>
-                        </div>                 
-                        <div class="row">
-                            <div class="media">    
-                                <h4 class="media-heading">
-                                    <dt>
-                                    <?= lang('detail_promotion'); ?> 
-                                    </dt>
-                                </h4>
-                                <div class="media-body">  
-                                    <blockquote>
-                                        <?= unserialize($promotion['detail'])[$language]; ?>   
-                                    </blockquote>                                
-                                </div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>                       
-                        <div class="row">
-                            <dl class="dl-horizontal">
-                                <h4 class="style">
-                                    <dt> <span class="label label-warning"><?= lang('expire') ?></span></dt>
-                                    <dd><span class="text-danger"  ><?= $promotion ['end']; ?></span></dd>
-                                </h4>   
-                            </dl>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="top_main">                                
-                                    <a href="#products_pro"><?= lang('products_pro') ?></a>
-                                    <div class="clear"></div>
-                                </div>
+                        <div class="detailed-info">
+                            <h3 class="subtitle text-center"><?= unserialize($promotion['name'])[$language]; ?></h3>                            
+                            <h4><?= lang('detail_promotion'); ?> </h4>
+                            <?= unserialize($promotion['detail'])[$language]; ?>                      
+                            <br>
+                            <h4 class="text-center">
+                                <span class="label label-default"><?= lang('expire') ?></span>                           
+                                <strong><span class="text-danger"  >&nbsp;&nbsp;<?= $promotion ['end']; ?></span></strong>
+                            </h4> 
+                            <div class="top_main">                                
+                                <a href="#products_pro"><?= lang('products_pro') ?></a>
                                 <div class="clear"></div>
-                            </div>
-                        </div>
+                            </div> 
 
+                        </div>
                     </div>
-                </div>  
+                </div> 
 
                 <div class="row center-block" id="products_pro" style="padding-top: 20px">
                     <div class="panel panel-default">
@@ -134,7 +60,7 @@
                                     } else {
                                         foreach ($products as $p) {
                                             $itemp = '<tr class="active">';
-                                            $itemp .= '<td align="center">' . img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
+                                            $itemp .= '<td align="center">' . img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100%')) . '</td>';
                                             $itemp .= '<td>' . unserialize($p['product_name'])[$language] . '</td>';
                                             $itemp .= '<td align="center">' . $p['product_price'] . '</td>';
                                             $itemp .= '<td align="center"><span  class="text-danger"  ><h3>' . $p['promotion_price'] . '</h3></span></td>';
@@ -154,10 +80,147 @@
 
             </div>
         </div>
-        <!-- end content -->
+
     </div>	
 
 </div>
+</section>
+<!--<section id='products_promotion'>   
+    <div class="container">
+
+        <div class="row" >
+            <div class="main_top">
+                <h3><? lang('products_pro') ?></h3> 
+            </div>
+        </div>
+
+        <div class="row" style="padding-bottom: 5%;">
+            <div class="col-md-12">
+                <div class="row">
+                    <?php
+//                    if ($products == null || count($products) < 0) {
+//                        echo '<p class="text-center">' . lang('no_product_pro') . '</p>';
+//                    } else {
+//                        foreach ($products as $p) {
+                            ?>
+                            <div class="col-md-6">
+                                <div class="col-md-6">
+                                    <h3 class="subtitle"><?= unserialize($p['product_name'])[$language]; ?></h3>
+                                    <p>This soft bovine leather has a fine grain effect. The leather is lightly finished 
+                                        to protect the grain surface but will retain natural characteristics as it ages,
+                                        making each product unique.
+                                    </p>
+
+                                    <div class="read_more pull-right" ><a  href="<? base_url('DetailProduct/id/' . $p['id']) ?>" role="button"><? lang('description') ?>...</a></div>                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="<? img_url() . $promotion['img_full'] ?>" alt="..." width="100%" class="img-responsive">
+                                </div>
+                            </div> 
+                            <?php
+//                        }
+//                    }
+                    ?>
+
+
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <h3 class="subtitle">Soft Small Grain</h3>
+                            <p>This soft bovine leather has a fine grain effect. The leather is lightly finished 
+                                to protect the grain surface but will retain natural characteristics as it ages,
+                                making each product unique.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="<? img_url() . $promotion['img_full'] ?>" alt="..." width="100%" class="img-responsive">
+                        </div>
+                    </div>  
+
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <h3 class="subtitle">Soft Small Grain</h3>
+                            <p>This soft bovine leather has a fine grain effect. The leather is lightly finished 
+                                to protect the grain surface but will retain natural characteristics as it ages,
+                                making each product unique.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="<? img_url() . $promotion['img_full'] ?>" alt="..." width="100%" class="img-responsive">
+                        </div>
+                    </div> 
+
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <h3 class="subtitle">Soft Small Grain</h3>
+                            <p>This soft bovine leather has a fine grain effect. The leather is lightly finished 
+                                to protect the grain surface but will retain natural characteristics as it ages,
+                                making each product unique.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="<? img_url() . $promotion['img_full'] ?>" alt="..." width="100%" class="img-responsive">
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>-->
+
+<!-- start main -->
+<div class="clearfix visible-xs-block"></div>
+
+<section id="recommed">
+    <div class="main_bg" style="padding-bottom: 3%;">
+        <div class="container">
+            <div class="main_top">
+                <div class="col-md-12">
+                    <div class="row  hidden-xs">                     
+                        <div class="title-recommed">
+                            <h4 class="style"><?= lang('recommend') ?></h4>
+                        </div>
+                        <div id = "owl-recommend">  
+                            <?php
+                            foreach ($recommend as $row) {
+                                ?>     
+                                <div class="placeholder thumbnail item">
+                                    <a href="<?php echo base_url('DetailProduct/id/' . $row['id']); ?>">  
+                                        <img title="<?= lang('detail_product'); ?>" src="<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>"
+                                             onmouseover="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_back'] ?>'" 
+                                             onmouseout="this.src = '<?= img_url() . 'products/thumbs/' . $row['img_front'] ?>'" 
+                                             width="100%" alt="..."/>
+                                    </a>
+                                    <h4>
+                                        <?= unserialize($row['product_name'])[$language]; ?>
+                                    </h4>
+                                    <?php
+                                    $is_expire = FALSE;
+                                    foreach ($all_promotion as $pro) {
+                                        if ($pro['id'] == $row['promotion_id']) {
+                                            $is_expire = TRUE;
+                                        }
+                                    }
+                                    if ($is_expire == FALSE) {
+                                        echo '<span class="text-muted">' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</span>';
+                                    } else {
+                                        echo '<span class="text-muted"><del><small>' . lang('product_price') . ' ' . number_format($row['product_price'], 2) . ' ' . lang('baht') . '</small></del></span> ';
+                                        echo '<br>';
+                                        echo '<span class="text-danger">' . lang('product_price') . ' ' . number_format($row['promotion_price'], 2) . ' ' . lang('baht') . '</span>';
+                                    }
+                                    ?> 
+                                </div>
+                            <?php } ?>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <script>
     $(window).load(function() {
@@ -174,6 +237,18 @@
             $('html, body').animate({
                 scrollTop: 0
             }, 1000);
+
+        });
+        $("#owl-recommend").owlCarousel({
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+            items: 4,
+            itemsDesktop: [1199, 4],
+            itemsDesktopSmall: [979, 4],
+            itemsTablet: [768, 4], //1 items between 768 and 0
+            itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
+
+
 
         });
     });

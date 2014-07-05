@@ -194,7 +194,7 @@
                         //set the data type
                         data: "id_product=" + value,
                         dataType: 'json',
-                        url: '<?= base_url(); ?>' + 'promotions/get_product_select', // target element(s) to be updated with server response 
+                        url: '<?= base_url(); ?>' + 'Promotions/get_product_select', // target element(s) to be updated with server response 
                         cache: false,
                         //check this in firefox browser
                         success: function(response) {
@@ -236,7 +236,7 @@
                 //set the data type
                 data: "type_id=" + type_id + "&promotion_id=" + promotion_id,
                 dataType: 'json',
-                url: '<?= base_url(); ?>' + 'promotions/check_products_by_type', // target element(s) to be updated with server response 
+                url: '<?= base_url(); ?>' + 'Promotions/check_products_by_type', // target element(s) to be updated with server response 
                 cache: false,
                 //check this in firefox browser
                 success: function(response) {
