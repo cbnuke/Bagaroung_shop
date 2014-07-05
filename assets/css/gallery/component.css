@@ -11,11 +11,12 @@ a:hover, a:focus {
     clear: both;
     margin: 0 auto;
     padding: 0;
+    width: 100%;
     max-width: 1260px;
 }
 
 .grid {
-    margin: 5px auto;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
     min-height: 500px;
@@ -136,13 +137,14 @@ a:hover, a:focus {
 /* Title */
 .grid li h3 {
     position: absolute;
-    bottom: 0;
+    bottom: -60px;
     left: 0;
     margin: 0;
     padding: 20px;
     width: 100%;
     background: #F0F8FF;
     color: #483C32;
+    opacity: 0.7;
     text-align: right;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -156,18 +158,20 @@ a:hover, a:focus {
 .grid li > a::before {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100.5%;
-    height: 100.5%;
+    left: -4px;
+    width: 100%;
+    height: 100%;
     border: 0px solid transparent;
     background: rgba(0,0,0,0);
+    opacity: 0.95;
     content: '';
-    -webkit-transition: border-width 0.2s, border-color 0.2s;
-    transition: border-width 0.2s, border-color 0.2s;
+    -webkit-transition: border-width 0.1s, border-color 0.1s;
+    transition: border-width 0.1s, border-color 0.1s;
 }
 
 /* Hover effects */
 .grid li.shown:hover h3 {
+    bottom: -10px;
     color: #493D26;
     -webkit-transform: translate3d(0,-30px,0);
     transform: translate3d(0,-30px,0);

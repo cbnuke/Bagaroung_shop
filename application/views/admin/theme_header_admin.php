@@ -164,8 +164,11 @@
                             <!-- Slides -->
                             <li>
                                 <?= anchor('Slides', '<i class="fa fa-play fa-fw"></i>&nbsp;Slides') ?>
-<!--                                <a href="slides"><i class="fa fa-play fa-fw"></i>&nbsp;Slides</a>                             -->
-                            </li>                           
+                            </li>
+                            <!-- Gallery -->
+                            <li>
+                                <?= anchor('Gallery', '<i class="fa fa-photo fa-fw"></i>&nbsp;Gallery') ?>
+                            </li>
                             <!-- User -->
                             <li>
                                 <a href="#"><i class="fa fa-user fa-fw"></i>&nbsp;Users<span class="fa arrow"></a>    
