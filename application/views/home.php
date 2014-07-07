@@ -56,29 +56,17 @@
 
             </li>              
             <?php
-            foreach ($gallery as $img) {
-                $title = unserialize($img['title'])[$language];
-                if ($title == NULL) {
-                    echo '<li><a href="' . $img['link_url'] . '"><img src="' . img_url() . $img['img_small'] . '" alt="Our Products"></a></li>';
-                } else {
-                    echo '<li><a href="' . $img['link_url'] . '"><img src="' . img_url() . $img['img_small'] . '" alt="Our Products"><h3>' . $title . '</h3></a></li>';
+            if (count($gallery) > 0) {
+                foreach ($gallery as $img) {
+                    $title = unserialize($img['title'])[$language];
+                    if ($title == NULL) {
+                        echo '<li><a href="' . $img['link_url'] . '"><img src="' . img_url() . $img['img_small'] . '" alt="Our Products"></a></li>';
+                    } else {
+                        echo '<li><a href="' . $img['link_url'] . '"><img src="' . img_url() . $img['img_small'] . '" alt="Our Products"><h3>' . $title . '</h3></a></li>';
+                    }
                 }
             }
             ?>
-
-            <?php
-            for ($i = 0; $i < 5; $i++) {
-                $leng = 0;
-                if ($i % 2 == 1) {
-                    $leng = rand(200, 800);
-                    echo '<li><a href="#"><img src="http://placebeard.it/350/' . $leng . '" alt="Product"><h3>A fantastic title</h3></a></li>';
-                } else {
-                    $leng = rand(200, 800);
-                    echo '<li><a href="#"><img src="http://placekitten.com/500/' . $leng . '" alt="Product"><h3>A fantastic title</h3></a></li>';
-                }
-            }
-            ?>
-
         </ul> 
     </div>
 </section>
@@ -188,7 +176,7 @@
                             echo '<div class="row" id="product">';
                             foreach ($row['list'] as $product) {
                                 $product_name = unserialize($product['product_name']);
-                                echo '<div class="col-md-4">';
+                                echo '<div class="col-md-4 col-sm-6">';
                                 echo '<div class="thumbnail row_has_3">';
                                 echo '<a href="' . base_url('DetailProduct/id/' . $product['id']) . '"data-toggle="tooltip" data-placement="bottom" title="' . lang('detail_product') . '">';
                                 ?>

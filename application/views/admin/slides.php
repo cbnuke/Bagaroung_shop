@@ -45,7 +45,7 @@
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                 }
                                 ?>  
-                                    <!--<td align="center"> <? $i ?></td>-->
+                                                    <!--<td align="center"> <? $i ?></td>-->
                             <td>
                                 <?= $row['title']['thai']; ?>
                                 <hr>
@@ -59,7 +59,7 @@
                             </td>
 
                             <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                            <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail')); ?></td>
+                            <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail', 'width' => '100px', 'heght' => '100px')); ?></td>
 
                             <td align="center"  style="vertical-align: middle;"> 
                                 <?php
@@ -158,7 +158,8 @@
                                 </td>
 
                                 <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail')); ?></td>
+                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail', 'width' => '100px', 'heght' => '100px')); ?></td>
+
 
                                 <td align="center"  style="vertical-align: middle;"> 
                                     <?php
@@ -240,7 +241,7 @@
                                     echo '<tr>';
                                     echo '<td align="center"  style="vertical-align: middle;"><i class="fa fa-square-o fa-lg"></i></td>';
                                     ?>  
-                                            <!--<td align="center"> <? $i ?></td>-->
+                                                                    <!--<td align="center"> <? $i ?></td>-->
                                 <td>
                                     <?= $row['title']['thai']; ?>
                                     <hr>
@@ -254,7 +255,8 @@
                                 </td>
 
                                 <td align="center"  style="vertical-align: middle;"> <?= anchor($row['link_url'], '<i class="fa fa-link fa-2x"></i>', ''); ?></td>
-                                 <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail')); ?></td>
+                                <td align="center"  style="vertical-align: middle;"> <?= img($row['img_small'], array('class' => 'img-responsive thumbnail', 'width' => '100px', 'heght' => '100px')); ?></td>
+
 
                                 <td align="center"  style="vertical-align: middle;"> 
                                     <?php

@@ -275,7 +275,6 @@ Class m_slides extends CI_Model {
                 //insert to database
                 $finfo = $this->upload->data();
 
-             $this->image_lib->resize();               
                 // to re-size for thumbnail images un-comment and set path here and in json array
                 $config2 = array();
                 $config2['image_library'] = 'gd2';

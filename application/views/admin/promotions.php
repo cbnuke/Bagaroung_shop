@@ -34,8 +34,8 @@
                                 <!--<th style="width: 3%;" >สถานะ</th>-->
                                 <th style="width: 5% ;">วันคงเหลือ</th>
                                 <th style="width: 15%;">รูปภาพ</th>
-                                <th style="width: 15%;">ชื่อ</th>                                   
-                                <th style="width: 20%;">รายละเอียด</th>
+                                <th style="width: 35%;">ชื่อ</th>                                   
+                                <!--<th style="width: 20%;">รายละเอียด</th>-->
                                 <th colspan="2">สินค้า</th>                  
                                 <th style="width: 15%;"></th>
                             </tr>        
@@ -67,17 +67,44 @@
                                     }
                                     ?>                                                       
                                 <td rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive')); ?></td>
+                                <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive', 'width' => '100px', 'height' => '100px')); ?></td>
 
-                                <td rowspan="<?= $num; ?>">
-                                    <?= unserialize($pro['name'])['thai'] ?>
-                                    <hr>
-                                    <?= unserialize($pro['name'])['english'] ?>
-                                </td>
-                                <td rowspan="<?= $num; ?>">
-                                    <?= unserialize($pro['detail'])['thai'] ?>
-                                    <hr>
-                                    <?= unserialize($pro['detail'])['english'] ?>
+                <!--                                <td rowspan="<? $num; ?>">
+                                                    <? unserialize($pro['name'])['thai'] ?>
+                                                    <hr>
+                                                    <? unserialize($pro['name'])['english'] ?>
+                                                </td>-->
+                                <td rowspan="<?= $num; ?>">                                   
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse"  href="#<?= $pro['id'] . 'th' ?>">
+                                                        <?= unserialize($pro['name'])['thai'] ?>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="<?= $pro['id'] . 'th' ?>" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <?= unserialize($pro['detail'])['thai'] ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse"  href="#<?= $pro['id'] . 'en' ?>">
+                                                        <?= unserialize($pro['name'])['english'] ?>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="<?= $pro['id'] . 'en' ?>" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <?= unserialize($pro['detail'])['english'] ?>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                 </td> 
                                 <?php
                                 $delete = array(
@@ -131,7 +158,7 @@
                                             $product_id_frist = $p['product_id'];
                                             ?>
                                             <td align="center" style="vertical-align: middle;">
-                                                <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                <?= img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                             </td>
                                             <td>
                                                 <ul>
@@ -171,7 +198,7 @@
                                                 }
                                                 ?>
                                                 <td align="center" style="vertical-align: middle;">
-                                                    <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                    <?= img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                 </td>
                                                 <td>
                                                     <ul>
@@ -204,8 +231,8 @@
                             <tr>
                                 <th style="width: 5% ;">วันคงเหลือ</th>
                                 <th style="width: 15%;">รูปภาพ</th>
-                                <th style="width: 15%;">ชื่อ</th>                                   
-                                <th style="width: 20%;">รายละเอียด</th>
+                                <th style="width: 35%;">ชื่อ</th>                                   
+                                <!--<th style="width: 20%;">รายละเอียด</th>-->
                                 <th colspan="2">สินค้า</th>                  
                                 <th style="width: 15%;"></th>
                             </tr>        
@@ -226,17 +253,39 @@
                                         ?>
                                         <tr>
                                             <td rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive')); ?></td>
+                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive', 'width' => '100px', 'height' => '100px')); ?></td>
 
-                                            <td rowspan="<?= $num; ?>">
-                                                <?= unserialize($pro['name'])['thai'] ?>
-                                                <hr>
-                                                <?= unserialize($pro['name'])['english'] ?>
-                                            </td>
-                                            <td rowspan="<?= $num; ?>">
-                                                <?= unserialize($pro['detail'])['thai'] ?>
-                                                <hr>
-                                                <?= unserialize($pro['detail'])['english'] ?>
+                                            <td rowspan="<?= $num; ?>">                                   
+                                                <div class="panel-group" id="accordion">
+                                                    <div class="panel">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse"  href="#<?= $pro['id'] . 'th_curent' ?>">
+                                                                    <?= unserialize($pro['name'])['thai'] ?>
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="<?= $pro['id'] . 'th_curent' ?>" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <?= unserialize($pro['detail'])['thai'] ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse"  href="#<?= $pro['id'] . 'en_curent' ?>">
+                                                                    <?= unserialize($pro['name'])['english'] ?>
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="<?= $pro['id'] . 'en_curent' ?>" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <?= unserialize($pro['detail'])['english'] ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </td> 
                                             <?php
                                             $delete = array(
@@ -291,7 +340,7 @@
                                                         $product_id_frist = $p['product_id'];
                                                         ?>
                                                         <td align="center" style="vertical-align: middle;">
-                                                            <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                            <?= img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                         </td>
                                                         <td>
                                                             <ul>
@@ -325,7 +374,7 @@
                                                         ?>
                                                         <tr>
                                                             <td align="center" style="vertical-align: middle;">
-                                                                <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                                <?= img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                             </td>
                                                             <td>
                                                                 <ul>
@@ -364,8 +413,8 @@
                             <tr>
                                 <th style="width: 5% ;">วันคงเหลือ</th>
                                 <th style="width: 15%;">รูปภาพ</th>
-                                <th style="width: 15%;">ชื่อ</th>                                   
-                                <th style="width: 20%;">รายละเอียด</th>
+                                <th style="width: 35%;">ชื่อ</th>                                   
+                                <!--<th style="width: 20%;">รายละเอียด</th>-->
                                 <th colspan="2">สินค้า</th>                  
                                 <th style="width: 15%;"></th>
                             </tr>  
@@ -385,18 +434,41 @@
                                         ?>
                                         <tr>
                                             <td rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= $day . ' วัน<br>' . $hours . ' ชั่วโมง' ?></td>
-                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive')); ?></td>
+                                            <td  rowspan="<?= $num; ?>" align="center"  style="vertical-align: middle;"> <?= img($pro['img_small'], array('class' => 'img-responsive', 'width' => '100px', 'height' => '100px')); ?></td>
 
-                                            <td rowspan="<?= $num; ?>">
-                                                <?= unserialize($pro['name'])['thai'] ?>
-                                                <hr>
-                                                <?= unserialize($pro['name'])['english'] ?>
-                                            </td>
-                                            <td rowspan="<?= $num; ?>">
-                                                <?= unserialize($pro['detail'])['thai'] ?>
-                                                <hr>
-                                                <?= unserialize($pro['detail'])['english'] ?>
+                                            <td rowspan="<?= $num; ?>">                                   
+                                                <div class="panel-group" id="accordion">
+                                                    <div class="panel">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse"  href="#<?= $pro['id'] . 'th_expire' ?>">
+                                                                    <?= unserialize($pro['name'])['thai'] ?>
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="<?= $pro['id'] . 'th_expire' ?>" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <?= unserialize($pro['detail'])['thai'] ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse"  href="#<?= $pro['id'] . 'en_expire' ?>">
+                                                                    <?= unserialize($pro['name'])['english'] ?>
+                                                                </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="<?= $pro['id'] . 'en_expire' ?>" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <?= unserialize($pro['detail'])['english'] ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </td> 
+
                                             <?php
                                             $delete = array(
                                                 'type' => "button",
@@ -449,7 +521,7 @@
                                                         $product_id_frist = $p['product_id'];
                                                         ?>
                                                         <td align="center" style="vertical-align: middle;">
-                                                            <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                            <?= img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                         </td>
                                                         <td>
                                                             <ul>
@@ -490,7 +562,7 @@
                                                         }
                                                         ?>
                                                     <td align="center" style="vertical-align: middle;">
-                                                        <?= img('products/thumbs/'.$p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
+                                                        <?= img('products/thumbs/' . $p['img_front'], array('class' => 'img-responsive thumbnail', 'width' => '100', 'height' => '100')); ?>
                                                     </td>
                                                     <td>
                                                         <ul>
